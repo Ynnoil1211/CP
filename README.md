@@ -8,13 +8,13 @@
 
 ### 800 (1 problem)
 
-- [1859A - United We Stand](./800/1859A_United_We_Stand.md)
+- [1859A - United We Stand](./cp-notes/800/1859A_United_We_Stand.md)
 
 ## By Algorithm
 
 ### Ad-hoc / Math (1 problem)
 
-- [1859A - United We Stand](./800/1859A_United_We_Stand.md)
+- [1859A - United We Stand](./cp-notes/800/1859A_United_We_Stand.md)
 
 ## Progress
 
