@@ -157,7 +157,7 @@ Follow these steps:
 2. **Review** the user's code — give constructive feedback on style, efficiency, correctness.
 3. **Generate** a structured note using the template above, including the user's code and your review.
 4. **Save** it to `cp-notes/[RATING]/[ID]_[Title_With_Underscores].md`.
-5. **Update** the master index at `cp-notes/index.md`.
+5. **Update** the master index in the repo's `README.md`.
 
 ### Automatic Features
 
@@ -174,22 +174,22 @@ cp-notes/
 ├── 1000/
 ├── 1100/
 ├── 1200/
-└── index.md
+└── README.md # Master index
 
 ````
 
-**2. Master Index** (`cp-notes/index.md`)
+**2. Master Index** (`README.md`) — the repo's landing page
 
 ```markdown
-# CP Study Notes - Master Index
+# My CP Journey
 
-Total: 47 problems across 5 ratings
+**Total:** 47 problems across 5 ratings
 
 ## By Difficulty
 
 ### 800 (15 problems)
 
-- [1903A - United We Stand](./800/1903A_United_We_Stand.md)
+- [1903A - United We Stand](./cp-notes/800/1903A_United_We_Stand.md)
 - ...
 
 ### 900 (12 problems)
@@ -293,20 +293,20 @@ cp-notes/
 ├── 1000/
 ├── 1100/
 ├── 1200/
-└── index.md                                # Master index
+└── README.md                               # Master index (repo root)
     ├── Summary stats
     ├── By difficulty (with links)
     ├── By algorithm (with links)
     └── Progress tracker table
 ```
 
-### Index Schema
+### README Index Schema
 
-Master `index.md` contains:
+The repo's `README.md` serves as the master index and contains:
 
 1. **Header** — Total count, date range, rating coverage
 2. **Quick Stats** — Problems/week, average time, confidence trend
-3. **By Rating** — Grouped links to all problems at that rating
+3. **By Rating** — Grouped links to all problems at that rating (e.g. `./cp-notes/800/...`)
 4. **By Algorithm** — Grouped links to all problems using that algorithm
 5. **Progress Table** — Week-by-week metrics
 
@@ -383,6 +383,26 @@ Default is **By Rating** (`cp-notes/800/`, `cp-notes/900/`, etc.). The user may 
 ❌ Skip edge cases (they will miss them again)
 ❌ Guess at difficulty rating (use actual source)
 ❌ Reuse old notes (each problem deserves fresh analysis)
+
+## Repo Structure
+
+The final repo looks like this:
+
+```
+my-cp-learning/
+├── README.md                    # Master index — auto-updated
+├── cp-notes/
+│   ├── 800/
+│   │   ├── 1903A_United_We_Stand.md
+│   │   └── ...
+│   ├── 900/
+│   ├── 1000/
+│   └── ...
+└── .agents/
+    └── skills/
+        └── cp-problem-notes-generator/
+            └── SKILL.md
+```
 
 ## Workflow Integration
 
