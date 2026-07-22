@@ -157,7 +157,7 @@ Follow these steps:
 2. **Review** the user's code — give constructive feedback on style, efficiency, correctness.
 3. **Generate** a structured note using the template above, including the user's code and your review.
 4. **Save** it to `cp-notes/[RATING]/[ID]_[Title_With_Underscores].md`.
-5. **Update** the master index in the repo's `README.md`.
+5. **Update** the repo's root `README.md` (NOT `cp-notes/README.md` or `cp-notes/index.md`) — add the new problem entry under the correct rating and algorithm sections, update total counts and stats.
 
 ### Automatic Features
 
@@ -165,6 +165,7 @@ Follow these steps:
 
 ```
 
+README.md # Master index (repo root)
 cp-notes/
 ├── 800/
 │ ├── 1903A_United_We_Stand.md
@@ -173,8 +174,7 @@ cp-notes/
 ├── 900/
 ├── 1000/
 ├── 1100/
-├── 1200/
-└── README.md # Master index
+└── 1200/
 
 ````
 
@@ -283,21 +283,20 @@ Detailed request → use all provided metadata including struggles, insight, sol
 ## File Organization Schema
 
 ```
+README.md                                    # Master index (repo root)
+                                             #   - Summary stats
+                                             #   - By difficulty (with links)
+                                             #   - By algorithm (with links)
+                                             #   - Progress tracker table
 cp-notes/
-├── 800/                                    # Difficulty tier
-│   ├── 1903A_United_We_Stand.md           # [ID]_[Title].md
+├── 800/                                     # Difficulty tier
+│   ├── 1903A_United_We_Stand.md            # [ID]_[Title].md
 │   ├── 1901A_Max_Cost.md
-│   └── ... (≤31 problems per tier)
-│
+│   └── ...
 ├── 900/
 ├── 1000/
 ├── 1100/
-├── 1200/
-└── README.md                               # Master index (repo root)
-    ├── Summary stats
-    ├── By difficulty (with links)
-    ├── By algorithm (with links)
-    └── Progress tracker table
+└── 1200/
 ```
 
 ### README Index Schema
