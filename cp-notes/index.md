@@ -20,10 +20,10 @@
 
 | Week | Solved | Notes | Avg Time |
 | ---- | ------ | ----- | -------- |
-| 1    | 1      | 1     | — |
+| 1    | 1      | 1     | 23m      |
 
 ## Review Queue
 
-| Problem | Rating | Next Review |
-| ------- | ------ | ----------- |
-| 1859A - United We Stand | 800 | 2026-07-25 |
+| Problem                 | Rating | Next Review |
+| ----------------------- | ------ | ----------- |
+| 1859A - United We Stand | 800    | 2026-07-25  |

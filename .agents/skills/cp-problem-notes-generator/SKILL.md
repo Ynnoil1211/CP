@@ -1,6 +1,6 @@
 ---
 name: cp-problem-notes-generator
-description: Generates structured, concise English study notes for competitive programming problems, organizing them by rating in a hierarchical folder structure with a master index. Use whenever the user provides a solved CP problem (title, rating, ID, C++ code, and problem statement).
+description: Generates structured, concise English study notes for competitive programming problems, organizing them by rating in a hierarchical folder structure with a master index. Each note includes the user's actual code and a personalized code review. Use whenever the user provides a solved or attempted CP problem (title, rating, ID, C++ code, and problem statement).
 ---
 
 # CP Problem Notes Generator Skill
@@ -23,16 +23,17 @@ When the user provides:
 This skill:
 
 1. ✅ Analyzes the solution against the problem
-2. ✅ Generates a standardized English study note
-3. ✅ Organizes it in `cp-notes/[RATING]/` folder
-4. ✅ Updates master index automatically
-5. ✅ Tracks solve metrics (time, confidence, struggles)
+2. ✅ Reviews the user's code with actionable feedback
+3. ✅ Generates a standardized English study note
+4. ✅ Organizes it in `cp-notes/[RATING]/` folder
+5. ✅ Updates master index automatically
+6. ✅ Tracks solve metrics (time, confidence, struggles)
 
 ## Generated Note Structure
 
 Every note follows this format:
 
-```markdown
+````markdown
 # [Problem ID] - [Title]
 
 **Rating:** [Rating]
@@ -87,10 +88,35 @@ Every note follows this format:
 
 [Remember this for next time]
 
+## Your Code
+
+```cpp
+[The user's actual submitted code — preserved verbatim]
+```
+````
+
+> _This is your original solution. Keep it here to track how your coding style evolves over time._
+
+## Code Review
+
+**If the user solved the problem:**
+
+- What's good about their approach
+- What could be improved (style, efficiency, edge case handling)
+- Alternative/better approaches worth learning
+- Specific refactoring suggestions with code snippets
+
+**If the user could not solve it:**
+
+- Where their attempted approach went wrong
+- Walkthrough of the correct solution
+- Key missing insight they should study
+
 ---
 
 **Generated:** [Date]
 **Next Review:** [Suggested date based on spaced repetition]
+
 ```
 
 ## Usage
@@ -100,9 +126,11 @@ Every note follows this format:
 When the user provides input like:
 
 ```
+
 Use the cp-problem-notes-generator skill.
 
 **Problem:**
+
 - Title: [Name]
 - Rating: [800/900/1000/etc]
 - ID: [1234A]
@@ -115,35 +143,40 @@ Use the cp-problem-notes-generator skill.
 [Full description]
 
 **Optional:**
+
 - Struggles: [What made it hard]
 - Insight: [Core idea]
 - Solve Time: [Minutes]
 - Confidence: [1-10]
+
 ```
 
 Follow these steps:
 
 1. **Analyze** the solution against the problem statement to identify the algorithm category and key insight.
-2. **Generate** a structured note using the template above.
-3. **Save** it to `cp-notes/[RATING]/[ID]_[Title_With_Underscores].md`.
-4. **Update** the master index at `cp-notes/index.md`.
+2. **Review** the user's code — give constructive feedback on style, efficiency, correctness.
+3. **Generate** a structured note using the template above, including the user's code and your review.
+4. **Save** it to `cp-notes/[RATING]/[ID]_[Title_With_Underscores].md`.
+5. **Update** the master index at `cp-notes/index.md`.
 
 ### Automatic Features
 
 **1. Folder Organization**
 
 ```
+
 cp-notes/
 ├── 800/
-│   ├── 1903A_United_We_Stand.md
-│   ├── 1901A_Max_Cost.md
-│   └── ...
+│ ├── 1903A_United_We_Stand.md
+│ ├── 1901A_Max_Cost.md
+│ └── ...
 ├── 900/
 ├── 1000/
 ├── 1100/
 ├── 1200/
 └── index.md
-```
+
+````
 
 **2. Master Index** (`cp-notes/index.md`)
 
@@ -176,7 +209,7 @@ Total: 47 problems across 5 ratings
 | Week | Solved | Notes | Avg Time |
 | ---- | ------ | ----- | -------- |
 | 1    | 5      | 5     | 38m      |
-```
+````
 
 **3. Smart Filename Convention**
 
