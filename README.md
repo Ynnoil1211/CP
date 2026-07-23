@@ -1,17 +1,17 @@
 # My CP Journey
 
-**Total:** 3 problems across 2 ratings
+**Total:** 4 problems across 3 ratings
 
 **Last Updated:** 2026-07-22
 
 ## Quick Stats
 
-| Metric          | Value     |
-| --------------- | --------- |
-| Problems solved | 3         |
-| Rating range    | 800 — 900 |
-| Avg solve time  | ~14m      |
-| Avg confidence  | 7.7/10    |
+| Metric          | Value      |
+| --------------- | ---------- |
+| Problems solved | 4          |
+| Rating range    | 800 — 1200 |
+| Avg solve time  | ~14m       |
+| Avg confidence  | 6.5/10     |
 
 ## By Rating
 
@@ -23,6 +23,10 @@
 ### 900 (1 problem)
 
 - [1855B - Longest Divisors Interval](./cp-notes/900/1855B_Longest_Divisors_Interval.md) — 9m · 10/10
+
+### 1200 (1 problem)
+
+- [1914D - Three Activities](./cp-notes/1200/1914D_Three_Activities.md) — — · 3/10
 
 ## By Algorithm
 
@@ -38,11 +42,15 @@
 
 - [1855B - Longest Divisors Interval](./cp-notes/900/1855B_Longest_Divisors_Interval.md)
 
+### Greedy / Brute Force (1 problem)
+
+- [1914D - Three Activities](./cp-notes/1200/1914D_Three_Activities.md)
+
 ## Progress
 
 | Week | Solved | Notes | Avg Time |
 | ---- | ------ | ----- | -------- |
-| 1    | 3      | 3     | 14m      |
+| 1    | 4      | 4     | 14m      |
 
 ## Review Queue
 
@@ -51,3 +59,4 @@
 | 1859A - United We Stand           | 800    | 8/10       | 2026-07-25  |
 | 1857A - Array Coloring            | 800    | 5/10       | 2026-07-25  |
 | 1855B - Longest Divisors Interval | 900    | 10/10      | 2026-07-25  |
+| 1914D - Three Activities          | 1200   | 3/10       | 2026-07-25  |
