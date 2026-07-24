@@ -13,7 +13,7 @@ Ultra-fast skill that extracts the **single most important insight** that makes 
 
 **Output:** One well-crafted sentence (max 2 lines).
 
-**New: Storage Engine** — After extracting, you can persist the insight as a lightweight card in your repo. The skill offers 4 storage options and creates the file automatically.
+**Auto-Storage:** Every insight is automatically saved as a card to `cp-insights/[RATING]/[ID]_[Title].md` with the key insight, a code spotlight showing where the insight manifests, and a worked example.
 
 ## What It Does
 
@@ -25,10 +25,18 @@ Input:
 Output:
 
 ```
-💡 Key Insight: [One sentence that reveals the core idea]
+💡 Key Insight for [Problem ID] - [Title]
+
+[One powerful sentence that captures the core idea]
+
+📁 Saved to cp-insights/[RATING]/[ID]_[Title].md
 ```
 
-**Then optionally:** persist the insight as a file in your repo (see [Storage Options](#storage-options)).
+The card file includes three sections:
+
+- **Key Insight** — the one-sentence core idea
+- **Code Spotlight** — 3-5 key lines from your solution that implement the insight
+- **Example** — a minimal worked example showing the insight in action
 
 ## When to Use
 
@@ -206,35 +214,34 @@ Extract insights for these problems:
 Format as list, one per line.
 ```
 
-### With Storage (New)
+### Default Behavior (Auto-Storage)
 
-After extracting, tell the agent where to save:
+Every insight is automatically saved to `cp-insights/[RATING]/[ID]_[Title].md`. No need to specify storage.
 
 ```
 Extract insight for 1853A (rating 800, Greedy/Math):
 
 Code: [...]
 Statement: [...]
-
-Store as Option B.
 ```
 
-Or shorthand:
+### Alternative Locations (on request)
+
+If you want a different destination, just say so:
 
 ```
-Insight for 1853A (800, Greedy/Math). Store in cp-insights/800/.
-
-Code: [...]
-Statement: [...]
+Extract insight for 1853A and save it alongside the full notes.
+# → saves to cp-notes/800/1853A_Desorting.md
 ```
 
-Or append to master:
+```
+Extract insight for 1853A and append to the master file.
+# → appends to cp-insights/README.md
+```
 
 ```
-Extract insight for 1853A and save to the master file (Option C).
-
-Code: [...]
-Statement: [...]
+Extract insight for 1853A, no file.
+# → output only
 ```
 
 ---
@@ -263,128 +270,129 @@ Response:
 1904E: [Insight 5]
 ```
 
-## Storage Options
+## Auto-Storage (Default: Option B)
 
-After extracting an insight, you can store it as a file. Choose one of four options. Each creates a lightweight **insight card** (not a full study note — that's the companion skill's job).
+Every insight you extract is **automatically saved** to `cp-insights/[RATING]/[ID]_[Title].md`. No prompts, no options — just extract and store.
 
-### Option A: Alongside Full Notes (if they exist) / New Lightweight Card
+### Card Format
 
-**Path:** `cp-notes/[RATING]/[ID]_[Title].md` (e.g. `cp-notes/800/1853A_Desorting.md`)
+````markdown
+# [ID] - [Title]
 
-**Behavior:**
+**Rating:** [Rating]
+**Algorithm:** [Category]
 
-- If a full note already exists → update its `## Key Insight` section with the new insight
-- If no note exists → create a lightweight insight card with minimal structure:
-  ```markdown
-  # [ID] - [Title]
+## Key Insight
 
-  **Rating:** [Rating]
-  **Algorithm:** [Category]
+💡 [One-sentence core idea]
 
-  ## Key Insight
+## Code Spotlight
 
-  💡 [The insight]
-  ```
+```cpp
+[3-5 key lines from your solution that directly implement the insight]
+```
+````
 
-**Best for:** You plan to eventually write a full note, or want insights and notes in one place.
+## Example
 
----
-
-### Option B: Dedicated Insights Directory
-
-**Path:** `cp-insights/[RATING]/[ID]_[Title].md` (e.g. `cp-insights/800/1853A_Desorting.md`)
-
-**Behavior:**
-
-- Creates a separate `cp-insights/` directory tree mirroring the rating folders
-- File format is the same lightweight card from Option A
-- Keeps insights completely separate from full study notes
-
-**Best for:** Clean separation of quick reference cards vs. deep study notes.
+Input: [simple example that illustrates the insight]
+Output: [expected result]
+Why: [brief explanation connecting example back to the insight]
 
 ---
 
-### Option C: Master Insight File (accumulated)
+**Generated:** [date]
 
-**Path:** `cp-insights/README.md`
+`````
 
-**Behavior:**
+### What Each Section Does
 
-- Creates/updates a single master file that accumulates **all** insights grouped by rating
-- Appends the new insight under the correct rating section
-- Maintains a running total at the top
-- File format:
-  ```markdown
-  # 🧠 CP Insights Master
+| Section | Purpose |
+|---------|---------|
+| **Key Insight** | The "aha moment" — what makes the problem solvable |
+| **Code Spotlight** | The specific lines where the insight becomes code. Usually 3-5 lines showing the core logic, stripped of I/O boilerplate. |
+| **Example** | A minimal input/output with a "Why" line connecting it back to the insight. Makes the abstraction concrete. |
 
-  **Total:** [N] insights across [M] ratings
-  **Last Updated:** [date]
+### Example Card (1853A - Desorting)
 
-  ---
+````markdown
+# 1853A - Desorting
 
-  ## 800 (12 insights)
+**Rating:** 800
+**Algorithm:** Greedy / Math
 
-  - **1853A - Desorting** — 💡 Minimal adjacent gap; each operation widens gap by 2 → (min_gap/2)+1.
-  - **1859A - United We Stand** — 💡 Split by max value → eliminates divisibility.
-    ...
+## Key Insight
 
-  ## 900 (5 insights)
+💡 Find the minimum adjacent difference; each operation widens one specific
+gap by 2, so breaking sortedness needs (min_gap/2)+1 operations, or 0 if
+already unsorted.
 
-  ...
-  ```
+## Code Spotlight
 
-**Best for:** A single searchable cheat sheet you open before contests.
+```cpp
+int mn = INT_MAX;
+for (int i = 1; i < n; i++) {
+    mn = min(mn, a[i] - a[i-1]);
+}
+cout << (mn < 0 ? 0 : mn / 2 + 1) << "\n";
+```
+
+## Example
+
+Input: `[1, 3, 3, 5]` → gaps: `[2, 0, 2]`, min gap = 0
+Output: `1`
+Why: The zero gap means adjacent equal elements; one operation flips
+the prefix/suffix and creates `[2, 3, 2, 4]` which is not sorted.
 
 ---
 
-### Option D: Don't Store (current behavior)
-
-Just print the insight to chat. No file created.
-
-**Best for:** Quick checks, weekly reviews where you only want to read, not persist.
+**Generated:** 2026-07-23
+````
 
 ---
 
-### Storage Decision Flow
+### Alternative Locations (on request)
 
-When you ask to extract + store an insight, the agent will:
+The default is `cp-insights/[RATING]/[ID]_[Title].md`. If you want a different destination, say so in your request:
 
-1. Extract the insight
-2. Display it as usual
-3. Ask **"Where should I save this?"** with the 4 options above
-4. You pick one (or say "don't store") and the agent creates the file
-5. For Options A-C, it also updates any index files (README.md or `cp-insights/README.md`)
+| You say                       | Saves to                                                                    |
+| ----------------------------- | --------------------------------------------------------------------------- |
+| _(nothing — default)_         | `cp-insights/[RATING]/[ID]_[Title].md`                                      |
+| `"alongside full notes"`      | `cp-notes/[RATING]/[ID]_[Title].md` (updates existing note or creates card) |
+| `"append to master"`          | `cp-insights/README.md` (accumulates all insights in one file)              |
+| `"no file"` or `"don't save"` | Output only                                                                 |
 
-> **Quick shorthand:** You can specify the option upfront, e.g.
-> `"Extract insight for 1853A and store it as Option C"`
+---
 
 ### Review & Reference
 
-Once stored, use these patterns for review:
+Once stored, use these patterns to browse your collection:
 
-| Goal                     | What to say                                         |
-| ------------------------ | --------------------------------------------------- |
-| Read all stored insights | `"Show me all insights from cp-insights/README.md"` |
-| Review 800-rated cards   | `"List cp-insights/800/"`                           |
-| Find by algorithm        | `"Search all insight cards for 'Greedy'"`           |
-| Open a card              | `"Show me 1853A_Desorting.md from cp-insights/800"` |
-| Before a contest         | `"Give me 10 random insights from the master file"` |
+| Goal                 | What to say                                       |
+| -------------------- | ------------------------------------------------- |
+| Browse a rating      | `"List cp-insights/800/"`                         |
+| Open a specific card | `"Show me 1853A_Desorting.md"`                    |
+| Read all cards       | `"Show me all files in cp-insights/ recursively"` |
+| Search by algorithm  | `"Search all insight cards for 'Greedy'"`         |
+| Contest prep         | `"Give me 5 random insights from cp-insights/"`   |
 
 ## Algorithm Categories
 
 When extracting insights, categorize by:
 
 ```
-Greedy:       Optimal choice at each step
-DP:           Optimal substructure + memoization
-Graph:        Path/connectivity problems
-Math:         Number properties, formulas
-Brute Force:  Exhaustive search (small constraints)
+
+Greedy: Optimal choice at each step
+DP: Optimal substructure + memoization
+Graph: Path/connectivity problems
+Math: Number properties, formulas
+Brute Force: Exhaustive search (small constraints)
 Binary Search: Monotonic property
-Sorting:      Order matters
-String:       Sequence manipulation
-Simulation:   Follow the rules
-Game Theory:  Win/lose states
+Sorting: Order matters
+String: Sequence manipulation
+Simulation: Follow the rules
+Game Theory: Win/lose states
+
 ```
 
 ## Tips
@@ -406,15 +414,15 @@ Game Theory:  Win/lose states
 
 ## Integration with Full Skill
 
-| Skill                          | When to Use                                            | Output                             | Persists?                                      |
-| ------------------------------ | ------------------------------------------------------ | ---------------------------------- | ---------------------------------------------- |
-| **cp-quick-insight**           | Fast review, weekly reports, pattern hunting           | 1 sentence insight                 | ✅ Optionally to `cp-notes/` or `cp-insights/` |
-| **cp-problem-notes-generator** | Deep study, building knowledge base, spaced repetition | Full structured note + code review | ✅ Always to `cp-notes/[RATING]/`              |
+| Skill                          | When to Use                                            | Output                                  | Persists                               |
+| ------------------------------ | ------------------------------------------------------ | --------------------------------------- | -------------------------------------- |
+| **cp-quick-insight**           | Fast review, weekly reports, pattern hunting           | Insight card (insight + code + example) | ✅ **Auto** to `cp-insights/[RATING]/` |
+| **cp-problem-notes-generator** | Deep study, building knowledge base, spaced repetition | Full structured note + code review      | ✅ Auto to `cp-notes/[RATING]/`        |
 
 **Workflow:**
 
-1. **During contest/practice:** Use `cp-quick-insight` (grab the insight) → store as Option B or C for quick reference
-2. **After solving:** Use `cp-problem-notes-generator` (build the full note) → stored in `cp-notes/[RATING]/`
+1. **During contest/practice:** Use `cp-quick-insight` (grab the insight) → auto-saved to `cp-insights/[RATING]/`
+2. **After solving:** Use `cp-problem-notes-generator` (build the full note) → auto-saved to `cp-notes/[RATING]/`
 3. **Weekly review:** Use `cp-quick-insight` (rapid pattern recognition from stored cards)
 
 ## Example Scenarios
@@ -422,6 +430,7 @@ Game Theory:  Win/lose states
 ### Scenario 1: Just Solved, Need Quick Win
 
 ```
+
 You: I just solved 1903A! What's the insight?
 
 Code: [...]
@@ -429,11 +438,13 @@ Statement: [...]
 
 Me: 💡 Key Insight: Large numbers can't divide small numbers →
 split array by max value.
+
 ```
 
 ### Scenario 2: Weekly Review
 
 ```
+
 You: Extract insights for 5 problems I solved this week.
 
 [5 code + statement pairs]
@@ -444,23 +455,28 @@ Me: 📋 Weekly Insights
 1902C: [insight]
 1903D: [insight]
 1904E: [insight]
+
 ```
 
 ### Scenario 3: Studying Before Contest
 
 ```
+
 You: I want to review my insights for 800-rated problems.
 Give me the list.
 
 Me: 📋 800-rated Insights (15 problems)
+
 1. [insight]
 2. [insight]
-...
+   ...
+
 ```
 
 ### Scenario 4: Pattern Hunting
 
 ```
+
 You: Which 800-rated problems use Greedy?
 Show their insights.
 
@@ -468,6 +484,7 @@ Me: 🎯 Greedy Problems (800-rated)
 1903A: [insight]
 1901A: [insight]
 1890A: [insight]
+
 ```
 
 ## Customization
@@ -477,20 +494,26 @@ Me: 🎯 Greedy Problems (800-rated)
 **Ultra-short** (default):
 
 ```
+
 💡 Max value separation.
+
 ```
 
 **Short:**
 
 ```
+
 💡 Split by max → eliminates divisibility.
+
 ```
 
 **Normal:**
 
 ```
+
 💡 Large numbers can't divide small numbers →
 split array into max values (c) and non-max values (b).
+
 ```
 
 ### Format
@@ -498,49 +521,65 @@ split array into max values (c) and non-max values (b).
 **Emoji style** (default):
 
 ```
+
 💡 Key Insight: ...
+
 ```
 
 **Minimal:**
 
 ```
+
 Insight: ...
+
 ```
 
 **With category:**
 
 ```
+
 💡 [Category] - ...
+
 ```
 
 ## File Organization
 
-The skill lives alongside its companion in the repo. Depending on your storage choice, the structure can grow:
+The skill auto-creates and maintains the `cp-insights/` directory. You'll never have to create it manually.
 
 ```
+
 my-cp-learning/
-├── README.md                             # Master index (full notes)
-├── cp-notes/                             # Full study notes (by rating)
-│   ├── 800/
-│   ├── 900/
-│   └── ...
-├── cp-insights/                          # [Option B/C] Lightweight insight cards
-│   ├── README.md                         # [Option C] Master insight file
-│   ├── 800/                              # [Option B] Cards by rating
-│   ├── 900/
-│   └── ...
+├── README.md # Master index (full notes by cp-problem-notes-generator)
+├── cp-notes/ # Full study notes (by rating)
+│ ├── 800/
+│ ├── 900/
+│ └── ...
+├── cp-insights/ # Auto-created insight cards (by rating)
+│ ├── 800/
+│ │ ├── 1853A_Desorting.md # [ID]_[Title].md
+│ │ ├── 1859A_United_We_Stand.md
+│ │ └── ...
+│ ├── 900/
+│ └── ...
 └── .agents/
-    └── skills/
-        ├── cp-problem-notes-generator/
-        │   └── SKILL.md
-        └── cp-quick-insight/
-            └── SKILL.md
+└── skills/
+├── cp-problem-notes-generator/
+│ └── SKILL.md
+└── cp-quick-insight/
+└── SKILL.md
+
 ```
 
-> `cp-insights/` is created automatically on first Option B/C save.
+> `cp-insights/` and rating subdirectories are created automatically on first save.
+> The master file `cp-insights/README.md` is only created if you request `"append to master"`.
 
 ---
 
 **Designed for:** Fast insight extraction and pattern recognition
 **Best for:** Quick reviews, weekly summaries, contest prep
 **Pairs with:** cp-problem-notes-generator skill for comprehensive learning
+
+```
+
+```
+`````
