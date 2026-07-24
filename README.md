@@ -1,6 +1,6 @@
 # My CP Journey
 
-**Total:** 5 problems across 3 ratings
+**Total:** 6 problems across 3 ratings
 
 **Last Updated:** 2026-07-24
 
@@ -8,7 +8,7 @@
 
 | Metric          | Value      |
 | --------------- | ---------- |
-| Problems solved | 5          |
+| Problems solved | 6          |
 | Rating range    | 800 — 1200 |
 | Avg solve time  | ~14m       |
 | Avg confidence  | 5.2/10     |
@@ -25,9 +25,10 @@
 
 - [1855B - Longest Divisors Interval](./cp-notes/900/1855B_Longest_Divisors_Interval.md) — 9m · 10/10
 
-### 1200 (1 problem)
+### 1200 (2 problems)
 
 - [1914D - Three Activities](./cp-notes/1200/1914D_Three_Activities.md) — — · 3/10
+- [1742E - Scuza](./cp-notes/1200/1742E_Scuza.md) — — · 5/10
 
 ## By Algorithm
 
@@ -51,12 +52,16 @@
 
 - [1845A - Forbidden Integer](./cp-notes/800/1845A_Forbidden_Integer.md)
 
+### Binary Search / Prefix Sum (1 problem)
+
+- [1742E - Scuza](./cp-notes/1200/1742E_Scuza.md)
+
 ## Progress
 
 | Week | Solved | Notes | Avg Time |
 | ---- | ------ | ----- | -------- |
 | 1    | 4      | 4     | 14m      |
-| 2    | +1     | +1    | —        |
+| 2    | +2     | +2    | —        |
 
 ## Review Queue
 
@@ -67,3 +72,4 @@
 | 1855B - Longest Divisors Interval | 900    | 10/10      | 2026-07-27  |
 | 1845A - Forbidden Integer         | 800    | 0/10       | 2026-07-27  |
 | 1914D - Three Activities          | 1200   | 3/10       | 2026-07-27  |
+| 1742E - Scuza                     | 1200   | 5/10       | 2026-07-28  |
