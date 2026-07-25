@@ -1,17 +1,17 @@
 # My CP Journey
 
-**Total:** 6 problems across 3 ratings
+**Total:** 7 problems across 3 ratings
 
-**Last Updated:** 2026-07-24
+**Last Updated:** 2026-07-25
 
 ## Quick Stats
 
 | Metric          | Value      |
 | --------------- | ---------- |
-| Problems solved | 6          |
+| Problems solved | 7          |
 | Rating range    | 800 — 1200 |
 | Avg solve time  | ~14m       |
-| Avg confidence  | 5.2/10     |
+| Avg confidence  | 5.3/10     |
 
 ## By Rating
 
@@ -25,10 +25,11 @@
 
 - [1855B - Longest Divisors Interval](./cp-notes/900/1855B_Longest_Divisors_Interval.md) — 9m · 10/10
 
-### 1200 (2 problems)
+### 1200 (3 problems)
 
 - [1914D - Three Activities](./cp-notes/1200/1914D_Three_Activities.md) — — · 3/10
 - [1742E - Scuza](./cp-notes/1200/1742E_Scuza.md) — — · 5/10
+- [1527B1 - Palindrome Game (easy version)](./cp-notes/1200/1527B1_Palindrome_Game_easy_version.md) — — · 7/10
 
 ## By Algorithm
 
@@ -56,12 +57,16 @@
 
 - [1742E - Scuza](./cp-notes/1200/1742E_Scuza.md)
 
+### Game Theory / Parity (1 problem)
+
+- [1527B1 - Palindrome Game (easy version)](./cp-notes/1200/1527B1_Palindrome_Game_easy_version.md)
+
 ## Progress
 
 | Week | Solved | Notes | Avg Time |
 | ---- | ------ | ----- | -------- |
 | 1    | 4      | 4     | 14m      |
-| 2    | +2     | +2    | —        |
+| 2    | +3     | +3    | —        |
 
 ## Review Queue
 
@@ -73,3 +78,4 @@
 | 1845A - Forbidden Integer         | 800    | 0/10       | 2026-07-27  |
 | 1914D - Three Activities          | 1200   | 3/10       | 2026-07-27  |
 | 1742E - Scuza                     | 1200   | 5/10       | 2026-07-28  |
+| 1527B1 - Palindrome Game (easy)   | 1200   | 7/10       | 2026-07-29  |

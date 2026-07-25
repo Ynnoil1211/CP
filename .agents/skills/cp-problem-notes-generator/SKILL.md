@@ -11,6 +11,8 @@ Automatically generates structured, concise English study notes for competitive 
 
 **Core Purpose:** Turn solved problems into reusable learning documents with consistent structure, enabling efficient review and pattern recognition across problem types.
 
+**Insight Card Integration:** Every note automatically generates a companion **insight card** (via the `cp-quick-insight` format) — a compact reference saved to `cp-insights/[TYPE]/[ID]_[Title].md`. The two files complement each other: the full note for deep study, the insight card for fast review.
+
 ## What It Does
 
 When the user provides:
@@ -26,8 +28,9 @@ This skill:
 2. ✅ Reviews the user's code with actionable feedback
 3. ✅ Generates a standardized English study note
 4. ✅ Organizes it in `cp-notes/[RATING]/` folder
-5. ✅ Updates master index automatically
-6. ✅ Tracks solve metrics (time, confidence, struggles)
+5. ✅ **Creates a companion insight card** in `cp-insights/[TYPE]/` (compact, for fast review)
+6. ✅ Updates master index (`README.md`) automatically
+7. ✅ Tracks solve metrics (time, confidence, struggles)
 
 ## Generated Note Structure
 
@@ -117,7 +120,134 @@ Every note follows this format:
 **Generated:** [Date]
 **Next Review:** [Suggested date based on spaced repetition]
 
+## Companion Insight Card
+
+Every full note automatically produces a **companion insight card** in `cp-insights/[TYPE]/`. This card is the fast-review counterpart to the full study note, following the `cp-quick-insight` skill conventions.
+
+### Insight Card Format
+
+````markdown
+# [ID] - [Title]
+
+**Type:** [Algorithm] / [Sub-type]
+**Rating:** [800-2000]
+**Tag:** [short-hyphenated-tag]
+
+## Key Insight
+
+💡 [One-sentence core idea]
+
+## Code Spotlight
+
+```cpp
+[3-5 key lines from the solution that directly implement the insight]
 ```
+
+## Example
+
+Input: [simple example]
+Output: [expected result]
+Why: [brief explanation connecting example back to the insight]
+
+---
+
+**Generated:** [date]
+````
+
+### How to Derive Type & Tag
+
+Use the **Type Classification System** below to classify every problem:
+
+1. Identify the **algorithm family** (Math, Greedy, Brute Force, etc.)
+2. Pinpoint the **specific technique** that makes it solvable (Parity Check, Value Splitting, etc.)
+3. Combine them: `"Math / Gap Analysis"`, `"Greedy / Value Splitting"`, `"Brute Force / Exhaustive Search"`
+4. Derive the folder key: `math-gap-analysis`, `greedy-value-splitting`, `brute-force-exhaustive-search`
+5. Assign a short `Tag:` (e.g., `min-adjacent-difference`, `top-k-candidate-reduction`)
+
+The folder key follows the pattern: `[algorithm]-[sub-type-in-kebab-case]`
+
+### Type Classification System
+
+```
+Math
+├── Parity Check          — odd/even properties determine outcome
+├── Gap Analysis          — min/max adjacent differences
+├── Formula Development   — derive closed-form expression
+├── Modular Arithmetic    — mod cycles, periodicity
+├── Number Theory         — GCD, LCM, primes, factoring
+├── Combinatorics         — counting arrangements, combinations
+├── Prefix / Suffix       — cumulative sums, products, min/max
+├── Arithmetic Progression — AP/GP patterns, averages
+├── Constraint Bounds     — leverage small n, small value ranges
+├── Contribution Sum      — count how many times each element contributes
+├── Pigeonhole Principle  — pigeonhole forces a property
+├── Invariant             — quantity that never changes
+
+Greedy
+├── Value Splitting       — separate by value threshold (e.g., max)
+├── Boundary Testing      — only edge points matter (0, first, last)
+├── Sorting-Based         — sort then decide in one pass
+├── Interval Selection    — pick optimal non-overlapping intervals
+├── Priority-Based        — use heap / multiset for best candidate
+├── Frequency Exploit     — use counts to guide decisions
+
+Brute Force
+├── Exhaustive Search     — try all possibilities (small n)
+├── Constraint Exploit    — small bounds make brute force viable
+├── Generate & Check      — generate candidates, verify each
+├── Bitmask Enumeration   — enumerate subsets via bitmasks
+├── Permutation Try       — try all orderings
+
+Binary Search
+├── Answer on Range       — binary search the answer, check feasibility
+├── Monotonic Check       — predicate is monotonic (TTTFFF)
+├── Lower / Upper Bound   — find first/last position satisfying condition
+
+DP
+├── Linear Progression    — 1D DP, one state dimension
+├── State Exploration     — 2D+ DP, multiple dimensions
+├── KnapSack Style        — take / skip decisions
+├── Interval DP           — range-based (dp[l][r])
+├── Bitmask DP            — DP over subsets
+├── Digit DP              — digit-by-digit construction
+
+Graph
+├── Connectivity Check    — BFS/DFS reachability
+├── Component Analysis    — connected components count
+├── Cycle Detection       — detect cycles in directed/undirected
+├── Shortest Path         — BFS, Dijkstra, Floyd-Warshall
+├── Union Find            — DSU for connectivity queries
+├── Topological Order     — DAG ordering
+
+String
+├── Frequency Check       — char counts, can/can't arrange
+├── Palindrome Check      — symmetry properties
+├── Pattern Build         — construct string from pieces
+├── Two Pointers          — sliding window, compare
+├── Z / Prefix Function   — string matching
+
+Game Theory
+├── State Analysis        — determine win/lose per position
+├── Nim-Style             — XOR-based (grundy numbers)
+├── Symmetry Strategy     — mirror opponent's move
+├── Parity Turn           — turn-based parity determines winner
+
+Simulation
+├── Direct Simulation     — follow rules exactly as written
+├── Optimized Simulation  — skip redundant steps, jump ahead
+├── Event Processing      — process events in order
+
+Implementation
+├── Case Analysis         — handle all scenarios (if-else tree)
+├── Boundary Testing      — edge cases (empty, single, max)
+├── Two Pointers          — efficient linear scanning
+├── Coordinate Compression — map large values to small indices
+```
+
+> **Rating is always included _inside_ the card** — it's metadata, not the folder key.
+> The type tag (e.g., `math-gap-analysis`) becomes the directory name.
+
+\
 
 ## Usage
 
@@ -153,11 +283,12 @@ Use the cp-problem-notes-generator skill.
 
 Follow these steps:
 
-1. **Analyze** the solution against the problem statement to identify the algorithm category and key insight.
+1. **Analyze** the solution against the problem statement to identify the algorithm category, key insight, and **type** (see Type Classification System below).
 2. **Review** the user's code — give constructive feedback on style, efficiency, correctness.
 3. **Generate** a structured note using the template above, including the user's code and your review.
-4. **Save** it to `cp-notes/[RATING]/[ID]_[Title_With_Underscores].md`.
-5. **Update** the repo's root `README.md` (NOT `cp-notes/README.md` or `cp-notes/index.md`) — add the new problem entry under the correct rating and algorithm sections, update total counts and stats.
+4. **Save** the full note to `cp-notes/[RATING]/[ID]_[Title_With_Underscores].md`.
+5. **Create the insight card** — generate a compact card at `cp-insights/[TYPE_KEY]/[ID]_[Title_With_Underscores].md` using the Insight Card Format below. Include a 3-5 line Code Spotlight from the solution and a minimal worked Example.
+6. **Update** the repo's root `README.md` (NOT `cp-notes/README.md` or `cp-notes/index.md`) — add the new problem entry under the correct rating and algorithm sections, update total counts and stats.
 
 ### Automatic Features
 
@@ -176,7 +307,7 @@ cp-notes/
 ├── 1100/
 └── 1200/
 
-````
+```
 
 **2. Master Index** (`README.md`) — the repo's landing page
 
@@ -209,7 +340,7 @@ cp-notes/
 | Week | Solved | Notes | Avg Time |
 | ---- | ------ | ----- | -------- |
 | 1    | 5      | 5     | 38m      |
-````
+```
 
 **3. Smart Filename Convention**
 
@@ -240,9 +371,10 @@ Create study notes for all and organize by rating.
 
 Automatically:
 
-- Generate 5 notes
-- Organize into appropriate rating folders
-- Update index
+- Generate 5 full notes → `cp-notes/[RATING]/`
+- Generate 5 insight cards → `cp-insights/[TYPE]/`
+- Organize into appropriate rating & type folders
+- Update README index
 - Calculate weekly stats
 
 ### Prompt Pattern
@@ -288,7 +420,7 @@ README.md                                    # Master index (repo root)
                                              #   - By difficulty (with links)
                                              #   - By algorithm (with links)
                                              #   - Progress tracker table
-cp-notes/
+cp-notes/                                    # Full study notes (by rating)
 ├── 800/                                     # Difficulty tier
 │   ├── 1903A_United_We_Stand.md            # [ID]_[Title].md
 │   ├── 1901A_Max_Cost.md
@@ -297,7 +429,21 @@ cp-notes/
 ├── 1000/
 ├── 1100/
 └── 1200/
+cp-insights/                                 # Insight cards (by type, auto-created)
+├── math-gap-analysis/
+│   └── 1853A_Desorting.md
+├── brute-force-exhaustive-search/
+│   └── 1914D_Three_Activities.md
+├── implementation-case-analysis/
+│   └── 1845A_Forbidden_Integer.md
+├── math-modular-arithmetic/
+│   └── 1837A_Grasshopper_on_a_Line.md
+├── binary-search-answer-on-range/
+│   └── 1742E_Scuza.md
+└── ...
 ```
+
+> `cp-insights/` and type subdirectories are created automatically on first insight card save.
 
 ### README Index Schema
 
@@ -390,16 +536,25 @@ The final repo looks like this:
 ```
 my-cp-learning/
 ├── README.md                    # Master index — auto-updated
-├── cp-notes/
+├── cp-notes/                    # Full study notes (by rating)
 │   ├── 800/
 │   │   ├── 1903A_United_We_Stand.md
 │   │   └── ...
 │   ├── 900/
 │   ├── 1000/
 │   └── ...
+├── cp-insights/                 # Insight cards (by type, auto-created)
+│   ├── math-gap-analysis/
+│   ├── brute-force-exhaustive-search/
+│   ├── implementation-case-analysis/
+│   ├── math-modular-arithmetic/
+│   ├── binary-search-answer-on-range/
+│   └── ...
 └── .agents/
     └── skills/
-        └── cp-problem-notes-generator/
+        ├── cp-problem-notes-generator/
+        │   └── SKILL.md
+        └── cp-quick-insight/
             └── SKILL.md
 ```
 
@@ -408,9 +563,9 @@ my-cp-learning/
 ### Weekly Routine
 
 **Monday:** User sets a weekly target — generate notes as they solve problems.
-**During Week:** User solves a problem and asks for a note — generate immediately.
-**Friday:** User sends a batch report — generate all notes and update index with weekly stats.
-**Sunday:** User reviews the index — help identify patterns and weak areas.
+**During Week:** User solves a problem and asks for a note — generate both the full note and the insight card immediately.
+**Friday:** User sends a batch report — generate all notes and cards, update indexes, calculate weekly stats.
+**Sunday:** User reviews the index and insight cards — help identify patterns and weak areas by type.
 
 ### Review Schedule
 
