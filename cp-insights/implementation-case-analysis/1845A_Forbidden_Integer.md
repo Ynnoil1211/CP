@@ -1,7 +1,8 @@
 # 1845A - Forbidden Integer
 
+**Type:** Implementation / Case Analysis
 **Rating:** 800
-**Algorithm:** Constructive / Greedy / Math
+**Tag:** available-numbers-construction
 
 ## Key Insight
 

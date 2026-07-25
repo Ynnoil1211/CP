@@ -1,7 +1,8 @@
 # 1742E - Scuza
 
+**Type:** Binary Search / Answer on Range
 **Rating:** 1200
-**Algorithm:** Binary Search / Prefix Sum
+**Tag:** prefix-max-binary-search
 
 ## Key Insight
 

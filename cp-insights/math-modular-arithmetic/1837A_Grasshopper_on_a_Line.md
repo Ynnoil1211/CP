@@ -1,7 +1,8 @@
 # 1837A - Grasshopper on a Line
 
+**Type:** Math / Modular Arithmetic
 **Rating:** 800
-**Algorithm:** Constructive / Math
+**Tag:** divisibility-splitting
 
 ## Key Insight
 

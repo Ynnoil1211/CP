@@ -1,7 +1,8 @@
 # 1853A - Desorting
 
+**Type:** Math / Gap Analysis
 **Rating:** 800
-**Algorithm:** Greedy / Math
+**Tag:** min-adjacent-difference
 
 ## Key Insight
 
