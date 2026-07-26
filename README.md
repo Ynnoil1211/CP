@@ -1,17 +1,17 @@
 # My CP Journey
 
-**Total:** 7 problems across 3 ratings
+**Total:** 8 problems · 3 CF ratings + 1 RPC contest
 
 **Last Updated:** 2026-07-25
 
 ## Quick Stats
 
-| Metric          | Value      |
-| --------------- | ---------- |
-| Problems solved | 7          |
-| Rating range    | 800 — 1200 |
-| Avg solve time  | ~14m       |
-| Avg confidence  | 5.3/10     |
+| Metric          | Value            |
+| --------------- | ---------------- |
+| Problems solved | 8                |
+| Rating range    | 800 — 1200 + RPC |
+| Avg solve time  | ~14m             |
+| Avg confidence  | 5.3/10           |
 
 ## By Rating
 
@@ -61,12 +61,18 @@
 
 - [1527B1 - Palindrome Game (easy version)](./cp-notes/1200/1527B1_Palindrome_Game_easy_version.md)
 
+## RPC Contests
+
+### 2026-07 (1 problem)
+
+- [H - You You See What?](./cp-notes/RPC/2026-07/H_You_You_See_What.md) — — · 5/10
+
 ## Progress
 
 | Week | Solved | Notes | Avg Time |
 | ---- | ------ | ----- | -------- |
 | 1    | 4      | 4     | 14m      |
-| 2    | +3     | +3    | —        |
+| 2    | +4     | +4    | —        |
 
 ## Review Queue
 
@@ -79,3 +85,4 @@
 | 1914D - Three Activities          | 1200   | 3/10       | 2026-07-27  |
 | 1742E - Scuza                     | 1200   | 5/10       | 2026-07-28  |
 | 1527B1 - Palindrome Game (easy)   | 1200   | 7/10       | 2026-07-29  |
+| RPC 2026-07 H - You You See What? | —      | 5/10       | 2026-07-29  |
