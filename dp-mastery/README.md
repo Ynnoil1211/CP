@@ -1,15 +1,15 @@
 # 100 DP Medium Problems Challenge
 
-**Progress:** 1/100 problems solved
+**Progress:** 2/100 problems solved
 **Current Week:** Week 3 (Linear DP)
 **Target Completion:** TBD
-**Overall Confidence:** 6/10 — building momentum
+**Overall Confidence:** 6.2/10 — building momentum
 
 ## Progress by Pattern Type
 
 | Pattern     | Solved | Target | % Complete | Avg Time | Mastery        |
 | ----------- | ------ | ------ | ---------- | -------- | -------------- |
-| Linear DP   | 1/12   | 12     | 8%         | 8m       | 🟡 In Progress |
+| Linear DP   | 2/12   | 12     | 17%        | 24m      | 🟡 In Progress |
 | 2D Grid DP  | 0/12   | 12     | 0%         | —        | ⏳ Upcoming    |
 | Knapsack    | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
 | Interval DP | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
@@ -28,14 +28,14 @@ Pre-medium warmup: Climbing Stairs, House Robber basics
 - ✅ [746 - Min Cost Climbing Stairs](linear-dp/746_Min_Cost_Climbing_Stairs.md) _(Easy, warm-up)_
 - ✅ [198 - House Robber](linear-dp/198_House_Robber.md) _(Medium, done)_
 
-### Week 3: Linear DP (1/12 problems)
+### Week 3: Linear DP (2/12 problems)
 
 - ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md) _(Medium, done)_
+- ✅ [740 - Delete and Earn](linear-dp/740_Delete_and_Earn.md) _(Medium, done)_
 - [ ] 139 - Word Break
 - [ ] 91 - Decode Ways
 - [ ] 300 - Longest Increasing Subsequence
 - [ ] 322 - Coin Change
-- [ ] 740 - Delete and Earn
 - [ ] 368 - Largest Divisible Subset
 - [ ] 1143 - Longest Common Subsequence
 - [ ] 647 - Palindromic Substrings
@@ -87,7 +87,7 @@ _None! Linear DP now above 5/10 after 4 problems._
 
 | Week | Problems   | Avg Time | Avg Confidence | Top Topic |
 | ---- | ---------- | -------- | -------------- | --------- |
-| 1    | 4 problems | ~12m avg | 6/10           | Linear DP |
+| 1-3  | 5 problems | ~16m avg | 6.2/10         | Linear DP |
 
 ---
 
@@ -119,11 +119,19 @@ Same skeleton — three different operations. You've seen the whole family.
 | 746 - Min Cost        | —    | 5/10       | 👍 Got it    |
 | 198 - House Robber    | 30m  | 7/10       | 🟢 Good      |
 | 213 - House Robber II | 8m   | 8/10       | 🚀 On fire   |
+| 740 - Delete and Earn | 40m  | 6/10       | 🟡 Guided    |
 
 **What's next:**
 
-1. **740 - Delete and Earn** — transforms into House Robber I after a frequency pass (this one will feel like cheating)
-2. **139 - Word Break** — a different Linear DP pattern (segmentation)
+You said you want to do the next one with no hints. That's exactly the right mentality. **139 - Word Break** is a good pick — it's a different Linear DP pattern (segmentation with a set) that will stretch your state-definition skills in a new direction.
+
+**A goal for next time:** Before you write any code, write down on paper:
+
+1. What is `dp[i]`? (one clear sentence)
+2. What are the options at step `i`?
+3. What does the recurrence look like?
+
+If you can answer those three before coding, you'll know you've got it.
 
 You've got this. One step at a time.
 
