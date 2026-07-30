@@ -39,16 +39,16 @@ This skill:
 
 The skill classifies every problem into one of these 8 patterns:
 
-| Pattern            | Characteristics                                                    | Example Problems                                         | Folder            |
-| ------------------ | ------------------------------------------------------------------ | -------------------------------------------------------- | ----------------- |
-| **Linear DP**      | 1D state, sequential decisions on array/string                     | House Robber, Climbing Stairs, Decode Ways               | `linear-dp/`      |
-| **2D Grid DP**     | 2D state for grid paths, matrix traversal                          | Unique Paths, Minimum Path Sum, Dungeon Game             | `2d-grid-dp/`     |
-| **Knapsack**       | Selection problems with capacity constraints                       | Target Sum, Partition Equal Subset Sum, Coin Change      | `knapsack-dp/`    |
-| **Interval DP**    | Range/subarray optimization, work from smaller intervals to larger | Burst Balloons, Palindrome Partitioning II, Remove Boxes | `interval-dp/`    |
-| **Tree DP**        | Decisions on tree structure, node choice, parent-child relations   | House Robber III, Maximum Product of Splitted Tree       | `tree-dp/`        |
-| **Game Theory DP** | Optimal play against opponent, win/lose states                     | Predict the Winner, Can I Win, Stone Game                | `game-theory-dp/` |
-| **Digit DP**       | Digit-by-digit constraint satisfaction, number properties          | Count Numbers with Unique Digits (harder, advanced)      | `digit-dp/`       |
-| **Bitmask DP**     | DP over subset states via bitmask, assignment problems             | Travelling Salesman Variant, Steiner Tree (harder)       | `bitmask-dp/`     |
+| Pattern            | Characteristics                                                                                                                                                                                                                                   | Example Problems                                            | Folder            |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ----------------- |
+| **Linear DP**      | 1D state, sequential decisions on array/string — two sub-patterns: **(a) fixed-offset** (dp[i] depends on last k states like dp[i-1], dp[i-2]) and **(b) scan-all-previous** (dp[i] depends on ALL earlier states j < i, requiring a nested loop) | House Robber, Climbing Stairs, Decode Ways, Word Break, LIS | `linear-dp/`      |
+| **2D Grid DP**     | 2D state for grid paths, matrix traversal                                                                                                                                                                                                         | Unique Paths, Minimum Path Sum, Dungeon Game                | `2d-grid-dp/`     |
+| **Knapsack**       | Selection problems with capacity constraints                                                                                                                                                                                                      | Target Sum, Partition Equal Subset Sum, Coin Change         | `knapsack-dp/`    |
+| **Interval DP**    | Range/subarray optimization, work from smaller intervals to larger                                                                                                                                                                                | Burst Balloons, Palindrome Partitioning II, Remove Boxes    | `interval-dp/`    |
+| **Tree DP**        | Decisions on tree structure, node choice, parent-child relations                                                                                                                                                                                  | House Robber III, Maximum Product of Splitted Tree          | `tree-dp/`        |
+| **Game Theory DP** | Optimal play against opponent, win/lose states                                                                                                                                                                                                    | Predict the Winner, Can I Win, Stone Game                   | `game-theory-dp/` |
+| **Digit DP**       | Digit-by-digit constraint satisfaction, number properties                                                                                                                                                                                         | Count Numbers with Unique Digits (harder, advanced)         | `digit-dp/`       |
+| **Bitmask DP**     | DP over subset states via bitmask, assignment problems                                                                                                                                                                                            | Travelling Salesman Variant, Steiner Tree (harder)          | `bitmask-dp/`     |
 
 ## Generated Note Structure
 
@@ -105,6 +105,11 @@ dp[0] = ...
 
 **Step 3:** [Why does this avoid double-counting / ensure correctness?]
 
+> **🔑 Key distinction — know which sub-pattern you're in:**
+> - **Fixed-offset Linear DP** (Fibonacci, House Robber, Min Cost): dp[i] looks back at only dp[i-1] and dp[i-2]. O(1) previous states, single pass.
+> - **Scan-all-previous Linear DP** (Word Break, LIS, Decode Ways): dp[i] must check ALL earlier states j < i to find one that works. This requires a **nested loop**, which is structurally required — not a style choice. If you try to follow a single running pointer (greedy) instead of testing every j, you commit to the first match and can never backtrack.
+> - **How to tell which you need:** If the decision at i depends on "the best/count up to i-1" with no further condition, use fixed-offset. If it depends on finding SOME earlier state that satisfies a condition (like "is s[j..i) in the dictionary?"), you must scan all previous states.
+
 ### Example Walkthrough
 
 Input: [concrete example]
@@ -151,6 +156,10 @@ Example: "By induction on i: if dp[i-1] correctly represents the maximum robbery
 - [Mistake 2]
 - [Mistake 3]
 
+### 🔴 The Greedy Trap (Scan-All-Previous problems)
+
+In problems like Word Break or LIS, the most common mistake is using a **single running pointer** instead of a nested loop over all previous states. If you write code that "commits to the first match" and moves on, you lose the ability to backtrack and try alternative earlier cuts. The nested loop over ALL j < i is not optimization — it's the correct DP structure. Always ask: _"Does dp[i] need to try every possible previous state, or only the last two?"_
+
 Example: "In Linear DP, students often forget the base case. If you don't initialize dp[0] correctly, the entire recurrence is wrong."
 
 ## Pattern Connection
@@ -160,6 +169,13 @@ Example: "In Linear DP, students often forget the base case. If you don't initia
 1. [Characteristic 1 of this pattern evident here]
 2. [Characteristic 2 evident here]
 3. [Characteristic 3 evident here]
+
+**Within Linear DP, classify further:**
+
+- **Fixed-offset** (dp[i] looks back at dp[i-1], dp[i-2] only) → Fibonacci-style, O(1) previous states
+- **Scan-all-previous** (dp[i] checks ALL j < i) → segmentation/LIS-style, requires nested loop
+
+This distinction determines the code structure. Fixed-offset = single loop, two variables. Scan-all-previous = nested loop, full dp array.
 
 **Similar problems in this pattern:**
 
