@@ -91,6 +91,12 @@ Every note follows this format:
 
 [Remember this for next time]
 
+## 🔑 Breakthrough
+
+[The one thing you couldn't think of — the implementation trick or mental model that was the real "aha" moment. 1-2 sentences, personal and concrete.]
+
+_Example: "Index by value, not by uniqueness. Compressing to unique values loses gap info and invents fake adjacency conflicts — I kept trying to compress until I realized gaps in the number line matter."_
+
 ## Your Code
 
 ```cpp
@@ -136,6 +142,12 @@ Every full note automatically produces a **companion insight card** in `cp-insig
 ## Key Insight
 
 💡 [One-sentence core idea]
+
+## Breakthrough
+
+[The specific implementation trick or mental model that was the real "aha" moment — 1 sentence, personal.]
+
+_Example: "Index by value, not by uniqueness — gaps in the number line matter."_
 
 ## Code Spotlight
 
@@ -288,7 +300,8 @@ Follow these steps:
 3. **Generate** a structured note using the template above, including the user's code and your review.
 4. **Save** the full note to `cp-notes/[RATING]/[ID]_[Title_With_Underscores].md`.
 5. **Create the insight card** — generate a compact card at `cp-insights/[TYPE_KEY]/[ID]_[Title_With_Underscores].md` using the Insight Card Format below. Include a 3-5 line Code Spotlight from the solution and a minimal worked Example.
-6. **Update** the repo's root `README.md` (NOT `cp-notes/README.md` or `cp-notes/index.md`) — add the new problem entry under the correct rating and algorithm sections, update total counts and stats.
+6. **Log the breakthrough** — append the Breakthrough entry (problem ID, title, and the one-liner) to the central `breakthroughs.md` file at the repo root, grouped under today's date.
+7. **Update** the repo's root `README.md` (NOT `cp-notes/README.md` or `cp-notes/index.md`) — add the new problem entry under the correct rating and algorithm sections, update total counts and stats.
 
 ### Automatic Features
 
@@ -373,6 +386,7 @@ Automatically:
 
 - Generate 5 full notes → `cp-notes/[RATING]/`
 - Generate 5 insight cards → `cp-insights/[TYPE]/`
+- Log all breakthroughs → `breakthroughs.md`
 - Organize into appropriate rating & type folders
 - Update README index
 - Calculate weekly stats

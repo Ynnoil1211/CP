@@ -9,12 +9,13 @@ description: Generates structured DP problem study notes organized by pattern ty
 
 **Core Purpose:** Transform solved LeetCode DP medium problems into structured, pattern-focused study notes that build mental models of dynamic programming techniques.
 
-This skill is designed for the **100 DP Medium Problems Challenge**. Unlike general CP problem notes, DP requires understanding *state spaces* and *recurrence relations*—not just algorithms. This skill captures that learning intentionally.
+This skill is designed for the **100 DP Medium Problems Challenge**. Unlike general CP problem notes, DP requires understanding _state spaces_ and _recurrence relations_—not just algorithms. This skill captures that learning intentionally.
 
 **Key Difference from CP Skill:**
-- CP skill organizes by *rating* (800, 900, 1000)
-- DP skill organizes by *pattern type* (Linear DP, 2D Grid, Knapsack, etc.)
-- DP skill focuses on *state definition* and *transitions*, not just solution walkthrough
+
+- CP skill organizes by _rating_ (800, 900, 1000)
+- DP skill organizes by _pattern type_ (Linear DP, 2D Grid, Knapsack, etc.)
+- DP skill focuses on _state definition_ and _transitions_, not just solution walkthrough
 
 ## What It Does
 
@@ -38,16 +39,16 @@ This skill:
 
 The skill classifies every problem into one of these 8 patterns:
 
-| Pattern | Characteristics | Example Problems | Folder |
-|---------|-----------------|-----------------|--------|
-| **Linear DP** | 1D state, sequential decisions on array/string | House Robber, Climbing Stairs, Decode Ways | `linear-dp/` |
-| **2D Grid DP** | 2D state for grid paths, matrix traversal | Unique Paths, Minimum Path Sum, Dungeon Game | `2d-grid-dp/` |
-| **Knapsack** | Selection problems with capacity constraints | Target Sum, Partition Equal Subset Sum, Coin Change | `knapsack-dp/` |
-| **Interval DP** | Range/subarray optimization, work from smaller intervals to larger | Burst Balloons, Palindrome Partitioning II, Remove Boxes | `interval-dp/` |
-| **Tree DP** | Decisions on tree structure, node choice, parent-child relations | House Robber III, Maximum Product of Splitted Tree | `tree-dp/` |
-| **Game Theory DP** | Optimal play against opponent, win/lose states | Predict the Winner, Can I Win, Stone Game | `game-theory-dp/` |
-| **Digit DP** | Digit-by-digit constraint satisfaction, number properties | Count Numbers with Unique Digits (harder, advanced) | `digit-dp/` |
-| **Bitmask DP** | DP over subset states via bitmask, assignment problems | Travelling Salesman Variant, Steiner Tree (harder) | `bitmask-dp/` |
+| Pattern            | Characteristics                                                    | Example Problems                                         | Folder            |
+| ------------------ | ------------------------------------------------------------------ | -------------------------------------------------------- | ----------------- |
+| **Linear DP**      | 1D state, sequential decisions on array/string                     | House Robber, Climbing Stairs, Decode Ways               | `linear-dp/`      |
+| **2D Grid DP**     | 2D state for grid paths, matrix traversal                          | Unique Paths, Minimum Path Sum, Dungeon Game             | `2d-grid-dp/`     |
+| **Knapsack**       | Selection problems with capacity constraints                       | Target Sum, Partition Equal Subset Sum, Coin Change      | `knapsack-dp/`    |
+| **Interval DP**    | Range/subarray optimization, work from smaller intervals to larger | Burst Balloons, Palindrome Partitioning II, Remove Boxes | `interval-dp/`    |
+| **Tree DP**        | Decisions on tree structure, node choice, parent-child relations   | House Robber III, Maximum Product of Splitted Tree       | `tree-dp/`        |
+| **Game Theory DP** | Optimal play against opponent, win/lose states                     | Predict the Winner, Can I Win, Stone Game                | `game-theory-dp/` |
+| **Digit DP**       | Digit-by-digit constraint satisfaction, number properties          | Count Numbers with Unique Digits (harder, advanced)      | `digit-dp/`       |
+| **Bitmask DP**     | DP over subset states via bitmask, assignment problems             | Travelling Salesman Variant, Steiner Tree (harder)       | `bitmask-dp/`     |
 
 ## Generated Note Structure
 
@@ -70,9 +71,10 @@ Every problem generates a markdown file with this exact structure:
 ## State Definition
 
 ### What is dp[i]? (or dp[i][j], etc.)
-
 ```
+
 dp[i] = [CLEAR DEFINITION]
+
 ```
 
 **Example:** If dp[i] = maximum robbery value considering houses 0..i, then:
@@ -86,11 +88,13 @@ dp[i] = [CLEAR DEFINITION]
 ## Recurrence Relation
 
 ```
-dp[i] = ...  [Formula with clear logic]
+
+dp[i] = ... [Formula with clear logic]
 
 Base case(s):
-  dp[0] = ...
-  [optional] dp[1] = ...
+dp[0] = ...
+[optional] dp[1] = ...
+
 ```
 
 ### Transition Logic
@@ -106,11 +110,13 @@ Base case(s):
 Input: [concrete example]
 
 ```
+
 dp[0] = ...
 dp[1] = ...
 dp[2] = ...
 dp[3] = result
-```
+
+````
 
 Why dp[3] = [value]? Because we chose to [decision], which led to [outcome].
 
@@ -118,9 +124,10 @@ Why dp[3] = [value]? Because we chose to [decision], which led to [outcome].
 
 ```cpp
 // [Clean, commented code ≤ 30 lines core logic]
-```
+````
 
 **Key Implementation Notes:**
+
 - [Memory layout / array indexing]
 - [Base case handling]
 - [Avoiding off-by-one errors]
@@ -155,6 +162,7 @@ Example: "In Linear DP, students often forget the base case. If you don't initia
 3. [Characteristic 3 evident here]
 
 **Similar problems in this pattern:**
+
 - [Problem ID] - [Title]
 - [Problem ID] - [Title]
 
@@ -162,7 +170,13 @@ Example: "In Linear DP, students often forget the base case. If you don't initia
 
 [One sentence you'll remember next time you see a similar problem]
 
-*Example:* "For house robbery variants, always define dp[i] as 'result considering houses 0..i' and choose: include or exclude current house."
+_Example:_ "For house robbery variants, always define dp[i] as 'result considering houses 0..i' and choose: include or exclude current house."
+
+## 🔑 Breakthrough
+
+[The one thing you couldn't think of — the state definition trick or recurrence insight that was the real "aha" moment. 1-2 sentences, personal and concrete.]
+
+_Example: "Index by value, not by uniqueness. After building points[x] = x * freq[x], the House Robber recurrence applies directly — I was trying to compress the unique values, which lost the gap info."_
 
 ## Your Code
 
@@ -183,50 +197,54 @@ _This is your original work. Keep it to track how your style evolves._
 - **Next Review:** [Suggested spaced repetition date]
 
 ---
+
 **Generated:** [Date]
+
 ```
 
 ## File Organization
 
 ```
+
 dp-mastery/
-├── README.md                                    # Master progress dashboard
+├── README.md # Master progress dashboard
 │
-├── linear-dp/                                   # Pattern: 1D sequential
-│   ├── 198_House_Robber.md
-│   ├── 213_House_Robber_II.md
-│   ├── 70_Climbing_Stairs.md
-│   └── [more linear DP problems]
+├── linear-dp/ # Pattern: 1D sequential
+│ ├── 198_House_Robber.md
+│ ├── 213_House_Robber_II.md
+│ ├── 70_Climbing_Stairs.md
+│ └── [more linear DP problems]
 │
-├── 2d-grid-dp/                                  # Pattern: 2D grid paths
-│   ├── 62_Unique_Paths.md
-│   ├── 64_Minimum_Path_Sum.md
-│   └── [more grid DP problems]
+├── 2d-grid-dp/ # Pattern: 2D grid paths
+│ ├── 62_Unique_Paths.md
+│ ├── 64_Minimum_Path_Sum.md
+│ └── [more grid DP problems]
 │
-├── knapsack-dp/                                 # Pattern: Selection + capacity
-│   ├── 416_Partition_Equal_Subset_Sum.md
-│   ├── 494_Target_Sum.md
-│   └── [more knapsack problems]
+├── knapsack-dp/ # Pattern: Selection + capacity
+│ ├── 416_Partition_Equal_Subset_Sum.md
+│ ├── 494_Target_Sum.md
+│ └── [more knapsack problems]
 │
-├── interval-dp/                                 # Pattern: Range optimization
-│   ├── 1039_Minimum_Score_Triangulation.md
-│   ├── 312_Burst_Balloons.md
-│   └── [more interval DP problems]
+├── interval-dp/ # Pattern: Range optimization
+│ ├── 1039_Minimum_Score_Triangulation.md
+│ ├── 312_Burst_Balloons.md
+│ └── [more interval DP problems]
 │
-├── tree-dp/                                     # Pattern: Tree decisions
-│   ├── 337_House_Robber_III.md
-│   └── [more tree DP problems]
+├── tree-dp/ # Pattern: Tree decisions
+│ ├── 337_House_Robber_III.md
+│ └── [more tree DP problems]
 │
-├── game-theory-dp/                              # Pattern: Optimal play
-│   ├── 486_Predict_the_Winner.md
-│   └── [more game theory problems]
+├── game-theory-dp/ # Pattern: Optimal play
+│ ├── 486_Predict_the_Winner.md
+│ └── [more game theory problems]
 │
-├── digit-dp/                                    # Pattern: Digit constraints
-│   ├── [digit DP problems - advanced]
+├── digit-dp/ # Pattern: Digit constraints
+│ ├── [digit DP problems - advanced]
 │
-└── bitmask-dp/                                  # Pattern: Subset enumeration
-    └── [bitmask DP problems - advanced]
-```
+└── bitmask-dp/ # Pattern: Subset enumeration
+└── [bitmask DP problems - advanced]
+
+````
 
 ## Master Progress Dashboard (README.md)
 
@@ -291,7 +309,7 @@ _Identify patterns to review_
 ---
 
 **Last Updated:** [Date]
-```
+````
 
 ## Usage Workflow
 
@@ -299,7 +317,7 @@ _Identify patterns to review_
 
 When the user submits a problem:
 
-```
+````
 Use the dp-learning-tracker skill.
 
 **Problem:**
@@ -310,9 +328,10 @@ Use the dp-learning-tracker skill.
 **Your Code:**
 ```cpp
 [C++ solution]
-```
+````
 
 **Optional Metadata:**
+
 - Solve Time: 15 minutes
 - Attempts: 2
 - Confidence: 7/10
@@ -320,6 +339,7 @@ Use the dp-learning-tracker skill.
 
 **Problem Statement:**
 [Full problem description or link]
+
 ```
 
 ### Steps
@@ -332,7 +352,8 @@ Use the dp-learning-tracker skill.
 6. **Generate Full Note**: Write the markdown file with all sections above
 7. **Save to Folder**: `dp-mastery/[PATTERN_TYPE]/[ID]_[Title].md`
 8. **Update Dashboard**: Increment the counter in `dp-mastery/README.md`, update progress table
-9. **Calculate Next Review**: Suggest a spaced repetition date (Day 3, Day 7, Day 14, etc.)
+9. **Log the breakthrough** — append the Breakthrough entry (problem ID, title, and the one-liner) to the central `breakthroughs.md` file at the repo root, grouped under today's date.
+10. **Calculate Next Review**: Suggest a spaced repetition date (Day 3, Day 7, Day 14, etc.)
 
 ## Pattern Detection Logic
 
@@ -356,8 +377,10 @@ The skill tracks **pattern mastery**:
 ### Monday (Start of Week)
 
 ```
+
 Weekly plan for Week 3: targeting 3 Linear DP problems.
 Problems: 213, 139, 740
+
 ```
 
 Remind the user of the pattern focus and suggest related problems.
@@ -367,8 +390,10 @@ Remind the user of the pattern focus and suggest related problems.
 Each time the user solves and submits:
 
 ```
+
 I just solved LeetCode 213. Code: [paste]. Took 18 minutes, confidence 6/10.
 Struggled with understanding why we need TWO previous states.
+
 ```
 
 Generate the full note, save it, update the dashboard.
@@ -376,8 +401,10 @@ Generate the full note, save it, update the dashboard.
 ### Friday (Weekly Review)
 
 ```
+
 Weekly report for Week 3.
 Solved: 213, 139, 740
+
 ```
 
 Generate all notes, update progress tables, identify weak areas, suggest next week's focus.
@@ -429,7 +456,8 @@ User can adjust based on schedule.
 
 ---
 
-**Designed for:** 100 LeetCode Medium DP Problems Challenge  
-**Best for:** CF 1200+ rating, ready for DP deep dive  
-**Output:** Structured markdown repository at `dp-mastery/`  
+**Designed for:** 100 LeetCode Medium DP Problems Challenge
+**Best for:** CF 1200+ rating, ready for DP deep dive
+**Output:** Structured markdown repository at `dp-mastery/`
 **Maintenance:** Auto-updates dashboard on each problem submission
+```

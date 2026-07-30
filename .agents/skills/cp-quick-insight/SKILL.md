@@ -37,6 +37,7 @@ Output:
 The card file includes three sections:
 
 - **Key Insight** — the one-sentence core idea
+- **Breakthrough** — the specific implementation trick or mental model you couldn't think of (personal, concrete, 1 sentence)
 - **Code Spotlight** — 3-5 key lines from your solution that implement the insight
 - **Example** — a minimal worked example showing the insight in action
 
@@ -280,6 +281,8 @@ Response:
 
 Every insight you extract is **automatically saved** to `cp-insights/[TYPE]/[ID]_[Title].md`. No prompts, no options — just extract and store.
 
+The **Breakthrough** entry is also logged to the central `breakthroughs.md` file at the repo root, grouped under today's date alongside entries from all other skills.
+
 ### Card Format
 
 ````markdown
@@ -292,6 +295,12 @@ Every insight you extract is **automatically saved** to `cp-insights/[TYPE]/[ID]
 ## Key Insight
 
 💡 [One-sentence core idea]
+
+## Breakthrough
+
+[The specific implementation trick or mental model that was the real "aha" moment — 1 sentence, personal.]
+
+_Example: "Index by value, not by uniqueness — gaps in the number line matter."_
 
 ## Code Spotlight
 
@@ -315,6 +324,7 @@ Why: [brief explanation connecting example back to the insight]
 | Section            | Purpose                                                                                                                   |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------- |
 | **Key Insight**    | The "aha moment" — what makes the problem solvable                                                                        |
+| **Breakthrough**   | The specific trick you couldn't think of — personal, concrete, for your future self to remember                           |
 | **Code Spotlight** | The specific lines where the insight becomes code. Usually 3-5 lines showing the core logic, stripped of I/O boilerplate. |
 | **Example**        | A minimal input/output with a "Why" line connecting it back to the insight. Makes the abstraction concrete.               |
 
