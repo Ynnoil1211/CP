@@ -1,6 +1,6 @@
 # 139 - Word Break
 
-**Pattern Type:** Linear DP (segmentation)
+**Pattern Type:** Segmentation DP
 **Difficulty:** Medium
 **LeetCode Link:** https://leetcode.com/problems/word-break/
 **Topics:** String segmentation, substring DP, existence check, scan-all-previous
@@ -61,7 +61,7 @@ Answer:
 > **🔑 This is a scan-all-previous problem — know the difference:**
 >
 > - **Fixed-offset Linear DP** (Fibonacci, House Robber): dp[i] looks back at only dp[i-1] and dp[i-2]. O(1) previous states, single pass.
-> - **Scan-all-previous Linear DP** (Word Break, LIS): dp[i] must check ALL earlier states j < i to find one that works. This requires a **nested loop**, which is structurally required — not a style choice.
+> - **Scan-all-previous** (Segmentation DP like Word Break, or LIS): dp[i] must check ALL earlier states j < i to find one that works. This requires a **nested loop**, which is structurally required — not a style choice.
 > - **How to tell:** If dp[i] depends on "the best up to i-1" with no further condition, use fixed-offset. If it depends on finding SOME earlier state that satisfies a condition (like "is s[j..i) in the dictionary?"), you must scan all previous states.
 
 ### Example Walkthrough
@@ -164,13 +164,13 @@ This is the #1 mistake. Using a **single running pointer** instead of a nested l
 
 ## Pattern Connection
 
-**This is a Linear DP problem because:**
+**This is a Segmentation DP problem because:**
 
 1. **1D state**: dp[i] depends only on the prefix length i.
 2. **Sequential decision**: At each step i, you decide the last cut point j. The problem decomposes into smaller prefixes (dp[j]).
 3. **Existential recurrence**: dp[i] = OR over all previous states of (dp[j] && condition). This is a new operator (OR) compared to the sum/min/max you've seen before.
 
-**Within Linear DP, this is a scan-all-previous problem:**
+**Compared to fixed-offset Linear DP (House Robber, Climbing Stairs), this is scan-all-previous:**
 
 | Sub-pattern           | Characteristics                        | Code Structure              | Examples                                |
 | --------------------- | -------------------------------------- | --------------------------- | --------------------------------------- |

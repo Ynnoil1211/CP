@@ -1,22 +1,29 @@
 # 100 DP Medium Problems Challenge
 
-**Progress:** 3/100 problems solved
-**Current Week:** Week 3 (Linear DP)
+**Progress:** 4/100 problems solved
+**Current Week:** Week 3 (Linear + Segmentation DP)
 **Target Completion:** TBD
 **Overall Confidence:** 5.4/10 — took a hit on Word Break
 
+## Pattern Library
+
+Full descriptions, general templates, and per-pattern solved lists live in **[dp-mastery/patterns/](patterns/README.md)** — 11 pattern pages plus a quick recognition cheatsheet.
+
 ## Progress by Pattern Type
 
-| Pattern     | Solved | Target | % Complete | Avg Time | Mastery        |
-| ----------- | ------ | ------ | ---------- | -------- | -------------- |
-| Linear DP   | 3/12   | 12     | 25%        | 32m      | 🟡 In Progress |
-| 2D Grid DP  | 0/12   | 12     | 0%         | —        | ⏳ Upcoming    |
-| Knapsack    | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
-| Interval DP | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
-| Tree DP     | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
-| Game Theory | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
-| Digit DP    | 0/15   | 15     | 0%         | —        | 🔴 Advanced    |
-| Bitmask DP  | 0/15   | 15     | 0%         | —        | 🔴 Advanced    |
+| Pattern            | Solved | Target | % Complete | Avg Time | Mastery        |
+| ------------------ | ------ | ------ | ---------- | -------- | -------------- |
+| Linear DP          | 3/10   | 10     | 30%        | ~20m     | 🟡 In Progress |
+| Segmentation DP    | 1/10   | 10     | 10%        | 2h       | 🟡 In Progress |
+| 2D Grid DP         | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
+| Two-Sequence (LCS) | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
+| Knapsack           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
+| Interval DP        | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
+| Tree DP            | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
+| State Machine      | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
+| Game Theory        | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
+| Digit DP           | 0/8    | 8      | 0%         | —        | 🔴 Advanced    |
+| Bitmask DP         | 0/8    | 8      | 0%         | —        | 🔴 Advanced    |
 
 ## By Week
 
@@ -28,22 +35,16 @@ Pre-medium warmup: Climbing Stairs, House Robber basics
 - ✅ [746 - Min Cost Climbing Stairs](linear-dp/746_Min_Cost_Climbing_Stairs.md) _(Easy, warm-up)_
 - ✅ [198 - House Robber](linear-dp/198_House_Robber.md) _(Medium, done)_
 
-### Week 3: Linear DP (2/12 problems)
+### Week 3: Linear + Segmentation DP (4/20 problems)
 
-- ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md) _(Medium, done)_
-- ✅ [740 - Delete and Earn](linear-dp/740_Delete_and_Earn.md) _(Medium, done)_
-- ✅ [139 - Word Break](linear-dp/139_Word_Break.md) _(Medium, done)_
-- [ ] 91 - Decode Ways
-- [ ] 300 - Longest Increasing Subsequence
-- [ ] 322 - Coin Change
-- [ ] 368 - Largest Divisible Subset
-- [ ] 1143 - Longest Common Subsequence
-- [ ] 647 - Palindromic Substrings
-- [ ] 5 - Longest Palindromic Substring
-- [ ] 343 - Integer Break
-- [ ] 276 - Paint Fence
+_Linear:_ ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md), ✅ [740 - Delete and Earn](linear-dp/740_Delete_and_Earn.md) · _Segmentation:_ ✅ [139 - Word Break](segmentation-dp/139_Word_Break.md)
 
-### Week 4: 2D Grid DP + Knapsack (0/22 problems)
+- [ ] 300 - Longest Increasing Subsequence _(Linear, scan-all-previous)_
+- [ ] 368 - Largest Divisible Subset _(Linear, scan-all-previous)_
+- [ ] 91 - Decode Ways _(Segmentation)_
+- [ ] 343 - Integer Break _(Segmentation)_
+
+### Week 4: 2D Grid + Knapsack (0/20 problems)
 
 - [ ] 62 - Unique Paths
 - [ ] 63 - Unique Paths II
@@ -54,17 +55,21 @@ Pre-medium warmup: Climbing Stairs, House Robber basics
 - [ ] 416 - Partition Equal Subset Sum
 - [ ] 494 - Target Sum
 - [ ] 474 - Ones and Zeroes
-- ... (more)
+- [ ] 322 - Coin Change
 
-### Week 5: Interval DP + Tree DP (0/18 problems)
+### Week 5: Interval + Two-Sequence/LCS (0/20 problems)
 
 - [ ] 1039 - Minimum Score Triangulation
 - [ ] 312 - Burst Balloons
-- [ ] 337 - House Robber III
+- [ ] 1143 - Longest Common Subsequence
+- [ ] 647 - Palindromic Substrings _(palindrome — classify on solve)_
+- [ ] 5 - Longest Palindromic Substring _(palindrome — classify on solve)_
 - ... (more)
 
-### Week 6: Game Theory DP + Mixed Core (0/8 problems)
+### Week 6: Tree + State Machine + Game Theory (0/24 problems)
 
+- [ ] 337 - House Robber III
+- [ ] 276 - Paint Fence
 - [ ] 486 - Predict the Winner
 - [ ] 877 - Stone Game
 - ... (more)
@@ -81,13 +86,13 @@ _One down. Keep going._
 
 ## Weakest Patterns (Confidence ≤ 5/10)
 
-- **Linear DP segmentation** (1/10) — Word Break exposed the greedy-to-DP gap. Need more segmentation practice.
+- **Segmentation DP** (1/10) — Word Break exposed the greedy-to-DP gap. Re-solve it before touching Decode Ways.
 
 ## Weekly Summary
 
-| Week | Problems   | Avg Time | Avg Confidence | Top Topic |
-| ---- | ---------- | -------- | -------------- | --------- |
-| 1-3  | 6 problems | ~26m avg | 5.4/10         | Linear DP |
+| Week | Problems   | Avg Time | Avg Confidence | Top Topic                |
+| ---- | ---------- | -------- | -------------- | ------------------------ |
+| 1-3  | 6 problems | ~26m avg | 5.4/10         | Linear + Segmentation DP |
 
 ---
 
@@ -97,7 +102,7 @@ _One down. Keep going._
 
 You _did_ write a correct memoized solution. That means you understood the recursion structure. The only gap was recognizing the recurrence — and now you've seen it, it'll click faster next time.
 
-**Where you are now:** 3 fundamental Linear DP patterns internalized.
+**Where you are now:** The Linear DP family is 3 mediums deep (House Robber trio), and you've met your first Segmentation problem (Word Break — 1/10, needs a re-solve).
 
 | Problem                 | Operation           | Recurrence                                |
 | ----------------------- | ------------------- | ----------------------------------------- |
@@ -130,8 +135,8 @@ Word Break was the hardest one yet, and that's exactly why it's the most valuabl
 
 **Your homework before the next problem:** Re-solve Word Break from scratch with no hints. If you can write the nested-loop solution in under 10 minutes, you've internalized it.
 
-Then try **91 - Decode Ways** — it's the same segmentation structure but counting ways instead of existence.
+Then try **91 - Decode Ways** — it's the same segmentation structure but counting ways instead of existence. The full pattern writeup is in [patterns/segmentation-dp.md](patterns/segmentation-dp.md).
 
 ---
 
-**Last Updated:** 2026-07-27
+**Last Updated:** 2026-07-30
