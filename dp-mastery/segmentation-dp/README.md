@@ -10,7 +10,7 @@ The key mental shift: instead of asking "how do I cut this string?" directly, yo
 
 ### When to recognize it
 
-Ask yourself: *"Can/should I split this sequence into pieces, where each piece needs to pass some test?"* If yes, this pattern likely applies. Common signals in the problem statement:
+Ask yourself: _"Can/should I split this sequence into pieces, where each piece needs to pass some test?"_ If yes, this pattern likely applies. Common signals in the problem statement:
 
 - "segmented into..."
 - "partitioned into..."
@@ -20,18 +20,21 @@ Ask yourself: *"Can/should I split this sequence into pieces, where each piece n
 ### The General Template
 
 **State:**
+
 ```
-dp[i] = true/best-value, representing: "the first i elements of the sequence 
-         can be validly partitioned" 
+dp[i] = true/best-value, representing: "the first i elements of the sequence
+         can be validly partitioned"
          (or: "the best score achievable partitioning the first i elements")
 ```
 
 **Base case:**
+
 ```
 dp[0] = true (or 0, or the neutral value) — an empty prefix is trivially valid
 ```
 
 **Transition:**
+
 ```
 For each i from 1 to n:
     For each j from 0 to i-1:
@@ -40,6 +43,7 @@ For each i from 1 to n:
 ```
 
 Where:
+
 - `segment(j, i)` is the piece from index `j` to `i` (exclusive) — a substring, subarray, etc.
 - `combine(...)` depends on what you're optimizing:
   - **Existence (true/false):** `dp[i] = dp[i] OR (dp[j] AND valid(segment))`
@@ -52,25 +56,25 @@ Where:
 
 ### Problem Family (all share this exact skeleton)
 
-| Problem | What `segment(j, i)` must satisfy | What `dp[i]` tracks |
-|---|---|---|
-| **Word Break** | Is a word in the dictionary | Reachable? (bool) |
-| **Word Break II** | Is a word in the dictionary | All valid segmentations (list) |
-| **Palindrome Partitioning II** | Is a palindrome | Min cuts needed |
-| **Perfect Squares** | Is a perfect square number | Min pieces to sum to n |
-| **Decode Ways** | Is a valid 1 or 2-digit code | Number of ways to decode |
+| Problem                        | What `segment(j, i)` must satisfy | What `dp[i]` tracks            |
+| ------------------------------ | --------------------------------- | ------------------------------ |
+| **Word Break**                 | Is a word in the dictionary       | Reachable? (bool)              |
+| **Word Break II**              | Is a word in the dictionary       | All valid segmentations (list) |
+| **Palindrome Partitioning II** | Is a palindrome                   | Min cuts needed                |
+| **Perfect Squares**            | Is a perfect square number        | Min pieces to sum to n         |
+| **Decode Ways**                | Is a valid 1 or 2-digit code      | Number of ways to decode       |
 
 ### The core intuition to keep
 
-You're not trying to *guess* the right split in one shot. You're asking, at every prefix length, **"is there some earlier valid stopping point I could have chained from?"** — and because you scan left to right, `dp[j]` for any `j < i` is already known by the time you need it. That's what turns an exponential "try every possible split" search into a polynomial one: **you never re-derive whether a prefix is valid; you just look it up.**
+You're not trying to _guess_ the right split in one shot. You're asking, at every prefix length, **"is there some earlier valid stopping point I could have chained from?"** — and because you scan left to right, `dp[j]` for any `j < i` is already known by the time you need it. That's what turns an exponential "try every possible split" search into a polynomial one: **you never re-derive whether a prefix is valid; you just look it up.**
 
 Try spotting this shape cold on **Palindrome Partitioning II** or **Perfect Squares** next — see if you can write the recurrence yourself before coding.
 
 ### 🟢 Solved Problems
 
-| ID | Title | Confidence | Core idea |
-|----|-------|------------|-----------|
-| 139 | [Word Break](../segmentation-dp/139_Word_Break.md) | 1/10 | Existence: `dp[i] = OR over j of (dp[j] && s[j..i) in dict)` |
+| ID  | Title                           | Confidence | Core idea                                                    |
+| --- | ------------------------------- | ---------- | ------------------------------------------------------------ |
+| 139 | [Word Break](139_Word_Break.md) | 1/10       | Existence: `dp[i] = OR over j of (dp[j] && s[j..i) in dict)` |
 
 > 🔴 **This is your weakest pattern (1/10).** The greedy trap — committing to the first cut instead of trying all `j`. The nested loop is the DP, not the pointer. Re-solve Word Break from scratch before touching Decode Ways.
 

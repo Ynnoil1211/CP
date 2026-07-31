@@ -33,26 +33,26 @@ This skill:
 4. ✅ Provides complexity analysis
 5. ✅ Generates a **structured study note** in `dp-mastery/[PATTERN]/`
 6. ✅ Updates the master progress index (`dp-mastery/README.md`)
-7. ✅ Refreshes the pattern library doc for that family (`dp-mastery/patterns/<pattern>.md`)
+7. ✅ Refreshes that family's pattern doc (`dp-mastery/<pattern>/README.md`)
 8. ✅ Tracks solve metrics and identifies pattern mastery
 
 ## DP Pattern Library (11 Patterns)
 
-The skill classifies every problem into one of these 11 patterns. **Full descriptions** (recognition signals, general template, problem family, core intuition) and **your solved problems per pattern** live in the pattern library at `dp-mastery/patterns/` — index: `dp-mastery/patterns/README.md`. Every generated note also appends/refreshes the problem's row in its pattern doc.
+The skill classifies every problem into one of these 11 patterns. **Each pattern folder** (`dp-mastery/<pattern>/`) starts with a `README.md` containing the full pattern description (recognition signals, general template, problem family, core intuition) followed by **your solved problems** in that family. Every generated note also appends/refreshes the problem's row in its folder's `README.md`.
 
-| Pattern                   | Characteristics                                                                                                 | Example Problems                                    | Folder              | Library Doc                    |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------- | ------------------------------ |
-| **Linear / Sequence DP**  | 1D state, fixed-offset lookback (dp[i-1], dp[i-2]); LIS-style scan-all-previous is a non-contiguous sub-variant | House Robber, Climbing Stairs, LIS                  | `linear-dp/`        | `patterns/linear-dp.md`        |
-| **Segmentation DP**       | 1D state, split sequence into contiguous pieces; scan-all-previous over cut points j                            | Word Break, Decode Ways, Perfect Squares            | `segmentation-dp/`  | `patterns/segmentation-dp.md`  |
-| **2D Grid DP**            | 2D state over grid cells, arrive from up/left                                                                   | Unique Paths, Minimum Path Sum, Dungeon Game        | `2d-grid-dp/`       | `patterns/2d-grid-dp.md`       |
-| **Two-Sequence DP (LCS)** | 2D state over two prefixes in lockstep; match/skip transitions                                                  | LCS, Edit Distance, Interleaving String             | `lcs-dp/`           | `patterns/lcs-dp.md`           |
-| **Knapsack**              | Selection problems with capacity constraints; 0/1 vs unbounded = iteration direction                            | Target Sum, Partition Equal Subset Sum, Coin Change | `knapsack-dp/`      | `patterns/knapsack-dp.md`      |
-| **Interval DP**           | Range [i,j] states, work from smaller intervals to larger via split point k                                     | Burst Balloons, Minimum Score Triangulation         | `interval-dp/`      | `patterns/interval-dp.md`      |
-| **Tree DP**               | Node states computed from children; include/exclude pairs                                                       | House Robber III, Maximum Product of Splitted Tree  | `tree-dp/`          | `patterns/tree-dp.md`          |
-| **State Machine DP**      | Position + discrete mode; transitions between modes                                                             | Stock with cooldown/fee, Paint Fence                | `state-machine-dp/` | `patterns/state-machine-dp.md` |
-| **Game Theory DP**        | Optimal play against opponent, advantage-difference states                                                      | Predict the Winner, Stone Game, Can I Win           | `game-theory-dp/`   | `patterns/game-theory-dp.md`   |
-| **Digit DP**              | Digit-by-digit constraint satisfaction with tight/started flags                                                 | Count Numbers with Unique Digits (harder, advanced) | `digit-dp/`         | `patterns/digit-dp.md`         |
-| **Bitmask DP**            | DP over subset states via bitmask, n ≤ 20, assignment problems                                                  | Travelling Salesman Variant, Steiner Tree (harder)  | `bitmask-dp/`       | `patterns/bitmask-dp.md`       |
+| Pattern                   | Characteristics                                                                                                 | Example Problems                                    | Folder              |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------- |
+| **Linear / Sequence DP**  | 1D state, fixed-offset lookback (dp[i-1], dp[i-2]); LIS-style scan-all-previous is a non-contiguous sub-variant | House Robber, Climbing Stairs, LIS                  | `linear-dp/`        |
+| **Segmentation DP**       | 1D state, split sequence into contiguous pieces; scan-all-previous over cut points j                            | Word Break, Decode Ways, Perfect Squares            | `segmentation-dp/`  |
+| **2D Grid DP**            | 2D state over grid cells, arrive from up/left                                                                   | Unique Paths, Minimum Path Sum, Dungeon Game        | `2d-grid-dp/`       |
+| **Two-Sequence DP (LCS)** | 2D state over two prefixes in lockstep; match/skip transitions                                                  | LCS, Edit Distance, Interleaving String             | `lcs-dp/`           |
+| **Knapsack**              | Selection problems with capacity constraints; 0/1 vs unbounded = iteration direction                            | Target Sum, Partition Equal Subset Sum, Coin Change | `knapsack-dp/`      |
+| **Interval DP**           | Range [i,j] states, work from smaller intervals to larger via split point k                                     | Burst Balloons, Minimum Score Triangulation         | `interval-dp/`      |
+| **Tree DP**               | Node states computed from children; include/exclude pairs                                                       | House Robber III, Maximum Product of Splitted Tree  | `tree-dp/`          |
+| **State Machine DP**      | Position + discrete mode; transitions between modes                                                             | Stock with cooldown/fee, Paint Fence                | `state-machine-dp/` |
+| **Game Theory DP**        | Optimal play against opponent, advantage-difference states                                                      | Predict the Winner, Stone Game, Can I Win           | `game-theory-dp/`   |
+| **Digit DP**              | Digit-by-digit constraint satisfaction with tight/started flags                                                 | Count Numbers with Unique Digits (harder, advanced) | `digit-dp/`         |
+| **Bitmask DP**            | DP over subset states via bitmask, n ≤ 20, assignment problems                                                  | Travelling Salesman Variant, Steiner Tree (harder)  | `bitmask-dp/`       |
 
 ## Generated Note Structure
 
@@ -229,65 +229,61 @@ _This is your original work. Keep it to track how your style evolves._
 dp-mastery/
 ├── README.md # Master progress dashboard
 │
-├── patterns/ # Pattern library (descriptions + solved lists)
-│ ├── README.md # Library index + recognition cheatsheet
-│ ├── linear-dp.md
-│ ├── segmentation-dp.md
-│ ├── 2d-grid-dp.md
-│ ├── lcs-dp.md
-│ ├── knapsack-dp.md
-│ ├── interval-dp.md
-│ ├── tree-dp.md
-│ ├── state-machine-dp.md
-│ ├── game-theory-dp.md
-│ ├── digit-dp.md
-│ └── bitmask-dp.md
-│
 ├── linear-dp/ # Pattern: 1D sequential (fixed-offset)
+│ ├── README.md # Pattern explanation + solved list
 │ ├── 198_House_Robber.md
 │ ├── 213_House_Robber_II.md
 │ ├── 70_Climbing_Stairs.md
 │ └── [more linear DP problems]
 │
 ├── segmentation-dp/ # Pattern: split into contiguous pieces
+│ ├── README.md # Pattern explanation + solved list
 │ ├── 139_Word_Break.md
 │ └── [more segmentation problems]
 │
 ├── 2d-grid-dp/ # Pattern: 2D grid paths
+│ ├── README.md # Pattern explanation + solved list
 │ ├── 62_Unique_Paths.md
-│ ├── 64_Minimum_Path_Sum.md
 │ └── [more grid DP problems]
 │
 ├── lcs-dp/ # Pattern: two sequences in lockstep
+│ ├── README.md # Pattern explanation + solved list
 │ ├── 1143_Longest_Common_Subsequence.md
 │ └── [more two-sequence problems]
 │
 ├── knapsack-dp/ # Pattern: Selection + capacity
+│ ├── README.md # Pattern explanation + solved list
 │ ├── 416_Partition_Equal_Subset_Sum.md
 │ ├── 494_Target_Sum.md
 │ └── [more knapsack problems]
 │
 ├── interval-dp/ # Pattern: Range optimization
+│ ├── README.md # Pattern explanation + solved list
 │ ├── 1039_Minimum_Score_Triangulation.md
 │ ├── 312_Burst_Balloons.md
 │ └── [more interval DP problems]
 │
 ├── tree-dp/ # Pattern: Tree decisions
+│ ├── README.md # Pattern explanation + solved list
 │ ├── 337_House_Robber_III.md
 │ └── [more tree DP problems]
 │
 ├── state-machine-dp/ # Pattern: Position + discrete modes
+│ ├── README.md # Pattern explanation + solved list
 │ ├── 276_Paint_Fence.md
 │ └── [more state machine problems]
 │
 ├── game-theory-dp/ # Pattern: Optimal play
+│ ├── README.md # Pattern explanation + solved list
 │ ├── 486_Predict_the_Winner.md
 │ └── [more game theory problems]
 │
 ├── digit-dp/ # Pattern: Digit constraints
-│ ├── [digit DP problems - advanced]
+│ ├── README.md # Pattern explanation + solved list
+│ └── [digit DP problems - advanced]
 │
 └── bitmask-dp/ # Pattern: Subset enumeration
+├── README.md # Pattern explanation + solved list
 └── [bitmask DP problems - advanced]
 
 ````
@@ -398,7 +394,7 @@ Use the dp-learning-tracker skill.
 6. **Generate Full Note**: Write the markdown file with all sections above
 7. **Save to Folder**: `dp-mastery/[PATTERN_TYPE]/[ID]_[Title].md`
 8. **Update Dashboard**: Increment the counter in `dp-mastery/README.md`, update progress table
-9. **Update Pattern Library**: Append or refresh the problem's row in `dp-mastery/patterns/<pattern>.md` (insert if new; update confidence/core-idea if reviewed). If the pattern page has no solved problems yet, this row becomes its first.
+9. **Update Pattern Library**: Append or refresh the problem's row in `dp-mastery/<pattern>/README.md` (insert if new; update confidence/core-idea if reviewed). If the pattern page has no solved problems yet, this row becomes its first.
 10. **Log the breakthrough** — append the Breakthrough entry (problem ID, title, and the one-liner) to the central `breakthroughs.md` file at the repo root, grouped under today's date.
 11. **Calculate Next Review**: Suggest a spaced repetition date (Day 3, Day 7, Day 14, etc.)
 

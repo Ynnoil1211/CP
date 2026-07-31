@@ -7,23 +7,51 @@
 
 ## Pattern Library
 
-Full descriptions, general templates, and per-pattern solved lists live in **[dp-mastery/patterns/](patterns/README.md)** — 11 pattern pages plus a quick recognition cheatsheet.
+Each pattern folder starts with a `README.md` — the full pattern explanation (description, when to recognize it, general template, problem family, core intuition) followed by **your solved problems** in that family.
+
+- **Linear / Sequence DP** → [`linear-dp/README.md`](linear-dp/README.md)
+- **Segmentation DP** → [`segmentation-dp/README.md`](segmentation-dp/README.md)
+- **2D Grid / Path DP** → [`2d-grid-dp/README.md`](2d-grid-dp/README.md)
+- **Two-Sequence DP (LCS)** → [`lcs-dp/README.md`](lcs-dp/README.md)
+- **Knapsack DP** → [`knapsack-dp/README.md`](knapsack-dp/README.md)
+- **Interval DP** → [`interval-dp/README.md`](interval-dp/README.md)
+- **Tree DP** → [`tree-dp/README.md`](tree-dp/README.md)
+- **State Machine DP** → [`state-machine-dp/README.md`](state-machine-dp/README.md)
+- **Game Theory DP** → [`game-theory-dp/README.md`](game-theory-dp/README.md)
+- **Digit DP** → [`digit-dp/README.md`](digit-dp/README.md)
+- **Bitmask DP** → [`bitmask-dp/README.md`](bitmask-dp/README.md)
+
+### Quick Recognition Cheatsheet
+
+| Keyword in problem                                | Likely pattern        |
+| ------------------------------------------------- | --------------------- |
+| Adjacent / consecutive / can't pick neighbors     | Linear DP             |
+| Split / partition / segment into pieces           | Segmentation DP       |
+| Grid / matrix / paths                             | 2D Grid DP            |
+| Two strings compared / transform one into another | Two-Sequence (LCS) DP |
+| Subset sums to target / capacity / budget         | Knapsack              |
+| Merge / burst / remove a range                    | Interval DP           |
+| Tree / binary tree / parent-child                 | Tree DP               |
+| Holding / not holding / cooldown / modes          | State Machine DP      |
+| Small n (≤ 20), visit all, subsets                | Bitmask DP            |
+| Count numbers in range satisfying X               | Digit DP              |
+| Two players, optimal play, alternate turns        | Game Theory DP        |
 
 ## Progress by Pattern Type
 
-| Pattern            | Solved | Target | % Complete | Avg Time | Mastery        |
-| ------------------ | ------ | ------ | ---------- | -------- | -------------- |
-| Linear DP          | 3/10   | 10     | 30%        | ~20m     | 🟡 In Progress |
-| Segmentation DP    | 1/10   | 10     | 10%        | 2h       | 🟡 In Progress |
-| 2D Grid DP         | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
-| Two-Sequence (LCS) | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
-| Knapsack           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
-| Interval DP        | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
-| Tree DP            | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
-| State Machine      | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
-| Game Theory        | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
-| Digit DP           | 0/8    | 8      | 0%         | —        | 🔴 Advanced    |
-| Bitmask DP         | 0/8    | 8      | 0%         | —        | 🔴 Advanced    |
+| Pattern                                      | Solved | Target | % Complete | Avg Time | Mastery        |
+| -------------------------------------------- | ------ | ------ | ---------- | -------- | -------------- |
+| [Linear DP](linear-dp/README.md)             | 3/10   | 10     | 30%        | ~20m     | 🟡 In Progress |
+| [Segmentation DP](segmentation-dp/README.md) | 1/10   | 10     | 10%        | 2h       | 🟡 In Progress |
+| [2D Grid DP](2d-grid-dp/README.md)           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
+| [Two-Sequence (LCS)](lcs-dp/README.md)       | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
+| [Knapsack](knapsack-dp/README.md)            | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
+| [Interval DP](interval-dp/README.md)         | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
+| [Tree DP](tree-dp/README.md)                 | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
+| [State Machine](state-machine-dp/README.md)  | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
+| [Game Theory](game-theory-dp/README.md)      | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
+| [Digit DP](digit-dp/README.md)               | 0/8    | 8      | 0%         | —        | 🔴 Advanced    |
+| [Bitmask DP](bitmask-dp/README.md)           | 0/8    | 8      | 0%         | —        | 🔴 Advanced    |
 
 ## By Week
 
@@ -135,7 +163,7 @@ Word Break was the hardest one yet, and that's exactly why it's the most valuabl
 
 **Your homework before the next problem:** Re-solve Word Break from scratch with no hints. If you can write the nested-loop solution in under 10 minutes, you've internalized it.
 
-Then try **91 - Decode Ways** — it's the same segmentation structure but counting ways instead of existence. The full pattern writeup is in [patterns/segmentation-dp.md](patterns/segmentation-dp.md).
+Then try **91 - Decode Ways** — it's the same segmentation structure but counting ways instead of existence. The full pattern writeup is in [segmentation-dp/README.md](segmentation-dp/README.md).
 
 ---
 
