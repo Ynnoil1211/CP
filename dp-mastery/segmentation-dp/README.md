@@ -72,13 +72,15 @@ Try spotting this shape cold on **Palindrome Partitioning II** or **Perfect Squa
 
 ### 🟢 Solved Problems
 
-| ID  | Title                           | Confidence | Core idea                                                    |
-| --- | ------------------------------- | ---------- | ------------------------------------------------------------ |
-| 139 | [Word Break](139_Word_Break.md) | 1/10       | Existence: `dp[i] = OR over j of (dp[j] && s[j..i) in dict)` |
+| ID  | Title                                     | Confidence | Core idea                                                                         |
+| --- | ----------------------------------------- | ---------- | --------------------------------------------------------------------------------- |
+| 139 | [Word Break](139_Word_Break.md)           | 1/10       | Existence: `dp[i] = OR over j of (dp[j] && s[j..i) in dict)`                      |
+| 279 | [Perfect Squares](279_Perfect_Squares.md) | 4/10       | Min: `dp[i] = min over squares s ≤ i of (dp[i-s] + 1)` — last-piece decomposition |
 
-> 🔴 **This is your weakest pattern (1/10).** The greedy trap — committing to the first cut instead of trying all `j`. The nested loop is the DP, not the pointer. Re-solve Word Break from scratch before touching Decode Ways.
+> 🔴 **Still your weakest pattern (avg ~2.5/10).** Word Break 1/10 + Perfect Squares 4/10. The gap is consistent: you can spot the _pieces_ (dictionary words / squares) but not yet write the _state + recurrence_ alone. Re-solve both from scratch. Note: Perfect Squares is Coin Change in disguise — that connection is now yours.
 
 ### ⏳ Next up
 
 - [91 - Decode Ways](https://leetcode.com/problems/decode-ways/) — the same skeleton, counting ways instead of existence
 - [343 - Integer Break](https://leetcode.com/problems/integer-break/) — split `n` into pieces maximizing the product
+- [322 - Coin Change](https://leetcode.com/problems/coin-change/) — Week 4, but you've already written this code: it's Perfect Squares with `coins = {1, 4, 9, ...}` swapped for any coin set

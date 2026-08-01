@@ -1,9 +1,9 @@
 # 100 DP Medium Problems Challenge
 
-**Progress:** 4/100 problems solved
+**Progress:** 5/100 problems solved
 **Current Week:** Week 3 (Linear + Segmentation DP)
 **Target Completion:** TBD
-**Overall Confidence:** 5.4/10 — took a hit on Word Break
+**Overall Confidence:** 5.0/10 (est.)
 
 ## Pattern Library
 
@@ -42,7 +42,7 @@ Each pattern folder starts with a `README.md` — the full pattern explanation (
 | Pattern                                      | Solved | Target | % Complete | Avg Time | Mastery        |
 | -------------------------------------------- | ------ | ------ | ---------- | -------- | -------------- |
 | [Linear DP](linear-dp/README.md)             | 3/10   | 10     | 30%        | ~20m     | 🟡 In Progress |
-| [Segmentation DP](segmentation-dp/README.md) | 1/10   | 10     | 10%        | 2h       | 🟡 In Progress |
+| [Segmentation DP](segmentation-dp/README.md) | 2/10   | 10     | 20%        | ~2h      | 🟡 In Progress |
 | [2D Grid DP](2d-grid-dp/README.md)           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
 | [Two-Sequence (LCS)](lcs-dp/README.md)       | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
 | [Knapsack](knapsack-dp/README.md)            | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
@@ -63,9 +63,9 @@ Pre-medium warmup: Climbing Stairs, House Robber basics
 - ✅ [746 - Min Cost Climbing Stairs](linear-dp/746_Min_Cost_Climbing_Stairs.md) _(Easy, warm-up)_
 - ✅ [198 - House Robber](linear-dp/198_House_Robber.md) _(Medium, done)_
 
-### Week 3: Linear + Segmentation DP (4/20 problems)
+### Week 3: Linear + Segmentation DP (5/20 problems)
 
-_Linear:_ ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md), ✅ [740 - Delete and Earn](linear-dp/740_Delete_and_Earn.md) · _Segmentation:_ ✅ [139 - Word Break](segmentation-dp/139_Word_Break.md)
+_Linear:_ ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md), ✅ [740 - Delete and Earn](linear-dp/740_Delete_and_Earn.md) · _Segmentation:_ ✅ [139 - Word Break](segmentation-dp/139_Word_Break.md), ✅ [279 - Perfect Squares](segmentation-dp/279_Perfect_Squares.md)
 
 - [ ] 300 - Longest Increasing Subsequence _(Linear, scan-all-previous)_
 - [ ] 368 - Largest Divisible Subset _(Linear, scan-all-previous)_
@@ -114,13 +114,13 @@ _One down. Keep going._
 
 ## Weakest Patterns (Confidence ≤ 5/10)
 
-- **Segmentation DP** (1/10) — Word Break exposed the greedy-to-DP gap. Re-solve it before touching Decode Ways.
+- **Segmentation DP** (2/10, avg ~2.5/10) — Word Break exposed the greedy-to-DP gap; Perfect Squares showed the gap is now the **state definition**, not the pieces. Both flagged for re-solve before Decode Ways.
 
 ## Weekly Summary
 
 | Week | Problems   | Avg Time | Avg Confidence | Top Topic                |
 | ---- | ---------- | -------- | -------------- | ------------------------ |
-| 1-3  | 6 problems | ~26m avg | 5.4/10         | Linear + Segmentation DP |
+| 1-3  | 7 problems | ~26m avg | 5.0/10         | Linear + Segmentation DP |
 
 ---
 
@@ -146,14 +146,15 @@ Same skeleton — three different operations. You've seen the whole family.
 
 **Curve check:**
 
-| Problem               | Time | Confidence | Trend          |
-| --------------------- | ---- | ---------- | -------------- |
-| 70 - Climbing Stairs  | ~3m  | 4/10       | 😖 First try   |
-| 746 - Min Cost        | —    | 5/10       | 👍 Got it      |
-| 198 - House Robber    | 30m  | 7/10       | 🟢 Good        |
-| 213 - House Robber II | 8m   | 8/10       | 🚀 On fire     |
-| 740 - Delete and Earn | 40m  | 6/10       | 🟡 Guided      |
-| 139 - Word Break      | 2h   | 1/10       | 🔴 Greedy trap |
+| Problem               | Time | Confidence  | Trend          |
+| --------------------- | ---- | ----------- | -------------- |
+| 70 - Climbing Stairs  | ~3m  | 4/10        | 😖 First try   |
+| 746 - Min Cost        | —    | 5/10        | 👍 Got it      |
+| 198 - House Robber    | 30m  | 7/10        | 🟢 Good        |
+| 213 - House Robber II | 8m   | 8/10        | 🚀 On fire     |
+| 740 - Delete and Earn | 40m  | 6/10        | 🟡 Guided      |
+| 139 - Word Break      | 2h   | 1/10        | 🔴 Greedy trap |
+| 279 - Perfect Squares | N/A  | 4/10 (est.) | 🔴 State gap   |
 
 **What's next:**
 
@@ -161,10 +162,12 @@ Word Break was the hardest one yet, and that's exactly why it's the most valuabl
 
 **The key takeaway from this failure:** _"dp[i] = true means there EXISTS a cut point. Try ALL possible j. The nested loop is the DP, not the pointer."_
 
-**Your homework before the next problem:** Re-solve Word Break from scratch with no hints. If you can write the nested-loop solution in under 10 minutes, you've internalized it.
+**Perfect Squares (279) — same pattern, one step closer.** You knew the ingredients this time (enumerate all squares) but couldn't write the recurrence. The missing piece was the **state**: `dp[i] = minimum squares to make exactly i`. Once the state exists, ask **"what's the last square I add?"** — every representation of i ends in some square s, and the rest is a representation of i - s. So `dp[i] = min(dp[i-s] + 1)` over all squares ≤ i. The good news: this is **Coin Change in disguise** (coins = {1, 4, 9, ...}), so 322 in Week 4 will feel familiar.
 
-Then try **91 - Decode Ways** — it's the same segmentation structure but counting ways instead of existence. The full pattern writeup is in [segmentation-dp/README.md](segmentation-dp/README.md).
+**Your homework before the next problem:** Re-solve both Word Break AND Perfect Squares from scratch with no hints — Word Break in under 10 minutes, Perfect Squares in under 15. If you can write the state + recurrence for both, the segmentation family is yours.
+
+Then try **91 - Decode Ways** — same skeleton, counting ways instead of minimizing/existence. The full pattern writeup is in [segmentation-dp/README.md](segmentation-dp/README.md).
 
 ---
 
-**Last Updated:** 2026-07-30
+**Last Updated:** 2026-08-01
