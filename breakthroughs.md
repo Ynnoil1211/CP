@@ -17,6 +17,10 @@ This is where they live.
 ## 2026-08-01
 
 - **279 - Perfect Squares** — _I knew the pieces (enumerate all squares) but couldn't write the formula. The missing step was the state: dp[i] = minimum squares to make exactly i. Once the state exists, the recurrence writes itself by asking "what's the last square I add?" — every representation of i ends in some square s, and the rest is a representation of i - s, so dp[i] = min(dp[i-s] + 1) over all squares. It's literally Coin Change with coins = {1, 4, 9, ...}. Ingredients without the recipe (state + last-piece question) don't make a DP._
+- **322 - Coin Change** — _The 279 → 322 transfer worked: same code, coins swapped for squares, solved in 5 minutes at 9/10. Only stumble: `if (x < amount) break` instead of `if (x > i) break` — the inner-loop guard must compare against the current subproblem i, never the global target amount. A wrong guard doesn't crash; it silently degrades the DP to only the smallest coin. Word Break took 2h, Perfect Squares was unsolvable alone, Coin Change was trivial — pattern recognition is the whole game._
+- **139 - Word Break (re-solve)** — _2 hours → 3 minutes. The greedy trap isn't just learned, it's gone: the nested loop and dp[0] = true base case came out automatically, no hints. Spaced repetition works — this is the proof._
+- **746 - Min Cost Climbing Stairs (re-solve, stuck)** — _My own diagnosis was right: "check my dp's state." I wrote dp[1] = min(cost[0], cost[1]) which mixes two state definitions (dp[0] = "cost to stand on step", dp[1] = "cheapest way to reach"), then cost[i] at i == n (out of bounds) and return dp[n-1] (wrong index — the top is step n). All three bugs are the SAME bug: the state was never pinned down. Write the state definition as a comment BEFORE coding._
+- **213 - House Robber II (re-solve)** — _Decomposition and recurrence were automatic; the only bug was forgetting the n == 1 / n == 0 guards before indexing nums[1] and nums[2]. Guard tiny inputs before touching the recurrence._
 
 ---
 

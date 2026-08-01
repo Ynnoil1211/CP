@@ -6,7 +6,7 @@
 
 You have items with weight/value (or cost/benefit) and a **capacity / target**. Decide which items to take. The **0/1** version uses each item at most once; the **unbounded** version allows unlimited reuse — and that one difference changes the iteration order of your loop.
 
-The mental shift: the state is *how much capacity you've used up*, and each item asks one question per budget: **"would taking me beat not taking me, at this capacity?"**
+The mental shift: the state is _how much capacity you've used up_, and each item asks one question per budget: **"would taking me beat not taking me, at this capacity?"**
 
 ### When to recognize it
 
@@ -17,17 +17,20 @@ The mental shift: the state is *how much capacity you've used up*, and each item
 ### The General Template
 
 **State:**
+
 ```
 dp[cap] = best value (or # ways, or reachability) using capacity cap
         (optionally dp[i][cap] when the item index must be tracked explicitly)
 ```
 
 **Base case:**
+
 ```
 dp[0] = 0 (or true / 1 way)
 ```
 
 **Transition:**
+
 ```
 // 0/1 — iterate capacity BACKWARDS so each item is used at most once
 for each item (w, v):
@@ -52,7 +55,11 @@ Every capacity value is a "budget", and each item is a yes/no question per budge
 
 ### 🟢 Solved Problems
 
-None yet.
+| ID  | Title                             | Confidence | Core idea                                                                                    |
+| --- | --------------------------------- | ---------- | -------------------------------------------------------------------------------------------- |
+| 322 | [Coin Change](322_Coin_Change.md) | 9/10       | Min: `dp[i] = min over coins c ≤ i of (dp[i-c] + 1)` — unbounded knapsack, -1 if unreachable |
+
+> 🟢 **Strong start (9/10, 5 min).** This is the unbounded variant — coins reusable, so the forward sweep is correct. The 0/1 flip (backward loop) comes with 416. Note the family bridge: 322 is Perfect Squares with coins swapped for squares.
 
 ### ⏳ Next up
 

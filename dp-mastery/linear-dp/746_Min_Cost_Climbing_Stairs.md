@@ -10,6 +10,7 @@
 Each step `i` has a cost `cost[i]`. You can start from step 0 **or** step 1. When you pay the cost at step `i`, you can climb 1 or 2 steps forward. Find the minimum cost to reach the **top** (the floor past the last element).
 
 **Constraints:**
+
 - `2 ≤ cost.length ≤ 1000`
 - `0 ≤ cost[i] ≤ 999`
 
@@ -22,6 +23,7 @@ dp[i] = minimum total cost to reach step i (you must pay cost[i] when landing he
 ```
 
 **Examples:**
+
 - `dp[0] = cost[0]` — only way to start at step 0 is to pay its cost
 - `dp[1] = cost[1]` — only way to start at step 1 is to pay its cost
 - `dp[2] = cost[2] + min(dp[1], dp[0])` — reach step 2 from step 1 (1-step) or step 0 (2-step), pay cost[2]
@@ -49,7 +51,7 @@ Answer:
 
 **Step 2:** You want the **cheapest** way to reach step `i`. The total cost = cost[i] (paid on arrival) + cheapest way to reach the previous step.
 
-**Step 3:** You don't *have* to land on the last step. If you take a 2-step from step `n-2`, you leapfrog step `n-1` entirely. So the answer is the min of the last two states.
+**Step 3:** You don't _have_ to land on the last step. If you take a 2-step from step `n-2`, you leapfrog step `n-1` entirely. So the answer is the min of the last two states.
 
 ### Example Walkthrough
 
@@ -131,6 +133,7 @@ int minCostClimbingStairs(vector<int>& cost) {
 ```
 
 **Key Implementation Notes:**
+
 - The recurrence is identical to Climbing Stairs, but with `min()` instead of `+` and adding `cost[i]` at each step
 - Start from cost[0] or cost[1] — you choose the cheaper starting point implicitly via the final `min(dp[n-1], dp[n-2])`
 - Since n ≥ 2, both dp[0] and dp[1] are always valid
@@ -163,13 +166,14 @@ The answer `min(dp[n-1], dp[n-2])` works because once you're at `n-2`, you can t
 3. **Min-over-previous pattern**: Like House Robber's `max()`, this uses `min()` over the last two states — a common variant where the recurrence selects the optimal predecessor.
 
 **Similar problems in this pattern:**
+
 - [70 - Climbing Stairs](linear-dp/70_Climbing_Stairs.md) — same recurrence, but counting ways instead of minimizing cost
 - 198 - House Robber — same sequential structure, but "take or skip" instead of "add cost"
 - 120 - Triangle — minimum path sum from top to bottom (2D but similar additive cost idea)
 
 ## Key Takeaway
 
-*"Min Cost Climbing Stairs = Climbing Stairs with cost[i] added and min() instead of +. Spot the Fibonacci skeleton, then adapt the operation."*
+_"Min Cost Climbing Stairs = Climbing Stairs with cost[i] added and min() instead of +. Spot the Fibonacci skeleton, then adapt the operation."_
 
 ## Your Code
 
@@ -203,17 +207,41 @@ public:
 };
 ```
 
+```cpp
+// Re-solve attempt 2026-08-01 — BUGGY: three state bugs in one submission
+class Solution {
+public:
+    int minCostClimbingStairs(vector<int>& cost) {
+        int n = cost.size();
+        vector<int> dp (n+1,0);
+        dp[0] = cost[0];
+        dp[1] = min(cost[0],cost[1]);  // ❌ inconsistent state: dp[0] means "cost to stand on step 0",
+                                       //    but dp[1] means "cheapest way to reach step 1" — two definitions at once
+        for(int i = 2; i<=n; i++){
+            dp[i] = cost[i]+min(dp[i-1], dp[i-2]);  // ❌ cost[n] is out of bounds when i == n
+        }
+        return dp[n-1];  // ❌ the top is step n (past the last stair); correct answer = min(dp[n-1], dp[n-2])
+    }
+};
+```
+
+_This re-solve attempt is preserved — it's the perfect example of a **state-definition bug** (see Solve Metrics). The diagnosis you made yourself was correct: when the recurrence doesn't match the base cases, check the state definition first._
+
 _This is your original work. Keep it to track how your style evolves._
 
 ## Solve Metrics
 
 - **Solve Time:** Not specified (but understood both approaches)
 - **Attempts:** N/A
-- **Confidence:** 5/10
+- **Confidence:** 4/10
 - **Struggles:** Still building DP intuition — the recurrence clicked when you saw the pattern connection to Climbing Stairs
 - **Submitted:** 2026-07-27
-- **Last Reviewed:** 2026-07-27
-- **Next Review:** 2026-07-30 (Day 3 — review alongside Climbing Stairs)
+- **Last Reviewed:** 2026-08-01
+- **Next Review:** 2026-08-04 (Day 3) — re-solve with the state definition written down FIRST, before any code
+
+**Re-solve Log:**
+
+- 2026-08-01: **STUCK.** Wrote `dp[1] = min(cost[0], cost[1])` (two state definitions at once), `cost[i]` at `i == n` (out of bounds), `return dp[n-1]` (wrong answer index). Your own takeaway was the right one: **"check my dp's state for debug."** With `dp[i] = min cost to reach step i, paying cost[i] when you land`: base cases are `dp[0] = cost[0]`, `dp[1] = cost[1]`, loop only `i < n`, answer `min(dp[n-1], dp[n-2])`. Confidence 5 → 4/10.
 
 ---
 

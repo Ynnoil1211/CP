@@ -266,7 +266,7 @@ _Your original work — both attempts. Keep your wrong attempt here too; it show
 
 - **Solve Time:** ~2 hours (with extensive hints)
 - **Attempts:** 3+ major rewrites
-- **Confidence:** 1/10
+- **Confidence:** 8/10
 - **Struggles:**
   1. Kept trying a **greedy single-pointer** approach — commit to the first match, never backtrack
   2. Didn't realize the nested loop was **structurally required**, not a style choice
@@ -275,8 +275,12 @@ _Your original work — both attempts. Keep your wrong attempt here too; it show
   5. Indexing mismatch on substring construction
 - **Key Lesson:** _"dp[i] = true means there EXISTS some cut point. Try ALL possible j. The nested loop is the DP, not the pointer."_
 - **Submitted:** 2026-07-27
-- **Last Reviewed:** 2026-07-27
-- **Next Review:** 2026-07-30 (Day 3) — re-solve from scratch without hints
+- **Last Reviewed:** 2026-08-01
+- **Next Review:** Mastered — re-solved 2026-08-01 in **3 minutes** from scratch, no hints. 2 hours → 3 minutes. No scheduled re-solve; optional Day 14 touch-up 2026-08-15.
+
+**Re-solve Log:**
+
+- 2026-08-01: 3 min from scratch, zero hints — the nested loop + `dp[0] = true` base case came out automatically. Confidence 1 → 8/10. **The biggest turnaround in the tracker.**
 
 ---
 

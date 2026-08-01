@@ -68,13 +68,13 @@ You're walking the sequence one step at a time, and the past is _compressed_: ev
 
 | ID  | Title                                                       | Confidence | Core idea                                                  |
 | --- | ----------------------------------------------------------- | ---------- | ---------------------------------------------------------- |
-| 70  | [Climbing Stairs](70_Climbing_Stairs.md)                    | 4/10       | Count ways: `dp[i] = dp[i-1] + dp[i-2]`                    |
-| 746 | [Min Cost Climbing Stairs](746_Min_Cost_Climbing_Stairs.md) | 5/10       | Min cost: `dp[i] = cost[i] + min(dp[i-1], dp[i-2])`        |
+| 70  | [Climbing Stairs](70_Climbing_Stairs.md)                    | 8/10       | Count ways: `dp[i] = dp[i-1] + dp[i-2]`                    |
+| 746 | [Min Cost Climbing Stairs](746_Min_Cost_Climbing_Stairs.md) | 4/10       | Min cost: `dp[i] = cost[i] + min(dp[i-1], dp[i-2])`        |
 | 198 | [House Robber](198_House_Robber.md)                         | 7/10       | Max value: `dp[i] = max(dp[i-1], dp[i-2] + nums[i])`       |
 | 213 | [House Robber II](213_House_Robber_II.md)                   | 8/10       | Circle → run the recurrence twice (with / without house 0) |
-| 740 | [Delete and Earn](740_Delete_and_Earn.md)                   | 6/10       | `points[x] = x * freq[x]`, then House Robber               |
+| 740 | [Delete and Earn](740_Delete_and_Earn.md)                   | 7/10       | `points[x] = x * freq[x]`, then House Robber               |
 
-**Confidence check:** The House Robber family (198/213/740) is becoming automatic. 70/746 were warm-ups — treat them as the base cases of this pattern when you review.
+**Confidence check:** The House Robber family (198/213/740) is solid and 70 is mastered (1.5-min re-solve). 🔴 **746 is now the weak link (4/10)** — the state-definition bug on re-solve. Fix: write the state definition as a comment BEFORE coding, and make base cases + recurrence match it exactly. 746 re-solve due 2026-08-04.
 
 ### ⏳ Next up
 

@@ -10,6 +10,7 @@
 Same as House Robber, but houses are arranged in a **circle** — the first and last houses are adjacent. You still cannot rob two adjacent houses.
 
 **Constraints:**
+
 - `1 ≤ nums.length ≤ 100`
 - `0 ≤ nums[i] ≤ 1000`
 
@@ -27,10 +28,10 @@ Same state as HR I. The only new constraint is that house `0` and house `n-1` ca
 
 A circle means you can't rob both ends. So you break it into **two linear problems**:
 
-| Scenario | Range | Excludes | Why |
-|----------|-------|----------|-----|
-| Exclude last house | `nums[0 .. n-2]` | house `n-1` | First house can be robbed freely |
-| Exclude first house | `nums[1 .. n-1]` | house `0` | Last house can be robbed freely |
+| Scenario            | Range            | Excludes    | Why                              |
+| ------------------- | ---------------- | ----------- | -------------------------------- |
+| Exclude last house  | `nums[0 .. n-2]` | house `n-1` | First house can be robbed freely |
+| Exclude first house | `nums[1 .. n-1]` | house `0`   | Last house can be robbed freely  |
 
 The answer = `max(rob_linear(0, n-2), rob_linear(1, n-1))`
 
@@ -146,6 +147,7 @@ int rob(vector<int>& nums) {
 ```
 
 **Key Implementation Notes:**
+
 - The helper function avoids duplicating code and makes the logic self-documenting
 - When `n == 2`, both scenarios give the same result (`max(nums[0], nums[1])`) — handle early
 - dp1 covers range [0, n-2], dp2 covers range [1, n-1]
@@ -161,6 +163,7 @@ int rob(vector<int>& nums) {
 ## Why This Approach Works
 
 **Key insight:** In a circle, the constraint is that houses `0` and `n-1` cannot both be robbed. Any valid solution **either** excludes house `n-1` (solving on `[0, n-2]`) **or** excludes house `0` (solving on `[1, n-1]`). These two cases cover all possibilities because:
+
 - If a solution doesn't rob house 0, it's covered by scenario 2
 - If a solution robs house 0, it can't rob house n-1, so it's covered by scenario 1
 
@@ -182,13 +185,14 @@ Therefore, taking the max of the two linear solutions yields the optimal circula
 3. **Still 1D state**: Each subproblem uses a 1D state.
 
 **Similar problems in this pattern:**
+
 - [198 - House Robber I](linear-dp/198_House_Robber.md) — the foundation for this problem
 - 918 - Maximum Sum Circular Subarray — same circular decomposition trick
 - 740 - Delete and Earn — transforms into HR I after frequency mapping
 
 ## Key Takeaway
 
-*"A circular constraint just means 'run the linear DP twice, excluding each endpoint once.' The recurrence stays the same — only the range changes."*
+_"A circular constraint just means 'run the linear DP twice, excluding each endpoint once.' The recurrence stays the same — only the range changes."_
 
 ## Your Code
 
@@ -223,10 +227,14 @@ _This is your original work. Keep it to track how your style evolves._
 - **Attempts:** 1 (with a hint on the circular decomposition)
 - **Confidence:** 8/10
 - **Struggles:** Needed a hint to realize the "two subarrays" trick for the circle. Once you saw that, the DP was straightforward.
-- **What you proved:** You've fully internalized House Robber I's recurrence. The hint was about *problem decomposition*, not DP — and that's a separate skill. You'll recognize the circle trick next time.
+- **What you proved:** You've fully internalized House Robber I's recurrence. The hint was about _problem decomposition_, not DP — and that's a separate skill. You'll recognize the circle trick next time.
 - **Submitted:** 2026-07-27
-- **Last Reviewed:** 2026-07-27
-- **Next Review:** 2026-07-30 (Day 3) — revisit and try without any hints
+- **Last Reviewed:** 2026-08-01
+- **Next Review:** Mastered. Re-solved 2026-08-01 in ~8 min (one base-case bug). Optional Day 14 touch-up 2026-08-15.
+
+**Re-solve Log:**
+
+- 2026-08-01: ~8 min, no hints. One bug: forgot the `n == 1` / `n == 0` base cases before indexing `nums[1]` / `nums[2]` in the two subarray runs — the classic "guard tiny inputs before touching the recurrence" mistake. Decomposition and recurrence were automatic. Confidence stays 8/10.
 
 ---
 

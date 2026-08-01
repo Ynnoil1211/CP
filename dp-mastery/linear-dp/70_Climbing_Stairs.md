@@ -20,6 +20,7 @@ dp[i] = number of distinct ways to reach step i from the bottom (step 0)
 ```
 
 **Examples:**
+
 - `dp[0] = 1` — 1 way to be at the ground (do nothing)
 - `dp[1] = 1` — 1 way to reach step 1 (one 1-step)
 - `dp[2] = 2` — two ways: (1+1) or (2)
@@ -86,6 +87,7 @@ int climbStairs(int n) {
 ```
 
 **Key Implementation Notes:**
+
 - Top-down recursion is intuitive for the pattern, but the call stack goes O(n) deep
 - Bottom-up with two variables is O(1) space — you only ever need the last two values (Fibonacci pattern)
 - The answer fits in 32-bit int (n ≤ 45, fib(46) ≈ 1.8B < 2³¹)
@@ -116,13 +118,14 @@ By induction on `i`: Suppose `dp[i-1]` correctly counts the ways to reach step `
 3. **Fibonacci-like recurrence**: The recurrence only references the immediate previous states, no branching into unrelated subproblems.
 
 **Similar problems in this pattern:**
+
 - 198 - House Robber (same structure, but "take or skip" instead of "1 or 2")
 - 746 - Min Cost Climbing Stairs (cost added to each step)
 - 1137 - N-th Tribonacci Number (3 previous states instead of 2)
 
 ## Key Takeaway
 
-*When you can only take 1 or 2 steps, the number of ways to reach step `i` is just `dp[i-1] + dp[i-2]` — literally the Fibonacci sequence. Spot the Fibonacci pattern immediately in any "1-step or 2-step" problem.*
+_When you can only take 1 or 2 steps, the number of ways to reach step `i` is just `dp[i-1] + dp[i-2]` — literally the Fibonacci sequence. Spot the Fibonacci pattern immediately in any "1-step or 2-step" problem._
 
 ## Your Code
 
@@ -150,11 +153,15 @@ _This is your original work. Keep it to track how your style evolves._
 
 - **Solve Time:** ~3 minutes (attempted, struggled — got it with help/external)
 - **Attempts:** 1
-- **Confidence:** 4/10
+- **Confidence:** 8/10
 - **Struggles:** Couldn't get the recurrence on your own in the first 3 minutes; DP intuition not yet automatic. That's normal — this is step 1 of the journey.
 - **Submitted:** 2026-07-27
-- **Last Reviewed:** 2026-07-27
-- **Next Review:** 2026-07-30 (Day 3 — review and re-solve from scratch)
+- **Last Reviewed:** 2026-08-01
+- **Next Review:** Mastered — re-solved 2026-08-01 in **1.5 minutes** from scratch, no hints. No scheduled re-solve; optional Day 14 touch-up 2026-08-15.
+
+**Re-solve Log:**
+
+- 2026-08-01: 1.5 min, zero hints — Fibonacci is automatic now. Confidence 4 → 8/10.
 
 ---
 

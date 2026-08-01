@@ -10,6 +10,7 @@
 Given an array `nums`, you can pick any `nums[i]` and earn its value, but you must delete **all** occurrences of `nums[i] - 1` and `nums[i] + 1`. Maximize the total earned.
 
 **Constraints:**
+
 - `1 ≤ nums.length ≤ 2 * 10^4`
 - `1 ≤ nums[i] ≤ 10^4`
 
@@ -23,6 +24,7 @@ points[i] = i * freq[i]   (total points you get if you take ALL copies of value 
 ```
 
 **Examples:**
+
 - `dp[0] = 0` — value 0 doesn't exist; earn nothing
 - `dp[1] = points[1]` — either take value 1 or don't; only one option since there's no conflict with 0
 - `dp[2] = max(points[2] + dp[0], dp[1])` — take 2 (add points[2], skip 1) or skip 2
@@ -32,6 +34,7 @@ points[i] = i * freq[i]   (total points you get if you take ALL copies of value 
 The twist: the constraint "taking value `i` forbids `i-1` and `i+1`" is **structurally identical** to House Robber's "can't rob adjacent houses" when the array is indexed by **value**.
 
 The key transformation:
+
 1. Build `freq[x]` = count of value `x` in `nums`
 2. Build `points[x] = x * freq[x]`
 3. Index by value `0 .. maxVal` (fill gaps with 0 points)
@@ -131,6 +134,7 @@ int deleteAndEarn(vector<int>& nums) {
 ```
 
 **Key Implementation Notes:**
+
 - **Index by value, not by unique values.** This is the critical insight. If you compress to unique values (e.g., `[2,3,5]`), indices `i` and `i-1` in your array don't correspond to values `i` and `i-1` — they might be 2 apart (3 and 5), which wrongly forbids taking both 3 and 5 when they're actually safe together.
 - Your fixed array of size 10001 works, but `maxVal = *max_element(...)` is cleaner and avoids iterating to 10000 unnecessarily.
 - Points for each value = `value × freq[value]`. You take ALL copies at once.
@@ -158,18 +162,19 @@ int deleteAndEarn(vector<int>& nums) {
 
 **This is a Linear DP problem because:**
 
-1. **Reduces to House Robber I**: After frequency preprocessing, the recurrence is identical. This is the most important connection — learn to spot problems that *transform into* a known DP.
+1. **Reduces to House Robber I**: After frequency preprocessing, the recurrence is identical. This is the most important connection — learn to spot problems that _transform into_ a known DP.
 2. **1D state**: dp[i] depends only on value index i.
 3. **Include/skip decision**: Same `max(take + dp[i-2], dp[i-1])` pattern.
 
 **Similar problems in this pattern:**
+
 - [198 - House Robber I](linear-dp/198_House_Robber.md) — the foundation this transforms into
 - [213 - House Robber II](linear-dp/213_House_Robber_II.md) — circular variant
 - 2266 — Count Number of Texts (different but also uses frequency precomputation)
 
 ## Key Takeaway
 
-*"Delete and Earn = House Robber on a frequency-indexed array. If a problem says 'taking X removes X-1 and X+1', map it to a value-indexed array and apply the include/skip recurrence."*
+_"Delete and Earn = House Robber on a frequency-indexed array. If a problem says 'taking X removes X-1 and X+1', map it to a value-indexed array and apply the include/skip recurrence."_
 
 ## Your Code
 
@@ -199,15 +204,19 @@ _This is your original work. Keep it to track how your style evolves._
 
 - **Solve Time:** ~40 minutes
 - **Attempts:** 1 (with hints guiding the transformation)
-- **Confidence:** 6/10
-- **Struggles:** 
+- **Confidence:** 7/10
+- **Struggles:**
   1. Didn't initially see how to map to House Robber — needed the hint to compute `points[x] = x * freq[x]`
   2. Tried compressing to unique values first (which loses the gap information) — that was the trap
-  3. Needed the nudge to *index by value* so adjacency in the array = adjacency in the number line
-- **Key insight you landed on:** *"Index by value, not by uniqueness."* Once that clicked, the House Robber recurrence was immediate.
+  3. Needed the nudge to _index by value_ so adjacency in the array = adjacency in the number line
+- **Key insight you landed on:** _"Index by value, not by uniqueness."_ Once that clicked, the House Robber recurrence was immediate.
 - **Submitted:** 2026-07-27
-- **Last Reviewed:** 2026-07-27
-- **Next Review:** 2026-07-30 (Day 3)
+- **Last Reviewed:** 2026-08-01
+- **Next Review:** 2026-08-08 (Day 7) — re-solve, target < 8 minutes
+
+**Re-solve Log:**
+
+- 2026-08-01: 11 min, no hints. Struggled briefly with the `1e4` array bound (nums values ≤ 10⁴, so `freq` needs size `10001`, and `dp` must cover the top value) and then the base case — fixed by using `dp[1] = freq[1]` instead of the fragile `dp[nums[0]]`. The index-by-value transform itself is now yours. Confidence 6 → 7/10.
 
 ---
 

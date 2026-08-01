@@ -1,9 +1,9 @@
 # 100 DP Medium Problems Challenge
 
-**Progress:** 5/100 problems solved
-**Current Week:** Week 3 (Linear + Segmentation DP)
+**Progress:** 6/100 problems solved
+**Current Week:** Week 4 (2D Grid + Knapsack — early start)
 **Target Completion:** TBD
-**Overall Confidence:** 5.0/10 (est.)
+**Overall Confidence:** 6.9/10
 
 ## Pattern Library
 
@@ -39,19 +39,19 @@ Each pattern folder starts with a `README.md` — the full pattern explanation (
 
 ## Progress by Pattern Type
 
-| Pattern                                      | Solved | Target | % Complete | Avg Time | Mastery        |
-| -------------------------------------------- | ------ | ------ | ---------- | -------- | -------------- |
-| [Linear DP](linear-dp/README.md)             | 3/10   | 10     | 30%        | ~20m     | 🟡 In Progress |
-| [Segmentation DP](segmentation-dp/README.md) | 2/10   | 10     | 20%        | ~2h      | 🟡 In Progress |
-| [2D Grid DP](2d-grid-dp/README.md)           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
-| [Two-Sequence (LCS)](lcs-dp/README.md)       | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
-| [Knapsack](knapsack-dp/README.md)            | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
-| [Interval DP](interval-dp/README.md)         | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
-| [Tree DP](tree-dp/README.md)                 | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
-| [State Machine](state-machine-dp/README.md)  | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
-| [Game Theory](game-theory-dp/README.md)      | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
-| [Digit DP](digit-dp/README.md)               | 0/8    | 8      | 0%         | —        | 🔴 Advanced    |
-| [Bitmask DP](bitmask-dp/README.md)           | 0/8    | 8      | 0%         | —        | 🔴 Advanced    |
+| Pattern                                      | Solved | Target | % Complete | Avg Time | Mastery         |
+| -------------------------------------------- | ------ | ------ | ---------- | -------- | --------------- |
+| [Linear DP](linear-dp/README.md)             | 3/10   | 10     | 30%        | ~20m     | 🟡 In Progress  |
+| [Segmentation DP](segmentation-dp/README.md) | 2/10   | 10     | 20%        | ~2h      | 🟡 In Progress  |
+| [2D Grid DP](2d-grid-dp/README.md)           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming     |
+| [Two-Sequence (LCS)](lcs-dp/README.md)       | 0/10   | 10     | 0%         | —        | ⏳ Upcoming     |
+| [Knapsack](knapsack-dp/README.md)            | 1/10   | 10     | 10%        | 5m       | 🟢 Strong start |
+| [Interval DP](interval-dp/README.md)         | 0/10   | 10     | 0%         | —        | ⏳ Upcoming     |
+| [Tree DP](tree-dp/README.md)                 | 0/8    | 8      | 0%         | —        | ⏳ Upcoming     |
+| [State Machine](state-machine-dp/README.md)  | 0/8    | 8      | 0%         | —        | ⏳ Upcoming     |
+| [Game Theory](game-theory-dp/README.md)      | 0/8    | 8      | 0%         | —        | ⏳ Upcoming     |
+| [Digit DP](digit-dp/README.md)               | 0/8    | 8      | 0%         | —        | 🔴 Advanced     |
+| [Bitmask DP](bitmask-dp/README.md)           | 0/8    | 8      | 0%         | —        | 🔴 Advanced     |
 
 ## By Week
 
@@ -72,7 +72,9 @@ _Linear:_ ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md), ✅ [74
 - [ ] 91 - Decode Ways _(Segmentation)_
 - [ ] 343 - Integer Break _(Segmentation)_
 
-### Week 4: 2D Grid + Knapsack (0/20 problems)
+### Week 4: 2D Grid + Knapsack (1/20 problems)
+
+_Knapsack:_ ✅ [322 - Coin Change](knapsack-dp/322_Coin_Change.md) _(early start — the 279 pattern transfer!)_
 
 - [ ] 62 - Unique Paths
 - [ ] 63 - Unique Paths II
@@ -109,18 +111,22 @@ _(Coming after core patterns)_
 ## Problems Mastered (Confidence ≥ 8/10)
 
 - ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md) — first 8/10!
+- ✅ [322 - Coin Change](knapsack-dp/322_Coin_Change.md) — first 9/10, 5 minutes. Pattern transfer from 279 paid off.
+- ✅ [139 - Word Break](segmentation-dp/139_Word_Break.md) — 2h → **3-minute re-solve**. The biggest turnaround in the tracker.
+- ✅ [70 - Climbing Stairs](linear-dp/70_Climbing_Stairs.md) — 1.5-minute re-solve. Fibonacci is automatic.
 
-_One down. Keep going._
+_Four down. The review system is working._
 
 ## Weakest Patterns (Confidence ≤ 5/10)
 
-- **Segmentation DP** (2/10, avg ~2.5/10) — Word Break exposed the greedy-to-DP gap; Perfect Squares showed the gap is now the **state definition**, not the pieces. Both flagged for re-solve before Decode Ways.
+- **746 - Min Cost Climbing Stairs** (4/10) — re-solve exposed a **state-definition bug** (`dp[1] = min(cost[0], cost[1])` mixed two definitions; `cost[i]` OOB at `i == n`; wrong answer index). Fix: write the state as a comment first. Due 2026-08-04.
+- **279 - Perfect Squares** (4/10) — can spot the pieces, can't yet derive the state cold. Due 2026-08-04.
 
 ## Weekly Summary
 
-| Week | Problems   | Avg Time | Avg Confidence | Top Topic                |
-| ---- | ---------- | -------- | -------------- | ------------------------ |
-| 1-3  | 7 problems | ~26m avg | 5.0/10         | Linear + Segmentation DP |
+| Week | Problems   | Avg Time | Avg Confidence | Top Topic               |
+| ---- | ---------- | -------- | -------------- | ----------------------- |
+| 1-3  | 8 problems | ~23m avg | 6.9/10         | Linear + Seg + Knapsack |
 
 ---
 
@@ -146,15 +152,16 @@ Same skeleton — three different operations. You've seen the whole family.
 
 **Curve check:**
 
-| Problem               | Time | Confidence  | Trend          |
-| --------------------- | ---- | ----------- | -------------- |
-| 70 - Climbing Stairs  | ~3m  | 4/10        | 😖 First try   |
-| 746 - Min Cost        | —    | 5/10        | 👍 Got it      |
-| 198 - House Robber    | 30m  | 7/10        | 🟢 Good        |
-| 213 - House Robber II | 8m   | 8/10        | 🚀 On fire     |
-| 740 - Delete and Earn | 40m  | 6/10        | 🟡 Guided      |
-| 139 - Word Break      | 2h   | 1/10        | 🔴 Greedy trap |
-| 279 - Perfect Squares | N/A  | 4/10 (est.) | 🔴 State gap   |
+| Problem               | Time | Confidence  | Trend                   |
+| --------------------- | ---- | ----------- | ----------------------- |
+| 70 - Climbing Stairs  | ~3m  | 8/10        | 🚀 1.5m re-solve        |
+| 746 - Min Cost        | —    | 4/10        | 🔴 State-definition bug |
+| 198 - House Robber    | 30m  | 7/10        | 🟢 Good                 |
+| 213 - House Robber II | 8m   | 8/10        | 🚀 8m re-solve          |
+| 740 - Delete and Earn | 40m  | 7/10        | 🟡 11m re-solve         |
+| 139 - Word Break      | 2h   | 8/10        | 🚀 3m re-solve!         |
+| 279 - Perfect Squares | N/A  | 4/10 (est.) | 🔴 State gap            |
+| 322 - Coin Change     | 5m   | 9/10        | 🚀 Transfer!            |
 
 **What's next:**
 
@@ -167,6 +174,26 @@ Word Break was the hardest one yet, and that's exactly why it's the most valuabl
 **Your homework before the next problem:** Re-solve both Word Break AND Perfect Squares from scratch with no hints — Word Break in under 10 minutes, Perfect Squares in under 15. If you can write the state + recurrence for both, the segmentation family is yours.
 
 Then try **91 - Decode Ways** — same skeleton, counting ways instead of minimizing/existence. The full pattern writeup is in [segmentation-dp/README.md](segmentation-dp/README.md).
+
+**322 — the transfer worked, and it's a huge signal.** You solved Coin Change in **5 minutes at 9/10**, the exact problem flagged in the 279 note as "you've already written this code." That's not luck — that's the state+recurrence mental model working. Word Break took 2 hours; Perfect Squares was unsolvable alone; Coin Change was trivial. The gap between knowing a pattern's skeleton and not knowing it is the entire game.
+
+**The one thing to remember from 322:** your bug was `if (x < amount) break` instead of `if (x > i) break` — the inner-loop guard must compare against the **current state `i`**, never the global target `amount`. A wrong guard doesn't crash; it silently degrades the DP to "only the smallest coin."
+
+**Next:** 322 unlocked the knapsack family. 416 - Partition Equal Subset Sum is the same code with the loop flipped (0/1, backward) — a great next target. Or stay in Week 4's grid track with 62 - Unique Paths. Either way, keep the streak: two straight problems at confidence ≥ 8.
+
+**Re-solve session (08-01) — the data speaks:**
+
+| Problem           | First solve | Re-solve  | Δ              |
+| ----------------- | ----------- | --------- | -------------- |
+| 139 - Word Break  | 2h          | **3 min** | 🚀 40× faster  |
+| 70 - Climbing     | ~3m         | 1.5 min   | 🚀 automatic   |
+| 740 - Delete Earn | 40m         | 11 min    | 🚀 3.6× faster |
+| 213 - Robber II   | 8m          | 8 min     | ➖ same, solid |
+| 746 - Min Cost    | —           | STUCK     | 🔴 state bug   |
+
+**Word Break 2h → 3 min is the proof the method works.** The greedy trap isn't just learned — it's gone. Your own diagnosis on 746 was the right debugging instinct: _"check my dp's state"_ — that's exactly what state-definition bugs look like. Base cases define the state; the recurrence must match them. Write the state as a comment first, always.
+
+**Due 08-04:** 279 + 322 quick re-solves, plus 746's redemption re-solve. If 746 falls under 8 minutes with no state flubs, it's cleared.
 
 ---
 
