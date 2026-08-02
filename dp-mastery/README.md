@@ -1,9 +1,9 @@
 # 100 DP Medium Problems Challenge
 
-**Progress:** 6/100 problems solved
+**Progress:** 8/100 problems solved
 **Current Week:** Week 4 (2D Grid + Knapsack — early start)
 **Target Completion:** TBD
-**Overall Confidence:** 6.9/10
+**Overall Confidence:** 6.8/10
 
 ## Pattern Library
 
@@ -39,19 +39,19 @@ Each pattern folder starts with a `README.md` — the full pattern explanation (
 
 ## Progress by Pattern Type
 
-| Pattern                                      | Solved | Target | % Complete | Avg Time | Mastery         |
-| -------------------------------------------- | ------ | ------ | ---------- | -------- | --------------- |
-| [Linear DP](linear-dp/README.md)             | 3/10   | 10     | 30%        | ~20m     | 🟡 In Progress  |
-| [Segmentation DP](segmentation-dp/README.md) | 2/10   | 10     | 20%        | ~2h      | 🟡 In Progress  |
-| [2D Grid DP](2d-grid-dp/README.md)           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming     |
-| [Two-Sequence (LCS)](lcs-dp/README.md)       | 0/10   | 10     | 0%         | —        | ⏳ Upcoming     |
-| [Knapsack](knapsack-dp/README.md)            | 1/10   | 10     | 10%        | 5m       | 🟢 Strong start |
-| [Interval DP](interval-dp/README.md)         | 0/10   | 10     | 0%         | —        | ⏳ Upcoming     |
-| [Tree DP](tree-dp/README.md)                 | 0/8    | 8      | 0%         | —        | ⏳ Upcoming     |
-| [State Machine](state-machine-dp/README.md)  | 0/8    | 8      | 0%         | —        | ⏳ Upcoming     |
-| [Game Theory](game-theory-dp/README.md)      | 0/8    | 8      | 0%         | —        | ⏳ Upcoming     |
-| [Digit DP](digit-dp/README.md)               | 0/8    | 8      | 0%         | —        | 🔴 Advanced     |
-| [Bitmask DP](bitmask-dp/README.md)           | 0/8    | 8      | 0%         | —        | 🔴 Advanced     |
+| Pattern                                      | Solved | Target | % Complete | Avg Time | Mastery        |
+| -------------------------------------------- | ------ | ------ | ---------- | -------- | -------------- |
+| [Linear DP](linear-dp/README.md)             | 3/10   | 10     | 30%        | ~20m     | 🟡 In Progress |
+| [Segmentation DP](segmentation-dp/README.md) | 3/10   | 10     | 30%        | ~25m     | 🟡 In Progress |
+| [2D Grid DP](2d-grid-dp/README.md)           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
+| [Two-Sequence (LCS)](lcs-dp/README.md)       | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
+| [Knapsack](knapsack-dp/README.md)            | 2/10   | 10     | 20%        | ~13m     | 🟡 In Progress |
+| [Interval DP](interval-dp/README.md)         | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
+| [Tree DP](tree-dp/README.md)                 | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
+| [State Machine](state-machine-dp/README.md)  | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
+| [Game Theory](game-theory-dp/README.md)      | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
+| [Digit DP](digit-dp/README.md)               | 0/8    | 8      | 0%         | —        | 🔴 Advanced    |
+| [Bitmask DP](bitmask-dp/README.md)           | 0/8    | 8      | 0%         | —        | 🔴 Advanced    |
 
 ## By Week
 
@@ -70,11 +70,11 @@ _Linear:_ ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md), ✅ [74
 - [ ] 300 - Longest Increasing Subsequence _(Linear, scan-all-previous)_
 - [ ] 368 - Largest Divisible Subset _(Linear, scan-all-previous)_
 - [ ] 91 - Decode Ways _(Segmentation)_
-- [ ] 343 - Integer Break _(Segmentation)_
+- ✅ 343 - Integer Break _(Segmentation)_
 
-### Week 4: 2D Grid + Knapsack (1/20 problems)
+### Week 4: 2D Grid + Knapsack (2/20 problems)
 
-_Knapsack:_ ✅ [322 - Coin Change](knapsack-dp/322_Coin_Change.md) _(early start — the 279 pattern transfer!)_
+_Knapsack:_ ✅ [322 - Coin Change](knapsack-dp/322_Coin_Change.md) _(early start — the 279 pattern transfer!)_, ✅ [377 - Combination Sum IV](knapsack-dp/377_Combination_Sum_IV.md) _(counting variant — the + operator, Decode Ways engine)_
 
 - [ ] 62 - Unique Paths
 - [ ] 63 - Unique Paths II
@@ -85,7 +85,7 @@ _Knapsack:_ ✅ [322 - Coin Change](knapsack-dp/322_Coin_Change.md) _(early star
 - [ ] 416 - Partition Equal Subset Sum
 - [ ] 494 - Target Sum
 - [ ] 474 - Ones and Zeroes
-- [ ] 322 - Coin Change
+- ✅ 322 - Coin Change
 
 ### Week 5: Interval + Two-Sequence/LCS (0/20 problems)
 
@@ -124,9 +124,9 @@ _Four down. The review system is working._
 
 ## Weekly Summary
 
-| Week | Problems   | Avg Time | Avg Confidence | Top Topic               |
-| ---- | ---------- | -------- | -------------- | ----------------------- |
-| 1-3  | 8 problems | ~23m avg | 6.9/10         | Linear + Seg + Knapsack |
+| Week | Problems    | Avg Time | Avg Confidence | Top Topic               |
+| ---- | ----------- | -------- | -------------- | ----------------------- |
+| 1-3  | 10 problems | ~21m avg | 6.8/10         | Linear + Seg + Knapsack |
 
 ---
 
@@ -162,6 +162,8 @@ Same skeleton — three different operations. You've seen the whole family.
 | 139 - Word Break      | 2h   | 8/10        | 🚀 3m re-solve!         |
 | 279 - Perfect Squares | N/A  | 4/10 (est.) | 🔴 State gap            |
 | 322 - Coin Change     | 5m   | 9/10        | 🚀 Transfer!            |
+| 377 - Combination IV  | 22m  | 7/10        | 🟡 Base-case gap        |
+| 343 - Integer Break   | 27m  | 6/10        | 🟡 Whole-piece given    |
 
 **What's next:**
 
@@ -193,7 +195,13 @@ Then try **91 - Decode Ways** — same skeleton, counting ways instead of minimi
 
 **Word Break 2h → 3 min is the proof the method works.** The greedy trap isn't just learned — it's gone. Your own diagnosis on 746 was the right debugging instinct: _"check my dp's state"_ — that's exactly what state-definition bugs look like. Base cases define the state; the recurrence must match them. Write the state as a comment first, always.
 
-**Due 08-04:** 279 + 322 quick re-solves, plus 746's redemption re-solve. If 746 falls under 8 minutes with no state flubs, it's cleared.
+**Due 08-04:** 279 + 322 quick re-solves, 377's Day 3 review, plus 746's redemption re-solve. If 746 falls under 8 minutes with no state flubs, it's cleared.
+
+**377 — the counting operator is now yours, and that was the last missing piece for Decode Ways.** You had the intuition (accumulate previous combinations) but the base case blocked the formula: counting needs `dp[0] = 1` (the empty way, like 0! = 1), cost problems need `dp[0] = 0`. The +1 you kept adding was Coin Change's "count coins used" logic leaking in — ways are added as whole blocks (`dp[i] += dp[i-x]`), never per-path. Also worth remembering: intermediates can overflow int even when the answer fits (dp[630] ≈ 4.6×10¹⁸) — unsigned int or clamp.
+
+**Ladder status:** ✅ 377 (counting) → ✅ 343 (max + whole-piece) → ⏳ 279 re-solve (min, due 08-04) → **91 Decode Ways = 377 + string gates.** The operator engine is complete — OR/min/max/count are all yours in this skeleton. Only the digit gates are new.
+
+**About 343 — don't let the stolen solve sting.** The helper handed you the `j·(i−j)` term instead of guiding you to it, and that's on the helper, not on you. But look at what you produced alone: the nested loop over cuts, `dp[i−j]·j`, the max accumulation — the segmentation skeleton, for the fifth time, without prompting. The missing term was a genuinely new concept (a piece may stay whole — no prior problem allowed it), not a gap in your skill. The 08-04 re-solve, no hints, is the real verdict. For the record: you've now solved 343 in 27 minutes; the first time you met Word Break, it took 2 hours. The trend line is the truth.
 
 ---
 

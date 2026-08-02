@@ -55,13 +55,14 @@ Every capacity value is a "budget", and each item is a yes/no question per budge
 
 ### 🟢 Solved Problems
 
-| ID  | Title                             | Confidence | Core idea                                                                                    |
-| --- | --------------------------------- | ---------- | -------------------------------------------------------------------------------------------- |
-| 322 | [Coin Change](322_Coin_Change.md) | 9/10       | Min: `dp[i] = min over coins c ≤ i of (dp[i-c] + 1)` — unbounded knapsack, -1 if unreachable |
+| ID  | Title                                           | Confidence | Core idea                                                                                    |
+| --- | ----------------------------------------------- | ---------- | -------------------------------------------------------------------------------------------- |
+| 322 | [Coin Change](322_Coin_Change.md)               | 9/10       | Min: `dp[i] = min over coins c ≤ i of (dp[i-c] + 1)` — unbounded knapsack, -1 if unreachable |
+| 377 | [Combination Sum IV](377_Combination_Sum_IV.md) | 7/10       | Count: `dp[i] = sum over nums x ≤ i of dp[i-x]` — counting variant, `dp[0] = 1` (empty way)  |
 
-> 🟢 **Strong start (9/10, 5 min).** This is the unbounded variant — coins reusable, so the forward sweep is correct. The 0/1 flip (backward loop) comes with 416. Note the family bridge: 322 is Perfect Squares with coins swapped for squares.
+> 🟢 **322 is mastered (9/10); 377 adds the counting variant (7/10).** Same unbounded skeleton, but the operator flips min → + and the base case flips 0 → 1 (one empty way). Watch the +1 leak from cost-thinking, and the real overflow test case (intermediates like dp[630] ≈ 4.6×10¹⁸) — unsigned int or clamp.
 
 ### ⏳ Next up
 
 - [416 - Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/) (0/1, reachability) → [494 - Target Sum](https://leetcode.com/problems/target-sum/) (0/1, counting) → [474 - Ones and Zeroes](https://leetcode.com/problems/ones-and-zeroes/) (two capacities)
-- [322 - Coin Change](https://leetcode.com/problems/coin-change/) (unbounded, min coins)
+- [518 - Coin Change II](https://leetcode.com/problems/coin-change-ii/) — counting but order doesn't matter → **flip the loops** (coins outer). The one structural difference 377 taught you to look for

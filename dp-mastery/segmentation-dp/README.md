@@ -76,11 +76,12 @@ Try spotting this shape cold on **Palindrome Partitioning II** or **Perfect Squa
 | --- | ----------------------------------------- | ---------- | --------------------------------------------------------------------------------- |
 | 139 | [Word Break](139_Word_Break.md)           | 8/10       | Existence: `dp[i] = OR over j of (dp[j] && s[j..i) in dict)`                      |
 | 279 | [Perfect Squares](279_Perfect_Squares.md) | 4/10       | Min: `dp[i] = min over squares s ≤ i of (dp[i-s] + 1)` — last-piece decomposition |
+| 343 | [Integer Break](343_Integer_Break.md)     | 6/10       | Max: `dp[i] = max over cuts j of (j·(i−j), j·dp[i−j])` — the "leave whole" twist  |
 
-> 🟢 **139 is mastered** — 2h → 3-min re-solve on 2026-08-01; the greedy trap is fully internalized. 🔴 **279 (4/10) is now the weak one in this family** — you could see the pieces but not write the state alone. It's due 2026-08-04; re-solve with the state written first. Note: 279 is Coin Change in disguise — and you already aced 322, so the recurrence itself is yours; it's the _deriving it cold_ part that needs reps.
+> 🟢 **139 mastered (8/10); 343 adds the max operator + the "leave whole" twist (6/10).** 🔴 **279 (4/10) is still the weak one — due 2026-08-04.** Note: 343's only new idea vs the family is that a piece may stay whole (`j·(i−j)`); everything else is the skeleton you already own.
 
 ### ⏳ Next up
 
-- [91 - Decode Ways](https://leetcode.com/problems/decode-ways/) — the same skeleton, counting ways instead of existence
-- [343 - Integer Break](https://leetcode.com/problems/integer-break/) — split `n` into pieces maximizing the product
+- [91 - Decode Ways](https://leetcode.com/problems/decode-ways/) — the same skeleton, counting ways + digit gates. **The operator engine is built (OR/min/max/count all done) — only the gates are new.**
 - [322 - Coin Change](https://leetcode.com/problems/coin-change/) — ✅ solved 2026-08-01 (9/10, filed under [knapsack-dp](../knapsack-dp/322_Coin_Change.md)) — it was indeed Perfect Squares with coins swapped in
+- [343 - Integer Break](https://leetcode.com/problems/integer-break/) — ✅ solved 2026-08-01 (6/10, [note](343_Integer_Break.md)) — max operator + "leave whole" twist
