@@ -6,7 +6,7 @@
 
 Your state is a **range `[i, j]`** of the array. You solve small ranges first, then combine them into larger ranges by trying every **split point `k`** inside the range.
 
-The mental shift: instead of processing left to right, you think "the answer for this range = best way to combine the answers of two sub-ranges". This is the DP of *order-of-operations* problems — you choose where the **last operation** happens, and everything before it becomes two independent sub-problems.
+The mental shift: instead of processing left to right, you think "the answer for this range = best way to combine the answers of two sub-ranges". This is the DP of _order-of-operations_ problems — you choose where the **last operation** happens, and everything before it becomes two independent sub-problems.
 
 ### When to recognize it
 
@@ -17,16 +17,19 @@ The mental shift: instead of processing left to right, you think "the answer for
 ### The General Template
 
 **State:**
+
 ```
 dp[i][j] = best result for the range [i, j]
 ```
 
 **Base case:**
+
 ```
 dp[i][i] = single-element cost (often 0)
 ```
 
 **Transition:**
+
 ```
 dp[i][j] = best over k in (i, j) of: dp[i][k] + dp[k][j] + cost(i, k, j)
 ```
@@ -38,6 +41,8 @@ dp[i][j] = best over k in (i, j) of: dp[i][k] + dp[k][j] + cost(i, k, j)
 ### The core intuition to keep
 
 Pick the **"last action"** (the last balloon burst, the last merge, the last cut) — it splits the range into two independent halves. The split point `k` is the decision, which is what makes this different from Linear DP, where the decision is per-element. If a problem gives you a range and asks "what's the best order of operations?", reach for the split.
+
+**⚠️ 1D variant (split-cost over a total):** when the object being split is a _number_ (not a range of an array), the state collapses to 1D: `dp[i] = min over j of dp[j] + dp[i-j] + cost(j, i-j)` — both children recurse, you pay for the split. This is the MCM merge-cost shape in miniature, and it's the perfect warm-up before the 2D classics.
 
 ### 🟢 Solved Problems
 

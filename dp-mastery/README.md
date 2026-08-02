@@ -1,6 +1,6 @@
 # 100 DP Medium Problems Challenge
 
-**Progress:** 8/100 problems solved
+**Progress:** 9/100 problems solved
 **Current Week:** Week 4 (2D Grid + Knapsack — early start)
 **Target Completion:** TBD
 **Overall Confidence:** 6.8/10
@@ -46,7 +46,7 @@ Each pattern folder starts with a `README.md` — the full pattern explanation (
 | [2D Grid DP](2d-grid-dp/README.md)           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
 | [Two-Sequence (LCS)](lcs-dp/README.md)       | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
 | [Knapsack](knapsack-dp/README.md)            | 2/10   | 10     | 20%        | ~13m     | 🟡 In Progress |
-| [Interval DP](interval-dp/README.md)         | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
+| [Interval DP](interval-dp/README.md)         | 1/10   | 10     | 10%        | —        | 🟢 Started     |
 | [Tree DP](tree-dp/README.md)                 | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
 | [State Machine](state-machine-dp/README.md)  | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
 | [Game Theory](game-theory-dp/README.md)      | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
@@ -87,7 +87,9 @@ _Knapsack:_ ✅ [322 - Coin Change](knapsack-dp/322_Coin_Change.md) _(early star
 - [ ] 474 - Ones and Zeroes
 - ✅ 322 - Coin Change
 
-### Week 5: Interval + Two-Sequence/LCS (0/20 problems)
+### Week 5: Interval + Two-Sequence/LCS (1/20 problems)
+
+_Interval:_ ✅ [3857 - Minimum Cost to Split into Ones](interval-dp/3857_Minimum_Cost_to_Split_into_Ones.md) _(early start — the 1D split-cost warm-up)_
 
 - [ ] 1039 - Minimum Score Triangulation
 - [ ] 312 - Burst Balloons
@@ -127,6 +129,7 @@ _Four down. The review system is working._
 | Week | Problems    | Avg Time | Avg Confidence | Top Topic               |
 | ---- | ----------- | -------- | -------------- | ----------------------- |
 | 1-3  | 10 problems | ~21m avg | 6.8/10         | Linear + Seg + Knapsack |
+| 4    | 1 problem   | —        | 7/10           | Interval (early start)  |
 
 ---
 
@@ -152,18 +155,19 @@ Same skeleton — three different operations. You've seen the whole family.
 
 **Curve check:**
 
-| Problem               | Time | Confidence  | Trend                   |
-| --------------------- | ---- | ----------- | ----------------------- |
-| 70 - Climbing Stairs  | ~3m  | 8/10        | 🚀 1.5m re-solve        |
-| 746 - Min Cost        | —    | 4/10        | 🔴 State-definition bug |
-| 198 - House Robber    | 30m  | 7/10        | 🟢 Good                 |
-| 213 - House Robber II | 8m   | 8/10        | 🚀 8m re-solve          |
-| 740 - Delete and Earn | 40m  | 7/10        | 🟡 11m re-solve         |
-| 139 - Word Break      | 2h   | 8/10        | 🚀 3m re-solve!         |
-| 279 - Perfect Squares | N/A  | 4/10 (est.) | 🔴 State gap            |
-| 322 - Coin Change     | 5m   | 9/10        | 🚀 Transfer!            |
-| 377 - Combination IV  | 22m  | 7/10        | 🟡 Base-case gap        |
-| 343 - Integer Break   | 27m  | 6/10        | 🟡 Whole-piece given    |
+| Problem                | Time | Confidence  | Trend                    |
+| ---------------------- | ---- | ----------- | ------------------------ |
+| 70 - Climbing Stairs   | ~3m  | 8/10        | 🚀 1.5m re-solve         |
+| 746 - Min Cost         | —    | 4/10        | 🔴 State-definition bug  |
+| 198 - House Robber     | 30m  | 7/10        | 🟢 Good                  |
+| 213 - House Robber II  | 8m   | 8/10        | 🚀 8m re-solve           |
+| 740 - Delete and Earn  | 40m  | 7/10        | 🟡 11m re-solve          |
+| 139 - Word Break       | 2h   | 8/10        | 🚀 3m re-solve!          |
+| 279 - Perfect Squares  | N/A  | 4/10 (est.) | 🔴 State gap             |
+| 322 - Coin Change      | 5m   | 9/10        | 🚀 Transfer!             |
+| 377 - Combination IV   | 22m  | 7/10        | 🟡 Base-case gap         |
+| 343 - Integer Break    | 27m  | 6/10        | 🟡 Whole-piece given     |
+| 3857 - Split into Ones | —    | 7/10        | 🟢 New family (interval) |
 
 **What's next:**
 
@@ -202,6 +206,10 @@ Then try **91 - Decode Ways** — same skeleton, counting ways instead of minimi
 **Ladder status:** ✅ 377 (counting) → ✅ 343 (max + whole-piece) → ⏳ 279 re-solve (min, due 08-04) → **91 Decode Ways = 377 + string gates.** The operator engine is complete — OR/min/max/count are all yours in this skeleton. Only the digit gates are new.
 
 **About 343 — don't let the stolen solve sting.** The helper handed you the `j·(i−j)` term instead of guiding you to it, and that's on the helper, not on you. But look at what you produced alone: the nested loop over cuts, `dp[i−j]·j`, the max accumulation — the segmentation skeleton, for the fifth time, without prompting. The missing term was a genuinely new concept (a piece may stay whole — no prior problem allowed it), not a gap in your skill. The 08-04 re-solve, no hints, is the real verdict. For the record: you've now solved 343 in 27 minutes; the first time you met Word Break, it took 2 hours. The trend line is the truth.
+
+**3857 — you just opened a NEW pattern family.** The recurrence `dp[j] + dp[i−j] + j·(i−j)` (both children recurse, you pay for the split) is the **Interval DP** signature — the family of Matrix Chain Multiplication, Burst Balloons, and Triangulation (all queued in Week 5). Your instinct that "the conditions" were the hard part is exactly right: the policy (must-split vs may-stay-whole vs single-valid-piece) is what distinguishes interval from segmentation. One sentence to keep: **segmentation consumes a piece; interval splits both halves and pays for the split.**
+
+**Still open from the ladder:** 279 re-solve (due 08-04) and **91 Decode Ways** — the last boss of the segmentation family. 3857 was a great detour into a new family, but don't let Decode Ways drift: the operator engine (OR/min/max/count) is built — only the digit gates are new.
 
 ---
 
