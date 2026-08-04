@@ -1,9 +1,9 @@
 # 100 DP Medium Problems Challenge
 
-**Progress:** 9/100 problems solved
+**Progress:** 11/100 problems solved
 **Current Week:** Week 4 (2D Grid + Knapsack — early start)
 **Target Completion:** TBD
-**Overall Confidence:** 6.8/10
+**Overall Confidence:** 6.4/10
 
 ## Pattern Library
 
@@ -41,8 +41,8 @@ Each pattern folder starts with a `README.md` — the full pattern explanation (
 
 | Pattern                                      | Solved | Target | % Complete | Avg Time | Mastery        |
 | -------------------------------------------- | ------ | ------ | ---------- | -------- | -------------- |
-| [Linear DP](linear-dp/README.md)             | 3/10   | 10     | 30%        | ~20m     | 🟡 In Progress |
-| [Segmentation DP](segmentation-dp/README.md) | 3/10   | 10     | 30%        | ~25m     | 🟡 In Progress |
+| [Linear DP](linear-dp/README.md)             | 4/10   | 10     | 40%        | ~20m     | 🟡 In Progress |
+| [Segmentation DP](segmentation-dp/README.md) | 4/10   | 10     | 40%        | ~25m     | 🟡 In Progress |
 | [2D Grid DP](2d-grid-dp/README.md)           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
 | [Two-Sequence (LCS)](lcs-dp/README.md)       | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
 | [Knapsack](knapsack-dp/README.md)            | 2/10   | 10     | 20%        | ~13m     | 🟡 In Progress |
@@ -65,7 +65,7 @@ Pre-medium warmup: Climbing Stairs, House Robber basics
 
 ### Week 3: Linear + Segmentation DP (5/20 problems)
 
-_Linear:_ ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md), ✅ [740 - Delete and Earn](linear-dp/740_Delete_and_Earn.md) · _Segmentation:_ ✅ [139 - Word Break](segmentation-dp/139_Word_Break.md), ✅ [279 - Perfect Squares](segmentation-dp/279_Perfect_Squares.md)
+_Linear:_ ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md), ✅ [740 - Delete and Earn](linear-dp/740_Delete_and_Earn.md), ✅ [53 - Maximum Subarray](linear-dp/53_Maximum_Subarray.md) _(redo list)_ · _Segmentation:_ ✅ [139 - Word Break](segmentation-dp/139_Word_Break.md), ✅ [279 - Perfect Squares](segmentation-dp/279_Perfect_Squares.md), ✅ [1043 - Partition Array for Max Sum](segmentation-dp/1043_Partition_Array_for_Maximum_Sum.md) _(redo list — Decode Ways engine)_
 
 - [ ] 300 - Longest Increasing Subsequence _(Linear, scan-all-previous)_
 - [ ] 368 - Largest Divisible Subset _(Linear, scan-all-previous)_
@@ -123,12 +123,14 @@ _Four down. The review system is working._
 
 - **746 - Min Cost Climbing Stairs** (4/10) — re-solve exposed a **state-definition bug** (`dp[1] = min(cost[0], cost[1])` mixed two definitions; `cost[i]` OOB at `i == n`; wrong answer index). Fix: write the state as a comment first. Due 2026-08-04.
 - **279 - Perfect Squares** (4/10) — can spot the pieces, can't yet derive the state cold. Due 2026-08-04.
+- **53 - Maximum Subarray** (5/10, REDO LIST) — "ending at i" state flavor vs the "up to i" you know; answer = running max, never dp[n-1]. Due 2026-08-04.
+- **1043 - Partition Array for Max Sum** (3/10, REDO LIST) — couldn't define the piece (a window of length ≤ k with value max·len). Defining the piece IS the state. Due 2026-08-04 — **re-solve before Decode Ways: this is its engine.** _(Deep re-study 08-01: loop trick added to the note — timed re-solve still due.)_
 
 ## Weekly Summary
 
 | Week | Problems    | Avg Time | Avg Confidence | Top Topic               |
 | ---- | ----------- | -------- | -------------- | ----------------------- |
-| 1-3  | 10 problems | ~21m avg | 6.8/10         | Linear + Seg + Knapsack |
+| 1-3  | 12 problems | ~20m avg | 6.3/10         | Linear + Seg + Knapsack |
 | 4    | 1 problem   | —        | 7/10           | Interval (early start)  |
 
 ---
@@ -155,19 +157,21 @@ Same skeleton — three different operations. You've seen the whole family.
 
 **Curve check:**
 
-| Problem                | Time | Confidence  | Trend                    |
-| ---------------------- | ---- | ----------- | ------------------------ |
-| 70 - Climbing Stairs   | ~3m  | 8/10        | 🚀 1.5m re-solve         |
-| 746 - Min Cost         | —    | 4/10        | 🔴 State-definition bug  |
-| 198 - House Robber     | 30m  | 7/10        | 🟢 Good                  |
-| 213 - House Robber II  | 8m   | 8/10        | 🚀 8m re-solve           |
-| 740 - Delete and Earn  | 40m  | 7/10        | 🟡 11m re-solve          |
-| 139 - Word Break       | 2h   | 8/10        | 🚀 3m re-solve!          |
-| 279 - Perfect Squares  | N/A  | 4/10 (est.) | 🔴 State gap             |
-| 322 - Coin Change      | 5m   | 9/10        | 🚀 Transfer!             |
-| 377 - Combination IV   | 22m  | 7/10        | 🟡 Base-case gap         |
-| 343 - Integer Break    | 27m  | 6/10        | 🟡 Whole-piece given     |
-| 3857 - Split into Ones | —    | 7/10        | 🟢 New family (interval) |
+| Problem                | Time | Confidence  | Trend                       |
+| ---------------------- | ---- | ----------- | --------------------------- |
+| 70 - Climbing Stairs   | ~3m  | 8/10        | 🚀 1.5m re-solve            |
+| 746 - Min Cost         | —    | 4/10        | 🔴 State-definition bug     |
+| 198 - House Robber     | 30m  | 7/10        | 🟢 Good                     |
+| 213 - House Robber II  | 8m   | 8/10        | 🚀 8m re-solve              |
+| 740 - Delete and Earn  | 40m  | 7/10        | 🟡 11m re-solve             |
+| 139 - Word Break       | 2h   | 8/10        | 🚀 3m re-solve!             |
+| 279 - Perfect Squares  | N/A  | 4/10 (est.) | 🔴 State gap                |
+| 322 - Coin Change      | 5m   | 9/10        | 🚀 Transfer!                |
+| 377 - Combination IV   | 22m  | 7/10        | 🟡 Base-case gap            |
+| 343 - Integer Break    | 27m  | 6/10        | 🟡 Whole-piece given        |
+| 3857 - Split into Ones | —    | 7/10        | 🟢 New family (interval)    |
+| 53 - Maximum Subarray  | 11m  | 5/10        | 🔴 Redo list (state flavor) |
+| 1043 - Partition Max   | —    | 3/10        | 🔴 Redo (piece = window)    |
 
 **What's next:**
 
@@ -210,6 +214,13 @@ Then try **91 - Decode Ways** — same skeleton, counting ways instead of minimi
 **3857 — you just opened a NEW pattern family.** The recurrence `dp[j] + dp[i−j] + j·(i−j)` (both children recurse, you pay for the split) is the **Interval DP** signature — the family of Matrix Chain Multiplication, Burst Balloons, and Triangulation (all queued in Week 5). Your instinct that "the conditions" were the hard part is exactly right: the policy (must-split vs may-stay-whole vs single-valid-piece) is what distinguishes interval from segmentation. One sentence to keep: **segmentation consumes a piece; interval splits both halves and pays for the split.**
 
 **Still open from the ladder:** 279 re-solve (due 08-04) and **91 Decode Ways** — the last boss of the segmentation family. 3857 was a great detour into a new family, but don't let Decode Ways drift: the operator engine (OR/min/max/count) is built — only the digit gates are new.
+
+**53 — a new state flavor, and a new kind of bug to watch for.** Kadane's `dp[i] = max(dp[i-1]+nums[i], nums[i])` uses an **"ending at i"** state (subarray MUST include nums[i]) — every 1D state before it was "up to i" (House Robber), where the answer is the last cell. The trap: returning `dp[n-1]` instead of the running max. One sentence: _"up-to states end at the last cell; ending-at states need a running max."_ You're on the redo list for 08-04. Next up after the re-solve: **152 - Maximum Product Subarray** — same shape, but negatives flip signs, so you must track BOTH max and min. That's the next lesson in this family.
+That's the next lesson in this family.
+
+**1043 — you built the Decode Ways engine (3/10, but you built it — and then you studied it deeply).** `dp[i] = max over j ≤ k of dp[i-j] + max(window)·j` is segmentation with _bounded pieces_ — exactly the scan Decode Ways needs with pieces of length 1-2. The missing move was defining the piece: _the last piece is a window ending at i_, value = max·len. Your gap pattern is now visible across problems: when pieces are _given_ (words, coins), you're fine; when you must _define_ them (squares in 279, windows here), you stall — because defining the piece IS the state. The fix is one question: **"what can the last piece be?"** — for 1043: any window of length 1..k. Deep re-study on 08-01 added the loop trick below; timed re-solve still due 08-04.
+
+**Your new permanent tool — the loop-conditions trick (from the 1043 deep re-study):** _think in "elements I'm considering", not indices._ Three questions that resolve every off-by-one in scan-all-previous DPs: (1) how many elements have I seen? → `i+1`; (2) what's the piece-size cap? → `min(k, i+1)`; (3) which element is j steps back? → `arr[i-j+1]`. Memory aid: j=1 → `arr[i]`, j=k → `arr[i-k+1]`. This fixes the `arr[i-j]` vs `arr[i-j+1]` and `dp[i-j]` vs `dp[i-j+1]` class of bugs — and transfers directly to Decode Ways (pieces of 1-2 digits → `s[i-1]`, `s[i-2]`).
 
 ---
 
