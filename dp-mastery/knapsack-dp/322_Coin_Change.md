@@ -128,7 +128,7 @@ Greedy "always take the largest coin" fails. Example: `coins = [1, 3, 4]`, `amou
 
 ### Other Common Mistakes
 
-- **The `x < amount` vs `x > i` bug (your bug):** the break guard must use the *current subproblem* `i`. Comparing against the total `amount` (or flipping the direction) silently breaks the DP — it still compiles and returns *an* answer, just a wrong one.
+- **The `x < amount` vs `x > i` bug (your bug):** the break guard must use the _current subproblem_ `i`. Comparing against the total `amount` (or flipping the direction) silently breaks the DP — it still compiles and returns _an_ answer, just a wrong one.
 - **Forgetting unreachable amounts:** without the sentinel check, you'd return `INF` (or garbage) instead of `-1`. LeetCode requires exactly `-1`.
 - **Overflow:** `dp[i - c] + 1` on plain `INT_MAX` overflows. Use `INT_MAX - n` or `INT_MAX / 2` as the sentinel.
 - **Missing `dp[0] = 0`:** no amount exactly equal to a coin could ever bootstrap.
@@ -137,23 +137,23 @@ Greedy "always take the largest coin" fails. Example: `coins = [1, 3, 4]`, `amou
 
 **This is a Knapsack DP problem because:**
 
-1. **Capacity/target framing**: make *exactly* amount `i` — the state is capacity used.
+1. **Capacity/target framing**: make _exactly_ amount `i` — the state is capacity used.
 2. **Selection with reuse**: unlimited coins → **unbounded** knapsack → forward iteration is fine (your nested loop over coins inside the amount loop IS the forward sweep).
 3. **Min-count objective**: `min` combine operator over all item choices.
 
 **The family bridge — this is Perfect Squares with coins in place of squares:**
 
-| Problem            | "Items"          | Reuse? | Objective      | Unreachable? |
-| ------------------ | ---------------- | ------ | -------------- | ------------ |
-| Perfect Squares    | squares ≤ n      | yes    | min pieces     | no (1 exists) |
-| **Coin Change**    | coin denominations | yes  | min coins      | **yes → -1**  |
+| Problem         | "Items"            | Reuse? | Objective  | Unreachable?  |
+| --------------- | ------------------ | ------ | ---------- | ------------- |
+| Perfect Squares | squares ≤ n        | yes    | min pieces | no (1 exists) |
+| **Coin Change** | coin denominations | yes    | min coins  | **yes → -1**  |
 
 Same state `dp[i]`, same recurrence `dp[i] = min(dp[i - item] + 1)`, same nested loop. That's why this took you 5 minutes — you'd already written this code as 279.
 
 **Similar problems in this pattern:**
 
 - 279 - Perfect Squares — identical code, squares instead of coins (see [segmentation-dp/279_Perfect_Squares.md](../segmentation-dp/279_Perfect_Squares.md))
-- 416 - Partition Equal Subset Sum — 0/1 knapsack, reachability, *backward* loop
+- 416 - Partition Equal Subset Sum — 0/1 knapsack, reachability, _backward_ loop
 - 494 - Target Sum — 0/1 knapsack, counting ways
 - 474 - Ones and Zeroes — knapsack with TWO capacities
 
@@ -192,12 +192,12 @@ _Your original work — correct as submitted. The buggy version (`x < amount`) i
 
 - **Solve Time:** 5 minutes
 - **Attempts:** 1 (one AI-assisted debug of the `x < amount` guard)
-- **Confidence:** 9/10
+- **Confidence:** 10/10
 - **Struggles:** Only the break guard — `if (x < amount)` instead of `if (x > i)`. Couldn't see it yourself, but understood instantly once pointed out.
 - **Key Lesson:** _"Inner-loop guards compare against the current state (i), never the global target (amount)."_
-- **Submitted:** 2026-08-01
-- **Last Reviewed:** 2026-08-01
-- **Next Review:** Day 3 (2026-08-04) quick re-solve to lock in — then **mastered**. Per schedule, 8-10 confidence: no Day 7 review needed.
+- **Submitted:** 2026-07-27
+- **Last Reviewed:** 2026-08-04
+- **Next Review:** **Mastered.** Re-solved 2026-08-04 in 3:42 (10/10) — brief base-case hesitation (dp[0] = 0 for min), resolved by thinking. Per schedule, 8-10 confidence: no further reviews.
 
 ---
 

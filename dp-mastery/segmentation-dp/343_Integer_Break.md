@@ -180,14 +180,17 @@ _Your original work — correct as submitted. The `j = 0` start is harmless dead
 
 - **Solve Time:** 27 minutes
 - **Attempts:** 1 (with the `j * (i - j)` term explained directly — the assistant broke the no-hint rule, not your fault)
-- **Confidence:** 6/10
+- **Confidence:** 10/10 — **THE STOLEN SOLVE IS NOW YOURS**
 - **Struggles:**
   1. The "remainder stays whole" option was handed to you instead of discovered — the `j * (i - j)` term
   2. Everything else (nested loop over cuts, `dp[i-j] * j`, max accumulation) was your own work
 - **Key Lesson:** _"Ask: may the piece stay whole? Then max(j·(i−j), j·dp[i−j])."_
 - **Submitted:** 2026-08-01
-- **Last Reviewed:** 2026-08-01
-- **Next Review:** 2026-08-04 (Day 3) — **re-solve from scratch, no hints at all, target < 15 min.** If you write `max(j*(i-j), j*dp[i-j])` yourself, it's yours. Then 2026-08-08 (Day 7).
+- **Last Reviewed:** 2026-08-04
+- **Next Review:** **Mastered.** Re-solved 2026-08-04 in **2:37** (10/10), NO HINTS: wrote `max({dp[i], dp[i-j]*j, (i-j)*j})` entirely on your own. The 08-04 verdict came back: it's yours.
+
+**Re-solve Log:**
+- 2026-08-04: 2:37, 10/10, zero hints — the whole-piece term appeared by itself. Confidence 6 → 10/10. The sting from the stolen solve is officially repaid.
 
 ---
 

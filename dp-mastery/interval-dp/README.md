@@ -46,7 +46,11 @@ Pick the **"last action"** (the last balloon burst, the last merge, the last cut
 
 ### 🟢 Solved Problems
 
-None yet.
+| ID  | Title                             | Confidence | Core idea                                                          |
+| --- | --------------------------------- | ---------- | ------------------------------------------------------------------ |
+| 3857 | [Minimum Cost to Split into Ones](3857_Minimum_Cost_to_Split_into_Ones.md) | 6/10 | 1D split-cost: `dp[i] = min over j of dp[j] + dp[i-j] + j·(i-j)` — both children recurse |
+
+> 🟡 **Still the one weak spot (6/10) after 08-04.** On re-solve (15:45) the `+dp[j]` (both children) was forgotten again; the accidental `max` variant only passes because total cost is invariant (n(n−1)/2 — each pair of units separates once). **An accidental AC is not understanding.** Day 7 re-solve 08-08: must write both children. The 2D classics (1039, 312) stay queued until this 1D signature is reflex.
 
 ### ⏳ Next up
 

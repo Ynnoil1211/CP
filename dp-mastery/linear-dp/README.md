@@ -70,13 +70,13 @@ You're walking the sequence one step at a time, and the past is _compressed_: ev
 | ID  | Title                                                       | Confidence | Core idea                                                                         |
 | --- | ----------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------- |
 | 70  | [Climbing Stairs](70_Climbing_Stairs.md)                    | 8/10       | Count ways: `dp[i] = dp[i-1] + dp[i-2]`                                           |
-| 746 | [Min Cost Climbing Stairs](746_Min_Cost_Climbing_Stairs.md) | 4/10       | Min cost: `dp[i] = cost[i] + min(dp[i-1], dp[i-2])`                               |
-| 198 | [House Robber](198_House_Robber.md)                         | 7/10       | Max value: `dp[i] = max(dp[i-1], dp[i-2] + nums[i])`                              |
+| 746 | [Min Cost Climbing Stairs](746_Min_Cost_Climbing_Stairs.md) | 9/10       | Min cost: `dp[i] = cost[i] + min(dp[i-1], dp[i-2])`        |
+| 198 | [House Robber](198_House_Robber.md)                         | 8/10       | Max value: `dp[i] = max(dp[i-1], dp[i-2] + nums[i])`       |
 | 213 | [House Robber II](213_House_Robber_II.md)                   | 8/10       | Circle → run the recurrence twice (with / without house 0)                        |
 | 740 | [Delete and Earn](740_Delete_and_Earn.md)                   | 7/10       | `points[x] = x * freq[x]`, then House Robber                                      |
-| 53  | [Maximum Subarray](53_Maximum_Subarray.md)                  | 5/10       | Max ending-at-i: `dp[i] = max(dp[i-1]+nums[i], nums[i])`, answer = max over all i |
+| 53  | [Maximum Subarray](53_Maximum_Subarray.md)                  | 10/10      | Max ending-at-i: `dp[i] = max(dp[i-1]+nums[i], nums[i])`, answer = max over all i |
 
-**Confidence check:** The House Robber family (198/213/740) is solid and 70 is mastered (1.5-min re-solve). 🔴 **746 (4/10) and 53 (5/10) are the weak links.** 746 = state-definition bug; 53 = "ending at i" vs "up to i" state flavor (answer = running max, never dp[n-1]). Both due 2026-08-04.
+**Confidence check:** 🏆 **The whole family is mastered** — every problem ≥ 8/10 after the 08-04 re-solve session (746's redemption: 3:13, 9/10; 53: 1:27, 10/10; 198: 3m, 8/10). 740 (7/10) is the only one below 8, and it's due 08-08. The take/skip, extend/restart, and state-first habits are all banked.
 
 ### ⏳ Next up
 

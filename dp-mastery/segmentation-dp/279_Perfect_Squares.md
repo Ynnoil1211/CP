@@ -29,9 +29,9 @@ dp[i] = minimum number of perfect squares needed to sum to exactly i
 
 ### Why This State?
 
-Same reason as Word Break: the problem is about **splitting a total into pieces**, where each piece must pass a test (here: *be a perfect square*). The natural subproblem is a smaller total `i`, because any valid representation of `i` ends with some last square `s`, and everything before it is a valid representation of `i - s`.
+Same reason as Word Break: the problem is about **splitting a total into pieces**, where each piece must pass a test (here: _be a perfect square_). The natural subproblem is a smaller total `i`, because any valid representation of `i` ends with some last square `s`, and everything before it is a valid representation of `i - s`.
 
-The one difference from Word Break: instead of *existence* (`dp[i]` = can we?), we track the *minimum count* (`dp[i]` = fewest pieces). Same skeleton, different combine operator: `min` instead of `OR`.
+The one difference from Word Break: instead of _existence_ (`dp[i]` = can we?), we track the _minimum count_ (`dp[i]` = fewest pieces). Same skeleton, different combine operator: `min` instead of `OR`.
 
 ## Recurrence Relation
 
@@ -57,7 +57,7 @@ Answer:
 >
 > - **Fixed-offset Linear DP** (House Robber): dp[i] looks back at dp[i-1], dp[i-2] only.
 > - **Scan-all-previous** (Word Break, Perfect Squares): dp[i] must check ALL possible last pieces. In Word Break you scan cut points `j`; here you scan square values `s`. Both are nested loops. `dp[i - s]` with `s` = perfect square ⟺ `dp[j]` where `i - j` is a perfect square — same thing, two notations.
-> - **How to tell:** if the last piece can be *any* element of a set (dictionary word / square / coin), you must scan all of them.
+> - **How to tell:** if the last piece can be _any_ element of a set (dictionary word / square / coin), you must scan all of them.
 
 ### Example Walkthrough
 
@@ -159,12 +159,12 @@ Same trap as Word Break: grabbing the **largest** square ≤ remaining (greedy) 
 
 **The family table (min-cost variant):**
 
-| Problem                       | What the piece must be      | dp[i] tracks        | Combine |
-| ----------------------------- | --------------------------- | ------------------- | ------- |
-| Word Break                    | A dictionary word           | Reachable?          | OR      |
-| **Perfect Squares**           | A perfect square            | Min pieces to sum i | min     |
-| Coin Change (322)             | A coin denomination         | Min coins for i     | min     |
-| Decode Ways (91, next up)     | A valid 1 or 2-digit code   | # ways to decode    | +       |
+| Problem                   | What the piece must be    | dp[i] tracks        | Combine |
+| ------------------------- | ------------------------- | ------------------- | ------- |
+| Word Break                | A dictionary word         | Reachable?          | OR      |
+| **Perfect Squares**       | A perfect square          | Min pieces to sum i | min     |
+| Coin Change (322)         | A coin denomination       | Min coins for i     | min     |
+| Decode Ways (91, next up) | A valid 1 or 2-digit code | # ways to decode    | +       |
 
 **Big connection — Perfect Squares is literally Coin Change with `coins = {1, 4, 9, 16, ...}`.** Same state, same recurrence, same code skeleton. If you solve one, you've solved the other (322 - Coin Change is queued in Week 4 — you'll see this code again).
 
@@ -204,7 +204,7 @@ public:
         }
         return dp[n];
     }
-    
+
 };
 ```
 
@@ -214,15 +214,19 @@ _Your original work — the recurrence and the `break` on sorted squares are cor
 
 - **Solve Time:** N/A — couldn't solve independently (completed with reference)
 - **Attempts:** N/A
-- **Confidence:** 4/10 _(estimate from "couldn't solve on my own" — tell me the real number and I'll update)_
+- **Confidence:** 9/10
 - **Struggles:**
   1. Knew the ingredients (use all squares) but couldn't define the state
   2. Didn't see the **last-piece decomposition** — "every representation ends in one square, the rest is a smaller subproblem"
   3. Hadn't yet connected this to Coin Change / segmentation family
 - **Key Lesson:** _"State first, recurrence second. dp[i] = min squares to make i; then the last square question writes the formula."_
 - **Submitted:** 2026-08-01
-- **Last Reviewed:** 2026-08-01
-- **Next Review:** 2026-08-04 (Day 3) — re-solve from scratch; then 2026-08-08 (Day 7)
+- **Last Reviewed:** 2026-08-04
+- **Next Review:** **Mastered.** Re-solved 2026-08-04 in **3:03** (9/10) — wrote `dp[i] = min(dp[i-s]+1)` cold. Lesson banked: dp init — **0 for sums/counts, a BIG value for min problems**.
+
+**Re-solve Log:**
+
+- 2026-08-04: 3:03, 9/10 — state and recurrence came out without hesitation; the one thing to always check is dp initialization (sentinel for min). Confidence 4 → 9/10.
 
 ---
 

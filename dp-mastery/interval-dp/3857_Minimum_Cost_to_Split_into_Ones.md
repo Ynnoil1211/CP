@@ -183,12 +183,12 @@ _Your original work — correct as submitted. The `j = 0` start is dead self-ref
 
 - **Solve Time:** — (not reported)
 - **Attempts:** — (not reported)
-- **Confidence:** 7/10
-- **Struggles:** "Need to think more about the conditions" — pinning down that BOTH children must recurse and that the split itself is what you pay for. Once the must-split policy is explicit, the recurrence writes itself.
-- **Key Lesson:** _"Both sides recurse + split cost = interval family. One side whole = segmentation family. Read the policy from the statement."_
+- **Confidence:** 6/10 — STILL WEAK, stays on rotation
+- **Struggles:** "Need to think more about the conditions" — pinning down that BOTH children must recurse and that the split itself is what you pay for. Re-solve 08-04: **forgot the `+dp[j]` term again** (15:45, the slowest re-solve of the session). Substituted an accidental `max` variant that passes ONLY because the total cost is invariant (always n(n−1)/2 — every pair of units separates exactly once) — it would break for any non-invariant cost. Structural lesson: both children recurse; an accidental AC is not understanding.
+- **Key Lesson:** _"Both sides recurse + split cost = interval family. One side whole = segmentation family. Read the policy from the statement. And: a passing answer is not the same as the right recurrence."_
 - **Submitted:** 2026-08-01
-- **Last Reviewed:** 2026-08-01
-- **Next Review:** 2026-08-04 (Day 3) — re-solve, then 2026-08-08 (Day 7)
+- **Last Reviewed:** 2026-08-04
+- **Next Review:** 2026-08-08 (Day 7) — re-solve, target < 10 min, MUST write `min over j of dp[j] + dp[i-j] + j·(i-j)` with BOTH children. Then 2026-08-15 (Day 14).
 
 ---
 

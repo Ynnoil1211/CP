@@ -201,15 +201,18 @@ _Your original work — correct as submitted. The unsigned trick for overflow wa
 
 - **Solve Time:** 22 minutes
 - **Attempts:** 3 (hint-guided: +1 bug → overflow bug → base case)
-- **Confidence:** 7/10
+- **Confidence:** 10/10
 - **Struggles:**
   1. Mixed "count coins used" (`+1`) with "count ways" (block addition) — Coin Change leakage
   2. Real overflow test case: intermediates like `dp[630] ≈ 4.6×10¹⁸` while `dp[999] = 1` — solved with `unsigned int`
   3. **The base case:** had the intuition, but `dp[0] = 1` (empty way) instead of `0` — without it, no formula computes correctly
 - **Key Lesson:** _"Counting: dp[0] = 1, add blocks. Cost: dp[0] = 0, use min. The base case tells you the operation."_
 - **Submitted:** 2026-08-01
-- **Last Reviewed:** 2026-08-01
-- **Next Review:** 2026-08-04 (Day 3) — re-solve, target < 12 min; then 2026-08-08 (Day 7)
+- **Last Reviewed:** 2026-08-04
+- **Next Review:** **Mastered.** Re-solved 2026-08-04 in **2:06** (10/10). Only debug: `dp[0] = 1` — when `i-x = 0`, `dp[0]` must be 1 to bootstrap single-element combinations. That lesson is now reflex-level.
+
+**Re-solve Log:**
+- 2026-08-04: 2:06, 10/10 — block addition and dp[0]=1 came automatically; brief stop to re-verify the base case meaning. Confidence 7 → 10/10.
 
 ---
 

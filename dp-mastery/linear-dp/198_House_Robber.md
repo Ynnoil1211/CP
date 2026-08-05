@@ -197,12 +197,15 @@ _This is your original work. Keep it to track how your style evolves._
 
 - **Solve Time:** ~30 minutes
 - **Attempts:** 1 (with hint on dp[i] meaning)
-- **Confidence:** 7/10
+- **Confidence:** 8/10
 - **Struggles:** Needed a hint to define `dp[i]` — once the state meaning clicked, the recurrence followed naturally
 - **Breakthrough Realization:** *"Always think about the options I have on each ith"* — this is the core of DP. At every i, ask: what choices do I have? That gives you the recurrence.
 - **Submitted:** 2026-07-27
-- **Last Reviewed:** 2026-07-27
-- **Next Review:** 2026-07-30 (Day 3) — re-solve from scratch, timing yourself
+- **Last Reviewed:** 2026-08-04
+- **Next Review:** **Mastered.** Re-solved 2026-08-04 in ~3 min (8/10) — only debug was the base cases (n==1, n==2, and `dp[1] = max(nums[0], nums[1])`). That line is now understood, not intuition: under the state "best considering houses 0..i", at i=1 you face two adjacent houses — the take/skip decision at the boundary where dp[i-2] doesn't exist yet. Base cases ARE the recurrence applied at the start of the array.
+
+**Re-solve Log:**
+- 2026-08-04: ~3 min, 8/10 — recurrence automatic; base-case semantics now clear. Confidence 7 → 8/10.
 
 ---
 

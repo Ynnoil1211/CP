@@ -75,11 +75,11 @@ Try spotting this shape cold on **Palindrome Partitioning II** or **Perfect Squa
 | ID   | Title                                                                  | Confidence | Core idea                                                                                              |
 | ---- | ---------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------ |
 | 139  | [Word Break](139_Word_Break.md)                                        | 8/10       | Existence: `dp[i] = OR over j of (dp[j] && s[j..i) in dict)`                                           |
-| 279  | [Perfect Squares](279_Perfect_Squares.md)                              | 4/10       | Min: `dp[i] = min over squares s ≤ i of (dp[i-s] + 1)` — last-piece decomposition                      |
-| 343  | [Integer Break](343_Integer_Break.md)                                  | 6/10       | Max: `dp[i] = max over cuts j of (j·(i−j), j·dp[i−j])` — the "leave whole" twist                       |
-| 1043 | [Partition Array for Max Sum](1043_Partition_Array_for_Maximum_Sum.md) | 3/10       | Max over bounded windows: `dp[i] = max over j ≤ k of dp[i-j] + max(window)·j` — the Decode Ways engine |
+| 279  | [Perfect Squares](279_Perfect_Squares.md)                              | 9/10       | Min: `dp[i] = min over squares s ≤ i of (dp[i-s] + 1)` — last-piece decomposition                      |
+| 343  | [Integer Break](343_Integer_Break.md)                                  | 10/10      | Max: `dp[i] = max over cuts j of (j·(i−j), j·dp[i−j])` — the "leave whole" twist                       |
+| 1043 | [Partition Array for Max Sum](1043_Partition_Array_for_Maximum_Sum.md) | 10/10      | Max over bounded windows: `dp[i] = max over j ≤ k of dp[i-j] + max(window)·j` — the Decode Ways engine |
 
-> 🟢 **139 mastered (8/10); 343 adds the max operator (6/10).** 🔴 **1043 (3/10) is now the weakest in the family — REDO LIST.** The gap is consistent with 279: when the _pieces aren't given_ (squares to enumerate, windows to define), you struggle — defining the piece IS the state. 1043 is the bounded-piece variant: **its window scan is exactly what Decode Ways needs (pieces of length 1-2).** Re-solve 1043 BEFORE Decode Ways. **Deep re-study done 2026-08-01** — the loop-conditions trick ("elements I'm considering") is now a permanent tool in the 1043 note; timed re-solve still due 08-04.
+> 🏆 **The family is effectively mastered after 08-04: 139 (8), 279 (9), 343 (10), 1043 (10).** The 08-04 session cleared every red item: 279 in 3:03, 343 in 2:37 (the stolen solve, now owned), 1043 in 2:02. 1043 has a user-requested lock-in re-solve on 08-08. **Next: 91 - Decode Ways — the operator engine is complete and warm.**
 
 ### ⏳ Next up
 

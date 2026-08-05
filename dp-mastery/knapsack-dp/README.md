@@ -57,10 +57,10 @@ Every capacity value is a "budget", and each item is a yes/no question per budge
 
 | ID  | Title                                           | Confidence | Core idea                                                                                    |
 | --- | ----------------------------------------------- | ---------- | -------------------------------------------------------------------------------------------- |
-| 322 | [Coin Change](322_Coin_Change.md)               | 9/10       | Min: `dp[i] = min over coins c ≤ i of (dp[i-c] + 1)` — unbounded knapsack, -1 if unreachable |
-| 377 | [Combination Sum IV](377_Combination_Sum_IV.md) | 7/10       | Count: `dp[i] = sum over nums x ≤ i of dp[i-x]` — counting variant, `dp[0] = 1` (empty way)  |
+| 322 | [Coin Change](322_Coin_Change.md) | 10/10      | Min: `dp[i] = min over coins c ≤ i of (dp[i-c] + 1)` — unbounded knapsack, -1 if unreachable |
+| 377 | [Combination Sum IV](377_Combination_Sum_IV.md) | 10/10 | Count: `dp[i] = sum over nums x ≤ i of dp[i-x]` — counting variant, `dp[0] = 1` (empty way) |
 
-> 🟢 **322 is mastered (9/10); 377 adds the counting variant (7/10).** Same unbounded skeleton, but the operator flips min → + and the base case flips 0 → 1 (one empty way). Watch the +1 leak from cost-thinking, and the real overflow test case (intermediates like dp[630] ≈ 4.6×10¹⁸) — unsigned int or clamp.
+> 🏆 **Family mastered after 08-04: 322 (10/10, re-solved 3:42) and 377 (10/10, re-solved 2:06).** The base-case rules are reflex-level now: counting → `dp[0] = 1` (empty way), cost → `dp[0] = 0`. Next: 518 - Coin Change II (loop-flip) or 416 (0/1, backward).
 
 ### ⏳ Next up
 

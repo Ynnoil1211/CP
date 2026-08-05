@@ -68,19 +68,20 @@ for (int i = 0; i < n; i++) {                    // i = current position (0 to n
 ```
 
 **Ask yourself:**
+
 1. **How many elements have I seen so far?** → `i+1` (indices 0 through i)
 2. **Can I partition i+1 elements?** → yes, but max `k` at a time → `min(k, i+1)`
 3. **Which element is at position j steps back?** → `arr[i-j+1]`
 
 **Memory aid:**
 
-| j | Window start | Meaning |
-| --- | --- | --- |
-| j = 1 | `arr[i-1+1] = arr[i]` | current element |
-| j = 2 | `arr[i-2+1] = arr[i-1]` | one back |
-| j = k | `arr[i-k+1]` | k elements back |
+| j     | Window start            | Meaning         |
+| ----- | ----------------------- | --------------- |
+| j = 1 | `arr[i-1+1] = arr[i]`   | current element |
+| j = 2 | `arr[i-2+1] = arr[i-1]` | one back        |
+| j = k | `arr[i-k+1]`            | k elements back |
 
-**Why it kills the off-by-ones:** every wrong index in this problem is the same mistake — thinking in positions instead of counts. `arr[i-j+1]` is "the element that starts a j-element window ending at i"; `dp[i-j+1]` is "the best for everything before that window." The question *"how many elements does this piece cover?"* resolves both. Same question applies to Decode Ways (`j ∈ {1,2}`), Word Break (piece = `s[i-j..i-1]` of length j), and every scan-all-previous recurrence.
+**Why it kills the off-by-ones:** every wrong index in this problem is the same mistake — thinking in positions instead of counts. `arr[i-j+1]` is "the element that starts a j-element window ending at i"; `dp[i-j+1]` is "the best for everything before that window." The question _"how many elements does this piece cover?"_ resolves both. Same question applies to Decode Ways (`j ∈ {1,2}`), Word Break (piece = `s[i-j..i-1]` of length j), and every scan-all-previous recurrence.
 
 ### Example Walkthrough (hand-trace — the real teacher)
 
@@ -104,7 +105,7 @@ i=3 (arr[3]=9):
 Return dp[4] = 54
 ```
 
-**Why 54?** The winning partition is **[1,15,7] + [9]**: the window [1,15,7] → all become 15 → 45, plus [9] → 9. Total **54**. (Not [1,15] + [7,9] = 30 + 18 = 48 — that's a valid partition, just not optimal. The dp trace's last row keeps 54 via `j=1`, i.e. the *final* piece [9] alone.)
+**Why 54?** The winning partition is **[1,15,7] + [9]**: the window [1,15,7] → all become 15 → 45, plus [9] → 9. Total **54**. (Not [1,15] + [7,9] = 30 + 18 = 48 — that's a valid partition, just not optimal. The dp trace's last row keeps 54 via `j=1`, i.e. the _final_ piece [9] alone.)
 
 ## Implementation (C++)
 
@@ -126,7 +127,7 @@ int maxSumAfterPartitioning(vector<int>& arr, int k) {
 
 **Key Implementation Notes:**
 
-- **The running `mx` trick:** as `j` grows, the window extends *leftward* one element at a time, so `mx = max(mx, arr[i-j+1])` maintains the window max in O(1) per candidate.
+- **The running `mx` trick:** as `j` grows, the window extends _leftward_ one element at a time, so `mx = max(mx, arr[i-j+1])` maintains the window max in O(1) per candidate.
 - **`mx` must be reset inside the outer loop** (per `i`), not outside.
 - **Use `max(dp[i+1], ...)`, never assignment** — each state accumulates the best over all `j`.
 - **The bound `min(k, i+1)` is load-bearing** — without it, negative indices when the window would run past the array start.
@@ -164,15 +165,15 @@ By induction on `i`: any valid partition of the first `i` elements has a last pi
 
 **The Decode Ways bridge — the engine is built:**
 
-| | Piece length | Piece value | Recurrence |
-| --- | --- | --- | --- |
-| Word Break (139) | unbounded | is a word? | OR over j |
-| Perfect Squares (279) | unbounded | is a square? | min(dp[i-s]+1) |
-| Integer Break (343) | unbounded | may stay whole | max(j·(i−j), j·dp[i−j]) |
-| **Partition for Max Sum (1043)** | **≤ k (bounded)** | **max·len** | **max over j ≤ k of dp[i-j] + mx·j** |
-| **Decode Ways (91, next)** | **1 or 2 (bounded)** | **valid digit code?** | **gates(dp[i-1]) + gates(dp[i-2])** |
+|                                  | Piece length         | Piece value           | Recurrence                           |
+| -------------------------------- | -------------------- | --------------------- | ------------------------------------ |
+| Word Break (139)                 | unbounded            | is a word?            | OR over j                            |
+| Perfect Squares (279)            | unbounded            | is a square?          | min(dp[i-s]+1)                       |
+| Integer Break (343)              | unbounded            | may stay whole        | max(j·(i−j), j·dp[i−j])              |
+| **Partition for Max Sum (1043)** | **≤ k (bounded)**    | **max·len**           | **max over j ≤ k of dp[i-j] + mx·j** |
+| **Decode Ways (91, next)**       | **1 or 2 (bounded)** | **valid digit code?** | **gates(dp[i-1]) + gates(dp[i-2])**  |
 
-1043's bounded-window scan is *exactly* what Decode Ways does with pieces of length 1-2 — and the loop trick above answers Decode Ways' indexing questions too ("how many digits does this piece cover?" → 1 or 2 → `s[i-1]`, `s[i-2]`).
+1043's bounded-window scan is _exactly_ what Decode Ways does with pieces of length 1-2 — and the loop trick above answers Decode Ways' indexing questions too ("how many digits does this piece cover?" → 1 or 2 → `s[i-1]`, `s[i-2]`).
 
 **Similar problems in this pattern:**
 
@@ -196,7 +197,7 @@ public:
     int maxSumAfterPartitioning(vector<int>& arr, int k) {
         int n = arr.size();
         vector<int> dp(n+1, 0);  // dp[i+1] corresponds to arr[0...i]
-        
+
         for(int i = 0; i < n; i++){
             int mx = 0;
             // j = partition size (1 to k, but can't exceed i+1 elements)
@@ -218,12 +219,12 @@ _Your original work — correct as submitted, and now fully understood._
 
 - **Solve Time:** — (not reported — solution seen)
 - **Attempts:** 1 (solution seen)
-- **Confidence:** 3/10 — **REDO LIST** (deep re-study done 2026-08-01; timed re-solve still due to convert understanding into confidence)
-- **Struggles:** Couldn't define the piece (a window of length ≤ k with value max·len); then the indexing (arr[i-j] vs arr[i-j+1], dp[i-j] vs dp[i-j+1]) — both fixed by the loop trick.
+- **Confidence:** 10/10 — re-solved 08-04 in **2:02** (from 3/10). The loop trick now fully internalized: outer i = position, go back min(k, i+1), index via dp[i-j+1]. User still wants a lock-in re-solve on 08-08 ("might forget it") — scheduled.
+- **Struggles:** Original: couldn't define the piece (a window of length ≤ k with value max·len). Re-solve: zero struggle; the only lingering question was why outer loop starts at i=0 (answer: 1-indexed dp makes bounds trivial).
 - **Key Lesson:** _"Defining the piece IS the state. And when indexing a window: count elements, don't name positions."_
 - **Submitted:** 2026-08-01
-- **Last Reviewed:** 2026-08-01
-- **Next Review:** 2026-08-04 (Day 3, timed re-solve — target < 15 min), 2026-08-08 (Day 7), 2026-08-15 (Day 14), 2026-08-31 (Day 30). **Re-solve BEFORE Decode Ways — this is its engine.**
+- **Last Reviewed:** 2026-08-04
+- **Next Review:** 2026-08-08 (Day 7, user-requested lock-in re-solve), then 2026-08-15 (Day 14, optional).
 
 ---
 

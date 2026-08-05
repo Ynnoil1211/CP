@@ -195,12 +195,15 @@ _Your original work — correct as submitted, including the running max. The uns
 
 - **Solve Time:** 11 minutes
 - **Attempts:** — (not reported)
-- **Confidence:** 5/10 — **REDO LIST**
+- **Confidence:** 10/10 — REDO CLEARED
 - **Struggles:** The state definition ("ending at i" vs the "up to i" you know) — which makes the answer selection (`max` over all `dp[i]`) non-obvious. The extend-or-restart decision itself was fine.
 - **Key Lesson:** _"Ending-at states need a running max; up-to states end at the last cell. Ask which flavor you're in before writing the answer line."_
 - **Submitted:** 2026-08-01
-- **Last Reviewed:** 2026-08-01
-- **Next Review:** 2026-08-04 (Day 3) — re-solve, target < 6 min; then 2026-08-08 (Day 7), 2026-08-15 (Day 14). Confidence ≤ 5 needs the full review arc.
+- **Last Reviewed:** 2026-08-04
+- **Next Review:** **Mastered.** Re-solved 2026-08-04 in **1:27** (10/10) — rolling variables, INT_MIN init, running max. Lesson banked: **for max problems, initialize with a LOW value (INT_MIN)**.
+
+**Re-solve Log:**
+- 2026-08-04: 1:27, 10/10 — wrote the rolling-variable version (`curr`, `best`) with INT_MIN init, no dp array. Confidence 5 → 10/10.
 
 ---
 

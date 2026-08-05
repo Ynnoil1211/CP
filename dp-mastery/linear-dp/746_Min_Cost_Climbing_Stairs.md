@@ -233,15 +233,16 @@ _This is your original work. Keep it to track how your style evolves._
 
 - **Solve Time:** Not specified (but understood both approaches)
 - **Attempts:** N/A
-- **Confidence:** 4/10
+- **Confidence:** 9/10 — REDEMPTION COMPLETE
 - **Struggles:** Still building DP intuition — the recurrence clicked when you saw the pattern connection to Climbing Stairs
 - **Submitted:** 2026-07-27
-- **Last Reviewed:** 2026-08-01
-- **Next Review:** 2026-08-04 (Day 3) — re-solve with the state definition written down FIRST, before any code
+- **Last Reviewed:** 2026-08-04
+- **Next Review:** **Mastered.** Re-solved 2026-08-04 in **3:13** (9/10): wrote the base case from memory, got it wrong AGAIN (dp[1] = min(cost[0], cost[1])), thought about the state, fixed it, AC. The habit is forming: base case → state check → code.
 
 **Re-solve Log:**
 
 - 2026-08-01: **STUCK.** Wrote `dp[1] = min(cost[0], cost[1])` (two state definitions at once), `cost[i]` at `i == n` (out of bounds), `return dp[n-1]` (wrong answer index). Your own takeaway was the right one: **"check my dp's state for debug."** With `dp[i] = min cost to reach step i, paying cost[i] when you land`: base cases are `dp[0] = cost[0]`, `dp[1] = cost[1]`, loop only `i < n`, answer `min(dp[n-1], dp[n-2])`. Confidence 5 → 4/10.
+- 2026-08-04: 3:13, 9/10 — same base-case reflex error, caught it faster by thinking about the state. Confidence 4 → 9/10.
 
 ---
 
