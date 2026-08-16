@@ -63,25 +63,25 @@ Answer:
 **Golden Rule:** think in **"elements I'm considering"**, not indices.
 
 ```cpp
-for (int i = 0; i < n; i++) {                    // i = current position (0 to n-1)
-    for (int j = 1; j <= min(k, i + 1); j++) {   // j = how many elements back?
+for (int i = 1; i <= n; i++) {                    // i = how many elements covered (1 to n)
+    for (int j = 1; j <= min(k, i); j++) {        // j = how many elements back?
 ```
 
 **Ask yourself:**
 
-1. **How many elements have I seen so far?** → `i+1` (indices 0 through i)
-2. **Can I partition i+1 elements?** → yes, but max `k` at a time → `min(k, i+1)`
-3. **Which element is at position j steps back?** → `arr[i-j+1]`
+1. **How many elements have I covered?** → `i` (the first i elements)
+2. **Can I make a piece of j elements?** → yes, max `k` at a time, and never more than the prefix → `min(k, i)`
+3. **Which element is at position j steps back?** → `arr[i-j]`
 
 **Memory aid:**
 
-| j     | Window start            | Meaning         |
-| ----- | ----------------------- | --------------- |
-| j = 1 | `arr[i-1+1] = arr[i]`   | current element |
-| j = 2 | `arr[i-2+1] = arr[i-1]` | one back        |
-| j = k | `arr[i-k+1]`            | k elements back |
+| j     | Window start | Meaning         |
+| ----- | ------------ | --------------- |
+| j = 1 | `arr[i-1]`   | last element    |
+| j = 2 | `arr[i-2]`   | one back        |
+| j = k | `arr[i-k]`   | k elements back |
 
-**Why it kills the off-by-ones:** every wrong index in this problem is the same mistake — thinking in positions instead of counts. `arr[i-j+1]` is "the element that starts a j-element window ending at i"; `dp[i-j+1]` is "the best for everything before that window." The question _"how many elements does this piece cover?"_ resolves both. Same question applies to Decode Ways (`j ∈ {1,2}`), Word Break (piece = `s[i-j..i-1]` of length j), and every scan-all-previous recurrence.
+**Why it kills the off-by-ones:** every wrong index in this problem is the same mistake — thinking in positions instead of counts, or mixing conventions mid-attempt. `arr[i-j]` is "the element that starts a j-element window ending at the last element"; `dp[i-j]` is "the best for everything before that window." The question _"how many elements does this piece cover?"_ resolves both — and the j=1 check (`arr[i-1]` = the LAST element) verifies the convention before coding. Same question applies to Decode Ways (`j ∈ {1,2}` → `s[i-1]`, `s[i-2]`), Word Break (piece = `s[i-j..i-1]` of length j), and every scan-all-previous recurrence.
 
 ### Example Walkthrough (hand-trace — the real teacher)
 
@@ -110,15 +110,15 @@ Return dp[4] = 54
 ## Implementation (C++)
 
 ```cpp
-// Your solution — with the loop trick annotated
+// 1-indexed convention — matches the walkthrough above
 int maxSumAfterPartitioning(vector<int>& arr, int k) {
     int n = arr.size();
-    vector<int> dp(n + 1, 0);          // dp[i+1] corresponds to arr[0..i]
-    for (int i = 0; i < n; i++) {      // i = current position
+    vector<int> dp(n + 1, 0);          // dp[i] = best for the FIRST i elements (arr[0..i-1])
+    for (int i = 1; i <= n; i++) {     // i = how many elements we've covered
         int mx = 0;                    // max of the window — RESET per i
-        for (int j = 1; j <= min(k, i + 1); j++) {   // j = piece size (1..k, capped)
-            mx = max(mx, arr[i - j + 1]);            // window start = j elements back
-            dp[i + 1] = max(dp[i + 1], dp[i - j + 1] + mx * j);  // try this piece
+        for (int j = 1; j <= min(k, i); j++) {   // j = piece size (1..k, capped by prefix)
+            mx = max(mx, arr[i - j]);            // window start = j elements back from the end
+            dp[i] = max(dp[i], dp[i - j] + mx * j);  // try this last piece
         }
     }
     return dp[n];
@@ -127,10 +127,11 @@ int maxSumAfterPartitioning(vector<int>& arr, int k) {
 
 **Key Implementation Notes:**
 
-- **The running `mx` trick:** as `j` grows, the window extends _leftward_ one element at a time, so `mx = max(mx, arr[i-j+1])` maintains the window max in O(1) per candidate.
+- **The running `mx` trick:** as `j` grows, the window extends _leftward_ one element at a time, so `mx = max(mx, arr[i-j])` maintains the window max in O(1) per candidate.
+- **Convention check (1-indexed):** at `j=1` the window must be exactly the LAST element → `arr[i-1]` ✓ (`arr[i-j]` with j=1). At `j=k` → `arr[i-k]`. If your formula gives anything else at j=1, it's wrong.
+- **The cap `min(k, i)` is load-bearing** — the window can't exceed the prefix (i elements seen); without it, negative indices on small prefixes.
 - **`mx` must be reset inside the outer loop** (per `i`), not outside.
-- **Use `max(dp[i+1], ...)`, never assignment** — each state accumulates the best over all `j`.
-- **The bound `min(k, i+1)` is load-bearing** — without it, negative indices when the window would run past the array start.
+- **Use `max(dp[i], ...)`, never assignment** — each state accumulates the best over all `j`.
 - `dp[0] = 0` bootstraps: a piece covering the whole prefix uses `dp[0] + max·i`.
 
 ## Complexity Analysis
@@ -144,9 +145,9 @@ By induction on `i`: any valid partition of the first `i` elements has a last pi
 
 ## Common Mistakes to Avoid (your checklist)
 
-- ❌ Using `arr[i-j]` instead of `arr[i-j+1]` — the window start is **j elements back**, i.e. index `i-j+1` when the window ends at `i`
-- ❌ Using `dp[i-j]` when you mean `dp[i-j+1]` — with the `dp[i+1] = arr[0..i]` convention, "before the window" is `dp[i-j+1]`
-- ❌ Forgetting `min(k, i+1)` — crashes with negative indices on small prefixes
+- ❌ Mixing conventions: `arr[i-j+1]` or `dp[i-j+1]` in the 1-indexed version — here the window start is `arr[i-j]` (j elements back) and the prefix is `dp[i-j]`. Pick 1-indexed, verify j=1 → `arr[i-1]`, and stay consistent
+- ❌ Using `arr[i-j]` with the OLD 0-indexed `dp[i+1]` convention — the two conventions differ by exactly one; never combine them
+- ❌ Forgetting `min(k, i)` — crashes with negative indices on small prefixes
 - ❌ Not resetting `mx = 0` inside the outer loop — the window max leaks across positions
 - ❌ Using `dp[i] = ...` (assignment) instead of `dp[i] = max(dp[i], ...)` — you'd only keep the last j tried
 - ❌ Piece value = sum instead of `max · j` — every element in the window becomes the max, that's the whole problem
@@ -183,11 +184,11 @@ By induction on `i`: any valid partition of the first `i` elements has a last pi
 
 ## Key Takeaway
 
-_"Segmentation with bounded pieces: dp[i] = max over last-piece length j ≤ k of dp[i-j] + value(window)·j. And the loop trick: think in ELEMENTS, not indices — i = current position, j = how many back, window start = arr[i-j+1]."_
+_"Segmentation with bounded pieces: dp[i] = max over last-piece length j ≤ k of dp[i-j] + value(window)·j. And the loop trick: think in ELEMENTS, not indices — i = elements covered, j = how many back, window start = arr[i-j] (1-indexed dp), verified by the j=1 check (arr[i-1] = last element)."_
 
 ## 🔑 Breakthrough
 
-_"Two things clicked. (1) The missing move: define the LAST piece as a window of length j ≤ k ending at i, value max·len — I kept thinking forward ('which element anchors a group?') instead of backward ('what's the last piece?'). (2) The loop trick that kills my off-by-ones: think in 'elements I'm considering' — i = current position, j = how many elements back, so the window start is arr[i-j+1] and the cap is min(k, i+1). Every wrong index I wrote was a position-vs-count confusion; the question 'how many elements does this piece cover?' fixes all of them. And bounded pieces → only k candidates — the same scan Decode Ways needs. The trace confusion also resolved: 54 = [1,15,7]+[9] (45+9), not [1,15]+[7,9] (48)."_
+_"Two things clicked. (1) The missing move: define the LAST piece as a window of length j ≤ k ending at i, value max·len — I kept thinking forward ('which element anchors a group?') instead of backward ('what's the last piece?'). (2) The loop trick that kills my off-by-ones: think in 'elements I'm considering' — i = elements covered, j = how many back, window start = arr[i-j] (1-indexed), cap = min(k, i). Every wrong index I wrote was a position-vs-count confusion — or worse, mixing the 0-indexed and 1-indexed conventions mid-attempt, which is what happened on 08-15. The question 'how many elements does this piece cover?' fixes all of them, and the j=1 check (arr[i-1] = last element) verifies the convention before coding. And bounded pieces → only k candidates — the same scan Decode Ways needs. The trace confusion also resolved: 54 = [1,15,7]+[9] (45+9), not [1,15]+[7,9] (48)."_
 
 ## Your Code
 
@@ -196,22 +197,20 @@ class Solution {
 public:
     int maxSumAfterPartitioning(vector<int>& arr, int k) {
         int n = arr.size();
-        vector<int> dp(n+1, 0);  // dp[i+1] corresponds to arr[0...i]
-
-        for(int i = 0; i < n; i++){
+        vector<int> dp(n+1,0);
+        for(int i = 1; i<=n; i++){
             int mx = 0;
-            // j = partition size (1 to k, but can't exceed i+1 elements)
-            for(int j = 1; j <= min(k, i+1); j++){
-                // Find max in the partition [i-j+1 ... i]
-                mx = max(mx, arr[i-j+1]);
-                // Try this partition: previous best + (max * size)
-                dp[i+1] = max(dp[i+1], dp[i-j+1] + mx*j);
+            for(int j = 1; j<=min(k,i); j++){
+                mx = max(mx, arr[i-j]);
+                dp[i] = max(dp[i], dp[i-j] + mx*j);
             }
         }
         return dp[n];
     }
 };
 ```
+
+_Your original work — the 1-indexed version (from the 08-15 attempt, which supersedes the earlier 0-indexed submission). This is the convention the whole note now uses._
 
 _Your original work — correct as submitted, and now fully understood._
 
