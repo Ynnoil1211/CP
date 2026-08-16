@@ -1,9 +1,9 @@
 # 100 DP Medium Problems Challenge
 
-**Progress:** 11/100 problems solved
+**Progress:** 12/100 problems solved
 **Current Week:** Week 4 (2D Grid + Knapsack — early start)
 **Target Completion:** TBD
-**Overall Confidence:** 8.7/10
+**Overall Confidence:** 9.1/10
 
 ## Pattern Library
 
@@ -40,19 +40,19 @@ Each pattern folder starts with a `README.md` — the full pattern explanation (
 
 ## Progress by Pattern Type
 
-| Pattern                                      | Solved | Target | % Complete | Avg Time | Mastery        |
-| -------------------------------------------- | ------ | ------ | ---------- | -------- | -------------- |
-| [Linear DP](linear-dp/README.md)             | 4/10   | 10     | 40%        | ~20m     | 🟡 In Progress |
-| [Segmentation DP](segmentation-dp/README.md) | 4/10   | 10     | 40%        | ~25m     | 🟡 In Progress |
-| [2D Grid DP](2d-grid-dp/README.md)           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
-| [Two-Sequence (LCS)](lcs-dp/README.md)       | 0/10   | 10     | 0%         | —        | ⏳ Upcoming    |
-| [Knapsack](knapsack-dp/README.md)            | 2/10   | 10     | 20%        | ~13m     | 🟡 In Progress |
-| [Interval DP](interval-dp/README.md)         | 1/10   | 10     | 10%        | —        | 🟢 Started     |
-| [Tree DP](tree-dp/README.md)                 | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
-| [State Machine](state-machine-dp/README.md)  | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
-| [Game Theory](game-theory-dp/README.md)      | 0/8    | 8      | 0%         | —        | ⏳ Upcoming    |
-| [Digit DP](digit-dp/README.md)               | 0/8    | 8      | 0%         | —        | 🔴 Advanced    |
-| [Bitmask DP](bitmask-dp/README.md)           | 0/8    | 8      | 0%         | —        | 🔴 Advanced    |
+| Pattern                                      | Solved | Target | % Complete | Avg Time | Mastery            |
+| -------------------------------------------- | ------ | ------ | ---------- | -------- | ------------------ |
+| [Linear DP](linear-dp/README.md)             | 4/10   | 10     | 40%        | ~20m     | 🟡 In Progress     |
+| [Segmentation DP](segmentation-dp/README.md) | 5/10   | 10     | 50%        | ~15m     | 🟢 Family complete |
+| [2D Grid DP](2d-grid-dp/README.md)           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming        |
+| [Two-Sequence (LCS)](lcs-dp/README.md)       | 0/10   | 10     | 0%         | —        | ⏳ Upcoming        |
+| [Knapsack](knapsack-dp/README.md)            | 2/10   | 10     | 20%        | ~13m     | 🟡 In Progress     |
+| [Interval DP](interval-dp/README.md)         | 1/10   | 10     | 10%        | —        | 🟢 Started         |
+| [Tree DP](tree-dp/README.md)                 | 0/8    | 8      | 0%         | —        | ⏳ Upcoming        |
+| [State Machine](state-machine-dp/README.md)  | 0/8    | 8      | 0%         | —        | ⏳ Upcoming        |
+| [Game Theory](game-theory-dp/README.md)      | 0/8    | 8      | 0%         | —        | ⏳ Upcoming        |
+| [Digit DP](digit-dp/README.md)               | 0/8    | 8      | 0%         | —        | 🔴 Advanced        |
+| [Bitmask DP](bitmask-dp/README.md)           | 0/8    | 8      | 0%         | —        | 🔴 Advanced        |
 
 ## By Week
 
@@ -70,7 +70,7 @@ _Linear:_ ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md), ✅ [74
 
 - [ ] 300 - Longest Increasing Subsequence _(Linear, scan-all-previous)_
 - [ ] 368 - Largest Divisible Subset _(Linear, scan-all-previous)_
-- [ ] 91 - Decode Ways _(Segmentation)_
+- ✅ 91 - Decode Ways _(Segmentation — THE BOSS, cleared 08-15)_
 - ✅ 343 - Integer Break _(Segmentation)_
 
 ### Week 4: 2D Grid + Knapsack (2/20 problems)
@@ -113,33 +113,37 @@ _(Coming after core patterns)_
 
 ## Problems Mastered (Confidence ≥ 8/10)
 
-- ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md) — first 8/10!
+- ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md) — first 8/10 → **9/10 (08-09, 3 min)**
 - ✅ [322 - Coin Change](knapsack-dp/322_Coin_Change.md) — first 9/10 → **10/10 after 3:42 re-solve.**
-- ✅ [139 - Word Break](segmentation-dp/139_Word_Break.md) — 2h → 3-minute re-solve. Biggest turnaround in the tracker.
-- ✅ [70 - Climbing Stairs](linear-dp/70_Climbing_Stairs.md) — 1.5-minute re-solve. Fibonacci is automatic.
+- ✅ [139 - Word Break](segmentation-dp/139_Word_Break.md) — 2h → 3-minute re-solve. Biggest turnaround in the tracker. **reclaimed: 10/10 on 08-15 (2:22)**
+- ✅ [70 - Climbing Stairs](linear-dp/70_Climbing_Stairs.md) — 1.5-minute re-solve. Fibonacci is automatic. **10/10 on 08-15 (1:10)**
 - ✅ [746 - Min Cost Climbing Stairs](linear-dp/746_Min_Cost_Climbing_Stairs.md) — **redemption: 4/10 → 9/10** (3:13 re-solve)
 - ✅ [198 - House Robber](linear-dp/198_House_Robber.md) — 7/10 → 8/10; base-case semantics now understood, not intuition
 - ✅ [279 - Perfect Squares](segmentation-dp/279_Perfect_Squares.md) — 4/10 → 9/10 (3:03)
 - ✅ [53 - Maximum Subarray](linear-dp/53_Maximum_Subarray.md) — 5/10 → 10/10 (1:27)
 - ✅ [343 - Integer Break](segmentation-dp/343_Integer_Break.md) — 6/10 → **10/10 (2:37, zero hints — the stolen solve is owned)**
 - ✅ [377 - Combination Sum IV](knapsack-dp/377_Combination_Sum_IV.md) — 7/10 → 10/10 (2:06)
-- ✅ [1043 - Partition Array for Max Sum](segmentation-dp/1043_Partition_Array_for_Maximum_Sum.md) — 3/10 → **10/10 (2:02)**
+- ✅ [3857 - Minimum Cost to Split into Ones](interval-dp/3857_Minimum_Cost_to_Split_into_Ones.md) — 6/10 → **10/10 (08-15 final pass, 3 min)**
+- ✅ [740 - Delete and Earn](linear-dp/740_Delete_and_Earn.md) — 7/10 → **9/10 (08-09, 5 min)**
 
-_Eleven of thirteen. The 08-04 session cleared the redo list. Only 3857 (6/10) and 740 (7/10) remain below 8._
+_Twelve of thirteen at ≥ 8. Only 1043 (6/10) remains — three occurrences of the same index/cap class; special protocol 08-18._
 
 ## Weakest Patterns (Confidence ≤ 5/10)
 
-- **3857 - Min Cost to Split into Ones** (6/10) — the only problem below 7/10. Re-solve forgot `+dp[j]` (both children must recurse); the accidental `max` variant passes only because the total cost is invariant (n(n−1)/2 — every pair of units separates exactly once). **An accidental AC is not understanding.** Due 2026-08-08 — must write `min over j of dp[j] + dp[i-j] + j·(i-j)` with both children.
+- **1043 - Partition Array for Max Sum** (6/10) — the sole weak spot, three occurrences of the same index/cap class (original: `arr[i-j]` vs `arr[i-j+1]`; 08-09: `j <` vs `j <=`; 08-15: 0/1-indexed convention flipping mid-attempt — final code was correct). Root cause: convention flipping, not the recurrence. **Special protocol 08-18:** write the j=1 check (`j=1` → window = last element, `arr[i-1]`) and the cap (`j <= min(k, i)`) BEFORE the loops, then code.
 
-_(746, 279, 53, 1043 all cleared on 08-04 — see the re-solve table in Notes.)_
+_All other problems are ≥ 8/10. This is the last boss of the redo list._
 
 ## Weekly Summary
 
-| Week | Problems    | Avg Time | Avg Confidence | Top Topic               |
-| ---- | ----------- | -------- | -------------- | ----------------------- |
-| 1-3  | 12 problems | ~20m avg | 6.3/10         | Linear + Seg + Knapsack |
-| 4    | 1 problem   | —        | 7/10           | Interval (early start)  |
-| 08-04 session | 9 re-solves | ~4m avg | 9.1/10 | 🏆 Redemption Day      |
+| Week          | Problems                     | Avg Time | Avg Confidence | Top Topic               |
+| ------------- | ---------------------------- | -------- | -------------- | ----------------------- |
+| 1-3           | 12 problems                  | ~20m avg | 6.3/10         | Linear + Seg + Knapsack |
+| 4             | 1 problem                    | —        | 7/10           | Interval (early start)  |
+| 08-04 session | 9 re-solves                  | ~4m avg  | 9.1/10         | 🏆 Redemption Day       |
+| 08-09 session | 5 re-solves                  | ~6m avg  | 7.8/10         | Bounds & indexing day   |
+| 08-15 session | 4 re-solves                  | ~2m avg  | 10/10          | 🏆 Near-clean sweep     |
+| 08-15         | + 91 Decode Ways (new solve) | —        | 7/10 (est.)    | 🏆 The boss fell        |
 
 ---
 
@@ -165,21 +169,22 @@ Same skeleton — three different operations. You've seen the whole family.
 
 **Curve check:**
 
-| Problem                | Time | Confidence  | Trend                       |
-| ---------------------- | ---- | ----------- | --------------------------- |
-| 70 - Climbing Stairs   | ~3m  | 8/10        | 🚀 1.5m re-solve            |
-| 746 - Min Cost         | 3:13 | 9/10        | 🚀 Redemption (was 4/10)    |
-| 198 - House Robber     | 3m   | 8/10        | 🚀 Re-solved (was 7/10)     |
-| 213 - House Robber II  | 8m   | 8/10        | 🚀 8m re-solve              |
-| 740 - Delete and Earn  | 40m  | 7/10        | 🟡 11m re-solve             |
-| 139 - Word Break       | 2h   | 8/10        | 🚀 3m re-solve!             |
-| 279 - Perfect Squares  | 3:03 | 9/10        | 🚀 Re-solved (was 4/10)     |
-| 322 - Coin Change      | 3:42 | 10/10       | 🏆 Mastered                 |
-| 377 - Combination IV   | 2:06 | 10/10       | 🏆 Mastered                 |
-| 343 - Integer Break    | 2:37 | 10/10       | 🏆 Owned the stolen solve   |
-| 3857 - Split into Ones | 15:45| 6/10        | 🔴 Forgot +dp[j] (accidental pass) |
-| 53 - Maximum Subarray  | 1:27 | 10/10       | 🏆 Mastered                 |
-| 1043 - Partition Max   | 2:02 | 10/10       | 🏆 Mastered (lock-in 08-08) |
+| Problem                | Time | Confidence  | Trend                     |
+| ---------------------- | ---- | ----------- | ------------------------- |
+| 70 - Climbing Stairs   | 1:10 | 10/10       | 🏆 Mastered (08-15)       |
+| 746 - Min Cost         | 3:13 | 9/10        | 🚀 Redemption (was 4/10)  |
+| 198 - House Robber     | 3m   | 8/10        | 🚀 Re-solved (was 7/10)   |
+| 213 - House Robber II  | 8m   | 9/10        | 🚀 3m re-solve (08-09)    |
+| 740 - Delete and Earn  | 5m   | 9/10        | 🚀 Re-solved (08-09)      |
+| 139 - Word Break       | 2:22 | 10/10       | 🏆 Reclaimed (08-15)      |
+| 279 - Perfect Squares  | 3:03 | 9/10        | 🚀 Re-solved (was 4/10)   |
+| 322 - Coin Change      | 3:42 | 10/10       | 🏆 Mastered               |
+| 377 - Combination IV   | 2:06 | 10/10       | 🏆 Mastered               |
+| 343 - Integer Break    | 2:37 | 10/10       | 🏆 Owned the stolen solve |
+| 3857 - Split into Ones | 3:00 | 10/10       | 🏆 Mastered (08-15)       |
+| 53 - Maximum Subarray  | 1:27 | 10/10       | 🏆 Mastered               |
+| 1043 - Partition Max   | —    | 6/10        | 🔴 Sole weak spot (x3)    |
+| 91 - Decode Ways       | —    | 7/10 (est.) | 🏆 Boss cleared (08-15)   |
 
 **What's next:**
 
@@ -228,26 +233,33 @@ That's the next lesson in this family.
 
 **1043 — you built the Decode Ways engine (3/10, but you built it — and then you studied it deeply).** `dp[i] = max over j ≤ k of dp[i-j] + max(window)·j` is segmentation with _bounded pieces_ — exactly the scan Decode Ways needs with pieces of length 1-2. The missing move was defining the piece: _the last piece is a window ending at i_, value = max·len. Your gap pattern is now visible across problems: when pieces are _given_ (words, coins), you're fine; when you must _define_ them (squares in 279, windows here), you stall — because defining the piece IS the state. The fix is one question: **"what can the last piece be?"** — for 1043: any window of length 1..k. Deep re-study on 08-01 added the loop trick below; timed re-solve still due 08-04.
 
-**Your new permanent tool — the loop-conditions trick (from the 1043 deep re-study):** *think in "elements I'm considering", not indices.* Three questions that resolve every off-by-one in scan-all-previous DPs: (1) how many elements have I seen? → `i+1`; (2) what's the piece-size cap? → `min(k, i+1)`; (3) which element is j steps back? → `arr[i-j+1]`. Memory aid: j=1 → `arr[i]`, j=k → `arr[i-k+1]`. This fixes the `arr[i-j]` vs `arr[i-j+1]` and `dp[i-j]` vs `dp[i-j+1]` class of bugs — and transfers directly to Decode Ways (pieces of 1-2 digits → `s[i-1]`, `s[i-2]`).
+**Your new permanent tool — the loop-conditions trick (from the 1043 deep re-study):** _think in "elements I'm considering", not indices._ Three questions that resolve every off-by-one in scan-all-previous DPs: (1) how many elements have I seen? → `i+1`; (2) what's the piece-size cap? → `min(k, i+1)`; (3) which element is j steps back? → `arr[i-j+1]`. Memory aid: j=1 → `arr[i]`, j=k → `arr[i-k+1]`. This fixes the `arr[i-j]` vs `arr[i-j+1]` and `dp[i-j]` vs `dp[i-j+1]` class of bugs — and transfers directly to Decode Ways (pieces of 1-2 digits → `s[i-1]`, `s[i-2]`).
 
 **08-04 — REDEMPTION DAY. The redo list died.**
 
-| Problem | Re-solve | Old → New |
-| --- | --- | --- |
-| 1043 Partition Max | 2:02 | 3 → **10** |
-| 746 Min Cost | 3:13 | 4 → **9** |
-| 279 Perfect Squares | 3:03 | 4 → **9** |
-| 53 Max Subarray | 1:27 | 5 → **10** |
-| 343 Integer Break | 2:37 | 6 → **10** (zero hints!) |
-| 377 Combination Sum IV | 2:06 | 7 → **10** |
-| 322 Coin Change | 3:42 | 9 → **10** |
-| 198 House Robber | 3:00 | 7 → **8** |
-| 3857 Split into Ones | 15:45 | 7 → **6** 🔴 |
+| Problem                | Re-solve | Old → New                |
+| ---------------------- | -------- | ------------------------ |
+| 1043 Partition Max     | 2:02     | 3 → **10**               |
+| 746 Min Cost           | 3:13     | 4 → **9**                |
+| 279 Perfect Squares    | 3:03     | 4 → **9**                |
+| 53 Max Subarray        | 1:27     | 5 → **10**               |
+| 343 Integer Break      | 2:37     | 6 → **10** (zero hints!) |
+| 377 Combination Sum IV | 2:06     | 7 → **10**               |
+| 322 Coin Change        | 3:42     | 9 → **10**               |
+| 198 House Robber       | 3:00     | 7 → **8**                |
+| 3857 Split into Ones   | 15:45    | 7 → **6** 🔴             |
 
 **The scoreboard: 11 of 13 problems at confidence ≥ 8.** The stolen 343 solve is now yours. 746's base-case reflex fired again — but you caught it by thinking about the state, which is the whole habit. Two lessons banked: (1) **initialization is part of the recurrence** — 0 for sums/counts, big value (sentinel) for min, INT_MIN for max, `dp[0] = 1` for counting; (2) **3857's accidental max variant passes only because the cost is invariant — an AC is not understanding.** Remaining rotation: 3857 (Day 7, 08-08) and 740's Day 7 (08-08).
 
 **Next boss: 91 - Decode Ways.** Every engine is warm: counting (377), bounded pieces (1043), the loop trick, state-first discipline.
 
+**08-09 — the bounds day, and the proof the method works.** You said it yourself: _"I didn't remember the solutions, but still remember the logic"_ — **that's exactly what spaced repetition is supposed to produce.** The pattern lives in long-term memory; rote details fade. And look at what actually failed: 3857 (2:10, down from 15:45 — the both-children recurrence is now cold), 740 (5 min, 9/10), 213 (3 min, 9/10). The two regressions — 139 (`dp[n-1]` vs `dp[n]`) and 1043 (`j <` vs `j <= min(k, i+1)`, which silently tries k−1 lengths) — were **bounds errors, not concept gaps**: same failure class, both fixed by one audit habit. New KEY_TIPS row added: before submitting, check (1) the loop REACHES the cap, (2) the answer reads the FULL problem (`dp[n]`, not `dp[n-1]`). The logic is yours; the bounds audit is the final polish step.
+
+**08-15 — near-clean sweep, and 1043 gets its own protocol.** 139 (2:22), 3857 (3 min), 70 (1:10) — all 10/10, all cold. That's 12 of 13 at ≥ 8, average 9.2/10. The one remaining: **1043, third strike.** This time the diagnosis is sharper: your final code was CORRECT (1-indexed: `arr[i-j]`, `dp[i-j]`, `j <= min(k, i)`) — the failure was _flipping conventions mid-attempt_ (0-indexed `arr[i-j+1]`/`dp[i+1]` leaking into the 1-indexed skeleton). The recurrence was never the problem; the convention switch was. The 08-18 protocol: (1) pick 1-indexed `dp` and write it at the top; (2) verify `j=1` → window = `arr[i-1]` (the LAST element); (3) cap = `j <= min(k, i)` (window can't exceed the prefix). Write those three lines before the loops. If it clears, the redo list is dead and Decode Ways is the only boss left.
+The logic is yours; the bounds audit is the final polish step.
+
+**08-15 evening — 91 Decode Ways: THE BOSS FELL.** The segmentation family is complete: OR/min/max/count, unbounded and bounded pieces, all four operators banked. The first attempt had three mechanical bugs (ASCII math on chars, an `n==2` hardcode that ignored digits, and a `continue` that dropped the 1-char gate — `"27"` would've returned 0). Each mapped 1:1 to a KEY_TIPS row. The fix was the sum-of-independent-gates view: `dp[i] = (s[i-1] != '0' ? dp[i-1] : 0) + (10 <= two <= 26 ? dp[i-2] : 0)` — no special cases, gates ARE the special cases. The boss that was pending since 08-01 fell in one session. Remaining: 1043 (6/10, special protocol 08-18) and the redo list is otherwise dead. Next new content: 639 Decode Ways II, or interval classics 1039/312 (now open after 3857's mastery).
+
 ---
 
-**Last Updated:** 2026-08-04
+**Last Updated:** 2026-08-15

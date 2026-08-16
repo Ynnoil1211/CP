@@ -1,4 +1,4 @@
-# 1043 - Partition Array for Maximum Sum
+a# 1043 - Partition Array for Maximum Sum
 
 **Pattern Type:** Segmentation DP (bounded piece length variant — the Decode Ways engine)
 **Difficulty:** Medium
@@ -219,12 +219,12 @@ _Your original work — correct as submitted, and now fully understood._
 
 - **Solve Time:** — (not reported — solution seen)
 - **Attempts:** 1 (solution seen)
-- **Confidence:** 10/10 — re-solved 08-04 in **2:02** (from 3/10). The loop trick now fully internalized: outer i = position, go back min(k, i+1), index via dp[i-j+1]. User still wants a lock-in re-solve on 08-08 ("might forget it") — scheduled.
-- **Struggles:** Original: couldn't define the piece (a window of length ≤ k with value max·len). Re-solve: zero struggle; the only lingering question was why outer loop starts at i=0 (answer: 1-indexed dp makes bounds trivial).
-- **Key Lesson:** _"Defining the piece IS the state. And when indexing a window: count elements, don't name positions."_
+- **Confidence:** 6/10 — the sole weak spot, third occurrence of the same class
+- **Struggles:** Original: couldn't define the piece (a window of length ≤ k with value max·len). Re-solve 08-04: zero struggle (2:02). **Re-solve 08-09: `j < min(k, i+1)` vs `j <=` — runs k−1 lengths.** **Re-solve 08-15: again blocked on the cap/index during the attempt — the final code was correct (1-indexed: `arr[i-j]`, `dp[i-j]`, `j <= min(k, i)`), but mid-attempt the 0-indexed and 1-indexed conventions were getting mixed.** Root cause: convention flipping, not the recurrence. Fix: pick the convention FIRST, then verify with the j=1 check.
+- **Key Lesson:** _"Define the piece, pick the convention, then verify: at j=1 the window must be exactly the LAST element (1-indexed: `arr[i-1]`). Then the cap: `j <= min(k, i)`."_
 - **Submitted:** 2026-08-01
-- **Last Reviewed:** 2026-08-04
-- **Next Review:** 2026-08-08 (Day 7, user-requested lock-in re-solve), then 2026-08-15 (Day 14, optional).
+- **Last Reviewed:** 2026-08-15
+- **Next Review:** 2026-08-18 (Day 3) — special protocol: write the j=1 check and the cap BEFORE the loops, then code.
 
 ---
 

@@ -153,15 +153,16 @@ _This is your original work. Keep it to track how your style evolves._
 
 - **Solve Time:** ~3 minutes (attempted, struggled — got it with help/external)
 - **Attempts:** 1
-- **Confidence:** 8/10
+- **Confidence:** 10/10
 - **Struggles:** Couldn't get the recurrence on your own in the first 3 minutes; DP intuition not yet automatic. That's normal — this is step 1 of the journey.
 - **Submitted:** 2026-07-27
-- **Last Reviewed:** 2026-08-01
-- **Next Review:** Mastered — re-solved 2026-08-01 in **1.5 minutes** from scratch, no hints. No scheduled re-solve; optional Day 14 touch-up 2026-08-15.
+- **Last Reviewed:** 2026-08-15
+- **Next Review:** **Mastered.** Re-solved 2026-08-15 in 1:10 (10/10). Fibonacci is permanent.
 
 **Re-solve Log:**
 
 - 2026-08-01: 1.5 min, zero hints — Fibonacci is automatic now. Confidence 4 → 8/10.
+- 2026-08-15: 1:10, 10/10 — clean. Confidence 8 → 10/10.
 
 ---
 

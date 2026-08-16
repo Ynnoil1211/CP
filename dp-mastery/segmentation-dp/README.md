@@ -72,17 +72,19 @@ Try spotting this shape cold on **Palindrome Partitioning II** or **Perfect Squa
 
 ### 🟢 Solved Problems
 
-| ID   | Title                                                                  | Confidence | Core idea                                                                                              |
-| ---- | ---------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------ |
-| 139  | [Word Break](139_Word_Break.md)                                        | 8/10       | Existence: `dp[i] = OR over j of (dp[j] && s[j..i) in dict)`                                           |
-| 279  | [Perfect Squares](279_Perfect_Squares.md)                              | 9/10       | Min: `dp[i] = min over squares s ≤ i of (dp[i-s] + 1)` — last-piece decomposition                      |
-| 343  | [Integer Break](343_Integer_Break.md)                                  | 10/10      | Max: `dp[i] = max over cuts j of (j·(i−j), j·dp[i−j])` — the "leave whole" twist                       |
-| 1043 | [Partition Array for Max Sum](1043_Partition_Array_for_Maximum_Sum.md) | 10/10      | Max over bounded windows: `dp[i] = max over j ≤ k of dp[i-j] + max(window)·j` — the Decode Ways engine |
+| ID   | Title                                                                  | Confidence  | Core idea                                                                                              |
+| ---- | ---------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------ |
+| 139  | [Word Break](139_Word_Break.md)                                        | 10/10       | Existence: `dp[i] = OR over j of (dp[j] && s[j..i) in dict)`                                           |
+| 279  | [Perfect Squares](279_Perfect_Squares.md)                              | 9/10        | Min: `dp[i] = min over squares s ≤ i of (dp[i-s] + 1)` — last-piece decomposition                      |
+| 343  | [Integer Break](343_Integer_Break.md)                                  | 10/10       | Max: `dp[i] = max over cuts j of (j·(i−j), j·dp[i−j])` — the "leave whole" twist                       |
+| 1043 | [Partition Array for Max Sum](1043_Partition_Array_for_Maximum_Sum.md) | 6/10        | Max over bounded windows: `dp[i] = max over j ≤ k of dp[i-j] + max(window)·j` — the Decode Ways engine |
+| 91   | [Decode Ways](91_Decode_Ways.md)                                       | 7/10 (est.) | Count + gates: `dp[i] = (s[i-1]!='0' ? dp[i-1] : 0) + (10 ≤ two ≤ 26 ? dp[i-2] : 0)`                   |
 
-> 🏆 **The family is effectively mastered after 08-04: 139 (8), 279 (9), 343 (10), 1043 (10).** The 08-04 session cleared every red item: 279 in 3:03, 343 in 2:37 (the stolen solve, now owned), 1043 in 2:02. 1043 has a user-requested lock-in re-solve on 08-08. **Next: 91 - Decode Ways — the operator engine is complete and warm.**
+> 🏆 **THE BOSS FELL — 91 Decode Ways cleared on 08-15.** The segmentation family is now COMPLETE: OR (139) · min (279) · max (343) · count (91/377), unbounded and bounded pieces. 🔴 **1043 (6/10) is the only item left** — third occurrence of its index/cap class; special protocol 08-18 (convention + j=1 check + cap before the loops). Next: 639 Decode Ways II (the sequel) or move to the interval classics.
 
 ### ⏳ Next up
 
-- [91 - Decode Ways](https://leetcode.com/problems/decode-ways/) — the same skeleton, counting ways + digit gates. **The operator engine is built (OR/min/max/count all done) — only the gates are new.**
+- [639 - Decode Ways II](https://leetcode.com/problems/decode-ways/) — the sequel: same gates plus `'*'` wildcards (harder)
+- [140 - Word Break II](https://leetcode.com/problems/word-break-ii/) — return all segmentations (backtracking)
 - [322 - Coin Change](https://leetcode.com/problems/coin-change/) — ✅ solved 2026-08-01 (9/10, filed under [knapsack-dp](../knapsack-dp/322_Coin_Change.md)) — it was indeed Perfect Squares with coins swapped in
 - [343 - Integer Break](https://leetcode.com/problems/integer-break/) — ✅ solved 2026-08-01 (6/10, [note](343_Integer_Break.md)) — max operator + "leave whole" twist

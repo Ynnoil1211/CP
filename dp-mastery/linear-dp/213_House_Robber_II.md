@@ -225,16 +225,17 @@ _This is your original work. Keep it to track how your style evolves._
 
 - **Solve Time:** 8 minutes
 - **Attempts:** 1 (with a hint on the circular decomposition)
-- **Confidence:** 8/10
+- **Confidence:** 9/10
 - **Struggles:** Needed a hint to realize the "two subarrays" trick for the circle. Once you saw that, the DP was straightforward.
 - **What you proved:** You've fully internalized House Robber I's recurrence. The hint was about _problem decomposition_, not DP — and that's a separate skill. You'll recognize the circle trick next time.
 - **Submitted:** 2026-07-27
-- **Last Reviewed:** 2026-08-01
-- **Next Review:** Mastered. Re-solved 2026-08-01 in ~8 min (one base-case bug). Optional Day 14 touch-up 2026-08-15.
+- **Last Reviewed:** 2026-08-09
+- **Next Review:** **Mastered.** Re-solved 2026-08-09 in ~3 min (9/10) — logic automatic.
 
 **Re-solve Log:**
 
 - 2026-08-01: ~8 min, no hints. One bug: forgot the `n == 1` / `n == 0` base cases before indexing `nums[1]` / `nums[2]` in the two subarray runs — the classic "guard tiny inputs before touching the recurrence" mistake. Decomposition and recurrence were automatic. Confidence stays 8/10.
+- 2026-08-09: ~3 min, 9/10 — clean. Confidence 8 → 9/10.
 
 ---
 

@@ -69,14 +69,14 @@ You're walking the sequence one step at a time, and the past is _compressed_: ev
 
 | ID  | Title                                                       | Confidence | Core idea                                                                         |
 | --- | ----------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------- |
-| 70  | [Climbing Stairs](70_Climbing_Stairs.md)                    | 8/10       | Count ways: `dp[i] = dp[i-1] + dp[i-2]`                                           |
-| 746 | [Min Cost Climbing Stairs](746_Min_Cost_Climbing_Stairs.md) | 9/10       | Min cost: `dp[i] = cost[i] + min(dp[i-1], dp[i-2])`        |
-| 198 | [House Robber](198_House_Robber.md)                         | 8/10       | Max value: `dp[i] = max(dp[i-1], dp[i-2] + nums[i])`       |
-| 213 | [House Robber II](213_House_Robber_II.md)                   | 8/10       | Circle → run the recurrence twice (with / without house 0)                        |
-| 740 | [Delete and Earn](740_Delete_and_Earn.md)                   | 7/10       | `points[x] = x * freq[x]`, then House Robber                                      |
+| 70  | [Climbing Stairs](70_Climbing_Stairs.md)                    | 10/10      | Count ways: `dp[i] = dp[i-1] + dp[i-2]`                                           |
+| 746 | [Min Cost Climbing Stairs](746_Min_Cost_Climbing_Stairs.md) | 9/10       | Min cost: `dp[i] = cost[i] + min(dp[i-1], dp[i-2])`                               |
+| 198 | [House Robber](198_House_Robber.md)                         | 8/10       | Max value: `dp[i] = max(dp[i-1], dp[i-2] + nums[i])`                              |
+| 213 | [House Robber II](213_House_Robber_II.md)                   | 9/10       | Circle → run the recurrence twice (with / without house 0)                        |
+| 740 | [Delete and Earn](740_Delete_and_Earn.md)                   | 9/10       | `points[x] = x * freq[x]`, then House Robber                                      |
 | 53  | [Maximum Subarray](53_Maximum_Subarray.md)                  | 10/10      | Max ending-at-i: `dp[i] = max(dp[i-1]+nums[i], nums[i])`, answer = max over all i |
 
-**Confidence check:** 🏆 **The whole family is mastered** — every problem ≥ 8/10 after the 08-04 re-solve session (746's redemption: 3:13, 9/10; 53: 1:27, 10/10; 198: 3m, 8/10). 740 (7/10) is the only one below 8, and it's due 08-08. The take/skip, extend/restart, and state-first habits are all banked.
+**Confidence check:** 🏆 **The whole family is mastered** — every problem ≥ 8/10 after the 08-09 re-solves (740: 5 min, 9/10; 213: 3 min, 9/10; 746: 9/10; 53: 10/10). The take/skip, extend/restart, and state-first habits are all banked. **Next: 300 - LIS (scan-all-previous) or 152 (max product, two values).**
 
 ### ⏳ Next up
 

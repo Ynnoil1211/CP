@@ -27,17 +27,37 @@ This is where they live.
 
 - **1043 - Partition Array for Maximum Sum** — _The missing move: define the LAST piece as a window of length j ≤ k ending at i, value max·len. I kept thinking forward ("which element anchors a group?") instead of backward ("what's the last piece?"). Once the piece is the window, dp[i] = max over j ≤ k of dp[i-j] + mx·j — and bounded pieces mean only k candidates, the same scan Decode Ways needs with pieces of 1-2 digits. My gap pattern: when pieces are given I'm fine; when I must define them (squares in 279, windows here) I stall — because defining the piece IS the state._
 - **1043 - Partition Array for Maximum Sum (deep re-study)** — _The loop trick that fixes my whole off-by-one class: think in "elements I'm considering", not indices. i = current position, j = how many elements back → window start = arr[i-j+1], piece-size cap = min(k, i+1), dp[i+1] holds the best for arr[0..i]. j=1 touches arr[i]; j=k touches arr[i-k+1]. Same question serves Decode Ways (pieces of length 1-2). Trace confusion resolved: arr=[1,15,7,9], k=3 → 54 comes from [1,15,7]+[9] (45+9), not [1,15]+[7,9] (48)._
+
 ## 2026-08-04
 
 **Redemption Day — the full re-solve session. Average confidence 6.4 — 8.7/10; 11 of 13 problems now ≥ 8.**
 
-- **343 - Integer Break (re-solve)** — _2:37, 10/10, ZERO hints: max({dp[i], dp[i-j]*j, (i-j)*j}) written alone. The stolen solve is officially repaid — the Day 3 verdict came back: it's mine. The whole-piece term appeared by itself._
+- **343 - Integer Break (re-solve)** — _2:37, 10/10, ZERO hints: max({dp[i], dp[i-j]\*j, (i-j)\*j}) written alone. The stolen solve is officially repaid — the Day 3 verdict came back: it's mine. The whole-piece term appeared by itself._
 - **3857 - Split into Ones (re-solve)** — _15:45 and I forgot +dp[j] again — both children must recurse, that's the interval signature. I "solved" it with a max-variant that only passes because the total cost is invariant: every pair of final units separates exactly once, so ANY consistent recurrence lands on n(n−1)/2. An accidental AC is not understanding — Day 7 re-solve with both children._
 - **198 - House Robber (re-solve)** — _dp[1] = max(nums[0], nums[1]) is not intuition — it's the base case. Under "best considering houses 0..i", at i=1 you face two adjacent houses: the take/skip decision at the boundary where dp[i-2] doesn't exist yet. Base cases are the recurrence applied at the start of the array._
 - **746 - Min Cost (re-solve)** — _The base-case reflex error fired AGAIN (dp[1] = min(cost[0], cost[1]) from memory), but I caught it by thinking about the state, not by luck — 3:13, 9/10. The state-first habit is forming._
 - **The init lesson (from 279, 53, 377)** — _Initialization is part of the recurrence: 0 for sums/counts, big sentinel for min, INT_MIN for max, dp[0] = 1 for counting (i-x = 0 must be reachable)._
 
+## 2026-08-09
+
+**The bounds day — and the proof the method works.**
+
+- **3857 - Split into Ones (re-solve)** — _15:45 → 2:10. The both-children recurrence came out COLD; only base case + dp-init values were buggy. 8/10, one final confirmation pass on 08-12 — but the interval signature is now mine._
+- **1043 - Partition Max (re-solve)** — _16 min, had to see the solution: `j < min(k, i+1)` runs only k−1 lengths — the cap must be `<=`. The state and loop trick were RIGHT; the bounds audit was skipped. Same class as 139._
+- **139 - Word Break (re-solve)** — _Looped to n−1, but the answer reads dp[n]. The nested loop and dp[0]=true were automatic — the boundary was off by one. Same failure class as 1043: bounds audit._
+- **740 (5 min, 9/10) and 213 (3 min, 9/10)** — _Clean re-solves, logic remembered without the solutions._
+- **The meta-proof** — _"I didn't remember the solutions but remembered the logic" — that's EXACTLY what spaced repetition produces: the pattern in long-term memory, rote details faded. Two of today's stalls were bounds/indexing, not concepts — a habit to build, not a hole in understanding._
+
+## 2026-08-15
+
+**Near-clean sweep: 139 (2:22, 10/10), 3857 (3 min, 10/10 — final pass), 70 (1:10, 10/10). 12 of 13 at ≥ 8.**
+
+- **139 - Word Break (re-solve)** — _2:22, 10/10 — including the dp[n] answer line that slipped on 08-09. The regression is closed; the bounds audit worked when it mattered._
+- **3857 - Split into Ones (final pass)** — _3 min, 10/10, clean. From 15:45 and a forgotten +dp[j] to 3 minutes in 11 days. The interval signature is reflex._
+- **1043 - Partition Max (re-solve, still stuck)** — _Third occurrence of the same class, but the diagnosis finally sharpened: my final code was CORRECT (1-indexed arr[i-j], dp[i-j], j <= min(k, i)) — I was flipping between 0-indexed and 1-indexed conventions mid-attempt. The recurrence was never the problem; the convention switch was. Protocol for 08-18: write the convention, the j=1 check (window = arr[i-1]), and the cap BEFORE the loops._
+- **The convention lesson** — _When indexing a window: choose the convention once, then verify j=1 touches the LAST element. Every 1043 failure is the same root: mixing two conventions in one attempt._
+- **91 - Decode Ways (NEW SOLVE — THE BOSS FELL)** — _Three mechanical bugs, each mapping to a KEY_TIPS row: ASCII char math (s[i-2]*10 = 49*10, not 1\*10), an n==2 hardcode ("10" is 1 way, not 2), and a continue that dropped the 1-char gate ("27" → 0 instead of 1). The insight that fixed it: the two gates are INDEPENDENT TERMS OF A SUM, not branches of an if-else. dp[i] = (s[i-1]!='0' ? dp[i-1] : 0) + (10<=two<=26 ? dp[i-2] : 0). Zero traps fall out of the gates by themselves — "06" → 0, "10" → 1, "210" → 1 — no special-casing. The segmentation family is COMPLETE._
 
 ---
 
-**Last Updated:** 2026-08-04
+**Last Updated:** 2026-08-15

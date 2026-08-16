@@ -29,7 +29,7 @@ dp[i] = minimum total cost to split the integer i into i ones
 
 ### Why This State?
 
-The problem is recursive by nature: the **first split** of `i` produces two children `j` and `i-j`, and *both children must be fully split into ones*. So the total cost is:
+The problem is recursive by nature: the **first split** of `i` produces two children `j` and `i-j`, and _both children must be fully split into ones_. So the total cost is:
 
 ```
 first split cost + cost to reduce the left child + cost to reduce the right child
@@ -59,7 +59,7 @@ Answer:
 
 **Step 3:** Both children are not done yet — each must be fully reduced: add `dp[j] + dp[i−j]`. Take the min over all splits.
 
-> **🔑 The signature of the interval/split-cost family — BOTH sides recurse, the cost is on the SPLIT itself.** This is what separates it from segmentation (Word Break, Perfect Squares, Coin Change, 377): there, the right side was consumed as a single valid *piece* and the left was the prefix subproblem (`dp[i−x] + 1`). Here, neither side stays whole — every piece must be split all the way down, and you pay for the act of splitting, not for the pieces. That's the same shape as "merge two sub-ranges + cost of merging" — Matrix Chain Multiplication's 1D cousin.
+> **🔑 The signature of the interval/split-cost family — BOTH sides recurse, the cost is on the SPLIT itself.** This is what separates it from segmentation (Word Break, Perfect Squares, Coin Change, 377): there, the right side was consumed as a single valid _piece_ and the left was the prefix subproblem (`dp[i−x] + 1`). Here, neither side stays whole — every piece must be split all the way down, and you pay for the act of splitting, not for the pieces. That's the same shape as "merge two sub-ranges + cost of merging" — Matrix Chain Multiplication's 1D cousin.
 
 ### Example Walkthrough
 
@@ -118,13 +118,13 @@ By induction on `i`: any valid reduction sequence of `i` begins with exactly one
 
 This is the same skeleton as Integer Break with two differences:
 
-| | Integer Break (343) | Split into Ones (3857) |
-| --- | --- | --- |
-| Policy | a piece may **stay whole** | both pieces **must** be fully split |
-| Recurrence | `max(j·(i−j), j·dp[i−j])` | `dp[j] + dp[i−j] + j·(i−j)` |
-| Operator | max (product) | min (cost) |
+|            | Integer Break (343)        | Split into Ones (3857)              |
+| ---------- | -------------------------- | ----------------------------------- |
+| Policy     | a piece may **stay whole** | both pieces **must** be fully split |
+| Recurrence | `max(j·(i−j), j·dp[i−j])`  | `dp[j] + dp[i−j] + j·(i−j)`         |
+| Operator   | max (product)              | min (cost)                          |
 
-If you drop `dp[j] + dp[i−j]` from this recurrence, you're only paying for the first split — the children's reductions vanish. If you add a "stay whole" term, you invent an illegal move (a piece > 1 can never stay). The problem statement decides the policy: *"split until all are ones"* → must-split.
+If you drop `dp[j] + dp[i−j]` from this recurrence, you're only paying for the first split — the children's reductions vanish. If you add a "stay whole" term, you invent an illegal move (a piece > 1 can never stay). The problem statement decides the policy: _"split until all are ones"_ → must-split.
 
 ### Other Common Mistakes
 
@@ -183,12 +183,12 @@ _Your original work — correct as submitted. The `j = 0` start is dead self-ref
 
 - **Solve Time:** — (not reported)
 - **Attempts:** — (not reported)
-- **Confidence:** 6/10 — STILL WEAK, stays on rotation
-- **Struggles:** "Need to think more about the conditions" — pinning down that BOTH children must recurse and that the split itself is what you pay for. Re-solve 08-04: **forgot the `+dp[j]` term again** (15:45, the slowest re-solve of the session). Substituted an accidental `max` variant that passes ONLY because the total cost is invariant (always n(n−1)/2 — every pair of units separates exactly once) — it would break for any non-invariant cost. Structural lesson: both children recurse; an accidental AC is not understanding.
+- **Confidence:** 10/10 — MASTERED, final confirmation cleared
+- **Struggles:** "Need to think more about the conditions" — pinning down that BOTH children must recurse and that the split itself is what you pay for. Re-solve 08-04: **forgot the `+dp[j]` term again** (15:45, the slowest re-solve of the session). Substituted an accidental `max` variant that passes ONLY because the total cost is invariant (always n(n−1)/2 — every pair of units separates exactly once) — it would break for any non-invariant cost. Structural lesson: both children recurse; an accidental AC is not understanding. Re-solve 08-09: **2:10** — the both-children recurrence came out cold; the bug was base case + dp-init values. Re-solve 08-15: **3 min, 10/10** — fully clean.
 - **Key Lesson:** _"Both sides recurse + split cost = interval family. One side whole = segmentation family. Read the policy from the statement. And: a passing answer is not the same as the right recurrence."_
 - **Submitted:** 2026-08-01
-- **Last Reviewed:** 2026-08-04
-- **Next Review:** 2026-08-08 (Day 7) — re-solve, target < 10 min, MUST write `min over j of dp[j] + dp[i-j] + j·(i-j)` with BOTH children. Then 2026-08-15 (Day 14).
+- **Last Reviewed:** 2026-08-15
+- **Next Review:** **Mastered.** Final confirmation passed 08-15 (3 min, 10/10). The interval 1D signature is reflex — the 2D classics (1039, 312) are now open.
 
 ---
 
