@@ -42,7 +42,7 @@ Each pattern folder starts with a `README.md` — the full pattern explanation (
 
 | Pattern                                      | Solved | Target | % Complete | Avg Time | Mastery            |
 | -------------------------------------------- | ------ | ------ | ---------- | -------- | ------------------ |
-| [Linear DP](linear-dp/README.md)             | 6/10   | 10     | 60%        | ~20m     | 🟡 In Progress     |
+| [Linear DP](linear-dp/README.md)             | 7/10   | 10     | 70%        | ~20m     | 🟡 In Progress     |
 | [Segmentation DP](segmentation-dp/README.md) | 5/10   | 10     | 50%        | ~15m     | 🟢 Family complete |
 | [2D Grid DP](2d-grid-dp/README.md)           | 0/10   | 10     | 0%         | —        | ⏳ Upcoming        |
 | [Two-Sequence (LCS)](lcs-dp/README.md)       | 0/10   | 10     | 0%         | —        | ⏳ Upcoming        |
@@ -72,6 +72,7 @@ _Linear:_ ✅ [213 - House Robber II](linear-dp/213_House_Robber_II.md), ✅ [74
 - [ ] 368 - Largest Divisible Subset _(Linear, scan-all-previous)_
 - ✅ 55 - Jump Game _(Linear, reachability → greedy frontier, 08-15)_
 - ✅ 45 - Jump Game II _(Linear, min jumps → BFS frontier, 08-15, 10/10)_
+- ✅ 300 - Longest Increasing Subsequence _(Linear, scan-all-previous → patience sorting, 08-15)_
 - ✅ 91 - Decode Ways _(Segmentation — THE BOSS, cleared 08-15)_
 - ✅ 343 - Integer Break _(Segmentation)_
 
@@ -148,6 +149,7 @@ _All other problems are ≥ 8/10. This is the last boss of the redo list._
 | 08-15         | + 91 Decode Ways (new solve)  | —        | 7/10 (est.)    | 🏆 The boss fell             |
 | 08-15         | + 55 Jump Game (new solve)    | 12m      | —              | Linear reachability → greedy |
 | 08-15         | + 45 Jump Game II (new solve) | 7m       | 10/10          | Min jumps → BFS frontier     |
+| 08-15         | + 300 LIS (new solve)         | 13m      | —              | Scan-all-previous → patience |
 
 ---
 

@@ -67,18 +67,19 @@ You're walking the sequence one step at a time, and the past is _compressed_: ev
 
 ### 🟢 Solved Problems
 
-| ID  | Title                                                       | Confidence | Core idea                                                                         |
-| --- | ----------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------- |
-| 70  | [Climbing Stairs](70_Climbing_Stairs.md)                    | 10/10      | Count ways: `dp[i] = dp[i-1] + dp[i-2]`                                           |
-| 746 | [Min Cost Climbing Stairs](746_Min_Cost_Climbing_Stairs.md) | 9/10       | Min cost: `dp[i] = cost[i] + min(dp[i-1], dp[i-2])`                               |
-| 198 | [House Robber](198_House_Robber.md)                         | 8/10       | Max value: `dp[i] = max(dp[i-1], dp[i-2] + nums[i])`                              |
-| 213 | [House Robber II](213_House_Robber_II.md)                   | 9/10       | Circle → run the recurrence twice (with / without house 0)                        |
-| 740 | [Delete and Earn](740_Delete_and_Earn.md)                   | 9/10       | `points[x] = x * freq[x]`, then House Robber                                      |
-| 53  | [Maximum Subarray](53_Maximum_Subarray.md)                  | 10/10      | Max ending-at-i: `dp[i] = max(dp[i-1]+nums[i], nums[i])`, answer = max over all i |
-| 55  | [Jump Game](55_Jump_Game.md)                                | —          | Reachability: scan-all-previous DP → monotone-frontier greedy (O(n))              |
-| 45  | [Jump Game II](45_Jump_Game_II.md)                          | 10/10      | Min jumps: scan-all-previous DP → BFS frontier + level boundary (O(n))            |
+| ID  | Title                                                                   | Confidence | Core idea                                                                         |
+| --- | ----------------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------- |
+| 70  | [Climbing Stairs](70_Climbing_Stairs.md)                                | 10/10      | Count ways: `dp[i] = dp[i-1] + dp[i-2]`                                           |
+| 746 | [Min Cost Climbing Stairs](746_Min_Cost_Climbing_Stairs.md)             | 9/10       | Min cost: `dp[i] = cost[i] + min(dp[i-1], dp[i-2])`                               |
+| 198 | [House Robber](198_House_Robber.md)                                     | 8/10       | Max value: `dp[i] = max(dp[i-1], dp[i-2] + nums[i])`                              |
+| 213 | [House Robber II](213_House_Robber_II.md)                               | 9/10       | Circle → run the recurrence twice (with / without house 0)                        |
+| 740 | [Delete and Earn](740_Delete_and_Earn.md)                               | 9/10       | `points[x] = x * freq[x]`, then House Robber                                      |
+| 53  | [Maximum Subarray](53_Maximum_Subarray.md)                              | 10/10      | Max ending-at-i: `dp[i] = max(dp[i-1]+nums[i], nums[i])`, answer = max over all i |
+| 55  | [Jump Game](55_Jump_Game.md)                                            | —          | Reachability: scan-all-previous DP → monotone-frontier greedy (O(n))              |
+| 45  | [Jump Game II](45_Jump_Game_II.md)                                      | 10/10      | Min jumps: scan-all-previous DP → BFS frontier + level boundary (O(n))            |
+| 300 | [Longest Increasing Subsequence](300_Longest_Increasing_Subsequence.md) | 10/10      | LIS ending at i: scan-all-previous DP (O(n²)) → patience sorting (O(n log n))     |
 
-**Confidence check:** 🏆 **The whole family is mastered** — every problem ≥ 8/10 after the 08-09 re-solves (740: 5 min, 9/10; 213: 3 min, 9/10; 746: 9/10; 53: 10/10). The take/skip, extend/restart, and state-first habits are all banked. **+55 Jump Game (08-15)** — the scan-all-previous DP that collapses to a monotone-frontier greedy; the rare case where greedy is provably correct. **+45 Jump Game II (08-15, 7 min, 10/10)** — the min-jump sequel: BFS frontier + level boundary `end`; the pattern transferred cleanly. **Next: 300 - LIS (scan-all-previous) or 152 (max product, two values).**
+**Confidence check:** 🏆 **The whole family is mastered** — every problem ≥ 8/10 after the 08-09 re-solves (740: 5 min, 9/10; 213: 3 min, 9/10; 746: 9/10; 53: 10/10). The take/skip, extend/restart, and state-first habits are all banked. **+55 Jump Game (08-15)** — the scan-all-previous DP that collapses to a monotone-frontier greedy; the rare case where greedy is provably correct. **+45 Jump Game II (08-15, 7 min, 10/10)** — the min-jump sequel: BFS frontier + level boundary `end`; the pattern transferred cleanly. **+300 LIS (08-15, 13 min)** — the REAL scan-all-previous problem where greedy does NOT work; the O(n log n) patience-sorting trick is a separate algorithm. **Next: 152 (max product, two values) or 368 (LIS variant).**
 
 ### ⏳ Next up
 
