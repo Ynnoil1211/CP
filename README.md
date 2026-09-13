@@ -1,17 +1,22 @@
 # My CP Journey
 
-**Total:** 8 problems · 3 CF ratings + 1 RPC contest
+**Total:** 9 problems · 4 CF ratings + 1 RPC contest
 
-**Last Updated:** 2026-07-25
+**Last Updated:** 2026-09-13
 
 ## Quick Stats
 
 | Metric          | Value            |
 | --------------- | ---------------- |
-| Problems solved | 8                |
-| Rating range    | 800 — 1200 + RPC |
+| Problems solved | 9                |
+| Rating range    | 800 — 1700 + RPC |
 | Avg solve time  | ~14m             |
-| Avg confidence  | 5.3/10           |
+| Avg confidence  | 5.5/10           |
+
+## Theory & Cheatsheets
+
+- 🎯 [Búsqueda Binaria (Binary Search)](./cp-theory/binary-search/README.md)
+- 📦 [Estructuras de Datos STL (set, multiset, map, unordered)](./cp-theory/data-structures/README.md)
 
 ## By Rating
 
@@ -31,6 +36,10 @@
 - [1742E - Scuza](./cp-notes/1200/1742E_Scuza.md) — — · 5/10
 - [1527B1 - Palindrome Game (easy version)](./cp-notes/1200/1527B1_Palindrome_Game_easy_version.md) — — · 7/10
 
+### 1700 (1 problem)
+
+- [1157E - Minimum Array](./cp-notes/1700/1157E_Minimum_Array.md) — — · 7/10
+
 ## By Algorithm
 
 ### Ad-hoc / Math (1 problem)
@@ -48,6 +57,10 @@
 ### Greedy / Brute Force (1 problem)
 
 - [1914D - Three Activities](./cp-notes/1200/1914D_Three_Activities.md)
+
+### Greedy / Priority-Based (1 problem)
+
+- [1157E - Minimum Array](./cp-notes/1700/1157E_Minimum_Array.md)
 
 ### Constructive / Greedy / Math (1 problem)
 
@@ -86,3 +99,4 @@
 | 1742E - Scuza                     | 1200   | 5/10       | 2026-07-28  |
 | 1527B1 - Palindrome Game (easy)   | 1200   | 7/10       | 2026-07-29  |
 | RPC 2026-07 H - You You See What? | —      | 5/10       | 2026-07-29  |
+| 1157E - Minimum Array             | 1700   | 7/10       | 2026-09-16  |

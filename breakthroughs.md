@@ -61,6 +61,10 @@ This is where they live.
 - **45 - Jump Game II (NEW SOLVE, 7 min, 10/10)** — _The min-jump sequel: the DP (dp[i] = min over reachable j of dp[j]+1) transferred cleanly, but the O(n) trick needs a SECOND pointer. Jump Game's single mx frontier tells you how far you can reach, not how many jumps — you need `end` (the current level's boundary) and the `i == end` trigger to count when a new jump begins. Minimum jumps = BFS levels: frontier + level boundary._
 - **300 - Longest Increasing Subsequence (NEW SOLVE, 13 min)** — _The REAL scan-all-previous problem, the reverse of Jump Game: here greedy does NOT work, the nested loop is genuinely required. I only thought of the DP — the O(n log n) patience-sorting trick (res[k] = minimal tail of a length-k+1 subsequence, lower_bound to replace) is a SEPARATE algorithm I wouldn't derive from the DP. Also: answer is max(dp), not dp[n-1], because the LIS might not end at the last index._
 
+## 2026-09-13
+
+- **1157E - Minimum Array** — _`std::lower_bound(b.begin(), b.end(), val)` compiles on `std::set`/`multiset` but takes $O(n)$ time because set iterators are bidirectional (not random-access), silently degrading an algorithm to $O(n^2)$ TLE. Always use the member method `b.lower_bound(val)` for $O(\log n)$ balanced tree traversal. Also, minimizing $(a_i + b_j) \pmod n$ greedily queries $b.lower\_bound(n - a_i)$ and wraps around to $b.begin()$ when reaching the end._
+
 ---
 
-**Last Updated:** 2026-08-15
+**Last Updated:** 2026-09-13
