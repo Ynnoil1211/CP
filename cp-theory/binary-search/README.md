@@ -41,13 +41,13 @@ Ambas funciones asumen que el rango `[begin, end)` está **ordenado** de forma n
 
 | Función | Definición Formal | Condición que busca | Al restar `begin()` |
 |---|---|---|---|
-| `lower_bound(..., X)` | Primer elemento $\ge X$ | `*it >= X` | Cantidad de elementos estrictamente menores que $X$ (`< X`) |
-| `upper_bound(..., X)` | Primer elemento $> X$ | `*it > X` | Cantidad de elementos menores o iguales a $X$ (`<= X`) |
+| `lower_bound(..., X)` | Primer elemento ≥ X | `*it >= X` | Cantidad de elementos estrictamente menores que X (`< X`) |
+| `upper_bound(..., X)` | Primer elemento > X | `*it > X` | Cantidad de elementos menores o iguales a X (`<= X`) |
 
 ### ¿Cuándo usar cuál?
 
 #### Caso `upper_bound` (presupuesto / compras):
-En [CF 706B - Interesting drink](https://codeforces.com/problemset/problem/706/B/), tienes monedas $K$ y quieres saber en cuántas tiendas puedes comprar si el precio es $\le K$:
+En [CF 706B - Interesting drink](https://codeforces.com/problemset/problem/706/B/), tienes monedas K y quieres saber en cuántas tiendas puedes comprar si el precio es ≤ K:
 ```cpp
 // Precios: [1, 3, 6, 8, 9], Monedas: K = 8
 auto it = upper_bound(prices.begin(), prices.end(), 8);
@@ -56,15 +56,17 @@ int tiendas = it - prices.begin(); // 4 tiendas (1, 3, 6, 8)
 ```
 
 #### Caso `lower_bound` (presupuesto estricto):
-Si la regla fuera *"Vasiliy solo compra si el refresco cuesta estrictamente menos que sus monedas ($< K$)"*:
+Si la regla fuera *"Vasiliy solo compra si el refresco cuesta estrictamente menos que sus monedas (< K)"*:
 ```cpp
 auto it = lower_bound(prices.begin(), prices.end(), 8);
 // it apunta a 8 (índice 3)
 int tiendas = it - prices.begin(); // 3 tiendas (1, 3, 6)
 ```
 
-#### Frecuencia exacta de un elemento $X$:
-$$\text{Frecuencia de } X = \text{upper\_bound}(X) - \text{lower\_bound}(X)$$
+#### Frecuencia exacta de un elemento X:
+```text
+Frecuencia de X = upper_bound(X) - lower_bound(X)
+```
 
 ```cpp
 // Arreglo: [2, 4, 4, 4, 6] buscando el 4
@@ -148,13 +150,23 @@ auto it = ms.lower_bound(X);
 Se utiliza cuando la respuesta numérica $X$ no es calculable directamente con una fórmula, pero **verificar si una propuesta $X$ es válida toma tiempo polinomial (típicamente $O(N)$)** mediante una función `check(X)`.
 
 ### Condición de Monotonicidad
-El espacio de búsqueda debe tener una línea divisoria estricta:
-- **Buscando un mínimo:**
-  $$\underbrace{\text{Falso, Falso, Falso}}_{\text{Valores insuficientes}}, \underbrace{\mathbf{\text{Verdadero}}, \text{Verdadero}, \text{Verdadero}}_{\text{Valores que cumplen}}$$
-  *(Queremos el **primer** Verdadero).*
-- **Buscando un máximo:**
-  $$\underbrace{\text{Verdadero}, \text{Verdadero}, \mathbf{\text{Verdadero}}}_{\text{Valores que cumplen}}, \underbrace{\text{Falso, Falso, Falso}}_{\text{Valores excesivos}}$$
-  *(Queremos el **último** Verdadero).*
+El espacio de búsqueda debe tener una línea divisoria estricta (predicado monotónico):
+
+- **Si buscas un mínimo:**
+  ```text
+  Valores insuficientes        Valores que cumplen
+  [ Falso , Falso , Falso ] -> [ VERDADERO , Verdadero , Verdadero ]
+                                  ^
+                                  Queremos el primer Verdadero
+  ```
+
+- **Si buscas un máximo:**
+  ```text
+  Valores que cumplen              Valores excesivos
+  [ Verdadero , Verdadero , VERDADERO ] -> [ Falso , Falso , Falso ]
+                               ^
+                               Queremos el último Verdadero
+  ```
 
 ### Plantilla Universal Segura (con variable `ans`)
 Esta plantilla elimina el dilema mental de si debes imprimir `left`, `right`, o `right + 1`:
@@ -208,9 +220,11 @@ En problemas de geometría, física, promedios o ratios continuos, la respuesta 
 - Cerca de números grandes o por errores de redondeo, la diferencia `right - left` puede quedarse oscilando alrededor de `1e-9`, cayendo en un **ciclo infinito** o perdiendo precisión.
 
 ### La Técnica de Oro: 80 - 100 Iteraciones Fijas
-Cada iteración divide el rango a la mitad. Con $100$ iteraciones:
-$$\frac{\text{Rango}}{2^{100}} \approx \frac{10^9}{1.26 \times 10^{30}} \approx 10^{-21}$$
-Garantiza una precisión infinitamente superior a cualquier tolerancia requerida por un juez de CP (usualmente $10^{-6}$ o $10^{-9}$), sin riesgo de bucles infinitos.
+Cada iteración divide el rango a la mitad. Con 100 iteraciones:
+```text
+Rango / (2^100) ≈ 10^9 / (1.26 × 10^30) ≈ 10^-21
+```
+Garantiza una precisión infinitamente superior a cualquier tolerancia requerida por un juez de CP (usualmente 10^-6 o 10^-9), sin riesgo de bucles infinitos.
 
 ```cpp
 double left = 0.0, right = 1e9;

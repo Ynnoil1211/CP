@@ -7,60 +7,62 @@
 
 ## Problem Summary
 
-Given two arrays $a$ and $b$ of length $n$ with elements in $[0, n-1]$, reorder array $b$ to form an array $c$ where $c_i = (a_i + b_i) \pmod n$ such that $c$ is lexicographically as small as possible.
+Given two arrays a and b of length n with elements in [0, n - 1], reorder array b to form an array c where `c[i] = (a[i] + b[i]) % n` such that c is lexicographically as small as possible.
 
 ## Key Insight
 
-Lexicographical order demands a greedy choice at each position: minimize $c_0$, then $c_1$, and so on. For each $a_i$, the ideal complement is $n - a_i$ (giving sum $0 \pmod n$). We query a multiset for the smallest element $\ge n - a_i$ using `b.lower_bound(n - a_i)`. If no such element exists (iterator reaches `b.end()`), the sum cannot reach $n$, so we wrap around to `b.begin()` to pick the absolute smallest element in $b$.
+Lexicographical order demands a greedy choice at each position: minimize c[0], then c[1], and so on. For each a[i], the ideal complement is `n - a[i]` (giving sum 0 % n). We query a multiset for the smallest element ≥ `n - a[i]` using `b.lower_bound(n - a[i])`. If no such element exists (iterator reaches `b.end()`), the sum cannot reach n, so we wrap around to `b.begin()` to pick the absolute smallest element in b.
 
 ## Solution Approach
 
 ### Step 1: Observation
 
-Since we want the lexicographically smallest array $c$, the decision for index $i$ takes strict precedence over any subsequent index $j > i$. Therefore, a greedy approach processing from $i = 0$ to $n-1$ is optimal.
+Since we want the lexicographically smallest array c, the decision for index i takes strict precedence over any subsequent index j > i. Therefore, a greedy approach processing from i = 0 to n - 1 is optimal.
 
-For a fixed $a_i$, we need to choose an unused element $b_j$ to minimize:
-$$c_i = (a_i + b_j) \pmod n$$
+For a fixed a[i], we need to choose an unused element b[j] to minimize:
+```text
+c[i] = (a[i] + b[j]) % n
+```
 
-Because $0 \le a_i, b_j < n$, the sum $a_i + b_j$ lies in $[0, 2n - 2]$:
-1. If $b_j \ge n - a_i$, then $n \le a_i + b_j < 2n$. Thus, $(a_i + b_j) \pmod n = a_i + b_j - n \ge 0$. To minimize this result, we want $b_j$ to be as close to $n - a_i$ as possible from above. The smallest $b_j \ge n - a_i$ yields the smallest remainder.
-2. If no available element satisfies $b_j \ge n - a_i$, then for all available elements, $a_i + b_j < n$. Thus, $(a_i + b_j) \pmod n = a_i + b_j$. To minimize this sum, we should pick the smallest available $b_j$ overall.
+Because 0 ≤ a[i], b[j] < n, the sum `a[i] + b[j]` lies in [0, 2n - 2]:
+1. If `b[j] >= n - a[i]`, then `n <= a[i] + b[j] < 2n`. Thus, `(a[i] + b[j]) % n = a[i] + b[j] - n >= 0`. To minimize this result, we want b[j] to be as close to `n - a[i]` as possible from above. The smallest `b[j] >= n - a[i]` yields the smallest remainder.
+2. If no available element satisfies `b[j] >= n - a[i]`, then for all available elements, `a[i] + b[j] < n`. Thus, `(a[i] + b[j]) % n = a[i] + b[j]`. To minimize this sum, we should pick the smallest available b[j] overall.
 
 ### Step 2: Algorithm
 
-1. Store all elements of array $b$ in a `std::multiset<int>`.
-2. For each element $a_i$ from $i = 0$ to $n - 1$:
-   - Search for the smallest $x \in b$ such that $x \ge n - a_i$ using `b.lower_bound(n - a_i)`.
-   - If found (`it != b.end()`), choose $x = *it$.
-   - If not found (`it == b.end()`), wrap around and pick the smallest element currently in the multiset: `it = b.begin()`, $x = *it$.
-   - Print $(a_i + x) \pmod n$.
+1. Store all elements of array b in a `std::multiset<int>`.
+2. For each element a[i] from i = 0 to n - 1:
+   - Search for the smallest `x in b` such that `x >= n - a[i]` using `b.lower_bound(n - a[i])`.
+   - If found (`it != b.end()`), choose `x = *it`.
+   - If not found (`it == b.end()`), wrap around and pick the smallest element currently in the multiset: `it = b.begin()`, `x = *it`.
+   - Print `(a[i] + x) % n`.
    - Remove this specific instance from the multiset: `b.erase(it)`.
 
 ### Step 3: Implementation
 
 Crucial detail on binary searching in STL containers:
-- **Never** use `std::lower_bound(b.begin(), b.end(), val)` on a `std::set` or `std::multiset`. Set iterators are bidirectional, not random-access. `std::lower_bound` degrades to linear step-by-step traversal ($O(n)$ per query, resulting in $O(n^2)$ overall $\rightarrow$ TLE).
-- **Always** use the member function `b.lower_bound(val)`, which traverses the balanced BST in $O(\log n)$ time.
+- **Never** use `std::lower_bound(b.begin(), b.end(), val)` on a `std::set` or `std::multiset`. Set iterators are bidirectional, not random-access. `std::lower_bound` degrades to linear step-by-step traversal (O(n) per query, resulting in O(n^2) overall → TLE).
+- **Always** use the member function `b.lower_bound(val)`, which traverses the balanced BST in O(log n) time.
 
 ### Step 4: Edge Cases
 
-- $a_i = 0$: $n - a_i = n$. Since all elements in $b$ are $< n$, `b.lower_bound(n)` always returns `b.end()`. The code naturally falls back to `b.begin()`, picking the smallest available $b_j$, which produces $(0 + \min(b)) \pmod n = \min(b)$. This is completely correct.
-- Duplicate values in $b$: Handled cleanly by `std::multiset`. Calling `b.erase(it)` deletes only that single node by iterator, preserving other duplicate copies.
+- `a[i] = 0`: `n - a[i] = n`. Since all elements in b are < n, `b.lower_bound(n)` always returns `b.end()`. The code naturally falls back to `b.begin()`, picking the smallest available b[j], which produces `(0 + min(b)) % n = min(b)`. This is completely correct.
+- Duplicate values in b: Handled cleanly by `std::multiset`. Calling `b.erase(it)` deletes only that single node by iterator, preserving other duplicate copies.
 
 ## Complexity Analysis
 
-- **Time:** $O(n \log n)$. Inserting $n$ elements into `std::multiset` takes $O(n \log n)$. Each of the $n$ queries performs one member `lower_bound` ($O(\log n)$) and one iterator-based `erase` ($O(1)$ amortized / $O(\log n)$), well within the 3.0s time limit for $n = 2 \cdot 10^5$.
-- **Space:** $O(n)$ to store elements in array $a$ and the `multiset` $b$.
+- **Time:** O(n log n). Inserting n elements into `std::multiset` takes O(n log n). Each of the n queries performs one member `lower_bound` (O(log n)) and one iterator-based `erase` (O(1) amortized / O(log n)), well within the 3.0s time limit for n = 2e5.
+- **Space:** O(n) to store elements in array a and the `multiset` b.
 
 ## Why This Works
 
-Lexicographical priority is strictly left-to-right. At index $i$, achieving the absolute minimum value for $c_i$ is always better than any consequence it might have on later positions. The partition of possible remainders into $[0, n-1]$ maps monotonically: values $b_j \ge n - a_i$ map to remainders $[0, n - 1 - a_i]$, and values $b_j < n - a_i$ map to $[a_i, n - 1]$. The best possible remainder in the first group is achieved at the minimum $b_j \ge n - a_i$. If that group is empty, the best possible remainder in the second group is achieved at the minimum $b_j < n - a_i$, which is simply the smallest element in $b$.
+Lexicographical priority is strictly left-to-right. At index i, achieving the absolute minimum value for c[i] is always better than any consequence it might have on later positions. The partition of possible remainders into [0, n - 1] maps monotonically: values `b[j] >= n - a[i]` map to remainders `[0, n - 1 - a[i]]`, and values `b[j] < n - a[i]` map to `[a[i], n - 1]`. The best possible remainder in the first group is achieved at the minimum `b[j] >= n - a[i]`. If that group is empty, the best possible remainder in the second group is achieved at the minimum `b[j] < n - a[i]`, which is simply the smallest element in b.
 
 ## Common Mistakes
 
-- **Using `std::lower_bound(s.begin(), s.end(), x)` instead of `s.lower_bound(x)`:** Global `std::lower_bound` takes $O(n)$ on non-random-access iterators. Calling it inside an $n$-iteration loop yields $O(n^2)$ TLE.
+- **Using `std::lower_bound(s.begin(), s.end(), x)` instead of `s.lower_bound(x)`:** Global `std::lower_bound` takes O(n) on non-random-access iterators. Calling it inside an n-iteration loop yields O(n^2) TLE.
 - **Erasing by value instead of iterator:** Writing `b.erase(*low)` deletes **all** occurrences of that number from a `multiset`. You must write `b.erase(low)` to remove only the single matched element.
-- **Overcomplicating the modulo wrap-around:** Trying to construct complex branching when a simple `if (low == b.end()) low = b.begin();` handles both the wrap-around and the $a_i = 0$ case.
+- **Overcomplicating the modulo wrap-around:** Trying to construct complex branching when a simple `if (low == b.end()) low = b.begin();` handles both the wrap-around and the `a[i] = 0` case.
 
 ## Clean Code
 
@@ -97,15 +99,15 @@ int main() {
 
 ## Key Takeaway
 
-When matching elements under modular arithmetic to minimize $(a_i + b_j) \pmod n$:
-1. The target complement that gives $0$ is $n - a_i$.
+When matching elements under modular arithmetic to minimize `(a[i] + b[j]) % n`:
+1. The target complement that gives 0 is `n - a[i]`.
 2. Query `multiset::lower_bound(target)`.
 3. If not found, wrap around to `multiset::begin()`.
 4. Always use member `.lower_bound()` on associative containers, never `std::lower_bound()`.
 
 ## 🔑 Breakthrough
 
-_`std::lower_bound(b.begin(), b.end(), val)` compiles on `std::multiset` but runs in $O(n)$ time because set iterators are bidirectional, causing a silent $O(n^2)$ TLE; always call the container's member function `b.lower_bound(val)` for true $O(\log n)$ tree traversal._
+_`std::lower_bound(b.begin(), b.end(), val)` compiles on `std::multiset` but runs in O(n) time because set iterators are bidirectional, causing a silent O(n^2) TLE; always call the container's member function `b.lower_bound(val)` for true O(log n) tree traversal._
 
 ## Your Code
 
@@ -228,11 +230,11 @@ int main() {
 - **Direct streaming in the fix:** In your second version, printing `(*low + a[i]) % n` on the fly eliminated the intermediate vector `c(n)`.
 
 ### What Needed Fixing
-1. **The $O(n)$ iterator trap (`std::lower_bound` vs `member.lower_bound`):**
-   `std::lower_bound` from `<algorithm>` accepts any iterator range. However, for non-random-access iterators (like those in `std::set`, `std::multiset`, `std::map`), advancing takes $O(k)$ steps rather than $O(1)$. Calling it $n$ times gave $O(n^2)$ time. Switching to `b.lower_bound(n - a[i])` fixed this immediately.
+1. **The O(n) iterator trap (`std::lower_bound` vs `member.lower_bound`):**
+   `std::lower_bound` from `<algorithm>` accepts any iterator range. However, for non-random-access iterators (like those in `std::set`, `std::multiset`, `std::map`), advancing takes O(k) steps rather than O(1). Calling it n times gave O(n^2) time. Switching to `b.lower_bound(n - a[i])` fixed this immediately.
 2. **Redundant includes and types:**
    - `<bits/stdc++.h>` already includes `<set>`, so `#include <set>` is redundant.
-   - For values strictly in range $[0, n-1]$ with $n \le 2 \cdot 10^5$, standard 32-bit `int` is sufficient; `long long` isn't required here and uses double the memory inside the red-black tree nodes.
+   - For values strictly in range [0, n - 1] with n ≤ 2e5, standard 32-bit `int` is sufficient; `long long` isn't required here and uses double the memory inside the red-black tree nodes.
 
 ---
 

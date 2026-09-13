@@ -19,11 +19,11 @@ Guía definitiva de las estructuras asociativas y ordenadas más utilizadas en C
 
 | Estructura | Estructura Interna | Ordenada | Permite Duplicados | Búsqueda / Inserción / Borrado |
 |---|---|:---:|:---:|:---:|
-| `std::set<T>` | Red-Black Tree (BST Balanceado) | ✅ Sí | ❌ No | $O(\log N)$ |
-| `std::multiset<T>` | Red-Black Tree (BST Balanceado) | ✅ Sí | ✅ Sí | $O(\log N)$ |
-| `std::map<K, V>` | Red-Black Tree (BST Balanceado) | ✅ Sí (por clave) | ❌ No (claves únicas) | $O(\log N)$ |
-| `std::unordered_set<T>` | Hash Table con buckets | ❌ No | ❌ No | $O(1)$ promedio / $O(N)$ peor caso |
-| `std::unordered_map<K, V>`| Hash Table con buckets | ❌ No | ❌ No (claves únicas) | $O(1)$ promedio / $O(N)$ peor caso |
+| `std::set<T>` | Red-Black Tree (BST Balanceado) | ✅ Sí | ❌ No | O(log N) |
+| `std::multiset<T>` | Red-Black Tree (BST Balanceado) | ✅ Sí | ✅ Sí | O(log N) |
+| `std::map<K, V>` | Red-Black Tree (BST Balanceado) | ✅ Sí (por clave) | ❌ No (claves únicas) | O(log N) |
+| `std::unordered_set<T>` | Hash Table con buckets | ❌ No | ❌ No | O(1) promedio / O(N) peor caso |
+| `std::unordered_map<K, V>`| Hash Table con buckets | ❌ No | ❌ No (claves únicas) | O(1) promedio / O(N) peor caso |
 
 ---
 
@@ -220,7 +220,7 @@ unordered_set<long long, custom_hash> seguro_set;
 ```
 
 > [!TIP]
-> Si el número de elementos es pequeño ($N \le 2 \cdot 10^5$) y el tiempo límite es holgado ($\ge 1.0\text{s}$), a menudo un `std::map` regular con $O(N \log N)$ es más seguro y no puede ser hackeado.
+> Si el número de elementos es moderado (N ≤ 2e5) y el tiempo límite es estándar (≥ 1.0s), a menudo un `std::map` regular con O(N log N) es más seguro y no puede ser hackeado.
 
 ---
 
@@ -258,7 +258,7 @@ set<Interval, CompareInterval> intervals;
 
 > [!IMPORTANT]
 > Los comparadores de `set` y `map` deben implementar **Strict Weak Ordering**:
-> - Si $a == b$, `cmp(a, b)` debe retornar `false`.
+> - Si `a == b`, `cmp(a, b)` debe retornar `false`.
 > - Si usas `<=` en vez de `<`, el contenedor asumirá que ningún par es igual y el comportamiento será errático o fallará en compilar.
 
 ---
@@ -286,10 +286,10 @@ flowchart TD
 
 | Operación | `std::set` | `std::multiset` | `std::map` | `std::unordered_map` |
 |---|:---:|:---:|:---:|:---:|
-| Insertar elemento | `s.insert(x)` [$O(\log N)$] | `ms.insert(x)` [$O(\log N)$] | `mp[k] = v` [$O(\log N)$] | `ump[k] = v` [$O(1)$] |
-| Buscar existencia | `s.count(x)` [$O(\log N)$] | `ms.find(x) != ms.end()` [$O(\log N)$] | `mp.count(k)` [$O(\log N)$] | `ump.count(k)` [$O(1)$] |
-| Borrar 1 elemento | `s.erase(x)` [$O(\log N)$] | `ms.erase(ms.find(x))` [$O(\log N)$] | `mp.erase(k)` [$O(\log N)$] | `ump.erase(k)` [$O(1)$] |
-| Borrar todas copias| `s.erase(x)` [$O(\log N)$] | `ms.erase(x)` [$O(k + \log N)$] | N/A | N/A |
-| Primer $\ge X$ | `s.lower_bound(x)` [$O(\log N)$] | `ms.lower_bound(x)` [$O(\log N)$] | `mp.lower_bound(k)` [$O(\log N)$] | ❌ No soportado |
-| Mínimo elemento | `*s.begin()` [$O(1)$] | `*ms.begin()` [$O(1)$] | `mp.begin()->first` [$O(1)$] | ❌ No soportado |
-| Máximo elemento | `*s.rbegin()` [$O(1)$] | `*ms.rbegin()` [$O(1)$] | `mp.rbegin()->first` [$O(1)$] | ❌ No soportado |
+| Insertar elemento | `s.insert(x)` [O(log N)] | `ms.insert(x)` [O(log N)] | `mp[k] = v` [O(log N)] | `ump[k] = v` [O(1)] |
+| Buscar existencia | `s.count(x)` [O(log N)] | `ms.find(x) != ms.end()` [O(log N)] | `mp.count(k)` [O(log N)] | `ump.count(k)` [O(1)] |
+| Borrar 1 elemento | `s.erase(x)` [O(log N)] | `ms.erase(ms.find(x))` [O(log N)] | `mp.erase(k)` [O(log N)] | `ump.erase(k)` [O(1)] |
+| Borrar todas copias| `s.erase(x)` [O(log N)] | `ms.erase(x)` [O(k + log N)] | N/A | N/A |
+| Primer ≥ X | `s.lower_bound(x)` [O(log N)] | `ms.lower_bound(x)` [O(log N)] | `mp.lower_bound(k)` [O(log N)] | ❌ No soportado |
+| Mínimo elemento | `*s.begin()` [O(1)] | `*ms.begin()` [O(1)] | `mp.begin()->first` [O(1)] | ❌ No soportado |
+| Máximo elemento | `*s.rbegin()` [O(1)] | `*ms.rbegin()` [O(1)] | `mp.rbegin()->first` [O(1)] | ❌ No soportado |
