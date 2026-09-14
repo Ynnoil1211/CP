@@ -13,7 +13,7 @@ A structured, production-grade repository cataloging algorithmic problem solving
 
 | Section | Focus Area | Description |
 | :--- | :--- | :--- |
-| 🏆 [**RPC 08 (NAQ 2023-2024)**](#-rpc-08-septiembre-2026--naq-2023-2024-editorial) | Contest Editorial | Full 12-problem autopsy, verified AC solutions, and upsolving guide |
+| 🏆 [**Contest Packages & Upsolving**](#-contest-packages--upsolving) | ICPC / RPC Contests | Structured contest post-mortems, verified AC solutions, and upsolving guides |
 | 🧠 [**DP Mastery Roadmap**](#-dynamic-programming-mastery-100-medium-challenge) | LeetCode DP 100 | 11 pattern tracks, recognition cheatsheet, and state-transition models |
 | ⚡ [**CP Insights Flashcard Catalog**](#-flagship-cp-insights-catalog-cp-insights) | Pattern Engineering | Flagship library of 23 high-density insight flashcards organized by paradigm |
 | 📦 [**CP Plantilla Notebook**](#-cp-plantilla-reusable-algorithm--data-structure-notebook-cp-plantilla) | Reusable Codebook | Battle-tested CP algorithm templates and data structure implementations (Segment Trees, DFS, BFS) |
@@ -21,35 +21,13 @@ A structured, production-grade repository cataloging algorithmic problem solving
 
 ---
 
-## 🏆 RPC 08 (Septiembre 2026) / NAQ 2023-2024 Editorial
+## 🏆 Contest Packages & Upsolving
 
-> 📖 **Full Master Report & Autopsy:** [`rpc_08_2026/README.md`](rpc_08_2026/README.md)  
-> 🎯 **Official Problemset:** [`rpc_08_2026/inputs/problemset/ProblemsetRPC08.pdf`](rpc_08_2026/inputs/problemset/ProblemsetRPC08.pdf)  
-> 💻 **Team AC Solutions:** [`rpc_08_2026/inputs/solutions/`](rpc_08_2026/inputs/solutions/)  
-> 🏛️ **Official Solutions (Arup Guha):** [`rpc_08_2026/inputs/official_solutions/`](rpc_08_2026/inputs/official_solutions/)
+Catalog of collegiate competitions (RPC, ICPC, qualifiers) with isolated modular environments containing problemsets, team AC codes, official solutions, and comprehensive per-problem study notes.
 
-### Problem Matrix & Study Notes
-
-| ID | Problem | Contest Status | Solution Source | Difficulty | Primary Paradigm | Complexity | Study Note |
-| :---: | :--- | :---: | :---: | :---: | :--- | :---: | :---: |
-| **A** | Contest Advancement | **AC** | Team (v3) | Div 2A | Two-Pass Greedy Filtering + Hash Set | $O(N \log N)$ | [Editorial Note](rpc_08_2026/outputs/notes/A_Contest_Advancement.md) |
-| **B** | Digit Translation | *Upsolved* | Official | Div 2C / 1A | 1D Linear Dynamic Programming (Min + Count) | $O(N)$ | [Editorial Note](rpc_08_2026/outputs/notes/B_Digit_Translation.md) |
-| **C** | Don't Hunger Together | *Upsolved* | Official | Div 1B / 2E | Binary Search on Answer + Min-Heap (EDF) | $O(I \cdot N \log N)$ | [Editorial Note](rpc_08_2026/outputs/notes/C_Dont_Hunger_Together.md) |
-| **D** | Garden of Thorns | *Upsolved* | Official | Div 1C / 2F | Linearity of Expectation + Circle-Box Geometry | $O(N)$ | [Editorial Note](rpc_08_2026/outputs/notes/D_Garden_of_Thorns.md) |
-| **E** | ICPC Team Generation | **AC** | Team (v1) | Div 2B | Monotonic Sliding Greedy | $O(N)$ | [Editorial Note](rpc_08_2026/outputs/notes/E_ICPC_Team_Generation.md) |
-| **F** | Is Y a Vowel? | **AC** | Team (v1) | Div 3A | Linear String Simulation | $O(\|S\|)$ | [Editorial Note](rpc_08_2026/outputs/notes/F_Is_Y_a_Vowel.md) |
-| **G** | Lines Per Hour | **AC** | Team (v2) | Div 3A | Greedy Fractional Knapsack Ordering | $O(N \log N)$ | [Editorial Note](rpc_08_2026/outputs/notes/G_Lines_Per_Hour.md) |
-| **H** | Magnesium Supplementation | **AC** | Team (v3) | Div 2B | Number Theory ($O(\sqrt{N})$ Divisor Factorization) | $O(\sqrt{N} + D \log D)$ | [Editorial Note](rpc_08_2026/outputs/notes/H_Magnesium_Supplementation.md) |
-| **I** | Missing Number | *Upsolved* | Official | Div 2C | Prefix Length Bounded Brute Force ($L \le 5$) | $O(\sum \|S\|)$ | [Editorial Note](rpc_08_2026/outputs/notes/I_Missing_Number.md) |
-| **J** | Tip of Your Tongue | *Upsolved* | Official | Div 1B / 2E | Double Polynomial Hash + Hash Tables + PIE | $O(\sum \|W\| + \sum \|p\|)$ | [Editorial Note](rpc_08_2026/outputs/notes/J_Tip_of_Your_Tongue.md) |
-| **K** | Very Important Edge | *Upsolved* | Official | Div 1C | Kruskal MST + Path Min Range Update with DSU | $O(M \log M)$ | [Editorial Note](rpc_08_2026/outputs/notes/K_Very_Important_Edge.md) |
-| **L** | Water Journal | **AC** | Team (v2) | Div 3A | Boundary Analysis + Pigeonhole Principle | $O(N)$ | [Editorial Note](rpc_08_2026/outputs/notes/L_Water_Journal.md) |
-
-### Key Takeaways & Contest Antipatterns
-- **Hardcoded Sample Values ("Burned Example Syndrome"):** Never burn sample constants into cutoffs (e.g. `sum > 500` instead of `5 * b` in Problem G).
-- **Silent Overflow via Inconsistent Typedefs:** Avoid blindly using `vi` (`vector<int>`) when inputs reach $10^{12}$; enforce 64-bit (`vll`) uniformly across accumulators and containers (Problem H).
-- **Search Space vs. Input Magnitude:** Look for mathematical duality ($O(\sqrt{N})$ factorization) rather than iterating raw limits ($K \le 10^{12}$) (Problem H).
-- **Complementary Condition Fallacy:** In boundary tracking with multiple invariants, avoid assuming `not A => B`; cover the joint failure case `not A and not B` (Problem L).
+| Contest | Date | Solved In-Contest | Upsolved | Full Report & Autopsy |
+| :--- | :---: | :---: | :---: | :--- |
+| [**RPC 08 (NAQ 2023-2024)**](rpc_08_2026/README.md) | Sept 2026 | 6 / 12 | 6 / 12 | [View Detailed Editorial & Notes →](rpc_08_2026/README.md) |
 
 ---
 
@@ -135,66 +113,3 @@ A modular, zero-overhead C++ competitive programming template library engineered
 
 - 🎯 [**Búsqueda Binaria (Binary Search)**](cp-theory/binary-search/README.md) — Monotonicity predicates, discrete vs. continuous search space, lower/upper bound patterns.
 - 📦 [**Estructuras de Datos STL**](cp-theory/data-structures/README.md) — Practical guide to `std::set`, `std::multiset`, `std::map`, and `std::unordered_map` operations and pitfalls.
-
----
-
-## 📁 Repository Directory Structure
-
-```text
-CP/
-├── .gitignore                             # C++, Java, Python, OS & CP scratch rules
-├── README.md                              # Main portfolio and index (this file)
-├── breakthroughs.md                       # Distilled cognitive breakthrough journal
-│
-├── rpc_08_2026/                           # RPC 08 (NAQ 2023-2024) Contest Package
-│   ├── README.md                          # Master contest report & pedagogical autopsy
-│   ├── inputs/
-│   │   ├── problemset/ProblemsetRPC08.pdf # Official problemset PDF
-│   │   ├── solutions/                     # Team AC solutions (A, E, F, G, H, L)
-│   │   └── official_solutions/            # Official reference solutions (Arup Guha)
-│   └── outputs/
-│       └── notes/                         # 12 detailed problem study notes (A - L)
-│
-├── dp-mastery/                            # 100 LeetCode DP Medium Challenge
-│   ├── README.md                          # Master tracker & pattern roadmap
-│   ├── KEY_TIPS.md                        # Anti-tunneling heuristics & trap catalog
-│   ├── linear-dp/                         # Linear / Sequence DP
-│   ├── segmentation-dp/                   # Segmentation / Partition DP
-│   ├── 2d-grid-dp/                        # 2D Grid / Matrix Path DP
-│   ├── lcs-dp/                            # Two-Sequence / LCS DP
-│   ├── knapsack-dp/                       # 0/1 & Unbounded Knapsack DP
-│   ├── interval-dp/                       # Interval DP
-│   ├── tree-dp/                           # Tree DP
-│   ├── state-machine-dp/                  # State Machine DP
-│   ├── game-theory-dp/                    # Game Theory DP
-│   ├── digit-dp/                          # Digit DP
-│   └── bitmask-dp/                        # Bitmask DP
-│
-├── cp-insights/                           # High-density pattern flashcard library (23 cards)
-│   ├── binary-search-answer-on-range/     # CF 1742E, RPC 08-C
-│   ├── brute-force-exhaustive-search/     # CF 1914D, RPC 08-I
-│   ├── dp-linear-progression/             # RPC 08-B
-│   ├── game-theory-parity-turn/           # CF 1527B1
-│   ├── graph-shortest-path/               # RPC 08-K
-│   ├── greedy-boundary-testing/           # RPC 08-E
-│   ├── greedy-priority-based/             # CF 1157E, RPC 08-A
-│   ├── greedy-sorting-based/              # RPC 08-G
-│   ├── greedy-value-splitting/            # CF 1859A
-│   ├── implementation-case-analysis/      # CF 1845A, RPC 08-F
-│   ├── math-formula-development/          # RPC 08-D
-│   ├── math-gap-analysis/                 # CF 1853A
-│   ├── math-modular-arithmetic/           # CF 1837A
-│   ├── math-number-theory/                # CF 1855B, RPC 08-H
-│   ├── math-parity-check/                 # CF 1857A
-│   ├── math-pigeonhole-principle/         # RPC 08-L
-│   ├── string-pattern-build/              # RPC 08-J
-│   └── string-stack-processing/           # RPC 07-H
-├── cp-plantilla/                          # Production CP Template & Algorithm Library
-│   ├── README.md                          # Master index, cheatsheet & compilation manual
-│   ├── data-structures/                   # Iterative & recursive Segment Trees, Lazy Assignment & Sum
-│   └── graphs/                            # DFS (exit, components, topo, tree) & BFS shortest path
-│
-└── cp-theory/                             # Algorithm & Data Structure Cheatsheets
-    ├── binary-search/
-    └── data-structures/
-```

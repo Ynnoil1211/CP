@@ -5,7 +5,7 @@
 import java.util.*;
 import java.io.*;
 
-public class j {
+public class J_Tongue {
 
 	public static void main(String[] args) throws Exception {
 		

@@ -4,7 +4,7 @@
 
 import java.util.*;
 
-public class d {
+public class D_Garden {
 
 	public static int w;
 	public static int h;
