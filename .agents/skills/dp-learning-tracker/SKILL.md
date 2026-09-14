@@ -1,506 +1,110 @@
 ---
 name: dp-learning-tracker
-description: Generates structured DP problem study notes organized by pattern type (Linear, Segmentation, 2D Grid, LCS/Two-Sequence, Knapsack, Interval, Tree, State Machine, Game Theory, Digit, Bitmask). Use whenever the user submits a LeetCode medium DP problem with their C++ solution, providing state definition, recurrence relation, complexity analysis, and pattern-type classification. Automatically organizes notes in dp-mastery/ folder hierarchy by pattern type, updates the master progress index, and maintains per-pattern library docs. Perfect for tracking the 100 DP medium problems learning journey.
+description: Generates structured DP problem study notes organized by pattern type across 11 DP tracks (Linear, Segmentation, 2D Grid, LCS, Knapsack, Interval, Tree, State Machine, Game Theory, Digit, Bitmask) in dp-mastery/. Captures state definitions, recurrence relations, and transitions with zero raw LaTeX. Updates dp-mastery/ dashboards without bloating root README.
 ---
 
 # DP Learning Tracker Skill
 
 ## Overview
 
-**Core Purpose:** Transform solved LeetCode DP medium problems into structured, pattern-focused study notes that build mental models of dynamic programming techniques.
+Specialized skill for the **100 LeetCode Medium DP Problems Challenge** and Dynamic Programming mastery in competitive programming.
 
-This skill is designed for the **100 DP Medium Problems Challenge**. Unlike general CP problem notes, DP requires understanding _state spaces_ and _recurrence relations_—not just algorithms. This skill captures that learning intentionally.
+Unlike general problem notes, Dynamic Programming mastery requires deliberate focus on:
+- **Exact State Definition**: What does `dp[i]` or `dp[i][j]` represent in plain, unambiguous language?
+- **Transitions & Invariants**: How do previous states combine, and why does this avoid double-counting?
+- **Sub-pattern Recognition**: e.g., Fixed-offset Linear DP (Fibonacci/Robber) vs. Scan-all-previous (Word Break / LIS).
+- **Zero Raw LaTeX**: All formulas, complexities, and variables use readable Markdown code spans (`O(N)`, `dp[i][j]`, `1 <= i <= N`), never unrendered LaTeX math syntax (`$...$`, `\le`, `\sum`).
+- **Clean Indexing**: Updates only `dp-mastery/README.md` and pattern sub-track READMEs; leaves the repo root `README.md` clean and minimal.
 
-**Key Difference from CP Skill:**
+---
 
-- CP skill organizes by _rating_ (800, 900, 1000)
-- DP skill organizes by _pattern type_ (Linear DP, 2D Grid, Knapsack, etc.)
-- DP skill focuses on _state definition_ and _transitions_, not just solution walkthrough
+## The 11 DP Pattern Tracks (`dp-mastery/`)
 
-## What It Does
+```text
+dp-mastery/
+├── README.md                  # Master progress dashboard (table, stats, weak areas)
+├── KEY_TIPS.md                # Anti-tunneling heuristics & trap catalog
+├── linear-dp/                 # 1D fixed-offset lookback (House Robber, Climbing Stairs)
+├── segmentation-dp/           # 1D scan-all-previous over partition cuts (Word Break)
+├── 2d-grid-dp/                # 2D cell paths, arrive from up/left (Unique Paths)
+├── lcs-dp/                    # Two sequences in lockstep (LCS, Edit Distance)
+├── knapsack-dp/               # Selection with capacity constraint (0/1 vs Unbounded)
+├── interval-dp/               # Range [i, j] via split point k (Burst Balloons)
+├── tree-dp/                   # Tree nodes via children include/exclude (House Robber III)
+├── state-machine-dp/          # Position + discrete modes (Stock with Cooldown)
+├── game-theory-dp/            # Optimal minimax play (Stone Game, Predict Winner)
+├── digit-dp/                  # Digit-by-digit with tight/started flags
+└── bitmask-dp/                # Subset states via bitmasks (N <= 20)
+```
 
-When the user provides:
+---
 
-- LeetCode problem ID and title
-- Their C++ solution code
-- Solve time, confidence, struggles (optional)
+## Standard Note Schema (`dp-mastery/[pattern]/[ID]_[Title].md`)
 
-This skill:
-
-1. ✅ Classifies the problem by **DP pattern type** (one of 11 patterns)
-2. ✅ Extracts and documents the **state definition** (what does `dp[i]` or `dp[i][j]` represent?)
-3. ✅ Writes the **recurrence relation** with clear transitions
-4. ✅ Provides complexity analysis
-5. ✅ Generates a **structured study note** in `dp-mastery/[PATTERN]/`
-6. ✅ Updates the master progress index (`dp-mastery/README.md`)
-7. ✅ Refreshes that family's pattern doc (`dp-mastery/<pattern>/README.md`)
-8. ✅ Tracks solve metrics and identifies pattern mastery
-
-## DP Pattern Library (11 Patterns)
-
-The skill classifies every problem into one of these 11 patterns. **Each pattern folder** (`dp-mastery/<pattern>/`) starts with a `README.md` containing the full pattern description (recognition signals, general template, problem family, core intuition) followed by **your solved problems** in that family. Every generated note also appends/refreshes the problem's row in its folder's `README.md`.
-
-| Pattern                   | Characteristics                                                                                                 | Example Problems                                    | Folder              |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------- |
-| **Linear / Sequence DP**  | 1D state, fixed-offset lookback (dp[i-1], dp[i-2]); LIS-style scan-all-previous is a non-contiguous sub-variant | House Robber, Climbing Stairs, LIS                  | `linear-dp/`        |
-| **Segmentation DP**       | 1D state, split sequence into contiguous pieces; scan-all-previous over cut points j                            | Word Break, Decode Ways, Perfect Squares            | `segmentation-dp/`  |
-| **2D Grid DP**            | 2D state over grid cells, arrive from up/left                                                                   | Unique Paths, Minimum Path Sum, Dungeon Game        | `2d-grid-dp/`       |
-| **Two-Sequence DP (LCS)** | 2D state over two prefixes in lockstep; match/skip transitions                                                  | LCS, Edit Distance, Interleaving String             | `lcs-dp/`           |
-| **Knapsack**              | Selection problems with capacity constraints; 0/1 vs unbounded = iteration direction                            | Target Sum, Partition Equal Subset Sum, Coin Change | `knapsack-dp/`      |
-| **Interval DP**           | Range [i,j] states, work from smaller intervals to larger via split point k                                     | Burst Balloons, Minimum Score Triangulation         | `interval-dp/`      |
-| **Tree DP**               | Node states computed from children; include/exclude pairs                                                       | House Robber III, Maximum Product of Splitted Tree  | `tree-dp/`          |
-| **State Machine DP**      | Position + discrete mode; transitions between modes                                                             | Stock with cooldown/fee, Paint Fence                | `state-machine-dp/` |
-| **Game Theory DP**        | Optimal play against opponent, advantage-difference states                                                      | Predict the Winner, Stone Game, Can I Win           | `game-theory-dp/`   |
-| **Digit DP**              | Digit-by-digit constraint satisfaction with tight/started flags                                                 | Count Numbers with Unique Digits (harder, advanced) | `digit-dp/`         |
-| **Bitmask DP**            | DP over subset states via bitmask, n ≤ 20, assignment problems                                                  | Travelling Salesman Variant, Steiner Tree (harder)  | `bitmask-dp/`       |
-
-## Generated Note Structure
-
-Every problem generates a markdown file with this exact structure:
-
-```markdown
+````markdown
 # [ID] - [Problem Title]
 
-**Pattern Type:** [One of 11 patterns — see DP Pattern Library]
+**Pattern Type:** [One of 11 DP patterns]
 **Difficulty:** Medium
 **LeetCode Link:** https://leetcode.com/problems/[slug]/
-**Topics:** [Related DP concepts]
+**Topics:** [Tags]
 
 ## Problem Statement
 
-[1-2 sentences: what does this problem ask?]
-
-[Constraints: n ≤ X, values ≤ Y, etc.]
+[1-2 sentences: what the problem asks]
+[Constraints: N <= X, values <= Y]
 
 ## State Definition
 
-### What is dp[i]? (or dp[i][j], etc.)
-```
-
-dp[i] = [CLEAR DEFINITION]
-
-```
-
-**Example:** If dp[i] = maximum robbery value considering houses 0..i, then:
-- dp[0] = house[0] (rob first house only)
-- dp[1] = max(house[0], house[1]) (rob first or second, not both)
+### What is dp[i]? (or dp[i][j])
+`dp[i] = [CLEAR DEFINITION]`
 
 ### Why This State?
-
-[Explain why this particular state captures the problem structure]
+[Why this state captures all information needed for the optimal substructure]
 
 ## Recurrence Relation
 
-```
+```text
+dp[i] = [Formula with clear logic]
 
-dp[i] = ... [Formula with clear logic]
-
-Base case(s):
+Base cases:
 dp[0] = ...
-[optional] dp[1] = ...
-
 ```
 
 ### Transition Logic
-
-**Step 1:** [Explain what decision we make at state i]
-
-**Step 2:** [Show how we combine previous states]
-
-**Step 3:** [Why does this avoid double-counting / ensure correctness?]
-
-> **🔑 Key distinction — know which sub-pattern you're in:**
-> - **Fixed-offset Linear DP** (Fibonacci, House Robber, Min Cost): dp[i] looks back at only dp[i-1] and dp[i-2]. O(1) previous states, single pass.
-> - **Scan-all-previous Linear DP** (Word Break, LIS, Decode Ways): dp[i] must check ALL earlier states j < i to find one that works. This requires a **nested loop**, which is structurally required — not a style choice. If you try to follow a single running pointer (greedy) instead of testing every j, you commit to the first match and can never backtrack.
-> - **How to tell which you need:** If the decision at i depends on "the best/count up to i-1" with no further condition, use fixed-offset. If it depends on finding SOME earlier state that satisfies a condition (like "is s[j..i) in the dictionary?"), you must scan all previous states.
-
-### Example Walkthrough
-
-Input: [concrete example]
-
-```
-
-dp[0] = ...
-dp[1] = ...
-dp[2] = ...
-dp[3] = result
-
-````
-
-Why dp[3] = [value]? Because we chose to [decision], which led to [outcome].
-
-## Implementation (C++)
-
-```cpp
-// [Clean, commented code ≤ 30 lines core logic]
-````
-
-**Key Implementation Notes:**
-
-- [Memory layout / array indexing]
-- [Base case handling]
-- [Avoiding off-by-one errors]
+1. Decision made at state i.
+2. How previous states combine.
+3. Why this avoids double-counting and ensures optimal substructure.
 
 ## Complexity Analysis
+- **Time:** O(...) — [# states] * [work per state]
+- **Space:** O(...) — Can optimize to O(...) with rolling variables?
 
-- **Time:** O(...)
-  - Reason: [# states] × [work per state]
-- **Space:** O(...)
-  - Can optimize to O(...) if [condition]?
+## Clean Implementation (C++)
 
-## Why This Approach Works
+```cpp
+// ≤ 25 lines of idiomatic core DP logic
+```
 
-[Convince yourself with proof outline or induction argument]
-
-Example: "By induction on i: if dp[i-1] correctly represents the maximum robbery value for houses 0..i-1, then dp[i] = max(rob[i] + dp[i-2], dp[i-1]) correctly represents the maximum for houses 0..i, because any optimal solution either includes house i (requiring dp[i-2]) or excludes it (giving dp[i-1])."
-
-## Common Pitfalls in This Pattern
-
-- [Mistake 1 specific to this pattern type]
-- [Mistake 2]
-- [Mistake 3]
-
-### 🔴 The Greedy Trap (Scan-All-Previous problems)
-
-In problems like Word Break or LIS, the most common mistake is using a **single running pointer** instead of a nested loop over all previous states. If you write code that "commits to the first match" and moves on, you lose the ability to backtrack and try alternative earlier cuts. The nested loop over ALL j < i is not optimization — it's the correct DP structure. Always ask: _"Does dp[i] need to try every possible previous state, or only the last two?"_
-
-Example: "In Linear DP, students often forget the base case. If you don't initialize dp[0] correctly, the entire recurrence is wrong."
-
-## Pattern Connection
-
-**This is a [Pattern Type] problem because:**
-
-1. [Characteristic 1 of this pattern evident here]
-2. [Characteristic 2 evident here]
-3. [Characteristic 3 evident here]
-
-**Within Linear DP, classify further:**
-
-- **Fixed-offset** (dp[i] looks back at dp[i-1], dp[i-2] only) → Fibonacci-style, O(1) previous states
-- **Scan-all-previous** (dp[i] checks ALL j < i) → segmentation/LIS-style, requires nested loop
-
-This distinction determines the code structure. Fixed-offset = single loop, two variables. Scan-all-previous = nested loop, full dp array.
-
-**Similar problems in this pattern:**
-
-- [Problem ID] - [Title]
-- [Problem ID] - [Title]
-
-## Key Takeaway
-
-[One sentence you'll remember next time you see a similar problem]
-
-_Example:_ "For house robbery variants, always define dp[i] as 'result considering houses 0..i' and choose: include or exclude current house."
+## Common Pitfalls & Traps in This Pattern
+- [Specific mistake: e.g. using greedy single pointer instead of nested loop in scan-all-previous]
+- [Base case misinitialization]
 
 ## 🔑 Breakthrough
-
-[The one thing you couldn't think of — the state definition trick or recurrence insight that was the real "aha" moment. 1-2 sentences, personal and concrete.]
-
-_Example: "Index by value, not by uniqueness. After building points[x] = x * freq[x], the House Robber recurrence applies directly — I was trying to compress the unique values, which lost the gap info."_
+[The specific state definition trick or mental model shift that made the recurrence obvious. 1-2 sentences.]
 
 ## Your Code
-
 ```cpp
-[Your submitted C++ solution — preserved verbatim]
+// Submitted solution
 ```
 
-_This is your original work. Keep it to track how your style evolves._
-
-## Solve Metrics
-
-- **Solve Time:** [X minutes]
-- **Attempts:** [N]
-- **Confidence:** [1-10]
-- **Struggles:** [What was hard?]
-- **Submitted:** [Date]
-- **Last Reviewed:** [Date]
-- **Next Review:** [Suggested spaced repetition date]
+---
+**Generated:** YYYY-MM-DD
+````
 
 ---
 
-**Generated:** [Date]
-
-```
-
-## File Organization
-
-```
-
-dp-mastery/
-├── README.md # Master progress dashboard
-│
-├── linear-dp/ # Pattern: 1D sequential (fixed-offset)
-│ ├── README.md # Pattern explanation + solved list
-│ ├── 198_House_Robber.md
-│ ├── 213_House_Robber_II.md
-│ ├── 70_Climbing_Stairs.md
-│ └── [more linear DP problems]
-│
-├── segmentation-dp/ # Pattern: split into contiguous pieces
-│ ├── README.md # Pattern explanation + solved list
-│ ├── 139_Word_Break.md
-│ └── [more segmentation problems]
-│
-├── 2d-grid-dp/ # Pattern: 2D grid paths
-│ ├── README.md # Pattern explanation + solved list
-│ ├── 62_Unique_Paths.md
-│ └── [more grid DP problems]
-│
-├── lcs-dp/ # Pattern: two sequences in lockstep
-│ ├── README.md # Pattern explanation + solved list
-│ ├── 1143_Longest_Common_Subsequence.md
-│ └── [more two-sequence problems]
-│
-├── knapsack-dp/ # Pattern: Selection + capacity
-│ ├── README.md # Pattern explanation + solved list
-│ ├── 416_Partition_Equal_Subset_Sum.md
-│ ├── 494_Target_Sum.md
-│ └── [more knapsack problems]
-│
-├── interval-dp/ # Pattern: Range optimization
-│ ├── README.md # Pattern explanation + solved list
-│ ├── 1039_Minimum_Score_Triangulation.md
-│ ├── 312_Burst_Balloons.md
-│ └── [more interval DP problems]
-│
-├── tree-dp/ # Pattern: Tree decisions
-│ ├── README.md # Pattern explanation + solved list
-│ ├── 337_House_Robber_III.md
-│ └── [more tree DP problems]
-│
-├── state-machine-dp/ # Pattern: Position + discrete modes
-│ ├── README.md # Pattern explanation + solved list
-│ ├── 276_Paint_Fence.md
-│ └── [more state machine problems]
-│
-├── game-theory-dp/ # Pattern: Optimal play
-│ ├── README.md # Pattern explanation + solved list
-│ ├── 486_Predict_the_Winner.md
-│ └── [more game theory problems]
-│
-├── digit-dp/ # Pattern: Digit constraints
-│ ├── README.md # Pattern explanation + solved list
-│ └── [digit DP problems - advanced]
-│
-└── bitmask-dp/ # Pattern: Subset enumeration
-├── README.md # Pattern explanation + solved list
-└── [bitmask DP problems - advanced]
-
-````
-
-## Master Progress Dashboard (README.md)
-
-The skill automatically updates `dp-mastery/README.md` with:
-
-```markdown
-# 100 DP Medium Problems Challenge
-
-**Progress:** X/100 problems solved
-**Current Week:** [Week N]
-**Target Completion:** [Estimated date]
-**Overall Confidence:** [Average 1-10]
-
-## Progress by Pattern Type
-
-| Pattern | Solved | Target | % Complete | Avg Time | Mastery |
-|---------|--------|--------|------------|----------|---------|
-| Linear DP | 5/12 | 12 | 42% | 14m | 🟡 In Progress |
-| 2D Grid DP | 0/12 | 12 | 0% | - | ⏳ Upcoming |
-| Knapsack | 0/10 | 10 | 0% | - | ⏳ Upcoming |
-| Interval DP | 0/10 | 10 | 0% | - | ⏳ Upcoming |
-| Tree DP | 0/8 | 8 | 0% | - | ⏳ Upcoming |
-| Game Theory | 0/8 | 8 | 0% | - | ⏳ Upcoming |
-| Digit DP | 0/15 | 15 | 0% | - | ⏳ Advanced |
-| Bitmask DP | 0/15 | 15 | 0% | - | ⏳ Advanced |
-
-## By Week
-
-### Week 1-2: Foundation (0/10 problems)
-Pre-medium warmup: Climbing Stairs, House Robber basics
-- [ ] 70 - Climbing Stairs
-- [ ] 198 - House Robber
-- ...
-
-### Week 3: Linear DP (0/12 problems)
-- [ ] 213 - House Robber II
-- [ ] 139 - Word Break
-- ...
-
-### Week 4: 2D Grid DP + Knapsack (0/22 problems)
-- [ ] 62 - Unique Paths
-- [ ] 416 - Partition Equal Subset Sum
-- ...
-
-[Continue through Week 10]
-
-## Problems Mastered (Confidence ≥ 8/10)
-
-_List grows as you gain confidence_
-
-## Weakest Patterns (Confidence ≤ 5/10)
-
-_Identify patterns to review_
-
-## Weekly Summary
-
-| Week | Problems | Avg Time | Avg Confidence | Top Topic |
-|------|----------|----------|---------------|-----------|
-| 1 | 3 | 20m | 6/10 | Linear DP |
-| 2 | 4 | 18m | 6.5/10 | 2D Grid |
-
----
-
-**Last Updated:** [Date]
-````
-
-## Usage Workflow
-
-### Input Format
-
-When the user submits a problem:
-
-````
-Use the dp-learning-tracker skill.
-
-**Problem:**
-- ID: 198
-- Title: House Robber
-- Pattern Type: [Optional; Claude detects if not provided]
-
-**Your Code:**
-```cpp
-[C++ solution]
-````
-
-**Optional Metadata:**
-
-- Solve Time: 15 minutes
-- Attempts: 2
-- Confidence: 7/10
-- Struggles: Forgot about dp[i-2] at first
-
-**Problem Statement:**
-[Full problem description or link]
-
-```
-
-### Steps
-
-1. **Parse** the problem ID, title, solution code
-2. **Classify** the problem into one of 11 DP pattern types (if not provided, infer from solution structure — see Pattern Detection Logic)
-3. **Extract State Definition**: Analyze the code and problem to identify what `dp[i]` or `dp[i][j]` represents
-4. **Derive Recurrence**: Write the recurrence relation and explain transitions
-5. **Analyze Complexity**: Time and space complexity with reasoning
-6. **Generate Full Note**: Write the markdown file with all sections above
-7. **Save to Folder**: `dp-mastery/[PATTERN_TYPE]/[ID]_[Title].md`
-8. **Update Dashboard**: Increment the counter in `dp-mastery/README.md`, update progress table
-9. **Update Pattern Library**: Append or refresh the problem's row in `dp-mastery/<pattern>/README.md` (insert if new; update confidence/core-idea if reviewed). If the pattern page has no solved problems yet, this row becomes its first.
-10. **Log the breakthrough** — append the Breakthrough entry (problem ID, title, and the one-liner) to the central `breakthroughs.md` file at the repo root, grouped under today's date.
-11. **Calculate Next Review**: Suggest a spaced repetition date (Day 3, Day 7, Day 14, etc.)
-
-## Pattern Detection Logic
-
-Automatically infer the pattern type by analyzing:
-
-- **State dimensions**: 1D array → Linear or Segmentation DP; 2D array → 2D Grid, LCS, Interval, or Knapsack
-- **Recurrence structure**: Fixed offset → Linear; scan-all-previous over cut points (contiguous pieces) → Segmentation; scan-all-previous without contiguity → Linear (LIS variant); split point k inside a range → Interval; per-cell up/left arrival → 2D Grid; two prefixes in lockstep → LCS; capacity budget → Knapsack; discrete modes → State Machine; include/exclude on tree nodes → Tree DP; advantage minus opponent response → Game Theory
-- **Problem domain**: House/street → Linear, split/segment → Segmentation, Grid traversal → 2D Grid, two strings compared → LCS, Selection + target → Knapsack, merge/burst range → Interval, Tree node → Tree DP, holding/cooldown states → State Machine, Game moves → Game Theory, digit iteration → Digit DP, bitmask usage → Bitmask DP
-- **Code patterns**: Bitmask usage → Bitmask DP, digit iteration → Digit DP
-
-## Learning Milestones
-
-The skill tracks **pattern mastery**:
-
-- **Confidence ≥ 8/10 on 3 problems in a pattern** → Mark as "Comfortable with [Pattern]"
-- **Confidence ≤ 5/10 across pattern** → Flag for review
-- **Solve time < average for pattern** → Indicates internalization
-
-## Integration with Your Weekly Routine
-
-### Monday (Start of Week)
-
-```
-
-Weekly plan for Week 3: targeting 3 Linear DP problems.
-Problems: 213, 139, 740
-
-```
-
-Remind the user of the pattern focus and suggest related problems.
-
-### During Week (Problem Submission)
-
-Each time the user solves and submits:
-
-```
-
-I just solved LeetCode 213. Code: [paste]. Took 18 minutes, confidence 6/10.
-Struggled with understanding why we need TWO previous states.
-
-```
-
-Generate the full note, save it, update the dashboard.
-
-### Friday (Weekly Review)
-
-```
-
-Weekly report for Week 3.
-Solved: 213, 139, 740
-
-```
-
-Generate all notes, update progress tables, identify weak areas, suggest next week's focus.
-
-## Tips for Best Results
-
-### Do ✅
-
-- Include full problem statement or link (helps identify state definition)
-- Paste working C++ code you actually submitted
-- Note what you struggled with (identifies weak mental models)
-- Specify confidence level (tracks progress objectively)
-- Include solve time (spot when you internalize a pattern)
-
-### Don't ❌
-
-- Paste incomplete or pseudo-code snippets
-- Omit constraints (they affect complexity analysis)
-- Skip explaining your solution (state definition must be extracted)
-- Guess at solve time (this is a learning metric)
-
-## Spaced Repetition Schedule
-
-Suggested review dates based on initial confidence:
-
-| Confidence | Day 1 | Day 3 | Day 7 | Day 14 | Day 30 |
-|------------|-------|-------|-------|--------|--------|
-| ≤5 | ✓ Solved | ⚠️ Review | ⚠️ Review | ⚠️ Review | ✓ Master |
-| 6-7 | ✓ Solved | ✓ Review | ⚠️ Review | ✓ Master | - |
-| 8-10 | ✓ Solved | ✓ Master | - | - | - |
-
-## Customization Options
-
-### Pattern Distribution
-
-Default targets per week:
-
-- **Week 1-2:** Foundation (10 problems, mixed easy)
-- **Weeks 3-6:** Core patterns (50 problems across Linear, Segmentation, 2D Grid, LCS, Knapsack, Interval, Tree, State Machine, Game Theory)
-- **Weeks 7-10:** Advanced patterns (40 problems: Digit DP, Bitmask DP, mixed hard)
-
-User can adjust based on schedule.
-
-### Note Density
-
-- **Concise:** State + Recurrence + Code (~300 words)
-- **Detailed:** Full with walkthrough example (~600 words, default)
-- **Reference:** Flashcard style (~150 words)
-
----
-
-**Designed for:** 100 LeetCode Medium DP Problems Challenge
-**Best for:** CF 1200+ rating, ready for DP deep dive
-**Output:** Structured markdown repository at `dp-mastery/`
-**Maintenance:** Auto-updates dashboard on each problem submission
-```
+## Formatting Guardrails
+- **Zero LaTeX**: Always write `O(N * W)`, `dp[i] = max(...)`, `1 <= i <= N`, `<=`, `>=`. Never use `$`, `\le`, `\sum`, `\cdot`.
+- **Root README Protection**: Never append long problem lists or tables to the root `README.md`.
+- **Sync with `cp-insights/`**: On request or for milestone problems, create a companion card in `cp-insights/dp-[subtype]/` and log breakthrough to `breakthroughs.md`.
