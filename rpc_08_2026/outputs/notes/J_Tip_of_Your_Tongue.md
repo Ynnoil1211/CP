@@ -4,7 +4,8 @@
 - **Dificultad Estimada:** Media-Alta (Div 1B / Div 2E)
 - **Estado en Concurso:** No resuelto
 - **Archivos de Referencia:**
-  - Solución Oficial: `inputs/official_solutions/J_Tongue.java`
+  - Enunciado: [ProblemsetRPC08.pdf](../../inputs/problemset/ProblemsetRPC08.pdf)
+  - Solución Oficial: [J_Tongue.java](../../inputs/official_solutions/J_Tongue.java)
 
 ---
 
@@ -62,7 +63,7 @@ Para evitar problemas de memoria y colisiones:
 
 ## 4. Estrategia de Implementación y Código de Referencia
 
-La solución oficial de Arup Guha (`inputs/official_solutions/J_Tongue.java`) implementa este diseño:
+La solución oficial de Arup Guha ([J_Tongue.java](../../inputs/official_solutions/J_Tongue.java)) implementa este diseño:
 
 ```java
 // Para cada palabra en el diccionario:

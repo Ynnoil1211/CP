@@ -4,8 +4,9 @@
 - **Dificultad Estimada:** Muy Fácil (Div 3A)
 - **Estado en Concurso:** Resuelto en primer intento (AC directo)
 - **Archivos de Referencia:**
-  - Solución de Equipo: `inputs/solutions/Vowel.cpp` (AC)
-  - Solución Oficial: `inputs/official_solutions/F_Vowel.cpp`
+  - Enunciado: [ProblemsetRPC08.pdf](../../inputs/problemset/ProblemsetRPC08.pdf)
+  - Solución de Equipo: [F_Vowel.cpp](../../inputs/solutions/F_Vowel.cpp) (AC)
+  - Solución Oficial: [F_Vowel.cpp](../../inputs/official_solutions/F_Vowel.cpp)
 
 ---
 
@@ -42,7 +43,7 @@ Basta con realizar un recorrido lineal simple sobre la cadena, manteniendo dos a
 
 ## 4. Comparativa: Equipo vs Oficial
 
-- **Equipo (`Vowel.cpp`):**
+- **Equipo ([F_Vowel.cpp](../../inputs/solutions/F_Vowel.cpp)):**
   ```cpp
   const string vowels = "aeiouAEIOU";
   int res = 0, res1 = 0;
@@ -55,6 +56,6 @@ Basta con realizar un recorrido lineal simple sobre la cadena, manteniendo dos a
   }
   cout << res << " " << res1 << endl;
   ```
-- **Oficial (`F_Vowel.cpp` - Arup Guha):**
+- **Oficial ([F_Vowel.cpp](../../inputs/official_solutions/F_Vowel.cpp) - Arup Guha):**
   Declara una función `isVowel(char c)` con un `switch` o cadena `"aeiou"`, suma 1 a ambos contadores para las 5 vocales, y suma 1 al segundo contador si c == 'y'.
 - **Complejidad:** O(|S|) tiempo y O(1) memoria adicional en ambos.

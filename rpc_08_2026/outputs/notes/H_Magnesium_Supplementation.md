@@ -4,8 +4,9 @@
 - **Dificultad Estimada:** Fácil-Media (Div 2B / Div 3C)
 - **Estado en Concurso:** Resuelto (AC en versión 3 de C++)
 - **Archivos de Referencia:**
-  - Soluciones de Equipo: `inputs/solutions/Magnesium.py`, `Magnesium (1).py`, `Magnesium.cpp`, `Magnesium (1).cpp`, `Magnesium (2).cpp`, `Magnesium (3).cpp` (AC)
-  - Solución Oficial: `inputs/official_solutions/H_Magnesium.py`
+  - Enunciado: [ProblemsetRPC08.pdf](../../inputs/problemset/ProblemsetRPC08.pdf)
+  - Solución de Equipo: [H_Magnesium.cpp](../../inputs/solutions/H_Magnesium.cpp) (AC)
+  - Solución Oficial: [H_Magnesium.py](../../inputs/official_solutions/H_Magnesium.py)
 
 ---
 
@@ -67,9 +68,9 @@ El recorrido del equipo muestra tres fallos pedagógicamente valiosos:
 
 ## 4. Comparativa: Equipo vs Oficial
 
-- **Equipo (`Magnesium (3).cpp`):**
+- **Equipo ([H_Magnesium.cpp](../../inputs/solutions/H_Magnesium.cpp)):**
   Recorre i hasta sqrt(N), agrega i y N/i si satisfacen las cotas de K y P, ordena con `std::sort` e imprime.
-- **Oficial (`H_Magnesium.py` - Arup Guha):**
+- **Oficial ([H_Magnesium.py](../../inputs/official_solutions/H_Magnesium.py) - Arup Guha):**
   Aplica exactamente la misma búsqueda de factores en pares (i, N//i) hasta sqrt(N) en Python:
   ```python
   i = 1

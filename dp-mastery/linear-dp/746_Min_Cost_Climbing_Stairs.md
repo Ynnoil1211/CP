@@ -167,7 +167,7 @@ The answer `min(dp[n-1], dp[n-2])` works because once you're at `n-2`, you can t
 
 **Similar problems in this pattern:**
 
-- [70 - Climbing Stairs](linear-dp/70_Climbing_Stairs.md) — same recurrence, but counting ways instead of minimizing cost
+- [70 - Climbing Stairs](70_Climbing_Stairs.md) — same recurrence, but counting ways instead of minimizing cost
 - 198 - House Robber — same sequential structure, but "take or skip" instead of "add cost"
 - 120 - Triangle — minimum path sum from top to bottom (2D but similar additive cost idea)
 

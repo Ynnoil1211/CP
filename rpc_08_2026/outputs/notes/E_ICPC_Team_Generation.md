@@ -4,8 +4,9 @@
 - **Dificultad Estimada:** Fácil-Media (Div 2B / Div 3C)
 - **Estado en Concurso:** Resuelto en primer intento (AC directo)
 - **Archivos de Referencia:**
-  - Solución de Equipo: `inputs/solutions/Team.cpp` (AC)
-  - Solución Oficial: `inputs/official_solutions/E_Team.cpp`
+  - Enunciado: [ProblemsetRPC08.pdf](../../inputs/problemset/ProblemsetRPC08.pdf)
+  - Solución de Equipo: [E_Team.cpp](../../inputs/solutions/E_Team.cpp) (AC)
+  - Solución Oficial: [E_Team.cpp](../../inputs/official_solutions/E_Team.cpp)
 
 ---
 
@@ -41,7 +42,7 @@ Gracias a esta monotonía:
 
 ## 4. Comparativa: Equipo vs Oficial
 
-- **Equipo (`Team.cpp`):**  
+- **Equipo ([E_Team.cpp](../../inputs/solutions/E_Team.cpp)):**  
   Aprovecha elegantemente la propiedad matemática:
   ```cpp
   if (people[p].second >= p + 2 && people[p + 2].first <= p) {
@@ -51,6 +52,6 @@ Gracias a esta monotonía:
   p++;
   ```
   Solo evalúa los extremos p y p+2.
-- **Oficial (`E_Team.cpp` - Arup Guha):**  
+- **Oficial ([E_Team.cpp](../../inputs/official_solutions/E_Team.cpp) - Arup Guha):**  
   Implementa una función auxiliar `canDo(idx)` que verifica explícitamente los 3 integrantes con un bucle `for (int i = idx; i < idx + 3; i++)`. Aunque hace más comprobaciones, la lógica de reemplazo e inducción greedy es exactamente idéntica.
 - **Complejidad:** Ambos logran O(N) en tiempo y O(N) en espacio con N <= 50.

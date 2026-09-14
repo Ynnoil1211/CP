@@ -8,7 +8,7 @@ Guía completa y definitiva de Búsqueda Binaria en C++: desde los fundamentos d
 1. [¿Por qué `left <= right`?](#1-por-qué-left--right)
 2. [`lower_bound` vs `upper_bound` en Vectores](#2-lower_bound-vs-upper_bound-en-vectores)
 3. [Las 4 Consultas Cardinales](#3-las-4-consultas-cardinales)
-4. [⚠️ Trampa Mortal: `std::lower_bound` vs `container.lower_bound()`](#4-️-trampa-mortal-stdlower_bound-vs-containerlower_bound)
+4. [⚠️ Trampa Mortal: `std::lower_bound` vs `container.lower_bound()`](#4-trampa-mortal-stdlower_bound-vs-containerlower_bound)
 5. [Búsqueda Binaria sobre la Respuesta (Enteros)](#5-búsqueda-binaria-sobre-la-respuesta-enteros)
 6. [Búsqueda Binaria sobre la Respuesta (Flotantes / Doubles)](#6-búsqueda-binaria-sobre-la-respuesta-flotantes--doubles)
 7. [Checklist Rápido para Evitar Bugs](#7-checklist-rápido-para-evitar-bugs)

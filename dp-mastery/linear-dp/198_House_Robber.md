@@ -152,8 +152,8 @@ Taking the max of these two gives the optimal for houses `0..i`. By induction, t
 3. **Two previous states needed**: dp[i-1] (skip) vs dp[i-2] + value (include). Same spatial structure as Climbing Stairs, different operation.
 
 **Similar problems in this pattern:**
-- [70 - Climbing Stairs](linear-dp/70_Climbing_Stairs.md) — same `dp[i-1] + dp[i-2]` skeleton but counting ways
-- [746 - Min Cost Climbing Stairs](linear-dp/746_Min_Cost_Climbing_Stairs.md) — same skeleton with cost minimization
+- [70 - Climbing Stairs](70_Climbing_Stairs.md) — same `dp[i-1] + dp[i-2]` skeleton but counting ways
+- [746 - Min Cost Climbing Stairs](746_Min_Cost_Climbing_Stairs.md) — same skeleton with cost minimization
 - 213 - House Robber II — same logic but houses are in a circle
 - 740 - Delete and Earn — transformed into House Robber after frequency mapping
 

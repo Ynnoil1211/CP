@@ -168,8 +168,8 @@ int deleteAndEarn(vector<int>& nums) {
 
 **Similar problems in this pattern:**
 
-- [198 - House Robber I](linear-dp/198_House_Robber.md) — the foundation this transforms into
-- [213 - House Robber II](linear-dp/213_House_Robber_II.md) — circular variant
+- [198 - House Robber I](198_House_Robber.md) — the foundation this transforms into
+- [213 - House Robber II](213_House_Robber_II.md) — circular variant
 - 2266 — Count Number of Texts (different but also uses frequency precomputation)
 
 ## Key Takeaway

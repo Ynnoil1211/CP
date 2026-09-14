@@ -4,8 +4,9 @@
 - **Dificultad Estimada:** Fácil (Div 2A / Div 3B)
 - **Estado en Concurso:** Resuelto (AC en versión 3)
 - **Archivos de Referencia:**
-  - Soluciones de Equipo: `inputs/solutions/Contest.cpp`, `Contest (1).cpp`, `Contest (2).cpp`, `Contest (3).cpp` (AC)
-  - Solución Oficial: `inputs/official_solutions/A_Contest.cpp`
+  - Enunciado: [ProblemsetRPC08.pdf](../../inputs/problemset/ProblemsetRPC08.pdf)
+  - Solución de Equipo: [A_Contest.cpp](../../inputs/solutions/A_Contest.cpp) (AC)
+  - Solución Oficial: [A_Contest.cpp](../../inputs/official_solutions/A_Contest.cpp)
 
 ---
 
@@ -44,7 +45,7 @@ Analizando el historial de envíos del equipo:
 
 ## 4. Comparativa: Equipo vs Oficial
 
-- **Equipo (`Contest (3).cpp`):**
+- **Equipo ([A_Contest.cpp](../../inputs/solutions/A_Contest.cpp)):**
   Usa `unordered_map<int, int>` para contar escuelas y `unordered_set<int>` para registrar a los K clasificados; luego itera sobre el vector original para imprimir en orden. Complejidad: O(N) tiempo, O(N) memoria.
-- **Oficial (`A_Contest.cpp` - Arup Guha):**
+- **Oficial ([A_Contest.cpp](../../inputs/official_solutions/A_Contest.cpp) - Arup Guha):**
   Usa dos vectores (`res` para los aceptados en Pase 1 y `leftover` para los descartados por cupo escolar). Si `res.size() < k`, toma los primeros `k - res.size()` elementos de `leftover`. Luego, cada equipo tiene un campo `origRank` y se ordena la lista final de K equipos por `origRank` usando `sort`. Ambos enfoques logran O(N log K) o O(N) y son conceptualmente equivalentes.

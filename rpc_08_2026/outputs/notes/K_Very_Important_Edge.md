@@ -4,7 +4,7 @@
 - **Dificultad Estimada:** Alta (Div 1C / Div 2F)
 - **Estado en Concurso:** No resuelto
 - **Archivos de Referencia:**
-  - Enunciado: `inputs/problemset/ProblemsetRPC08.pdf` (página 12)
+  - Enunciado: [ProblemsetRPC08.pdf](../../inputs/problemset/ProblemsetRPC08.pdf) (página 12)
 
 ---
 

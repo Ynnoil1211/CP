@@ -4,7 +4,8 @@
 - **Dificultad Estimada:** Media-Alta (Div 1B / Div 2E)
 - **Estado en Concurso:** No resuelto
 - **Archivos de Referencia:**
-  - Solución Oficial: `inputs/official_solutions/C_Hunger.cpp`
+  - Enunciado: [ProblemsetRPC08.pdf](../../inputs/problemset/ProblemsetRPC08.pdf)
+  - Solución Oficial: [C_Hunger.cpp](../../inputs/official_solutions/C_Hunger.cpp)
 
 ---
 
@@ -53,7 +54,7 @@ Dada una demanda total requerida por noche F = K * x:
 
 ## 4. Estrategia de Implementación y Código de Referencia
 
-La solución oficial (`inputs/official_solutions/C_Hunger.cpp`) implementa 150 iteraciones de bisección. Con 150 pasos, el intervalo se reduce por 2^150 ≈ 10^45, superando con holgura la precisión requerida (10^-9).
+La solución oficial ([C_Hunger.cpp](../../inputs/official_solutions/C_Hunger.cpp)) implementa 150 iteraciones de bisección. Con 150 pasos, el intervalo se reduce por 2^150 ≈ 10^45, superando con holgura la precisión requerida (10^-9).
 
 ```cpp
 // Búsqueda binaria sobre mid = ración por jugador

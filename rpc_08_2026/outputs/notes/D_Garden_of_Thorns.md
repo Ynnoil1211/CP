@@ -4,7 +4,8 @@
 - **Dificultad Estimada:** Difícil (Div 1C / Div 2F)
 - **Estado en Concurso:** No resuelto
 - **Archivos de Referencia:**
-  - Solución Oficial: `inputs/official_solutions/D_Garden.java`
+  - Enunciado: [ProblemsetRPC08.pdf](../../inputs/problemset/ProblemsetRPC08.pdf)
+  - Solución Oficial: [D_Garden.java](../../inputs/official_solutions/D_Garden.java)
 
 ---
 
@@ -64,7 +65,7 @@ Cuando el disco intersecta los bordes del rectángulo:
 
 ## 4. Estrategia de Implementación y Código de Referencia
 
-En la solución oficial de Arup Guha (`inputs/official_solutions/D_Garden.java`):
+En la solución oficial de Arup Guha ([D_Garden.java](../../inputs/official_solutions/D_Garden.java)):
 
 ```java
 // Contribución de cada planta

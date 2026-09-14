@@ -4,8 +4,9 @@
 - **Dificultad Estimada:** Muy Fácil (Div 3A / Div 2A)
 - **Estado en Concurso:** Resuelto (AC en versión 2)
 - **Archivos de Referencia:**
-  - Soluciones de Equipo: `inputs/solutions/Lines.cpp`, `Lines (1).cpp`, `Lines (2).cpp` (AC)
-  - Solución Oficial: `inputs/official_solutions/G_Lines.py`
+  - Enunciado: [ProblemsetRPC08.pdf](../../inputs/problemset/ProblemsetRPC08.pdf)
+  - Solución de Equipo: [G_Lines.cpp](../../inputs/solutions/G_Lines.cpp) (AC)
+  - Solución Oficial: [G_Lines.py](../../inputs/official_solutions/G_Lines.py)
 
 ---
 
@@ -59,9 +60,9 @@ El historial de versiones revela dos errores clásicos de implementación:
 
 ## 4. Comparativa: Equipo vs Oficial
 
-- **Equipo (`Lines (2).cpp`):**
+- **Equipo ([G_Lines.cpp](../../inputs/solutions/G_Lines.cpp)):**
   Lee N, P, ordena con `sort(lines.begin(), lines.end())`, itera sumando y retorna `i` si excede 5P, o N si no excede.
-- **Oficial (`G_Lines.py` - Arup Guha):**
+- **Oficial ([G_Lines.py](../../inputs/official_solutions/G_Lines.py) - Arup Guha):**
   ```python
   n, p = map(int, input().split())
   lines = [int(input()) for _ in range(n)]

@@ -186,7 +186,7 @@ Therefore, taking the max of the two linear solutions yields the optimal circula
 
 **Similar problems in this pattern:**
 
-- [198 - House Robber I](linear-dp/198_House_Robber.md) — the foundation for this problem
+- [198 - House Robber I](198_House_Robber.md) — the foundation for this problem
 - 918 - Maximum Sum Circular Subarray — same circular decomposition trick
 - 740 - Delete and Earn — transforms into HR I after frequency mapping
 

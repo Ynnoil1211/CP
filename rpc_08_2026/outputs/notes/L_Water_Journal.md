@@ -4,8 +4,9 @@
 - **Dificultad Estimada:** Muy Fácil (Div 3A / Div 2A)
 - **Estado en Concurso:** Resuelto (AC en versión 2)
 - **Archivos de Referencia:**
-  - Soluciones de Equipo: `inputs/solutions/Water.cpp`, `Water (1).cpp`, `Water (2).cpp` (AC)
-  - Solución Oficial: `inputs/official_solutions/L_Water.py`
+  - Enunciado: [ProblemsetRPC08.pdf](../../inputs/problemset/ProblemsetRPC08.pdf)
+  - Solución de Equipo: [L_Water.cpp](../../inputs/solutions/L_Water.cpp) (AC)
+  - Solución Oficial: [L_Water.py](../../inputs/official_solutions/L_Water.py)
 
 ---
 
@@ -63,9 +64,9 @@ Se presentan cuatro casos mutuamente excluyentes:
 
 ## 4. Comparativa: Equipo vs Oficial
 
-- **Equipo (`Water (2).cpp`):**  
+- **Equipo ([L_Water.cpp](../../inputs/solutions/L_Water.cpp)):**  
   Almacena los números leídos en un `std::set` y evalúa `nums.contains(a)` y `nums.contains(b)`.
-- **Oficial (`L_Water.py` - Arup Guha):**  
+- **Oficial ([L_Water.py](../../inputs/official_solutions/L_Water.py) - Arup Guha):**  
   ```python
   haveMin = (low in vals)
   haveMax = (high in vals)

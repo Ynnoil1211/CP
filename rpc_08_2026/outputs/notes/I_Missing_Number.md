@@ -4,7 +4,8 @@
 - **Dificultad Estimada:** Media (Div 2C / Div 3D)
 - **Estado en Concurso:** No resuelto
 - **Archivos de Referencia:**
-  - Solución Oficial: `inputs/official_solutions/I_Missing.cpp`
+  - Enunciado: [ProblemsetRPC08.pdf](../../inputs/problemset/ProblemsetRPC08.pdf)
+  - Solución Oficial: [I_Missing.cpp](../../inputs/official_solutions/I_Missing.cpp)
 
 ---
 
@@ -64,7 +65,7 @@ Para cada posible longitud inicial L in {1, 2, 3, 4, 5} tal que L <= |S|:
 
 ## 4. Estrategia de Implementación y Código de Referencia
 
-La solución oficial (`inputs/official_solutions/I_Missing.cpp`) estructura el proceso mediante una función `solve(s, len)`:
+La solución oficial ([I_Missing.cpp](../../inputs/official_solutions/I_Missing.cpp)) estructura el proceso mediante una función `solve(s, len)`:
 
 ```cpp
 for (int len = 1; len <= 5; len++) {

@@ -4,7 +4,8 @@
 - **Dificultad Estimada:** Media (Div 2C / Div 1A)
 - **Estado en Concurso:** No resuelto
 - **Archivos de Referencia:**
-  - Solución Oficial: `inputs/official_solutions/B_DigitTranslation.java`
+  - Enunciado: [ProblemsetRPC08.pdf](../../inputs/problemset/ProblemsetRPC08.pdf)
+  - Solución Oficial: [B_DigitTranslation.java](../../inputs/official_solutions/B_DigitTranslation.java)
 
 ---
 
@@ -79,7 +80,7 @@ Para la posición i (representando el prefijo de longitud i, con índice i-1 en 
 
 ## 4. Estrategia de Implementación y Código de Referencia
 
-La solución oficial de Arup Guha (`inputs/official_solutions/B_DigitTranslation.java`) implementa exactamente este esquema en Java con `BufferedReader`.
+La solución oficial de Arup Guha ([B_DigitTranslation.java](../../inputs/official_solutions/B_DigitTranslation.java)) implementa exactamente este esquema en Java con `BufferedReader`.
 
 ```java
 // Arreglos DP
