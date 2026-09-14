@@ -64,6 +64,21 @@ This is where they live.
 ## 2026-09-13
 
 - **1157E - Minimum Array** — _`std::lower_bound(b.begin(), b.end(), val)` compiles on `std::set`/`multiset` but takes $O(n)$ time because set iterators are bidirectional (not random-access), silently degrading an algorithm to $O(n^2)$ TLE. Always use the member method `b.lower_bound(val)` for $O(\log n)$ balanced tree traversal. Also, minimizing $(a_i + b_j) \pmod n$ greedily queries $b.lower\_bound(n - a_i)$ and wraps around to $b.begin()$ when reaching the end._
+- **1857A - Array Coloring** — _Parity problems reduce entirely to counting odd numbers — even numbers contribute $0 \pmod 2$, eliminating the need for multi-branch case checks._
+- **1859A - United We Stand** — _Separating strictly by max value ($c = \{\max(a)\}$) makes divisibility impossible from $c$ to $b$, while any all-equal array immediately yields $-1$ as $b$ would be empty._
+- **1855B - Longest Divisors Interval** — _You never need to search arbitrary intervals $[l, r]$; the optimal interval is always the prefix $[1, k-1]$ ending right before the first non-divisor, computable in $O(\log n)$ operations._
+- **RPC 2026-08 A - Contest Advancement** — _Do not print greedily during pass 1; collect selected team IDs in a set or marker array, then do a final pass over the original ranking to preserve the true relative merit order._
+- **RPC 2026-08 B - Digit Translation** — _Digit words have lengths 3 to 5 only ($O(1)$ lookback); tracking both $\text{dp\_len}[i]$ and $\text{dp\_cnt}[i]$ in a single linear pass prevents exponential branching and duplicate counting across overlapping segments._
+- **RPC 2026-08 C - Don't Hunger Together** — _Feasibility is monotonic, enabling binary search on the continuous daily rate; greedy consumption using Earliest Deadline First (EDF) via min-heap is provably optimal for perishable resources._
+- **RPC 2026-08 D - Garden of Thorns** — _Lineal expectation $\mathbb{E}[\sum X_i] = \sum \mathbb{E}[X_i]$ decouples plants completely; each plant's protection probability is simply the circle-rectangle clipping area divided by the garden area._
+- **RPC 2026-08 E - ICPC Team Generation** — _Monotonicity of preference intervals ($a_i \le a_j$ and $b_i \le b_j$) implies inner trio members are automatically compatible if outer boundaries hold; greedy leftmost trio selection is optimal._
+- **RPC 2026-08 F - Is Y a Vowel?** — _Avoid regex overhead or multiple string scans; a single linear pass with dual counters cleanly branches standard vowels vs. permissive vowels in $O(|S|)$ time and $O(1)$ memory._
+- **RPC 2026-08 G - Lines Per Hour** — _Ascending greedy sorting maximizes the count of completed problems under a fixed line budget; beware of hardcoded sample constants and missing fallthrough returns._
+- **RPC 2026-08 H - Magnesium Supplementation** — _Search factor pairs up to $\sqrt{N} \le 10^6$ rather than iterating limits up to $10^{12}$, and enforce 64-bit (`long long`) containers to avoid silent 32-bit integer overflow on large divisors._
+- **RPC 2026-08 I - Missing Number** — _With $b < 10^5$, testing all 5 possible prefix lengths ($1 \le L \le 5$) eliminates all search branching; the remaining sequence parses deterministically in $O(|S|)$ with at most one skipped number._
+- **RPC 2026-08 J - Tip of Your Tongue** — _Equal prefix and suffix lengths enable rolling double-hashes grouped by length; Principle of Inclusion-Exclusion answers AND, OR, and XOR queries in $O(1)$ time per query._
+- **RPC 2026-08 K - Very Important Edge** — _Removing a tree edge cuts the MST into two components, repairable by the lightest crossing non-tree edge; sorting chords and applying DSU path compression updates each tree edge at most once._
+- **RPC 2026-08 L - Water Journal** — _With only one missing entry, needing both distinct extremes ($a \ne b$ with neither recorded) is impossible by the pigeonhole principle; check the complete 4-state boolean matrix._
 
 ---
 

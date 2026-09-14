@@ -1,0 +1,101 @@
+# ==============================================================================
+# Competitive Programming Repository .gitignore
+# ==============================================================================
+
+# --- C / C++ Compiled Binaries & Build Artifacts ---
+*.exe
+*.out
+*.app
+*.bin
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.lib
+*.a
+*.gch
+*.pch
+
+# Debug & Symbol files
+*.dSYM/
+*.pdb
+*.idb
+*.ilk
+
+# --- Java Compiled Files ---
+*.class
+*.jar
+*.war
+*.ear
+hs_err_pid*
+replay_pid*
+
+# --- Python Artifacts & Environments ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+.venv/
+ENV/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# --- Competitive Programming Scratch & Test I/O Files ---
+in.txt
+out.txt
+input.txt
+output.txt
+test.txt
+ans.txt
+sample.txt
+temp.txt
+tmp.txt
+*.in
+*.ans
+*.tmp
+scratch/
+stress/
+generator
+brute
+solution
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+cmake-build-*/
+.vs/
+*.user
+*.suo
+*.sln.docstates
+
+# Vim / Nano / Emacs
+*.swp
+*.swo
+*~
+.#*
+
+# --- Operating System Artifacts ---
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
