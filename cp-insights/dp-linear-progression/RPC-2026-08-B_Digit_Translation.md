@@ -10,11 +10,11 @@
 
 ## Pattern Trigger
 
-"$|S| \le 10^6$, replace English digit words with '0'-'9', find min length and count of distinct strings achieving that length mod $9\,302\,023$." Overlapping occurrences (like `"twone"`) rule out greedy choices and force prefix DP.
+"|S| <= 10^6, replace English digit words with '0'-'9', find min length and count of distinct strings achieving that length mod 9302023." Overlapping occurrences (like `"twone"`) rule out greedy choices and force prefix DP.
 
 ## Breakthrough
 
-Digit words have lengths 3 to 5 only ($O(1)$ lookback); tracking both $\text{dp\_len}[i]$ and $\text{dp\_cnt}[i]$ in a single linear pass prevents exponential branching and duplicate counting across overlapping segments.
+Digit words have lengths 3 to 5 only (O(1) lookback); tracking both dp_len[i] and dp_cnt[i] in a single linear pass prevents exponential branching and duplicate counting across overlapping segments.
 
 ## Code Spotlight
 

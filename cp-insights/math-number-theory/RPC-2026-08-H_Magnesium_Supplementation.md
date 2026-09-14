@@ -6,15 +6,15 @@
 
 ## Key Insight
 
-💡 Daily dose $D$ must divide total magnesium $N$ such that $D \le K$ and $N / D \le P$; iterate up to $\sqrt{N}$ in $O(\sqrt{N})$ to collect paired divisors $(i, N/i)$ using 64-bit integers.
+💡 Daily dose D must divide total magnesium N such that D <= K and N / D <= P; iterate up to sqrt(N) in O(sqrt(N)) to collect paired divisors (i, N/i) using 64-bit integers.
 
 ## Pattern Trigger
 
-"$N = D \times T \le 10^{12}$, upper bounds $D \le K$ and $T \le P$, list all valid doses in increasing order." Total requirement $N$ must factor as $D \times T$; factor search space is bounded by $\sqrt{N} \le 10^6$.
+"N = D * T <= 10^12, upper bounds D <= K and T <= P, list all valid doses in increasing order." Total requirement N must factor as D * T; factor search space is bounded by sqrt(N) <= 10^6.
 
 ## Breakthrough
 
-Do not loop linearly up to $K \le 10^{12}$ (guaranteed TLE); extract symmetric divisor pairs $(i, N/i)$ up to $\sqrt{N}$, and use `long long` (`vll`) for container storage to prevent 32-bit integer overflow when values exceed $2 \cdot 10^9$.
+Do not loop linearly up to K <= 10^12 (guaranteed TLE); extract symmetric divisor pairs (i, N/i) up to sqrt(N), and use `long long` (`vll`) for container storage to prevent 32-bit integer overflow when values exceed 2 * 10^9.
 
 ## Code Spotlight
 
@@ -31,12 +31,12 @@ sort(ans.begin(), ans.end());
 
 ## Example
 
-Input: $N = 100, K = 25, P = 10$
+Input: N = 100, K = 25, P = 10
 Divisors of 100: 1, 2, 4, 5, 10, 20, 25, 50, 100
-Constraints: $D \le 25$ and $100/D \le 10 \iff D \ge 10$.
-Valid doses in $[10, 25]$: 10, 20, 25.
+Constraints: D <= 25 and 100/D <= 10 <=> D >= 10.
+Valid doses in [10, 25]: 10, 20, 25.
 Output: `3\n10\n20\n25`
-Why: Searching up to $\sqrt{100} = 10$ captures all conjugate divisor pairs without scanning up to $K$ or $N$.
+Why: Searching up to sqrt(100) = 10 captures all conjugate divisor pairs without scanning up to K or N.
 
 ---
 

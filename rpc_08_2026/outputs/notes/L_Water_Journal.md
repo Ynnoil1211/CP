@@ -11,24 +11,24 @@
 
 ## 1. Lógica y Enfoque del Problema
 
-Eugene registró durante $n$ días su consumo de agua, pero olvidó anotar exactamente **un día** (tenemos $n-1$ registros). Recuerda con certeza que el mínimo de todo el periodo fue $a$ y el máximo fue $b$, y que hubo al menos un día con consumo $a$ y al menos un día con consumo $b$.
+Eugene registró durante n días su consumo de agua, pero olvidó anotar exactamente **un día** (tenemos n-1 registros). Recuerda con certeza que el mínimo de todo el periodo fue a y el máximo fue b, y que hubo al menos un día con consumo a y al menos un día con consumo b.
 Se solicita imprimir todos los posibles valores que pudo haber bebido el día faltante (en orden creciente), o imprimir `-1` si los recuerdos de Eugene son contradictorios/imposibles.
 
 ### Análisis por Principio del Palomar
-Revisamos los $n-1$ registros disponibles y verificamos dos banderas booleanas:
-- $\text{tiene\_min}$: ¿aparece al menos una vez el valor $a$?
-- $\text{tiene\_max}$: ¿aparece al menos una vez el valor $b$?
+Revisamos los n-1 registros disponibles y verificamos dos banderas booleanas:
+- tiene_min: ¿aparece al menos una vez el valor a?
+- tiene_max: ¿aparece al menos una vez el valor b?
 
 Se presentan cuatro casos mutuamente excluyentes:
-1. **Ambos están presentes ($\text{tiene\_min} \land \text{tiene\_max}$):**  
-   Como el mínimo y el máximo ya fueron alcanzados en otros días, el día faltante puede tomar **cualquier valor entero en el intervalo cerrado $[a, b]$**. Se imprimen todos los enteros desde $a$ hasta $b$.
-2. **Falta solo el máximo ($\text{tiene\_min} \land \neg \text{tiene\_max}$):**  
-   El único día faltante está obligado a ser el máximo. La única respuesta es $b$.
-3. **Falta solo el mínimo ($\neg \text{tiene\_min} \land \text{tiene\_max}$):**  
-   El día faltante está obligado a ser el mínimo. La única respuesta es $a$.
-4. **Faltan ambos ($\neg \text{tiene\_min} \land \neg \text{tiene\_max}$):**  
-   - Si $a == b$, un solo número cubre ambos roles (imprimir $a$).
-   - Si $a \ne b$, harían falta al menos **dos días distintos** para cubrir $a$ y $b$. Como solo se olvidó **un día**, es matemáticamente imposible. Se imprime `-1`.
+1. **Ambos están presentes (tiene_min AND tiene_max):**  
+   Como el mínimo y el máximo ya fueron alcanzados en otros días, el día faltante puede tomar **cualquier valor entero en el intervalo cerrado [a, b]**. Se imprimen todos los enteros desde a hasta b.
+2. **Falta solo el máximo (tiene_min AND NOT tiene_max):**  
+   El único día faltante está obligado a ser el máximo. La única respuesta es b.
+3. **Falta solo el mínimo (NOT tiene_min AND tiene_max):**  
+   El día faltante está obligado a ser el mínimo. La única respuesta es a.
+4. **Faltan ambos (NOT tiene_min AND NOT tiene_max):**  
+   - Si a == b, un solo número cubre ambos roles (imprimir a).
+   - Si a != b, harían falta al menos **dos días distintos** para cubrir a y b. Como solo se olvidó **un día**, es matemáticamente imposible. Se imprime `-1`.
 
 ---
 
@@ -42,7 +42,7 @@ Se presentan cuatro casos mutuamente excluyentes:
    }
    else cout << a; // ERROR CRÍTICO
    ```
-   Si el conjunto no contenía $a$, el código asumía ciegamente que contenía $b$, imprimiendo $a$. En un caso de prueba donde ni $a$ ni $b$ aparecían en el registro (con $a \ne b$), el programa debió responder `-1`, pero imprimió $a$.
+   Si el conjunto no contenía a, el código asumía ciegamente que contenía b, imprimiendo a. En un caso de prueba donde ni a ni b aparecían en el registro (con a != b), el programa debió responder `-1`, pero imprimió a.
 
 2. **`Water (1).cpp`: Detección de `-1` añadida, pero formato con espacio final:**
    Corrigió la ramificación añadiendo `else if (nums.contains(b)) cout << a; else cout << -1;`.
@@ -55,9 +55,9 @@ Se presentan cuatro casos mutuamente excluyentes:
 ## 3. Trampa Cognitiva Recurrente
 
 1. **La falacia del "complemento binario" en condicionales:**  
-   Pensar que si la condición A no se cumple ($\neg \text{tiene\_min}$), automáticamente la condición B sí se cumple ($\text{tiene\_max}$). Cuando hay dos variables booleanas independientes, existen 4 estados ($2 \times 2$), no 2.
+   Pensar que si la condición A no se cumple (NOT tiene_min), automáticamente la condición B sí se cumple (tiene_max). Cuando hay dos variables booleanas independientes, existen 4 estados (2 * 2), no 2.
 2. **Olvidar el Principio del Palomar con recursos únicos:**  
-   Si hay $k$ restricciones no satisfechas y solo 1 grado de libertad (1 valor faltante), es imposible satisfacer $k > 1$ restricciones disjuntas simultáneamente.
+   Si hay k restricciones no satisfechas y solo 1 grado de libertad (1 valor faltante), es imposible satisfacer k > 1 restricciones disjuntas simultáneamente.
 
 ---
 
@@ -80,4 +80,4 @@ Se presentan cuatro casos mutuamente excluyentes:
       print(high)
   ```
   La solución oficial maneja la comprobación de `-1` en primer lugar, protegiendo el flujo contra inconsistencias de forma muy limpia.
-- **Complejidad:** $O(N)$ tiempo y $O(N)$ espacio en ambas soluciones (con $N \le 50$).
+- **Complejidad:** O(N) tiempo y O(N) espacio en ambas soluciones (con N <= 50).

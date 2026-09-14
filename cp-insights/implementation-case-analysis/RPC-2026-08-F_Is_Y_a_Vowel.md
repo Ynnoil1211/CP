@@ -6,15 +6,15 @@
 
 ## Key Insight
 
-💡 Maintain two counters in a single linear pass: increment both for standard vowels $\{a, e, i, o, u\}$, and increment only the second when encountering $'y'$.
+💡 Maintain two counters in a single linear pass: increment both for standard vowels {a, e, i, o, u}, and increment only the second when encountering 'y'.
 
 ## Pattern Trigger
 
-"Count vowels excluding 'y' and vowels including 'y' in a lowercase word of length $\le 50$." Simple dual-metric aggregation on short input strings.
+"Count vowels excluding 'y' and vowels including 'y' in a lowercase word of length <= 50." Simple dual-metric aggregation on short input strings.
 
 ## Breakthrough
 
-Avoid regex overhead or multi-pass string parsing; a direct character-by-character scan cleanly branches vowel membership in $O(|S|)$ time and $O(1)$ auxiliary space.
+Avoid regex overhead or multi-pass string parsing; a direct character-by-character scan cleanly branches vowel membership in O(|S|) time and O(1) auxiliary space.
 
 ## Code Spotlight
 

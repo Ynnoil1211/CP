@@ -88,7 +88,7 @@ for (auto it = s.rbegin(); it != s.rend(); ++it) cout << *it << " "; // 9 5 4 3 
 
 ## 3. `std::multiset` (Conjunto Ordenado con Duplicados)
 
-Idéntico a `std::set`, pero **permite múltiples copias del mismo valor**. Esencial cuando necesitas una cola de prioridad con soporte para buscar y eliminar elementos arbitrarios en $O(\log N)$.
+Idéntico a `std::set`, pero **permite múltiples copias del mismo valor**. Esencial cuando necesitas una cola de prioridad con soporte para buscar y eliminar elementos arbitrarios en O(log N).
 
 ### ⚠️ TRAMPA #1: `erase(val)` vs `erase(it)`
 
@@ -112,7 +112,7 @@ if (it != ms.end()) {
 > [!CAUTION]
 > En `multiset`, pasar un **valor** a `erase(val)` borra **todas** las ocurrencias. Para borrar una sola copia, busca primero el **iterador** con `ms.find(val)` o `ms.lower_bound(val)` y pásaselo a `ms.erase(it)`.
 
-### ⚠️ TRAMPA #2: `count(val)` NO es $O(\log N)$
+### ⚠️ TRAMPA #2: `count(val)` NO es O(log N)
 
 ```cpp
 multiset<int> ms;
@@ -187,13 +187,13 @@ if (it != freq.end() && it->second > 0) { ... }
 
 ## 5. `std::unordered_map` y `std::unordered_set` (Tablas Hash)
 
-Implementadas como tablas hash. No mantienen orden, pero ofrecen operaciones en **$O(1)$ promedio**.
+Implementadas como tablas hash. No mantienen orden, pero ofrecen operaciones en **O(1) promedio**.
 
 ### ⚠️ EL ATAQUE HASH EN CODEFORCES (Anti-hash TLE)
 
 En plataformas como Codeforces donde las pruebas son públicas y otros participantes pueden hackear tus envíos durante la fase de impugnaciones:
 - El hash por defecto de `std::unordered_map<long long, int>` en GCC (`std::hash`) es vulnerable a colisiones prediseñadas.
-- Un test malicioso diseñado contra la función hash de GCC hace que todas las inserciones caigan en el mismo bucket, degradando la complejidad de $O(1)$ a **$O(N)$ por operación**, resultando en un TLE brutal ($O(N^2)$).
+- Un test malicioso diseñado contra la función hash de GCC hace que todas las inserciones caigan en el mismo bucket, degradando la complejidad de O(1) a **O(N) por operación**, resultando en un TLE brutal (O(N^2)).
 
 #### La Solución Oficial: `custom_hash` con SplitMix64
 Pega este snippet en tu plantilla cuando uses `unordered_map` o `unordered_set`:

@@ -6,11 +6,11 @@
 
 ## Key Insight
 
-💡 Select candidates in merit order respecting the per-school quota $C$ in pass 1, fill remaining vacancies from unselected teams in pass 2, and print strictly by original rank.
+💡 Select candidates in merit order respecting the per-school quota C in pass 1, fill remaining vacancies from unselected teams in pass 2, and print strictly by original rank.
 
 ## Pattern Trigger
 
-"Top $K$ teams advance, max $C$ per school, fill remaining slots with highest ranked remaining teams, output in original ranking order." When a selection process has multiple filtering stages, early selection must not dictate final output ordering.
+"Top K teams advance, max C per school, fill remaining slots with highest ranked remaining teams, output in original ranking order." When a selection process has multiple filtering stages, early selection must not dictate final output ordering.
 
 ## Breakthrough
 
@@ -36,7 +36,7 @@ for (auto& team : teams) if (selected.count(team.id)) cout << team.id << "\n";
 
 ## Example
 
-Input: $N=5, K=3, C=1$, teams: `[(1, S1), (2, S1), (3, S2), (4, S1), (5, S3)]`
+Input: N=5, K=3, C=1, teams: `[(1, S1), (2, S1), (3, S2), (4, S1), (5, S3)]`
 Trace:
 - Pass 1 accepts: Team 1 (S1), Team 3 (S2). (2 teams, need 3).
 - Pass 2 fills remaining slot with Team 2 (S1).

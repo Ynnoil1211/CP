@@ -6,11 +6,11 @@
 
 ## Key Insight
 
-💡 Sort problems ascending by line count and greedily take the smallest until cumulative lines exceed total coding capacity $5 \times P$.
+💡 Sort problems ascending by line count and greedily take the smallest until cumulative lines exceed total coding capacity 5 * P.
 
 ## Pattern Trigger
 
-"Maximize count of completed tasks with individual line requirements under a fixed total time limit (5 hours at rate $P$)." Equal unit reward (+1 per problem) with varying costs.
+"Maximize count of completed tasks with individual line requirements under a fixed total time limit (5 hours at rate P)." Equal unit reward (+1 per problem) with varying costs.
 
 ## Breakthrough
 
@@ -32,7 +32,7 @@ cout << solved << "\n";
 
 ## Example
 
-Input: $P = 20$ (capacity $= 5 \times 20 = 100$), lines = `[40, 20, 50, 10, 30]`
+Input: P = 20 (capacity = 5 * 20 = 100), lines = `[40, 20, 50, 10, 30]`
 Sorted: `[10, 20, 30, 40, 50]`
 - Take 10 (rem 90) -> count 1
 - Take 20 (rem 70) -> count 2

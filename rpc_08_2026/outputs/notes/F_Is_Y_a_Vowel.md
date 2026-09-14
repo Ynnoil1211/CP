@@ -13,8 +13,8 @@
 
 Se recibe una palabra en inglés con letras minúsculas (longitud hasta 50).
 Se solicita imprimir dos números enteros separados por un espacio:
-1. La cantidad de vocales considerando únicamente $\{a, e, i, o, u\}$.
-2. La cantidad de vocales considerando $\{a, e, i, o, u\}$ junto con la letra $y$.
+1. La cantidad de vocales considerando únicamente {a, e, i, o, u}.
+2. La cantidad de vocales considerando {a, e, i, o, u} junto con la letra y.
 
 Basta con realizar un recorrido lineal simple sobre la cadena, manteniendo dos acumuladores:
 - Contador 1: incrementa si el carácter está en `"aeiou"`.
@@ -56,5 +56,5 @@ Basta con realizar un recorrido lineal simple sobre la cadena, manteniendo dos a
   cout << res << " " << res1 << endl;
   ```
 - **Oficial (`F_Vowel.cpp` - Arup Guha):**
-  Declara una función `isVowel(char c)` con un `switch` o cadena `"aeiou"`, suma 1 a ambos contadores para las 5 vocales, y suma 1 al segundo contador si $c == 'y'$.
-- **Complejidad:** $O(|S|)$ tiempo y $O(1)$ memoria adicional en ambos.
+  Declara una función `isVowel(char c)` con un `switch` o cadena `"aeiou"`, suma 1 a ambos contadores para las 5 vocales, y suma 1 al segundo contador si c == 'y'.
+- **Complejidad:** O(|S|) tiempo y O(1) memoria adicional en ambos.

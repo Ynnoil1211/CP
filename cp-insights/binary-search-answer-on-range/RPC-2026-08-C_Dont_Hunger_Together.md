@@ -10,11 +10,11 @@
 
 ## Pattern Trigger
 
-"Find maximum daily consumption $x > 0$ such that all $K$ players survive $N$ days with expiring food batches." Feasibility is monotonic (eating less is always easier than eating more), triggering Binary Search on Answer (BSTA).
+"Find maximum daily consumption x > 0 such that all K players survive N days with expiring food batches." Feasibility is monotonic (eating less is always easier than eating more), triggering Binary Search on Answer (BSTA).
 
 ## Breakthrough
 
-Earliest Deadline First (EDF) greedy consumption is optimal: consuming food that expires earlier frees up longer-lasting food for subsequent turns. Checking feasibility in $O(N \log N)$ with 80–100 bisection iterations achieves $10^{-9}$ precision.
+Earliest Deadline First (EDF) greedy consumption is optimal: consuming food that expires earlier frees up longer-lasting food for subsequent turns. Checking feasibility in O(N log N) with 80–100 bisection iterations achieves 10^-9 precision.
 
 ## Code Spotlight
 

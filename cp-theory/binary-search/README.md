@@ -79,7 +79,7 @@ int count4 = up - low; // 4 - 1 = 3 repeticiones
 
 ## 3. Las 4 Consultas Cardinales
 
-En problemas de CP con frecuencia necesitas una de las 4 consultas sobre un valor $X$. Con `lower_bound`, `upper_bound` y `prev()`, resuelves todas de forma segura:
+En problemas de CP con frecuencia necesitas una de las 4 consultas sobre un valor X. Con `lower_bound`, `upper_bound` y `prev()`, resuelves todas de forma segura:
 
 ```cpp
 vector<int> a = {10, 20, 30, 40, 50};
@@ -138,16 +138,16 @@ auto it = ms.lower_bound(X);
 ```
 
 ### ¿Por qué pasa esto si el código compila?
-- `vector` tiene iteradores de **acceso aleatorio** (`RandomAccessIterator`). `std::lower_bound` puede saltar directamente al elemento medio con `it + k` en $O(1)$.
-- `std::set` y `std::multiset` se implementan como árboles rojinegros (Red-Black Trees). Sus iteradores son **bidireccionales** (`BidirectionalIterator`), lo que significa que no pueden saltar en $O(1)$; tienen que hacer `++it` nodo por nodo.
-- Al llamar a `std::lower_bound(s.begin(), s.end(), X)`, la función STL no sabe cómo navegar el árbol; solo puede avanzar linealmente, tardando $O(N)$.
-- En cambio, el método miembro `s.lower_bound(X)` conoce la estructura del árbol y desciende directamente por la raíz y ramas en $O(\log N)$.
+- `vector` tiene iteradores de **acceso aleatorio** (`RandomAccessIterator`). `std::lower_bound` puede saltar directamente al elemento medio con `it + k` en O(1).
+- `std::set` y `std::multiset` se implementan como árboles rojinegros (Red-Black Trees). Sus iteradores son **bidireccionales** (`BidirectionalIterator`), lo que significa que no pueden saltar en O(1); tienen que hacer `++it` nodo por nodo.
+- Al llamar a `std::lower_bound(s.begin(), s.end(), X)`, la función STL no sabe cómo navegar el árbol; solo puede avanzar linealmente, tardando O(N).
+- En cambio, el método miembro `s.lower_bound(X)` conoce la estructura del árbol y desciende directamente por la raíz y ramas en O(log N).
 
 ---
 
 ## 5. Búsqueda Binaria sobre la Respuesta (Enteros)
 
-Se utiliza cuando la respuesta numérica $X$ no es calculable directamente con una fórmula, pero **verificar si una propuesta $X$ es válida toma tiempo polinomial (típicamente $O(N)$)** mediante una función `check(X)`.
+Se utiliza cuando la respuesta numérica X no es calculable directamente con una fórmula, pero **verificar si una propuesta X es válida toma tiempo polinomial (típicamente O(N))** mediante una función `check(X)`.
 
 ### Condición de Monotonicidad
 El espacio de búsqueda debe tener una línea divisoria estricta (predicado monotónico):
@@ -254,7 +254,7 @@ cout << fixed << setprecision(10) << left << "\n";
 | Pregunta de Verificación | Acción Correcta |
 |---|---|
 | ¿El contenedor es `set` / `multiset`? | **Usa `s.lower_bound(x)`**, nunca `std::lower_bound` |
-| ¿`left` y `right` pueden superar $10^9$? | Usa `long long` para `left`, `right`, `mid` y límites |
+| ¿`left` y `right` pueden superar 10^9? | Usa `long long` para `left`, `right`, `mid` y límites |
 | ¿Usas `prev(it)`? | Asegúrate primero de que `it != begin()` |
 | ¿BS sobre doubles? | Haz un bucle fijo `for (int i = 0; i < 100; i++)` |
 | ¿La función `check(mid)` es monotónica? | Dibuja en papel 3 valores de prueba para verificar FFFVVV o VVVFFF |

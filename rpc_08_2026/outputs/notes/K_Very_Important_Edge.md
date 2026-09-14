@@ -10,55 +10,55 @@
 
 ## 1. Explicación Pedagógica del Problema
 
-Se tiene un grafo conexo no dirigido $G = (V, E)$ con $N$ vértices ($3 \le N \le 10^5$) y $M$ aristas ($3 \le M \le 10^6$). Cada arista $e = (u, v)$ posee un peso entero $w(e) \ge 1$.
+Se tiene un grafo conexo no dirigido G = (V, E) con N vértices (3 <= N <= 10^5) y M aristas (3 <= M <= 10^6). Cada arista e = (u, v) posee un peso entero w(e) >= 1.
 Se garantiza que el grafo es **2-arista-conexo** (no tiene puentes): es decir, eliminar cualquier arista individual no desconecta el grafo.
 
-Un **Árbol de Expansión Mínima (MST)** es un subconjunto conexo y acíclico de $N-1$ aristas cuya suma total de pesos es mínima.
-Queremos elegir estratégicamente **una arista $e \in E$ para ser eliminada** de modo que el peso del MST en el grafo resultante $G \setminus \{e\}$ sea **lo más grande posible**.
+Un **Árbol de Expansión Mínima (MST)** es un subconjunto conexo y acíclico de N-1 aristas cuya suma total de pesos es mínima.
+Queremos elegir estratégicamente **una arista e in E para ser eliminada** de modo que el peso del MST en el grafo resultante G \ {e} sea **lo más grande posible**.
 Debemos reportar el peso del MST resultante tras eliminar dicha arista crítica.
 
 ---
 
 ## 2. Patrones Evidentes y Pistas en las Restricciones
 
-- **$N \le 10^5$ y $M \le 10^6$:**  
-  No podemos recalcular el MST desde cero para cada una de las aristas eliminadas ($O(M \cdot M \log N)$ daría un TLE rotundo). Debemos encontrar el impacto de remover cada arista en tiempo cuasi-lineal $O(M \log M)$.
+- **N <= 10^5 y M <= 10^6:**  
+  No podemos recalcular el MST desde cero para cada una de las aristas eliminadas (O(M * M log N) daría un TLE rotundo). Debemos encontrar el impacto de remover cada arista en tiempo cuasi-lineal O(M log M).
 - **Propiedad Fundamental del Árbol de Expansión (Corte y Reemplazo):**  
-  Sea $T$ un MST inicial de $G$ con peso total $W(T)$.
-  1. **Si eliminamos una arista $e \notin T$ (arista fuera del MST):**  
-     El árbol $T$ sigue estando intacto y conexo en $G \setminus \{e\}$. Como $T$ ya era minimal en $G$, sigue siendo un MST válido en $G \setminus \{e\}$ con el mismo peso $W(T)$.
-  2. **Si eliminamos una arista $e \in T$ (arista del MST):**  
-     Al quitar $e = (u, v)$, el árbol $T$ se divide exactamente en dos componentes conexas disjuntas, $S$ y $V \setminus S$.  
-     Para reconectar ambas componentes en un nuevo árbol de expansión $T'$, debemos elegir una arista de reemplazo $e' = (x, y) \in E \setminus \{e\}$ que cruce el corte $(S, V \setminus S)$.  
+  Sea T un MST inicial de G con peso total W(T).
+  1. **Si eliminamos una arista e not in T (arista fuera del MST):**  
+     El árbol T sigue estando intacto y conexo en G \ {e}. Como T ya era minimal en G, sigue siendo un MST válido en G \ {e} con el mismo peso W(T).
+  2. **Si eliminamos una arista e in T (arista del MST):**  
+     Al quitar e = (u, v), el árbol T se divide exactamente en dos componentes conexas disjuntas, S y V \ S.  
+     Para reconectar ambas componentes en un nuevo árbol de expansión T', debemos elegir una arista de reemplazo e' = (x, y) in E \ {e} que cruce el corte (S, V \ S).  
      Por la propiedad del corte, para que el nuevo árbol sea mínimo, debemos tomar la arista de reemplazo de menor peso posible:
-     $$W(T') = W(T) - w(e) + w(e')$$
+     W(T') = W(T) - w(e) + w(e')
 
 - **Lema Clave de Pertenencia al Camino:**  
-  ¿Cuándo una arista que no está en el árbol $e' = (x, y) \notin T$ cruza el corte formado al remover $e$?  
-  Cruza el corte **si y solo si la arista $e$ pertenece al único camino simple entre $x$ e $y$ en el árbol original $T$**.
-  Por lo tanto, para cada arista del árbol $e \in T$, su arista de reemplazo óptima es:
-  $$\text{reemplazo}(e) = \min \{ w(e') \mid e' = (x, y) \in E \setminus T, \; e \in \text{camino}_T(x, y) \}$$
+  ¿Cuándo una arista que no está en el árbol e' = (x, y) not in T cruza el corte formado al remover e?  
+  Cruza el corte **si y solo si la arista e pertenece al único camino simple entre x e y en el árbol original T**.
+  Por lo tanto, para cada arista del árbol e in T, su arista de reemplazo óptima es:
+  reemplazo(e) = min { w(e') | e' = (x, y) in E \ T, e in camino_T(x, y) }
   Y el problema se reduce a encontrar:
-  $$\max_{e \in T} \left( W(T) - w(e) + \text{reemplazo}(e) \right)$$
+  max_{e in T} ( W(T) - w(e) + reemplazo(e) )
 
 ---
 
 ## 3. Técnica Algorítmica: Kruskal + DSU Path Compression para Saltos en Árbol
 
-El problema de asignar a cada arista $e$ en el camino entre $x$ e $y$ el mínimo valor $w(e')$ es un **Path Minimum Range Update** sobre un árbol. Dado que podemos procesar todas las aristas fuera del árbol *offline*, la solución es extraordinariamente rápida:
+El problema de asignar a cada arista e en el camino entre x e y el mínimo valor w(e') es un **Path Minimum Range Update** sobre un árbol. Dado que podemos procesar todas las aristas fuera del árbol *offline*, la solución es extraordinariamente rápida:
 
 1. **Construir el MST inicial:**  
-   Ejecutamos el algoritmo de Kruskal en $O(M \log M)$. Marcamos las $N-1$ aristas que pertenecen a $T$ y calculamos $W(T)$.
+   Ejecutamos el algoritmo de Kruskal en O(M log M). Marcamos las N-1 aristas que pertenecen a T y calculamos W(T).
 2. **Ordenar las aristas restantes:**  
-   Tomamos todas las aristas que no quedaron en el árbol ($e' \in E \setminus T$) y las ordenamos en orden creciente de peso: $w(e'_1) \le w(e'_2) \le \dots$
+   Tomamos todas las aristas que no quedaron en el árbol (e' in E \ T) y las ordenamos en orden creciente de peso: w(e'_1) <= w(e'_2) <= ...
 3. **Pintado Codicioso de Caminos con DSU:**  
-   Como procesamos las aristas de reemplazo de menor a mayor peso, **la primera arista que cubra una arista de árbol $e$ le otorgará su valor mínimo definitivo**. Una vez asignado el reemplazo de $e$, ¡esa arista jamás necesita ser actualizada de nuevo!
-   - Enraizamos el árbol $T$ en el nodo 1 mediante un DFS/BFS y calculamos las profundidades $\text{depth}[u]$ y los padres $\text{parent}[u]$.
-   - Mantenemos una estructura **DSU (Disjoint Set Union)** sobre los nodos. En el DSU, el representante de un nodo $u$ apunta al ancestro más alto en el árbol cuya arista hacia su padre aún no ha sido cubierta.
-   - Para cada arista de reemplazo $e' = (x, y)$ con peso $w(e')$:
-     - Subimos simultáneamente desde $x$ e $y$ hacia su Ancestro Común Más Cercano ($\text{LCA}(x, y)$).
-     - Al avanzar de un nodo $u$ a su padre $p$, si la arista $(u, p)$ no tenía reemplazo, le asignamos $\text{reemplazo}((u, p)) = w(e')$.
-     - Unimos $u$ con $p$ en el DSU: `dsu.unite(u, p)`, de forma que futuras consultas salten inmediatamente sobre este tramo en $O(\alpha(N))$.
+   Como procesamos las aristas de reemplazo de menor a mayor peso, **la primera arista que cubra una arista de árbol e le otorgará su valor mínimo definitivo**. Una vez asignado el reemplazo de e, ¡esa arista jamás necesita ser actualizada de nuevo!
+   - Enraizamos el árbol T en el nodo 1 mediante un DFS/BFS y calculamos las profundidades depth[u] y los padres parent[u].
+   - Mantenemos una estructura **DSU (Disjoint Set Union)** sobre los nodos. En el DSU, el representante de un nodo u apunta al ancestro más alto en el árbol cuya arista hacia su padre aún no ha sido cubierta.
+   - Para cada arista de reemplazo e' = (x, y) con peso w(e'):
+     - Subimos simultáneamente desde x e y hacia su Ancestro Común Más Cercano (LCA(x, y)).
+     - Al avanzar de un nodo u a su padre p, si la arista (u, p) no tenía reemplazo, le asignamos reemplazo((u, p)) = w(e').
+     - Unimos u con p en el DSU: `dsu.unite(u, p)`, de forma que futuras consultas salten inmediatamente sobre este tramo en O(alpha(N)).
 
 ---
 
@@ -178,8 +178,8 @@ int main() {
 
 ### Complejidad
 - **Tiempo:**  
-  - Ordenar las $M$ aristas: $O(M \log M)$.  
-  - Kruskal: $O(M \alpha(N))$.  
-  - DFS y DSU Path Compression sobre el árbol: Cada arista del árbol se visita y contrae a lo sumo una vez, tomando $O(M + N \alpha(N))$.  
-  - **Total:** $O(M \log M)$, lo que para $M = 10^6$ toma $\approx 0.35$ segundos en C++.
-- **Espacio:** $O(N + M)$ para la lista de adyacencia y estructuras DSU.
+  - Ordenar las M aristas: O(M log M).  
+  - Kruskal: O(M alpha(N)).  
+  - DFS y DSU Path Compression sobre el árbol: Cada arista del árbol se visita y contrae a lo sumo una vez, tomando O(M + N alpha(N)).  
+  - **Total:** O(M log M), lo que para M = 10^6 toma ≈ 0.35 segundos en C++.
+- **Espacio:** O(N + M) para la lista de adyacencia y estructuras DSU.

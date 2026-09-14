@@ -11,12 +11,12 @@
 ## Pattern Trigger
 
 When asked to partition elements into two non-empty sets with equal sum parity:
-$$\text{sum}(\text{red}) \equiv \text{sum}(\text{blue}) \pmod 2 \implies \text{sum}(\text{all}) = \text{sum}(\text{red}) + \text{sum}(\text{blue}) \equiv 2 \cdot \text{sum}(\text{red}) \equiv 0 \pmod 2$$
+sum(red) == sum(blue) (mod 2) => sum(all) = sum(red) + sum(blue) == 2 * sum(red) == 0 (mod 2)
 The count of odd elements directly determines the total parity mod 2.
 
 ## Breakthrough
 
-Parity problems reduce entirely to counting odd numbers. Even numbers contribute $0 \pmod 2$ and can be distributed arbitrarily without altering parity, completely eliminating the need for complex branch checks.
+Parity problems reduce entirely to counting odd numbers. Even numbers contribute 0 (mod 2) and can be distributed arbitrarily without altering parity, completely eliminating the need for complex branch checks.
 
 ## Code Spotlight
 

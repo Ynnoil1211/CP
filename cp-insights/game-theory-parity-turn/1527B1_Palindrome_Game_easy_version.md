@@ -23,8 +23,8 @@ else cout << "ALICE\n";
 
 Input: `s = "1001"` (n=4, palindrome, zeros=2)
 Output: `BOB`
-Why: Alice flips a zero → $1. Bob reverses (free). Alice flips the
-remaining zero → $1 more. Alice $2, Bob $0 → Bob wins.
+Why: Alice flips a zero → 1 point. Bob reverses (free). Alice flips the
+remaining zero → 1 more. Alice 2, Bob 0 → Bob wins.
 
 ---
 

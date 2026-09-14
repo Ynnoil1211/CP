@@ -10,34 +10,34 @@
 
 ## 1. Explicación Pedagógica del Problema
 
-Se tiene un diccionario con $N$ palabras distintas en minúsculas. Se deben responder $Q$ consultas sobre el diccionario ($N, Q \le 2 \cdot 10^5$, con la suma total de caracteres en palabras y consultas acotada por $10^6$).
-Cada consulta proporciona una operación $op \in \{\text{"AND"}, \text{"OR"}, \text{"XOR"}\}$ y dos patrones de texto: un prefijo $p$ y un sufijo $s$, con la propiedad crítica de que **ambos tienen exactamente la misma longitud**: $|p| = |s| = L$.
+Se tiene un diccionario con N palabras distintas en minúsculas. Se deben responder Q consultas sobre el diccionario (N, Q <= 2 * 10^5, con la suma total de caracteres en palabras y consultas acotada por 10^6).
+Cada consulta proporciona una operación op in {"AND", "OR", "XOR"} y dos patrones de texto: un prefijo p y un sufijo s, con la propiedad crítica de que **ambos tienen exactamente la misma longitud**: |p| = |s| = L.
 
 Las operaciones preguntan cuántas palabras del diccionario cumplen:
-1. **`AND p s`:** Palabras que tienen a $p$ como prefijo **Y** a $s$ como sufijo.
-2. **`OR p s`:** Palabras que tienen a $p$ como prefijo **O** a $s$ como sufijo.
-3. **`XOR p s`:** Palabras que cumplen exactamente una de las dos condiciones (prefijo $p$ o sufijo $s$, pero no ambas a la vez).
+1. **`AND p s`:** Palabras que tienen a p como prefijo **Y** a s como sufijo.
+2. **`OR p s`:** Palabras que tienen a p como prefijo **O** a s como sufijo.
+3. **`XOR p s`:** Palabras que cumplen exactamente una de las dos condiciones (prefijo p o sufijo s, pero no ambas a la vez).
 
 ---
 
 ## 2. Patrones Evidentes y Pistas en las Restricciones
 
-- **Restricción unificadora $|p| = |s| = L$:**  
-  Que el prefijo y sufijo consultados siempre compartan la misma longitud $L$ simplifica radicalmente la indexación. Para cada palabra $W$ del diccionario de longitud $M$, para cada posible tamaño de consulta $L \le M$, el prefijo de longitud $L$ ($W[0 \dots L-1]$) y el sufijo de longitud $L$ ($W[M-L \dots M-1]$) quedan determinados unívocamente.
+- **Restricción unificadora |p| = |s| = L:**  
+  Que el prefijo y sufijo consultados siempre compartan la misma longitud L simplifica radicalmente la indexación. Para cada palabra W del diccionario de longitud M, para cada posible tamaño de consulta L <= M, el prefijo de longitud L (W[0 ... L-1]) y el sufijo de longitud L (W[M-L ... M-1]) quedan determinados unívocamente.
 - **Principio de Inclusión-Exclusión (PIE):**  
   Sean:
-  - $A$: conjunto de palabras con prefijo $p$ $\implies |A| = N(p)$.
-  - $B$: conjunto de palabras con sufijo $s$ $\implies |B| = N(s)$.
-  - $A \cap B$: conjunto de palabras con prefijo $p$ Y sufijo $s$ simultáneamente $\implies |A \cap B| = N(p \land s)$.
+  - A: conjunto de palabras con prefijo p => |A| = N(p).
+  - B: conjunto de palabras con sufijo s => |B| = N(s).
+  - A ∩ B: conjunto de palabras con prefijo p Y sufijo s simultáneamente => |A ∩ B| = N(p AND s).
 
   Las 3 operaciones booleanas se expresan directamente en términos de estas tres cantidades fundamentales:
-  $$\text{AND}(p, s) = |A \cap B|$$
-  $$\text{OR}(p, s) = |A \cup B| = |A| + |B| - |A \cap B|$$
-  $$\text{XOR}(p, s) = |A \triangle B| = |A| + |B| - 2|A \cap B|$$
-  Por tanto, **toda consulta se resuelve de inmediato si podemos consultar en $O(1)$ los valores de $|A|$, $|B|$ y $|A \cap B|$**.
+  AND(p, s) = |A ∩ B|
+  OR(p, s) = |A ∪ B| = |A| + |B| - |A ∩ B|
+  XOR(p, s) = |A XOR B| = |A| + |B| - 2|A ∩ B|
+  Por tanto, **toda consulta se resuelve de inmediato si podemos consultar en O(1) los valores de |A|, |B| y |A ∩ B|**.
 
-- **Suma de longitudes $\le 10^6$:**  
-  Una palabra de longitud $M$ tiene exactamente $M$ prefijos y $M$ sufijos. La suma de todos los prefijos y sufijos generados sobre todo el diccionario es a lo sumo $10^6$.
+- **Suma de longitudes <= 10^6:**  
+  Una palabra de longitud M tiene exactamente M prefijos y M sufijos. La suma de todos los prefijos y sufijos generados sobre todo el diccionario es a lo sumo 10^6.
 
 ---
 
@@ -45,17 +45,17 @@ Las operaciones preguntan cuántas palabras del diccionario cumplen:
 
 Para evitar problemas de memoria y colisiones:
 1. **Doble Hashing Polinomial:**  
-   Se eligen dos primos grandes (por ejemplo $P_1 \approx 10^9+7$, $P_2 \approx 10^9+9$) y una base polinomial (por ejemplo $B = 29$ o $31$).
-   Para una palabra $W$, se precalculan los hashes de todos sus prefijos y sufijos en $O(|W|)$.
+   Se eligen dos primos grandes (por ejemplo P_1 ≈ 10^9+7, P_2 ≈ 10^9+9) y una base polinomial (por ejemplo B = 29 o 31).
+   Para una palabra W, se precalculan los hashes de todos sus prefijos y sufijos en O(|W|).
 2. **Emparejamiento de Claves:**
-   Para cada longitud $L \in [1, |W|]$:
-   - Clave de Prefijo: $\text{hash}(W[0 \dots L-1])$
-   - Clave de Sufijo: $\text{hash}(W[|W|-L \dots |W|-1])$
-   - Clave Conjunta (AND): Combinación única de $(\text{hash}(W[0 \dots L-1]), \text{hash}(W[|W|-L \dots |W|-1]))$.
+   Para cada longitud L in [1, |W|]:
+   - Clave de Prefijo: hash(W[0 ... L-1])
+   - Clave de Sufijo: hash(W[|W|-L ... |W|-1])
+   - Clave Conjunta (AND): Combinación única de (hash(W[0 ... L-1]), hash(W[|W|-L ... |W|-1])).
 3. **Tablas Hash Separadas por Longitud:**
-   Mantener un arreglo de tablas hash indexadas por longitud $L$:
-   - `pre[L][hash_p]`: Frecuencia del prefijo de longitud $L$.
-   - `suf[L][hash_s]`: Frecuencia del sufijo de longitud $L$.
+   Mantener un arreglo de tablas hash indexadas por longitud L:
+   - `pre[L][hash_p]`: Frecuencia del prefijo de longitud L.
+   - `suf[L][hash_s]`: Frecuencia del sufijo de longitud L.
    - `and[L][hash_conjunto]`: Frecuencia de palabras con ambos a la vez.
 
 ---
@@ -91,7 +91,7 @@ else if (type.equals("XOR"))
 ```
 
 ### Complejidad
-- **Preprocesamiento:** $O(\sum |W|) \le 10^6$ operaciones de hashing e inserción en hash tables.
-- **Consultas:** $O(|p|)$ para calcular los hashes de los patrones y $O(1)$ promedio por búsqueda.  
-  Total de tiempo en consultas: $O(\sum |p|) \le 10^6$.
-- **Espacio:** $O(\sum |W|)$ estados en las tablas hash.
+- **Preprocesamiento:** O(sum |W|) <= 10^6 operaciones de hashing e inserción en hash tables.
+- **Consultas:** O(|p|) para calcular los hashes de los patrones y O(1) promedio por búsqueda.  
+  Total de tiempo en consultas: O(sum |p|) <= 10^6.
+- **Espacio:** O(sum |W|) estados en las tablas hash.
