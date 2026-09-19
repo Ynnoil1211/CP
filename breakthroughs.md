@@ -80,6 +80,11 @@ This is where they live.
 - **RPC 2026-08 K - Very Important Edge** — _Removing a tree edge cuts the MST into two components, repairable by the lightest crossing non-tree edge; sorting chords and applying DSU path compression updates each tree edge at most once._
 - **RPC 2026-08 L - Water Journal** — _With only one missing entry, needing both distinct extremes (`a != b` with neither recorded) is impossible by the pigeonhole principle; check the complete 4-state boolean matrix._
 
+## 2026-09-19
+
+- **1520D - Same Differences** — _Decouple relational equation between two indices: rewrite a_j - a_i = j - i as a_j - j = a_i - i, reducing an O(N^2) search over pairs to an O(N) frequency counting problem over invariant values b_i = a_i - i. Accumulate pair counts with 64-bit integers (long long) to prevent overflow up to N*(N-1)/2._
+- **702B - Powers of Two** — _Since a_i <= 10^9, pair sums are strictly bounded by 2 * 10^9 < 2^31, leaving only 31 candidate powers of two. Instead of O(N^2) pair matching, compute powers on the fly in O(1) via bit shifts and query complement frequencies in O(31 * N). Beware of signed 32-bit overflow with 1 << 31 (undefined behavior); always use 1LL << k._
+
 ---
 
-**Last Updated:** 2026-09-13
+**Last Updated:** 2026-09-19

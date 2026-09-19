@@ -55,7 +55,10 @@ Cada tarjeta condensa el "momento eureka" (*aha moment*), la invariante matemát
   - [RPC 08 Problem F - Is Y a Vowel?](implementation-case-analysis/RPC-2026-08-F_Is_Y_a_Vowel.md)
 
 ### 🔢 Mathematics & Number Theory
+- [**`math-constraint-bounds/`**](math-constraint-bounds/)
+  - [702B - Powers of Two](math-constraint-bounds/702B_Powers_Of_Two.md)
 - [**`math-formula-development/`**](math-formula-development/)
+  - [1520D - Same Differences](math-formula-development/1520D_Same_Differences.md)
   - [RPC 08 Problem D - Garden of Thorns](math-formula-development/RPC-2026-08-D_Garden_of_Thorns.md)
 - [**`math-gap-analysis/`**](math-gap-analysis/)
   - [1853A - Desorting](math-gap-analysis/1853A_Desorting.md)

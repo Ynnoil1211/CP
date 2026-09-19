@@ -29,6 +29,14 @@ A production-grade, battle-tested competitive programming template library engin
 
 ---
 
+### 3. Mathematics & Bit Manipulation (`math/`)
+
+| Template | Paradigm | Time Complexity | Auxiliary Space | Key Pattern & Gotchas |
+| :--- | :--- | :---: | :---: | :--- |
+| [**Trucos de Bits & Potencias de Dos**](math/bit_tricks_powers_of_two.cpp) | Bit Manipulation / Math | O(1) por op | O(1) | **32-Bit Signed Overflow & Zero Guard**: `1 << 31` causa UB con signo en C++; usar siempre `1ULL << k`. `x & (x - 1)` evalúa a `0` para `x == 0` (requiere `x > 0`). `__builtin_clzll(0)` y `__builtin_ctzll(0)` son UB sin guardas. |
+
+---
+
 ## ⚡ Compilation & Testing Guide
 
 All templates are written in standard C++17, are warning-free under `-Wall -Wextra -Werror`, and contain a runnable `main()` function demonstrating key use cases and asserting expected outputs.
@@ -69,3 +77,11 @@ g++ -O3 -std=c++17 -Wall -Wextra graphs/bfs_distancia.cpp -o bfs_dist.exe
    - In tree problems, never allocate a `vector<bool> visited(N)`. Passing `parent` directly cuts memory by O(N) and eliminates `memset`/`vector` reallocation overhead between multiple test cases.
 3. **Topological Sort Cycles**:
    - Always track 3 node states (`0 = unvisited`, `1 = in-stack`, `2 = completed`). Encountering a neighbor with state `1` indicates a back-edge (directed cycle), making topological ordering impossible.
+
+### Mathematics & Bit Tricks
+1. **Signed 32-Bit Shift UB**:
+   - `1 << 31` en C++ opera sobre `int` con signo y produce comportamiento indefinido (UB) con resultado negativo (`-2147483648`). Emplear siempre `1ULL << k` para manipular potencias de 2 hasta 64 bits de forma segura.
+2. **Builtin Undefined Behavior on Zero**:
+   - Tanto `__builtin_clzll(0)` como `__builtin_ctzll(0)` producen UB en hardware x86/ARM si su argumento es 0. Proteger siempre con sentinela `if (x == 0)`.
+3. **Power of Two Zero Trap**:
+   - La expresión `(x & (x - 1)) == 0` es cierta para `x == 0`, pero `0` no es una potencia de dos. Siempre verificar `x > 0 && (x & (x - 1)) == 0`.
