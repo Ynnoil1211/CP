@@ -1,5 +1,5 @@
 ---
-name: cp-problem-notes-generator
+name: cp-contest-package-generator
 description: Ingests, analyzes, and documents competitive programming contests and problem sets (RPC, ICPC, Codeforces). Creates dedicated contest packages ([contest_id]/) with inputs/, solutions/, and outputs/notes/. Performs differential post-mortem on buggy team versions, authors concise autopsy notes for attempted problems, writes thorough pedagogical upsolving guides for unsolved problems, generates local contest README.md, and exports flashcards to cp-insights/.
 ---
 

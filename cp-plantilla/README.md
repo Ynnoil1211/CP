@@ -11,7 +11,7 @@ A production-grade, battle-tested competitive programming template library engin
 | Template | Paradigm | Build / Init | Query | Update | Space | Primary Invariant / Key Rule of Thumb |
 | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
 | [**Segment Tree Iterativo**](data-structures/segment_tree_iterativo.cpp) | Range Query (Iterative) | O(N) | O(log N) | O(log N) | 2N | **Semi-open interval `[l, r)`**: Bitwise `l & 1` and `r & 1`. Query closed interval `[L, R]` with `query(L, R + 1)`. 2x-4x faster than recursive due to cache locality. |
-| [**Segment Tree Recursivo**](data-structures/segment_tree_recursivo.cpp) | Divide & Conquer / RMQ | O(N) | O(log N) | O(log N) | 4N | **Segment bounds `[low, high]`**: Compare against query `[l, r]`. Total overlap (`l <= low && high <= r`) vs. disjoint (`high < l \|\| low > r`). Safe 4N tree size. |
+| [**Segment Tree Recursivo**](data-structures/segment_tree_recursivo.cpp) | Divide & Conquer / RMQ | O(N) | O(log N) | O(log N) | 4N | **Segment bounds `[low, high]`**: Compare against query `[l, r]`. Total overlap (`l <= low && high <= r`) vs. disjoint (`high < l &#124;&#124; low > r`). Safe 4N tree size. |
 | [**Segment Tree Lazy Assignment**](data-structures/segment_tree_lazy_assignment.cpp) | Lazy Propagation | O(N) | O(log N) | O(log N) | 4N | **Range Assignment / Point Query**: Push parent's assigned value down to children before descending. Use boolean `has_lazy` flag to safely support `0` and negative values. |
 | [**Segment Tree Lazy Sum**](data-structures/segment_tree_lazy_sum.cpp) | Lazy Propagation | O(N) | O(log N) | O(log N) | 4N | **Range Add / Range Sum**: Must multiply lazy by segment length `(high - low + 1)`. Accumulate additively (`lazy[c] += lazy[node]`). Always use 64-bit `long long`. |
 

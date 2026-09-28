@@ -85,6 +85,23 @@ This is where they live.
 - **1520D - Same Differences** — _Decouple relational equation between two indices: rewrite a_j - a_i = j - i as a_j - j = a_i - i, reducing an O(N^2) search over pairs to an O(N) frequency counting problem over invariant values b_i = a_i - i. Accumulate pair counts with 64-bit integers (long long) to prevent overflow up to N*(N-1)/2._
 - **702B - Powers of Two** — _Since a_i <= 10^9, pair sums are strictly bounded by 2 * 10^9 < 2^31, leaving only 31 candidate powers of two. Instead of O(N^2) pair matching, compute powers on the fly in O(1) via bit shifts and query complement frequencies in O(31 * N). Beware of signed 32-bit overflow with 1 << 31 (undefined behavior); always use 1LL << k._
 
+## 2026-09-26
+
+- **RPC 2026-09 A - Alejandro, lee por favor** — _Never update frequency using the encrypted character read from input; the state update depends strictly on the original decrypted letter L = (E - c + 26) % 26._
+- **RPC 2026-09 B - Betito el viajero** — _Recursive DFS on a 1000 x 1000 grid risks 10^6 stack frames and instant SIGSEGV; an iterative queue<pair<int,int>> BFS consumes heap memory safely without recursion limits._
+- **RPC 2026-09 C - Company** — _Condition P_i < i guarantees an inherent reverse topological order: no adjacency lists, no recursion, and no LCA queries are needed; a simple for (int i = N; i >= 1; --i) pass computes edge contributions and subtree diameters in under 20 MB._
+- **RPC 2026-09 D - Dangerous Odyssey** — _Islands (R) are landmasses that provide shelter radius under Manhattan distance but cannot be sailed through; ship navigation must be strictly restricted to open water . and arrival at A._
+- **RPC 2026-09 E - Enarmonía** — _Greedy choice of immediate echoes burns the K switch budget prematurely; DP top-down memoization or a 2-layer rolling array explores all feasible switch points in O(T^2 * K)._
+- **RPC 2026-09 F - Flipando colores con la DIAN** — _A naive greedy choice on available roots fails when a slow root blocks an ultra-dense descendant; Lawler's theorem proves contraction must collapse the global max-density child into its current parent._
+- **RPC 2026-09 G - Guanex y el diámetro con actualizaciones** — _In any tree, the furthest node from any arbitrary vertex x is always at least one of the endpoints of any diameter; full BFS recomputations are completely avoided by tracking max(diam, dist(x, A), dist(x, B)) with Binary Lifting LCA in O(log V)._
+- **RPC 2026-09 H - Humbertov y su taza de café** — _Common factor (1/3) * pi cancels completely; evaluate f(x) = x * (r^2 + rx^2 + r * rx) directly with rx = r + (R - r) * (x / h) using 100 binary search iterations to reach < 10^-25 precision._
+- **RPC 2026-09 I - Internal Triangles** — _Do not compute n * (n - 1) * (n - 2) directly in 64-bit integer (n^3 <= 10^54 overflows long long); reduce each factor modulo 10^9 + 7 first and multiply by modular inverse inv(6) = 166666668._
+- **RPC 2026-09 J - Juan y sus ovejas** — _Initialize total = N and each size sz[i] = 1; isolated vertices never mentioned in pairs are automatically preserved as independent classes of size 1 in DSU._
+- **RPC 2026-09 K - K-th shortest path** — _Edge weights reach 10^8 and N <= 10^4, so path length reaches 10^12; using int and inf = 1e9 causes fatal overflow and incorrect paths; all distances must be long long with INF = 1e18._
+- **RPC 2026-09 L - Locate Tobby’s nest** — _Backtrack from B to A without storing parent pointers by simply stepping to any orthogonal neighbor with distance d[u] - 1, and strictly enforce the author's tie-break rule: smaller column first, then smaller row._
+- **RPC 2026-09 M - Marble tilt maze** — _Board stabilization after every single-cell slide means tilts generate multiple cost-1 intermediate states rather than only full-obstacle stops; evaluate concurrent marble motion cell-by-cell prioritizing the forward marble along (r * dr + c * dc) to handle convoy clearances and prune invalid hole or boundary falls immediately._
+
 ---
 
-**Last Updated:** 2026-09-19
+**Last Updated:** 2026-09-26
+

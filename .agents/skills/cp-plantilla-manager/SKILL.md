@@ -53,7 +53,7 @@ Every template added to `cp-plantilla/` must meet all 5 criteria:
    - Use `O(N log N)`, `O(1)`, `[l, r)`, `<=`, `>=`, never raw math syntax like `$O(N)$` or `\le`.
 
 5. **Index Synchronization**:
-   - Add the template row to the table in [`cp-plantilla/README.md`](file:///C:/Users/Canton%20Gourmet/OneDrive/Documents/CP/cp-plantilla/README.md) with its paradigm, complexities, and golden rule.
+   - Add the template row to the table in [`cp-plantilla/README.md`](../../../cp-plantilla/README.md) with its paradigm, complexities, and golden rule.
 
 ---
 

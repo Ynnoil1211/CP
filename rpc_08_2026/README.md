@@ -15,11 +15,11 @@ Este documento consolida la autopsia técnica de los envíos del equipo, la comp
 | **C** | [Don't Hunger Together](outputs/notes/C_Dont_Hunger_Together.md) | *Upsolved* | Oficial | Div 1B / Div 2E | Búsqueda Binaria sobre la Respuesta + Min-Heap (EDF) | `O(I * N log N)` |
 | **D** | [Garden of Thorns](outputs/notes/D_Garden_of_Thorns.md) | *Upsolved* | Oficial | Div 1C / Div 2F | Linealidad de la Esperanza + Geometría Círculo-Caja | `O(N)` |
 | **E** | [ICPC Team Generation](outputs/notes/E_ICPC_Team_Generation.md) | **AC** | Versión 1 | Div 2B | Barrido Greedy Monótono (Monotonic Sliding) | `O(N)` |
-| **F** | [Is Y a Vowel?](outputs/notes/F_Is_Y_a_Vowel.md) | **AC** | Versión 1 | Div 3A | Simulación Lineal de Cadenas | `O(|S|)` |
+| **F** | [Is Y a Vowel?](outputs/notes/F_Is_Y_a_Vowel.md) | **AC** | Versión 1 | Div 3A | Simulación Lineal de Cadenas | `O(len(S))` |
 | **G** | [Lines Per Hour](outputs/notes/G_Lines_Per_Hour.md) | **AC** | Versión 2 | Div 3A | Ordenamiento Codicioso (Greedy Knapsack Fractional) | `O(N log N)` |
 | **H** | [Magnesium Supplementation](outputs/notes/H_Magnesium_Supplementation.md) | **AC** | Versión 3 | Div 2B | Teoría de Números (Factorización `O(sqrt(N))`) | `O(sqrt(N) + D log D)` |
-| **I** | [Missing Number](outputs/notes/I_Missing_Number.md) | *Upsolved* | Oficial | Div 2C | Fuerza Bruta sobre Prefijo (`L <= 5`) + Simulación | `O(sum |S|)` |
-| **J** | [Tip of Your Tongue](outputs/notes/J_Tip_of_Your_Tongue.md) | *Upsolved* | Oficial | Div 1B / Div 2E | Doble Hashing Polinomial + Tablas Hash + PIE | `O(sum |W| + sum |p|)` |
+| **I** | [Missing Number](outputs/notes/I_Missing_Number.md) | *Upsolved* | Oficial | Div 2C | Fuerza Bruta sobre Prefijo (`L <= 5`) + Simulación | `O(sum len(S))` |
+| **J** | [Tip of Your Tongue](outputs/notes/J_Tip_of_Your_Tongue.md) | *Upsolved* | Oficial | Div 1B / Div 2E | Doble Hashing Polinomial + Tablas Hash + PIE | `O(sum len(W) + sum len(p))` |
 | **K** | [Very Important Edge](outputs/notes/K_Very_Important_Edge.md) | *Upsolved* | Oficial | Div 1C | Kruskal MST + Path Min Range Update con DSU | `O(M log M)` |
 | **L** | [Water Journal](outputs/notes/L_Water_Journal.md) | **AC** | Versión 2 | Div 3A | Análisis de Casos Borde + Principio del Palomar | `O(N)` |
 

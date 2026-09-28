@@ -20,6 +20,7 @@ Cada tarjeta condensa el "momento eureka" (*aha moment*), la invariante matemát
 - [**`binary-search-answer-on-range/`**](binary-search-answer-on-range/)
   - [1742E - Scuza](binary-search-answer-on-range/1742E_Scuza.md)
   - [RPC 08 Problem C - Don't Hunger Together](binary-search-answer-on-range/RPC-2026-08-C_Dont_Hunger_Together.md)
+  - [RPC 09 Problem H - Humbertov y su taza de café](binary-search-answer-on-range/RPC-2026-09-H_Humbertov_Y_Su_Taza_De_Cafe.md)
 
 ### 🔨 Brute Force & Search
 - [**`brute-force-exhaustive-search/`**](brute-force-exhaustive-search/)
@@ -29,14 +30,26 @@ Cada tarjeta condensa el "momento eureka" (*aha moment*), la invariante matemát
 ### 📈 Dynamic Programming
 - [**`dp-linear-progression/`**](dp-linear-progression/)
   - [RPC 08 Problem B - Digit Translation](dp-linear-progression/RPC-2026-08-B_Digit_Translation.md)
+- [**`dp-state-exploration/`**](dp-state-exploration/)
+  - [RPC 09 Problem E - Enarmonía](dp-state-exploration/RPC-2026-09-E_Enarmonia.md)
 
 ### ♟️ Game Theory
 - [**`game-theory-parity-turn/`**](game-theory-parity-turn/)
   - [1527B1 - Palindrome Game (easy version)](game-theory-parity-turn/1527B1_Palindrome_Game_easy_version.md)
 
 ### 🌐 Graphs & Trees
+- [**`graph-connectivity-check/`**](graph-connectivity-check/)
+  - [RPC 09 Problem B - Betito el viajero](graph-connectivity-check/RPC-2026-09-B_Betito_El_Viajero.md)
+  - [RPC 09 Problem J - Juan y sus ovejas](graph-connectivity-check/RPC-2026-09-J_Juan_Y_Sus_Ovejas.md)
 - [**`graph-shortest-path/`**](graph-shortest-path/)
   - [RPC 08 Problem K - Very Important Edge](graph-shortest-path/RPC-2026-08-K_Very_Important_Edge.md)
+  - [RPC 09 Problem D - Dangerous Odyssey](graph-shortest-path/RPC-2026-09-D_Dangerous_Odyssey.md)
+  - [RPC 09 Problem K - K-th shortest path](graph-shortest-path/RPC-2026-09-K_Kth_Shortest_Path.md)
+  - [RPC 09 Problem M - Marble tilt maze](graph-shortest-path/RPC-2026-09-M_Marble_Tilt_Maze.md)
+- [**`graph-tree-algorithms/`**](graph-tree-algorithms/)
+  - [RPC 09 Problem C - Company](graph-tree-algorithms/RPC-2026-09-C_Company.md)
+  - [RPC 09 Problem G - Guanex y el diámetro con actualizaciones](graph-tree-algorithms/RPC-2026-09-G_Guanex_Y_El_Diametro.md)
+  - [RPC 09 Problem L - Locate Tobby’s nest](graph-tree-algorithms/RPC-2026-09-L_Locate_Tobbys_Nest.md)
 
 ### ⚡ Greedy Paradigms
 - [**`greedy-boundary-testing/`**](greedy-boundary-testing/)
@@ -44,6 +57,7 @@ Cada tarjeta condensa el "momento eureka" (*aha moment*), la invariante matemát
 - [**`greedy-priority-based/`**](greedy-priority-based/)
   - [1157E - Minimum Array](greedy-priority-based/1157E_Minimum_Array.md)
   - [RPC 08 Problem A - Contest Advancement](greedy-priority-based/RPC-2026-08-A_Contest_Advancement.md)
+  - [RPC 09 Problem F - Flipando colores con la DIAN](greedy-priority-based/RPC-2026-09-F_Flipando_Colores_Con_La_DIAN.md)
 - [**`greedy-sorting-based/`**](greedy-sorting-based/)
   - [RPC 08 Problem G - Lines Per Hour](greedy-sorting-based/RPC-2026-08-G_Lines_Per_Hour.md)
 - [**`greedy-value-splitting/`**](greedy-value-splitting/)
@@ -53,8 +67,11 @@ Cada tarjeta condensa el "momento eureka" (*aha moment*), la invariante matemát
 - [**`implementation-case-analysis/`**](implementation-case-analysis/)
   - [1845A - Forbidden Integer](implementation-case-analysis/1845A_Forbidden_Integer.md)
   - [RPC 08 Problem F - Is Y a Vowel?](implementation-case-analysis/RPC-2026-08-F_Is_Y_a_Vowel.md)
+  - [RPC 09 Problem A - Alejandro, lee por favor](implementation-case-analysis/RPC-2026-09-A_Alejandro_Lee_Por_Favor.md)
 
 ### 🔢 Mathematics & Number Theory
+- [**`math-combinatorics/`**](math-combinatorics/)
+  - [RPC 09 Problem I - Internal Triangles](math-combinatorics/RPC-2026-09-I_Internal_Triangles.md)
 - [**`math-constraint-bounds/`**](math-constraint-bounds/)
   - [702B - Powers of Two](math-constraint-bounds/702B_Powers_Of_Two.md)
 - [**`math-formula-development/`**](math-formula-development/)
