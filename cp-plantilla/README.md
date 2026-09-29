@@ -1,87 +1,59 @@
-# CP Plantilla: Competitive Programming Template & Algorithm Library
+# Guía Rápida de Plantillas CP
 
-A production-grade, battle-tested competitive programming template library engineered for collegiate contests (ICPC / RPC) and Codeforces rounds. Designed for zero overhead, strict cache locality, clean interfaces, and rapid copy-paste deployment.
-
----
-
-## 🧭 Master Template Catalog
-
-### 1. Data Structures (`data-structures/`)
-
-| Template | Paradigm | Build / Init | Query | Update | Space | Primary Invariant / Key Rule of Thumb |
-| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
-| [**Segment Tree Iterativo**](data-structures/segment_tree_iterativo.cpp) | Range Query (Iterative) | O(N) | O(log N) | O(log N) | 2N | **Semi-open interval `[l, r)`**: Bitwise `l & 1` and `r & 1`. Query closed interval `[L, R]` with `query(L, R + 1)`. 2x-4x faster than recursive due to cache locality. |
-| [**Segment Tree Recursivo**](data-structures/segment_tree_recursivo.cpp) | Divide & Conquer / RMQ | O(N) | O(log N) | O(log N) | 4N | **Segment bounds `[low, high]`**: Compare against query `[l, r]`. Total overlap (`l <= low && high <= r`) vs. disjoint (`high < l &#124;&#124; low > r`). Safe 4N tree size. |
-| [**Segment Tree Lazy Assignment**](data-structures/segment_tree_lazy_assignment.cpp) | Lazy Propagation | O(N) | O(log N) | O(log N) | 4N | **Range Assignment / Point Query**: Push parent's assigned value down to children before descending. Use boolean `has_lazy` flag to safely support `0` and negative values. |
-| [**Segment Tree Lazy Sum**](data-structures/segment_tree_lazy_sum.cpp) | Lazy Propagation | O(N) | O(log N) | O(log N) | 4N | **Range Add / Range Sum**: Must multiply lazy by segment length `(high - low + 1)`. Accumulate additively (`lazy[c] += lazy[node]`). Always use 64-bit `long long`. |
+Índice directo de operaciones y referencias a las plantillas de C++17.
 
 ---
 
-### 2. Graph Algorithms (`graphs/`)
+## Estructuras de Datos
 
-| Template | Paradigm | Time Complexity | Auxiliary Space | Key Pattern & Gotchas |
-| :--- | :--- | :---: | :---: | :--- |
-| [**DFS Camino a Destino**](graphs/dfs_camino_destino.cpp) | Depth-First Search | O(V + E) | O(V) | **Early Exit ("Pass the Ball Backwards")**: Returns `bool`. As soon as target is found, unwinds call-stack with `return true`. Avoids exhaustive exploration when checking reachability. |
-| [**DFS Componente & Costo Mínimo**](graphs/dfs_componente_min_costo.cpp) | DFS / Connected Components | O(V + E) | O(V) | **Accumulator by Reference**: `void` signature passing `long long& min_costo`, `long long& sum`, `int& size`. Classic CF "Rumor" pattern to collect global statistics per island. |
-| [**DFS Ordenamiento y Rutas**](graphs/dfs_ordenamiento_rutas.cpp) | DFS / Topological Sort | O(V + E) | O(V) | **Pre-Order vs. Post-Order**: Pre-order (`push` before neighbors) = discovery tree / Euler tour. Post-order (`push` after neighbors) reversed = Topological Sort in DAGs with 3-color cycle detection. |
-| [**DFS Árbol sin Visited**](graphs/dfs_arbol_sin_visited.cpp) | Tree DFS / Tree DP | O(N) | O(H) | **Parent-Passing Optimization**: Takes `(int u, int p)`. Evaluates `if (v != p)` to prune back-edges in acyclic trees. Eliminates `visited` array allocation and reset overhead. |
-| [**BFS Camino Más Corto**](graphs/bfs_distancia.cpp) | Breadth-First Search | O(V + E) | O(V) | **Push-Time Marking Invariant**: Always update distance and mark visited *at the time of push* into queue (never at pop!) to prevent exponential queue explosion. `-1` acts as unvisited sentinel. |
-
----
-
-### 3. Mathematics & Bit Manipulation (`math/`)
-
-| Template | Paradigm | Time Complexity | Auxiliary Space | Key Pattern & Gotchas |
-| :--- | :--- | :---: | :---: | :--- |
-| [**Trucos de Bits & Potencias de Dos**](math/bit_tricks_powers_of_two.cpp) | Bit Manipulation / Math | O(1) por op | O(1) | **32-Bit Signed Overflow & Zero Guard**: `1 << 31` causa UB con signo en C++; usar siempre `1ULL << k`. `x & (x - 1)` evalúa a `0` para `x == 0` (requiere `x > 0`). `__builtin_clzll(0)` y `__builtin_ctzll(0)` son UB sin guardas. |
+| Tipo de Operación | Documento / Archivo |
+| :--- | :--- |
+| Consulta de suma en rango y actualización puntual (iterativo, O(log N), intervalo semiabierto `[l, r)`) | [`data-structures/segment_tree_iterativo.cpp`](data-structures/segment_tree_iterativo.cpp) |
+| Consulta de mínimo en rango (RMQ) y actualización puntual (recursivo, O(log N), divide y vencerás) | [`data-structures/segment_tree_recursivo.cpp`](data-structures/segment_tree_recursivo.cpp) |
+| Suma en rango (Range Add) y consulta de suma en rango (Lazy Propagation, O(log N)) | [`data-structures/segment_tree_lazy_sum.cpp`](data-structures/segment_tree_lazy_sum.cpp) |
+| Asignación en rango (Range Assignment) y consulta puntual/rango (Lazy Propagation, O(log N)) | [`data-structures/segment_tree_lazy_assignment.cpp`](data-structures/segment_tree_lazy_assignment.cpp) |
 
 ---
 
-## ⚡ Compilation & Testing Guide
+## Grafos
 
-All templates are written in standard C++17, are warning-free under `-Wall -Wextra -Werror`, and contain a runnable `main()` function demonstrating key use cases and asserting expected outputs.
-
-### Compiling a Template:
-```bash
-# General compilation command
-g++ -O3 -std=c++17 -Wall -Wextra <template_name>.cpp -o solution.exe
-
-# Example: Iterative Segment Tree
-g++ -O3 -std=c++17 -Wall -Wextra data-structures/segment_tree_iterativo.cpp -o st_it.exe
-./st_it.exe
-
-# Example: BFS Shortest Path
-g++ -O3 -std=c++17 -Wall -Wextra graphs/bfs_distancia.cpp -o bfs_dist.exe
-./bfs_dist.exe
-```
+| Tipo de Operación | Documento / Archivo |
+| :--- | :--- |
+| Distancia más corta, niveles y reconstrucción de camino en grafo no ponderado (BFS, O(V + E)) | [`graphs/bfs_distancia.cpp`](graphs/bfs_distancia.cpp) |
+| Búsqueda de camino entre dos nodos con salida temprana / early exit (DFS, O(V + E)) | [`graphs/dfs_camino_destino.cpp`](graphs/dfs_camino_destino.cpp) |
+| Componentes conexas y costo mínimo / estadísticas acumuladas por componente (DFS, O(V + E)) | [`graphs/dfs_componente_min_costo.cpp`](graphs/dfs_componente_min_costo.cpp) |
+| Ordenamiento topológico en DAG con 3 colores y detección de ciclos dirigidos (DFS post-orden, O(V + E)) | [`graphs/dfs_ordenamiento_rutas.cpp`](graphs/dfs_ordenamiento_rutas.cpp) |
+| Recorrido en árboles y tamaño de subárbol sin arreglo `visited` (DFS pasando padre, O(N)) | [`graphs/dfs_arbol_sin_visited.cpp`](graphs/dfs_arbol_sin_visited.cpp) |
 
 ---
 
-## 🛠️ Implementation Cheat-Sheet & Common Pitfalls
+## Matemáticas
 
-### Segment Trees
-1. **Iterative vs Recursive**:
-   - Prefer **Iterative Segment Tree** for point-update + range-query problems. It has minimal code footprint, 2N memory, and superior cache locality.
-   - Prefer **Recursive Segment Tree with Lazy Propagation** when handling range updates (range addition, range assignment, affine updates).
-2. **Semi-open Interval `[l, r)`**:
-   - When using iterative segment tree, remember that `r` is exclusive. Querying range `[0, n - 1]` requires calling `query(0, n)`. Querying `[L, R]` requires `query(L, R + 1)`.
-3. **Lazy Multiplication Bug**:
-   - In range sum segment trees, never do `tree[node] += lazy[node];`. It MUST be `tree[node] += lazy[node] * (high - low + 1);`.
-4. **Integer Overflow**:
-   - Range sum queries can easily exceed 2 * 10^9 when N <= 2 * 10^5 and A_i <= 10^9. Always type `tree`, `lazy`, and query return values as `long long`.
+| Tipo de Operación | Documento / Archivo |
+| :--- | :--- |
+| Aritmética modular (suma, resta, multiplicación, división) | [`math/aritmetica_modular.cpp`](math/aritmetica_modular.cpp) |
+| Exponenciación binaria modular en O(log B) | [`math/aritmetica_modular.cpp`](math/aritmetica_modular.cpp) |
+| Inverso modular (Fermat para primo, Euclides Extendido para compuesto coprimo) | [`math/aritmetica_modular.cpp`](math/aritmetica_modular.cpp) |
+| Combinatoria nCr y permutaciones nPr precalculadas en O(1) con módulo | [`math/aritmetica_modular.cpp`](math/aritmetica_modular.cpp) |
+| Potencias de dos (verificar, siguiente, anterior, 2^k) en O(1) | [`math/bit_tricks_powers_of_two.cpp`](math/bit_tricks_powers_of_two.cpp) |
+| Manipulación de bits (aislar/limpiar LSB, popcount, clz, ctz, floor log2) en O(1) | [`math/bit_tricks_powers_of_two.cpp`](math/bit_tricks_powers_of_two.cpp) |
+| Criba lineal de Euler y Menor Factor Primo (SPF) en O(MAXN) | [`math/criba_spf.cpp`](math/criba_spf.cpp) |
+| Factorización prima rápida en O(log X) y enumeración de divisores con SPF | [`math/criba_spf.cpp`](math/criba_spf.cpp) |
+| Función Phi de Euler (O(log X) con SPF precalculado o O(sqrt N) aislada) | [`math/criba_spf.cpp`](math/criba_spf.cpp) |
+| Teoría de juegos: Juego de Nim clásico y predicción de victoria con Nim-Sum | [`math/game_theory_nim.cpp`](math/game_theory_nim.cpp) |
+| Cálculo de MEX (Minimum Excluded) en O(K) | [`math/game_theory_nim.cpp`](math/game_theory_nim.cpp) |
+| Prefijo y rango XOR acumulado (1 ^ ... ^ N y L ^ ... ^ R) en O(1) | [`math/game_theory_nim.cpp`](math/game_theory_nim.cpp) |
+| Multiplicación y exponenciación rápida de matrices cuadradas en O(N^3 log P) | [`math/matrix_exponentiation.cpp`](math/matrix_exponentiation.cpp) |
+| Aceleración de recurrencias lineales (Fibonacci / DP) para N hasta 10^18 | [`math/matrix_exponentiation.cpp`](math/matrix_exponentiation.cpp) |
+| Conteo de caminos de longitud exacta k en grafos dirigidos | [`math/matrix_exponentiation.cpp`](math/matrix_exponentiation.cpp) |
 
-### Graphs & Trees
-1. **BFS Queue Mark Invariant**:
-   - Never mark nodes when popped from the queue. If node v has multiple incoming edges from the current BFS frontier, it will be pushed into the queue multiple times, leading to O(V^2) or O(E * V) blowup and TLE/MLE.
-2. **Tree Traversal Memory**:
-   - In tree problems, never allocate a `vector<bool> visited(N)`. Passing `parent` directly cuts memory by O(N) and eliminates `memset`/`vector` reallocation overhead between multiple test cases.
-3. **Topological Sort Cycles**:
-   - Always track 3 node states (`0 = unvisited`, `1 = in-stack`, `2 = completed`). Encountering a neighbor with state `1` indicates a back-edge (directed cycle), making topological ordering impossible.
+---
 
-### Mathematics & Bit Tricks
-1. **Signed 32-Bit Shift UB**:
-   - `1 << 31` en C++ opera sobre `int` con signo y produce comportamiento indefinido (UB) con resultado negativo (`-2147483648`). Emplear siempre `1ULL << k` para manipular potencias de 2 hasta 64 bits de forma segura.
-2. **Builtin Undefined Behavior on Zero**:
-   - Tanto `__builtin_clzll(0)` como `__builtin_ctzll(0)` producen UB en hardware x86/ARM si su argumento es 0. Proteger siempre con sentinela `if (x == 0)`.
-3. **Power of Two Zero Trap**:
-   - La expresión `(x & (x - 1)) == 0` es cierta para `x == 0`, pero `0` no es una potencia de dos. Siempre verificar `x > 0 && (x & (x - 1)) == 0`.
+## Geometría
+
+| Tipo de Operación | Documento / Archivo |
+| :--- | :--- |
+| Representación de puntos 2D y operaciones vectoriales enteras (suma, resta, producto punto) | [`geometry/geometria_basica.cpp`](geometry/geometria_basica.cpp) |
+| Orientación de 3 puntos (giro CCW, CW, colineal) con producto cruz en O(1) | [`geometry/geometria_basica.cpp`](geometry/geometria_basica.cpp) |
+| Intersección robusta de segmentos de recta (cruces propios, colineales y extremos) en O(1) | [`geometry/geometria_basica.cpp`](geometry/geometria_basica.cpp) |
+| Área exacta de polígono simple con fórmula de Shoelace (`area2 = 2 * Área`) en O(N) | [`geometry/geometria_basica.cpp`](geometry/geometria_basica.cpp) |
